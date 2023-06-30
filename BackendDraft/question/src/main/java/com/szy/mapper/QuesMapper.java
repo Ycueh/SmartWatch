@@ -1,10 +1,10 @@
 package com.szy.mapper;
 
 import com.szy.pojo.Question;
+
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
-
 @Mapper
 public interface QuesMapper {
     //list all question information

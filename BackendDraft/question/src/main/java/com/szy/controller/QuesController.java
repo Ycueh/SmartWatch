@@ -5,6 +5,8 @@ import com.szy.pojo.PageBean;
 import com.szy.pojo.Question;
 import com.szy.pojo.Result;
 import com.szy.service.QuesService;
+
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,7 @@ public class QuesController {
      * list all questions by page      页码未指定默认为1 每页记录数默认为10
      * @return
      */
+    @Operation(summary = "list all questions by page")
     @GetMapping
     public Result pageQuery(@RequestParam(defaultValue = "1") Integer pageNum,
                             @RequestParam(defaultValue = "10") Integer pageSize){
@@ -46,6 +49,7 @@ public class QuesController {
      * @param id
      * @return Result response
      */
+    @Operation(summary = "delete question by id")
     @DeleteMapping("/{id}")
     public Result deleteById(@PathVariable Integer id){
 //        log.info("delete question by id");
@@ -57,6 +61,7 @@ public class QuesController {
      * add new question
      * @return
      */
+    @Operation(summary = "add new question")
     @PostMapping
     public Result add(@RequestBody Question question){
         log.info("add new question");
@@ -69,6 +74,7 @@ public class QuesController {
      * @param id
      * @return
      */
+    @Operation(summary = "select question by id")
     @GetMapping("/{id}")
     public Result selectById(@PathVariable Integer id){
         Question question = quesService.selectById(id);
@@ -80,6 +86,7 @@ public class QuesController {
      * @param question
      * @return
      */
+    @Operation(summary = "update the question")
     @PutMapping
     public Result updateQuestion(@RequestBody Question question){
         quesService.updateQuestion(question);
