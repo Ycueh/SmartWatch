@@ -101,7 +101,6 @@ ul {
     font-size: 25px;
     height: 100px;
     line-height: 100px;
-    padding-left: 40px;
 }
 .content .slide-nav a {
     color: white;
@@ -112,18 +111,31 @@ ul {
     padding: 0;
     font-size: 0;
 }
+.content .slide-nav li a {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0;
+    width: 200px;
+    height: 100px;
+}
 .content .slide-nav .target-element .target-mark {
     display: inline-block;
     width: 10px;
     height: 100px;
     background-color: rgb(13, 103, 255);
 }
-.content .slide-nav .target-element .target-item {
+
+.content .slide-nav .target-element .target-text {
     display: inline-block;
-    vertical-align: top;
-    font-size: 25px;
     width: 160px;
+    height: 100px;
+    font-size: 25px;
+    vertical-align: top;
     padding-left: 30px;
+}
+.content .slide-nav .other-items {
+    font-size: 25px;
+    padding-left: 40px;
 }
 .content .slide-nav li:hover {
     background-color: rgb(13, 103, 255);
@@ -203,6 +215,7 @@ ul {
 .content .main-content table tr {
     border-top: 1px solid rgb(239, 239, 239);
     border-bottom: 1px solid rgb(239, 239, 239);
+    height: 58.5px;
 }
 .content .main-content td:first-child::before,
 .content .main-content th:first-child::before,
