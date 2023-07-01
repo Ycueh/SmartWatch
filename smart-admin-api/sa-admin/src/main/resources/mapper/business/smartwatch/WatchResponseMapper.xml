@@ -9,11 +9,14 @@
             <if test="queryForm.date != null">
                 AND response.date= #{queryForm.date}
             </if>
-            <if test="queryForm.date != null">
-                AND response.time= #{queryForm.time}
+            <if test="queryForm.keyword != null and queryForm.keyword != ''">
+                AND ( INSTR(response.question,#{queryForm.keyword})
+                OR INSTR(response.response,#{queryForm.keyword})
+                OR INSTR(t_change_log.content,#{queryForm.keyword})
+                )
             </if>
-            <if test="queryForm.responsetime != null">
-                AND response.responseTime= #{queryForm.responsetime}
+            <if test="queryForm.time != null">
+                AND response.time= #{queryForm.time}
             </if>
             <if test="queryForm.questionid != null">
                 AND response.questionID= #{queryForm.questionid}
@@ -21,14 +24,8 @@
             <if test="queryForm.answerid != null">
                 AND response.answerID= #{queryForm.answerid}
             </if>
-            <if test="queryForm.question != null">
-                AND response.question= #{queryForm.question}
-            </if>
-            <if test="queryForm.response != null">
-                AND response.response = #{queryForm.response}
-            </if>
         </where>
-        order by response._id desc
+        order by response._id asc
     </select>
 
 
