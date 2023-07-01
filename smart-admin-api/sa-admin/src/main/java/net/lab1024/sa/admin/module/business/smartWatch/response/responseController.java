@@ -11,11 +11,7 @@ import net.lab1024.sa.admin.module.business.smartWatch.response.service.response
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.domain.ValidateList;
-import net.lab1024.sa.common.module.support.changelog.domain.form.ChangeLogQueryForm;
-import net.lab1024.sa.common.module.support.changelog.domain.form.ChangeLogUpdateForm;
-import net.lab1024.sa.common.module.support.changelog.domain.vo.ChangeLogVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,7 +22,7 @@ public class responseController {
     @Autowired
     private responseService resService;
 
-    @ApiOperation("")
+    @ApiOperation("queryPage")
     @PostMapping("/response/queryPage")
     public ResponseDTO<PageResult<ResponseVO>> queryPage(@RequestBody @Valid ResponseQueryForm queryForm) {
         return ResponseDTO.ok(resService.queryPage(queryForm));
