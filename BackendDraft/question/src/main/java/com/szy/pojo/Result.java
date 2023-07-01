@@ -5,10 +5,12 @@ package com.szy.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
 public class Result {
     private Integer code; //response code, 1:successful ; 0:fail
     private String msg; //rresponse inforrmation;  describe String
