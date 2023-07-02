@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
-public class PageBean {
+public class ParamPageBean {
     private Long totalPage;
-    private List<Question> rows;
+    private List<Parameter> rows;
 }

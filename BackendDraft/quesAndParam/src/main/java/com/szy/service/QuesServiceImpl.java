@@ -1,7 +1,7 @@
 package com.szy.service;
 
 import com.szy.mapper.QuesMapper;
-import com.szy.pojo.PageBean;
+import com.szy.pojo.QuestionPageBean;
 import com.szy.pojo.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,15 +63,15 @@ public class QuesServiceImpl implements QuesService{
 
     @Transactional
     @Override
-    public PageBean pageQuery(Integer pageNum, Integer pageSize) {
+    public QuestionPageBean pageQuery(Integer pageNum, Integer pageSize) {
         //get total question number
         Long count = quesMapper.count();
 
         //get page query list data
         List<Question> questionList = quesMapper.page((pageNum-1)*pageSize , pageSize);
 
-        PageBean pageBean = new PageBean(count, questionList);
-        return pageBean;
+        QuestionPageBean questionPageBean = new QuestionPageBean(count, questionList);
+        return questionPageBean;
     }
 
 

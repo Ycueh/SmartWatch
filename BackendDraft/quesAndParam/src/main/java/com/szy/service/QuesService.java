@@ -1,9 +1,7 @@
 package com.szy.service;
 
-import com.szy.pojo.PageBean;
+import com.szy.pojo.QuestionPageBean;
 import com.szy.pojo.Question;
-
-import java.util.List;
 
 
 public interface QuesService {
@@ -23,5 +21,5 @@ public interface QuesService {
     //update question
     void updateQuestion(Question question);
 
-    PageBean pageQuery(Integer pageNum, Integer pageSize);
+    QuestionPageBean pageQuery(Integer pageNum, Integer pageSize);
 }
