@@ -21,16 +21,6 @@ public class QuesController {
     private QuesService quesService;
 
     /**
-     * list all questions
-     * @return Result response
-     */
-//    @GetMapping
-//    public Result list(){
-//        List<Question> questionList = quesService.list();
-//        return Result.success(questionList);
-//    }
-
-    /**
      * list all questions by page      页码未指定默认为1 每页记录数默认为10
      * @return
      */
