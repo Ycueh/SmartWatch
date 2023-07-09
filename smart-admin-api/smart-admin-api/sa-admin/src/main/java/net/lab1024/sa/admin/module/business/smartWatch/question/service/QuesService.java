@@ -2,24 +2,22 @@ package net.lab1024.sa.admin.module.business.smartWatch.question.service;
 
 
 import net.lab1024.sa.admin.module.business.smartWatch.question.pojo.Question;
-import net.lab1024.sa.admin.module.business.smartWatch.question.pojo.QuestionPageBean;
+import net.lab1024.sa.admin.module.business.smartWatch.question.pojo.QuestionQueryForm;
+import net.lab1024.sa.common.common.domain.PageResult;
+import net.lab1024.sa.common.common.domain.ResponseDTO;
 
 public interface QuesService {
-
-    //list all questions information
-//    List<Question> list();
-
     //delete question by id
-    void deleteById(Integer id);
+    ResponseDTO<String> deleteById(Long id);
 
     //add new question
-    void add(Question question);
+    ResponseDTO<String> add(Question question);
 
     //select question by id
-    Question selectById(Integer id);
+    Question selectById(Long id);
 
     //update question
-    void updateQuestion(Question question);
+    ResponseDTO<String> updateQuestion(Question question);
 
-    QuestionPageBean pageQuery(Integer pageNum, Integer pageSize);
+    PageResult<Question> queryPage(QuestionQueryForm queryForm);
 }

@@ -17,8 +17,8 @@ public interface ParamMapper {
     @Update("update Parameter set paramvalue = #{paramValue} where _id = #{id}")
     void updateParam(Parameter parameter);
 
-    @Select("select * from Parameter limit #{start}, #{pageSize}")
-    List<Parameter> pageQuery(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
+//    @Select("select * from Parameter limit #{start}, #{pageSize}")
+//    List<Parameter> pageQuery(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
 
     @Select("select count(*) from Parameter")
     Long count();

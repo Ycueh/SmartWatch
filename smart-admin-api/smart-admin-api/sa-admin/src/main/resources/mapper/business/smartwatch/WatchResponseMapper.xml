@@ -6,7 +6,7 @@
         *
         FROM response
         <where>
-            <if test="queryForm.date != null">
+            <if test="queryForm.questionId != null">
                 AND response.date= #{queryForm.date}
             </if>
             <if test="queryForm.keyword != null and queryForm.keyword != ''">

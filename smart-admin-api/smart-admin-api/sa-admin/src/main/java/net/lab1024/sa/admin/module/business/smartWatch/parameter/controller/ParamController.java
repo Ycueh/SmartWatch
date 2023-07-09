@@ -2,38 +2,43 @@ package net.lab1024.sa.admin.module.business.smartWatch.parameter.controller;
 
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
-import net.lab1024.sa.admin.module.business.smartWatch.Result;
-import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.ParamPageBean;
+import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.ParamQueryForm;
 import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.Parameter;
 import net.lab1024.sa.admin.module.business.smartWatch.parameter.service.ParamService;
+import net.lab1024.sa.common.common.domain.PageResult;
+import net.lab1024.sa.common.common.domain.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping("/parameters")
 @Api(tags = {AdminSwaggerTagConst.Business.SW_PARAM})
 public class ParamController {
     @Autowired
     private ParamService paramService;
 
-
-    @GetMapping
-    public Result pageQuery(@RequestParam(defaultValue = "1") Integer pageNum,
-                            @RequestParam(defaultValue = "10") Integer pageSize){
-        ParamPageBean PageBean = paramService.pageQuery(pageNum, pageSize);
-        return Result.success(PageBean);
+    @ApiOperation("queryPage")
+    @PostMapping("/parameter/queryPage")
+    public ResponseDTO<PageResult<Parameter>> queryPage(@RequestBody @Valid ParamQueryForm queryForm) {
+        return ResponseDTO.ok(paramService.queryPage(queryForm));
     }
 
-    @GetMapping("/{id}")
-    public Result selectById(@PathVariable Integer id){
+
+    @ApiOperation("Get parameter by id")
+    @GetMapping("/parameter/{id}")
+    public ResponseDTO<Parameter> selectById(@PathVariable Integer id){
         Parameter parameter = paramService.selectById(id);
-        return Result.success(parameter);
+        return ResponseDTO.ok(parameter);
     }
-    @PutMapping
-    public Result updateParam(@RequestBody Parameter parameter){
-        System.out.println(parameter);
+
+
+    @ApiOperation("Update parameter")
+    @PostMapping("/parameter/update")
+    public ResponseDTO<String> update(@RequestBody @Valid Parameter parameter) {
         paramService.updateParam(parameter);
-        return Result.success();
+        return ResponseDTO.ok();
     }
 }

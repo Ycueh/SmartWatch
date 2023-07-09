@@ -1,11 +1,16 @@
 package net.lab1024.sa.admin.module.business.smartWatch.parameter.service;
 
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import net.lab1024.sa.admin.module.business.smartWatch.parameter.mapper.ParamDAO;
 import net.lab1024.sa.admin.module.business.smartWatch.parameter.mapper.ParamMapper;
-import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.ParamPageBean;
+import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.ParamQueryForm;
 import net.lab1024.sa.admin.module.business.smartWatch.parameter.pojo.Parameter;
+import net.lab1024.sa.common.common.domain.PageResult;
+import net.lab1024.sa.common.common.util.SmartPageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,7 +18,8 @@ import java.util.List;
 public class ParamServiceImpl implements ParamService{
     @Autowired
     private ParamMapper paramMapper;
-
+    @Autowired
+    private ParamDAO paramDAO;
     @Override
     public Parameter selectById(Integer id) {
         Parameter parameter = paramMapper.selectById(id);
@@ -25,11 +31,20 @@ public class ParamServiceImpl implements ParamService{
         paramMapper.updateParam(parameter);
     }
 
+//    @Override
+//    public ParamPageBean pageQuery(Integer pageNum, Integer pageSize) {
+//        Long count = paramMapper.count();
+//        List<Parameter> parameters = paramMapper.pageQuery((pageNum-1)*pageSize, pageSize);
+//        ParamPageBean PageBean = new ParamPageBean(count, parameters);
+//        return PageBean;
+//    }
+    @Transactional
     @Override
-    public ParamPageBean pageQuery(Integer pageNum, Integer pageSize) {
-        Long count = paramMapper.count();
-        List<Parameter> parameters = paramMapper.pageQuery((pageNum-1)*pageSize, pageSize);
-        ParamPageBean PageBean = new ParamPageBean(count, parameters);
-        return PageBean;
+    public PageResult<Parameter> queryPage(ParamQueryForm queryForm) {
+        Page<?> page = SmartPageUtil.convert2PageQuery(queryForm);
+        List<Parameter> list = paramDAO.queryPage(page, queryForm);
+        PageResult<Parameter> pageResult = SmartPageUtil.convert2PageResult(page, list);
+       return pageResult;
     }
+
 }

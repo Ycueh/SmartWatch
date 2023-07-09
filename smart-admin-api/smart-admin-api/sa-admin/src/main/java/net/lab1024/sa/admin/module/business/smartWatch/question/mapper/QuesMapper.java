@@ -6,25 +6,17 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 @Mapper
 public interface QuesMapper {
-    //list all question information
-//    @Select("select * from Question")
-//    List<Question> list();
-
     //get the total question number
     @Select("select count(*) from question")
     public Long count();
 
-    //paging queries   get the list data
-    @Select("select * from question limit #{start}, #{pageSize}")
-    public List<Question> page(@Param("start") Integer start, @Param("pageSize") Integer pageSize);
-
     //delete question by id
     @Delete("delete from question where _id = #{id}")
-    void deleteById(Integer id);
+    void deleteById(Long id);
 
     //update the id to be continued
     @Update("UPDATE question SET _id = _id - 1 WHERE _id > #{id}")
-    void changeId(Integer id);
+    void changeId(Long id);
 
     //update the auto-increment number
     @Update("ALTER TABLE question AUTO_INCREMENT = #{count}")
@@ -40,7 +32,7 @@ public interface QuesMapper {
 
     //select question by id
     @Select("select * from question where _id = #{id}")
-    Question selectById(Integer id);
+    Question selectById(Long id);
 
     //update question
     @Update("update " +
