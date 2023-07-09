@@ -30,37 +30,4 @@ public class ResponseQueryForm extends PageParam {
     private String answerid;
 
 
-//    /**
-//     * Response Date
-//     */
-//    @ApiModelProperty(value = "date")
-//    private String date;
-//
-//    /**
-//     * Response Time
-//     */
-//    @ApiModelProperty(value = "time")
-//    private String time;
-//
-//    /**
-//     * Response Time
-//     */
-//    @ApiModelProperty(value = "responsetime")
-//    private String responsetime;
-//
-//    /**
-//     * question ID
-//     */
-
-//    /**
-//     * question
-//     */
-//    @ApiModelProperty(value = "question")
-//    private String question;
-//
-//    /**
-//     * response
-//     */
-//    @ApiModelProperty(value = "response")
-//    private String response;
 }
