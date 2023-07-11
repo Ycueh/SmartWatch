@@ -2,7 +2,7 @@
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row" v-privilege="'question:query'">
 
-      <a-form-item label="questionID" class="smart-query-form-item">
+      <a-form-item label="questionId" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.searchQuestionId" placeholder="questionID" />
       </a-form-item>
       <a-form-item label="question" class="smart-query-form-item">
@@ -165,7 +165,6 @@ async function queryData() {
   tableLoading.value = true;
   try {
     let queryResult = await questionApi.pageQuery(queryForm);
-    console.log(queryResult);
     tableData.value = queryResult.data.list;
     total.value = queryResult.data.total;
   } catch (e) {

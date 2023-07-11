@@ -13,4 +13,7 @@ export const questionApi = {
     update: (param) => {
         return postRequest('/question/update', param);
     },
+    // questionQuery: (itemId) => {
+    //     return getRequest(`question/${itemId}`);
+    // },
 };

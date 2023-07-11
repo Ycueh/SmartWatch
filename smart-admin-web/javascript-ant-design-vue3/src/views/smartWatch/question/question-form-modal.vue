@@ -1,36 +1,36 @@
 <template>
   <a-drawer :title="form.id ? 'Update' : 'Add'" :width="500" :visible="visible" :body-style="{ paddingBottom: '80px' }" @close="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <!--      <a-form-item label="ID" name="itemId">-->
-      <!--        <a-input v-model:value="form.id" placeholder="Please enter ID" />-->
-      <!--      </a-form-item>-->
-      <a-form-item label="questionId" name="questionId">
-        <a-input v-model:value="form.questionId" placeholder="Please enter questionID" />
-      </a-form-item>
+<!--      <a-form-item label="id" name="id">-->
+<!--        <a-input v-model:value="form.id" placeholder="Please enter ID" />-->
+<!--      </a-form-item>-->
+<!--      <a-form-item label="questionId" name="questionId">-->
+<!--        <a-input v-model:value="form.questionId" placeholder="Please enter questionID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="question" name="question">
         <a-input v-model:value="form.question" placeholder="Please enter question" />
       </a-form-item>
-      <a-form-item label="answer1ID" name="answer1Id">
-        <a-input v-model:value="form.answer1Id" placeholder="Please enter answer1ID" />
-      </a-form-item>
+<!--      <a-form-item label="answer1ID" name="answer1Id">-->
+<!--        <a-input v-model:value="form.answer1Id" placeholder="Please enter answer1ID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="answer1" name="answer1">
         <a-input v-model:value="form.answer1" placeholder="Please enter answer1" />
       </a-form-item>
-      <a-form-item label="answer2ID" name="answer2Id">
-        <a-input v-model:value="form.answer2Id" placeholder="Please enter answer2ID" />
-      </a-form-item>
+<!--      <a-form-item label="answer2ID" name="answer2Id">-->
+<!--        <a-input v-model:value="form.answer2Id" placeholder="Please enter answer2ID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="answer2" name="answer2">
         <a-input v-model:value="form.answer2" placeholder="Please enter answer2" />
       </a-form-item>
-      <a-form-item label="answer3ID" name="answer3Id">
-        <a-input v-model:value="form.answer3Id" placeholder="Please enter answer3ID" />
-      </a-form-item>
+<!--      <a-form-item label="answer3ID" name="answer3Id">-->
+<!--        <a-input v-model:value="form.answer3Id" placeholder="Please enter answer3ID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="answer3" name="answer3">
         <a-input v-model:value="form.answer3" placeholder="Please enter answer3" />
       </a-form-item>
-      <a-form-item label="answer4ID" name="answer4Id">
-        <a-input v-model:value="form.answer4Id" placeholder="Please enter answer4ID" />
-      </a-form-item>
+<!--      <a-form-item label="answer4ID" name="answer4Id">-->
+<!--        <a-input v-model:value="form.answer4Id" placeholder="Please enter answer4ID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="answer4" name="answer4">
         <a-input v-model:value="form.answer4" placeholder="Please enter answer4" />
       </a-form-item>
@@ -67,7 +67,7 @@
 
   const formRef = ref();
   const formDefault = {
-    id: undefined,
+    id: 0,
     questionId: undefined,
     question: undefined,
     answer1Id: undefined,
@@ -81,18 +81,17 @@
   };
   let form = reactive({ ...formDefault });
   const rules = {
-    questionId: [{ required: true, message: 'questionId can not be empty' }],
-    question: [{ required: true, message: 'question can not be empty' }],
-    answer1Id: [{ required: true, message: 'answer1Id can not be empty' }],
-    answer2Id: [{ required: true, message: 'answer2Id can not be empty' }],
-    answer3Id: [{ required: true, message: 'answer3Id can not be empty' }],
-    answer4Id: [{ required: true, message: 'answer4Id can not be empty' }],
+    // questionId: [{ required: true, message: 'questionId can not be empty' }],
+    // question: [{ required: true, message: 'question can not be empty' }],
+    // answer1Id: [{ required: true, message: 'answer1Id can not be empty' }],
+    // answer2Id: [{ required: true, message: 'answer2Id can not be empty' }],
+    // answer3Id: [{ required: true, message: 'answer3Id can not be empty' }],
+    // answer4Id: [{ required: true, message: 'answer4Id can not be empty' }],
   };
 
   const visible = ref(false);
 
   function showDrawer(rowData){
-    console.log('go to showDrawer');
     Object.assign(form, formDefault);
     if (rowData && !_.isEmpty(rowData)) {
       Object.assign(form, rowData);
