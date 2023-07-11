@@ -9,7 +9,7 @@ public class ParamQueryForm extends PageParam {
     @ApiModelProperty(value = "paramId")
     private String paramId;
 
-//    @ApiModelProperty(value = "keyword")
-//    private String keyword;
+    @ApiModelProperty(value = "keyword")
+    private String keyword;
 
 }

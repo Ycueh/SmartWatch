@@ -9,7 +9,7 @@ public class QuestionQueryForm extends PageParam {
     @ApiModelProperty(value = "questionID")
     private String questionId;
 
-//    @ApiModelProperty(value = "keyword")
-//    private String keyword;
+    @ApiModelProperty(value = "keyword")
+    private String keyword;
 
 }

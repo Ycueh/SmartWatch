@@ -9,24 +9,14 @@
             <if test="queryForm.questionId != null">
                 AND question._id= #{queryForm.questionId}
             </if>
-<!--            <if test="queryForm.keyword != null and queryForm.keyword != ''">-->
-<!--                AND  (INSTR(question.question,#{queryForm.keyword, jdbcType=LONGVARCHAR}) > 0-->
-<!--                OR INSTR(question.answer1,#{queryForm.keyword, jdbcType=LONGVARCHAR}) > 0-->
-<!--                OR INSTR(question.answer2,#{queryForm.keyword, jdbcType=LONGVARCHAR}) > 0-->
-<!--                OR INSTR(question.answer3,#{queryForm.keyword, jdbcType=LONGVARCHAR}) > 0-->
-<!--                OR INSTR(question.answer4,#{queryForm.keyword, jdbcType=LONGVARCHAR}) > 0 )-->
-<!--#                 OR INSTR(t_change_log.content,#{queryForm.keyword})-->
-
-<!--            </if>-->
-<!--            <if test="queryForm.time != null">-->
-<!--                AND response.time= #{queryForm.time}-->
-<!--            </if>-->
-<!--            <if test="queryForm.questionid != null">-->
-<!--                AND response.questionID= #{queryForm.questionid}-->
-<!--            </if>-->
-<!--            <if test="queryForm.answerid != null">-->
-<!--                AND response.answerID= #{queryForm.answerid}-->
-<!--            </if>-->
+            <if test="queryForm.keyword != null and queryForm.keyword != ''">
+                AND  (INSTR(question.question,#{queryForm.keyword})
+                OR INSTR(question.answer1,#{queryForm.keyword})
+                OR INSTR(question.answer2,#{queryForm.keyword})
+                OR INSTR(question.answer3,#{queryForm.keyword})
+                OR INSTR(question.answer4,#{queryForm.keyword})
+                )
+            </if>
         </where>
         order by question._id asc
     </select>
