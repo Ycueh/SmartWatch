@@ -3,6 +3,7 @@ package net.lab1024.sa.admin.module.business.smartWatch.response.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseQueryForm;
+import net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseUpdateForm;
 import net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseVO;
 import net.lab1024.sa.admin.module.business.smartWatch.response.domain.responseEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -22,5 +23,7 @@ public interface responseDAO extends BaseMapper<responseEntity> {
      * @return
      */
     List<ResponseVO> queryPage(Page page, @Param("queryForm") ResponseQueryForm queryForm);
+
+    void update(@Param("updateForm") ResponseUpdateForm updateForm);
 
 }

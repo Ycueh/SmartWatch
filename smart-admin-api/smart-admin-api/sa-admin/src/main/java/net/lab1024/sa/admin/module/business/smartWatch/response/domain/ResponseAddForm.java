@@ -42,23 +42,23 @@ public class ResponseAddForm {
     /**
      * Response Time
      */
-    @ApiModelProperty("responsetime")
+    @ApiModelProperty("responseTime")
     @NotNull(message = "responseTime could not be null")
-    private String responsetime;
+    private String responseTime;
 
     /**
      * question ID
      */
-    @ApiModelProperty("questionid")
+    @ApiModelProperty("questionID")
     @NotNull(message = "questionID could not be null")
-    private String questionid;
+    private String questionID;
 
     /**
      * answer ID
      */
-    @ApiModelProperty("answerid")
+    @ApiModelProperty("answerID")
     @NotNull(message = "answerID could not be null")
-    private String answerid;
+    private String answerID;
 
     /**
      * question

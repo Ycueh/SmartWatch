@@ -16,7 +16,7 @@
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="Keyword" />
       </a-form-item>
       <a-form-item label="Time" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.time" placeholder="Keyword" />
+        <a-input style="width: 200px" v-model:value="queryForm.time" placeholder="time" />
       </a-form-item>
       <a-form-item label="questionID" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.questionid" placeholder="questionid" />
@@ -98,7 +98,7 @@
         :total="total"
         @change="queryData"
         @showSizeChange="queryData"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `${total} in total`"
       />
     </div>
 
@@ -120,11 +120,7 @@
   // ---------------------------- 表格列 ----------------------------
 
   const columns = ref([
-    {
-      title: 'Id',
-      dataIndex: 'id',
-      ellipsis: true,
-    },
+
     {
       title: 'Date',
       dataIndex: 'date',
@@ -167,6 +163,7 @@
       width: 90,
     },
   ]);
+    
 
   // ---------------------------- 查询数据表单和方法 ----------------------------
 
@@ -253,7 +250,7 @@
       let deleteForm = {
         goodsIdList: selectedRowKeyList.value,
       };
-      await responseApi.delete(data.id);
+      await responseApi.delete(data.responseId);
       message.success('Delete successfully');
       queryData();
     } catch (e) {

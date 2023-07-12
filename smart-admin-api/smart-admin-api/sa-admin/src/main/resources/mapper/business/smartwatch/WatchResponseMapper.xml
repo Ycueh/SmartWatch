@@ -27,5 +27,17 @@
         order by response._id asc
     </select>
 
+    <select id="update"  >
+        UPDATE response SET
+                response.date = #{updateForm.date},
+                response.time = #{updateForm.time},
+                response.responseTime = #{updateForm.responseTime},
+                response.question = #{updateForm.question},
+                response.response=#{updateForm.response}
+        <where>
+            response._id = #{updateForm.id}
+        </where>
+    </select>
+
 
 </mapper>

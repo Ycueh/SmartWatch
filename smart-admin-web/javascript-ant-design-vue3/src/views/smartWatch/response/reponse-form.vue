@@ -24,13 +24,13 @@
         <a-input style="width: 100%" v-model:value="form.time"  placeholder="Time" />
       </a-form-item>
       <a-form-item label="ResponseTime" name="responsetime">
-        <a-input style="width: 100%" v-model:value="form.responsetime" placeholder="responseTime" />
+        <a-input style="width: 100%" v-model:value="form.responseTime" placeholder="responseTime" />
       </a-form-item>
       <a-form-item label="QuestionID" name="questionID">
-        <a-input style="width: 100%" v-model:value="form.questionid" placeholder="questionID" />
+        <a-input style="width: 100%" v-model:value="form.questionID" placeholder="questionID" />
       </a-form-item>
       <a-form-item label="AnswerID" name="answerID">
-        <a-input style="width: 100%" v-model:value="form.answerid" placeholder="answerID" />
+        <a-input style="width: 100%" v-model:value="form.answerID" placeholder="answerID" />
       </a-form-item>
       <a-form-item label="Question" name="question">
         <a-textarea style="width: 100%" v-model:value="form.question" placeholder="question" />
@@ -55,7 +55,6 @@
   import { SmartLoading } from '/@/components/framework/smart-loading';
   import { responseApi } from '/@/api/smartWatch/response/response-api';
   import { smartSentry } from '/@/lib/smart-sentry';
-  import SmartEnumSelect from '/@/components/framework/smart-enum-select/index.vue';
 
   // ------------------------ 事件 ------------------------
 

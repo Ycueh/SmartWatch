@@ -37,7 +37,7 @@ public class responseService {
     public ResponseDTO<String> add(ResponseAddForm addForm) {
         responseEntity resEntity = SmartBeanUtil.copy(addForm, responseEntity.class);
         resDAO.insert(resEntity);
-        dataTracerService.insert(resEntity.get_id(), DataTracerTypeEnum.RESPONSE);
+        dataTracerService.insert(resEntity.getId(), DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
@@ -49,10 +49,11 @@ public class responseService {
      */
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> update(ResponseUpdateForm updateForm) {
-        responseEntity originEntity = resDAO.selectById(updateForm.get_id());
-        responseEntity responseEntity = SmartBeanUtil.copy(updateForm,responseEntity.class);
-        resDAO.updateById(responseEntity);
-        dataTracerService.update(updateForm.get_id(), DataTracerTypeEnum.RESPONSE, originEntity, responseEntity);
+//        responseEntity originEntity = resDAO.selectById(updateForm.getId());
+//        responseEntity responseEntity = SmartBeanUtil.copy(updateForm,responseEntity.class);
+        //resDAO.updateById(responseEntity);
+        resDAO.update(updateForm);
+//        dataTracerService.update(updateForm.getId(), DataTracerTypeEnum.RESPONSE, originEntity, responseEntity);
         return ResponseDTO.ok();
     }
 

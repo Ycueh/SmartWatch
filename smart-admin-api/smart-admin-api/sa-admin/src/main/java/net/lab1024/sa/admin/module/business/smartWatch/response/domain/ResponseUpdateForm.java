@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class ResponseUpdateForm extends ResponseAddForm {
 
-    @ApiModelProperty("_id")
-    @NotNull(message = "responseId could not be null")
-    private Long _id;
+    @ApiModelProperty("id")
+    @NotNull(message = "id could not be null")
+    private Long id;
 }
