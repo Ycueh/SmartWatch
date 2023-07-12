@@ -31,7 +31,7 @@ export const messages = {
 };
 
 const i18n = createI18n({
-  fallbackLocale: 'zh_CN', //预设语言环境
+  fallbackLocale: 'en_US', //预设语言环境
   globalInjection: true,
   legacy: false, //
   locale: getInitializedLanguage(), //默认初始化的语言

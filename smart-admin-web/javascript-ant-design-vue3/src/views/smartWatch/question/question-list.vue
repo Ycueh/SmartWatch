@@ -2,9 +2,9 @@
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row" v-privilege="'question:query'">
 
-      <a-form-item label="questionId" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.searchQuestionId" placeholder="questionID" />
-      </a-form-item>
+<!--      <a-form-item label="questionId" class="smart-query-form-item">-->
+<!--        <a-input style="width: 200px" v-model:value="queryForm.searchQuestionId" placeholder="questionID" />-->
+<!--      </a-form-item>-->
       <a-form-item label="question" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.searchQuestion" placeholder="question" />
       </a-form-item>
@@ -144,7 +144,7 @@ const columns = ref([
 
 const queryFormState = {
   searchQuestionId: '',
-  searchQuestion: '',
+  searchQuestion: undefined,
   pageNum: 1,
   pageSize: 10,
 };

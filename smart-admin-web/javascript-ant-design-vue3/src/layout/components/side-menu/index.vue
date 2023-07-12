@@ -12,9 +12,9 @@
 
   <!-- 1、顶部logo区域 -->
   <div class="logo" @click="onGoHome" :style="sideMenuWidth" v-if="!collapsed">
-    <img class="logo-img" :src="logoImg" />
+<!--    <img class="logo-img" :src="logoImg" />-->
     <div class="title title-light" v-if="sideMenuTheme === 'light'">{{websiteName}}</div>
-    <div class="title title-dark" v-if="sideMenuTheme === 'dark'">{{websiteName}}</div>
+    <div class="title title-dark" v-if="sideMenuTheme === 'dark'" style="color: rgb(35, 105, 255)">EMA Testing</div>
   </div>
   <div class="min-logo" @click="onGoHome" v-if="collapsed">
     <img class="logo-img" :src="logoImg" />
@@ -102,7 +102,7 @@
       .title {
         font-size: 16px;
         font-weight: 600;
-        margin-left:8px;
+        //margin-left:8px;
       }
       .title-light {
         color:#001529;

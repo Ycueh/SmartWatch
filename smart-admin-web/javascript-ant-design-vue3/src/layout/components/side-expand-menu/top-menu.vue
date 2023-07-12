@@ -11,8 +11,8 @@
   <div class="top-menu-container">
     <!-- 顶部logo区域 -->
     <div class="logo" @click="onGoHome">
-      <img class="logo-img" :src="logoImg" />
-      <div class="title">SmartAdmin 2.X</div>
+<!--      <img class="logo-img" :src="logoImg" />-->
+      <div class="title" style="color: rgb(35, 105, 255)">EMA Testing</div>
     </div>
     <!-- 一级菜单展示 -->
     <a-menu :selectedKeys="selectedKeys" mode="inline" :theme="theme">

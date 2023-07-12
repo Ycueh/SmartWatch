@@ -9,7 +9,7 @@
  */
 export const appDefaultConfig = {
   // i18n 语言选择
-  language: 'zh_CN',
+  language: 'en_US',
   // 布局: side 或者 side-expand
   layout: 'side',
   // 侧边菜单宽度 ， 默认为200px
@@ -25,5 +25,5 @@ export const appDefaultConfig = {
   // 帮助文档
   helpDocFlag: true,
   // 网站名称
-  websiteName: 'SmartAdmin 2.X',
+  websiteName: 'EMA Testing',
 };

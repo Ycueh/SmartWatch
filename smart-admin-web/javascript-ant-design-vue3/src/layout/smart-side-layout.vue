@@ -151,6 +151,7 @@
   .layout-header-user {
     height: @header-user-height;
     border-bottom: 1px solid #f6f6f6;
+    border-top: 1px solid rgb(237, 239, 243);
   }
 
   .layout-header-left {

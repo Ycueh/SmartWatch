@@ -1,0 +1,49 @@
+/* container settings */
+.container {
+    /*width: 1190px;*/
+    margin: 0 30px;
+}
+
+/* top navigation bar start */
+.topbar {
+    height: 30px;
+    background-color: #ececec;
+}
+
+.leftfix {
+    float: left;
+}
+.rightfix {
+    float: right;
+}
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.welcome {
+    height: 30px;
+    line-height: 30px;
+    font-size: 0;
+    color: #666666;
+}
+.welcome span,
+.top-nav a {
+    font-size: 12px;
+}
+
+/* .login {
+    margin-right: 10px;
+} */
+
+/* top navigation bar end */
+
+/* header start */
+.header {
+    height: 80px;
+    background-color: white;
+}
+.logoset{
+    margin-top: 18px;
+}
+/* header end */

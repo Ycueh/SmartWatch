@@ -9,6 +9,39 @@
 -->
 
 <template>
+  <div class="topbar">
+    <!-- container -->
+    <div class="container clearfix">
+      <!-- welcome area -->
+      <div class="welcome leftfix">
+        <span>Populating a database to be loaded to smartwatches for behavioural testing</span>
+      </div>
+      <!-- login area -->
+<!--      <div class="top-nav rightfix">-->
+<!--        <a class="login" href="">Log in</a>-->
+<!--        &lt;!&ndash; <a href="">Sign up</a> &ndash;&gt;-->
+<!--      </div>-->
+    </div>
+  </div>
+
+  <div class="header">
+    <div class="container clearfix">
+      <!-- university logo -->
+      <div class="logo leftfix">
+        <div class="logoset">
+          <img src="./assets/images/UoB-logo.png" alt="UoB-logo" />
+        </div>
+      </div>
+<!--      &lt;!&ndash; search area &ndash;&gt;-->
+<!--      <div class="search rightfix">-->
+<!--        <form action="#">-->
+<!--          <input type="text" />-->
+<!--          <button></button>-->
+<!--        </form>-->
+<!--      </div>-->
+    </div>
+  </div>
+
   <a-config-provider :locale="antdLocale">
     <!---全局loading--->
     <a-spin :spinning="spinning"  tip="稍等片刻，我在拼命加载中..." size="large">
@@ -32,3 +65,7 @@
   let spinStore = useSpinStore();
   const spinning = computed(() => spinStore.loading);
 </script>
+
+<style>
+  @import "../public/style/style.css";
+</style>
