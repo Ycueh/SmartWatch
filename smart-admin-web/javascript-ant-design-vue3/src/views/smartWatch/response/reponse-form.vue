@@ -7,7 +7,7 @@
 -->
 <template>
   <a-modal
-    :title="form.responseId ? 'Edit' : 'Add'"
+    :title="form.id ? 'Edit' : 'Add'"
     width="600px"
     :closable="true"
     :visible="visibleFlag"
@@ -113,7 +113,7 @@
   async function save() {
     SmartLoading.show();
     try {
-      if (form.responseId) {
+      if (form.id) {
         await responseApi.update(form);
       } else {
         await responseApi.add(form);

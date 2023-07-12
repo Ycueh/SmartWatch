@@ -253,7 +253,7 @@
       let deleteForm = {
         goodsIdList: selectedRowKeyList.value,
       };
-      await responseApi.delete(data.responseId);
+      await responseApi.delete(data.id);
       message.success('Delete successfully');
       queryData();
     } catch (e) {
