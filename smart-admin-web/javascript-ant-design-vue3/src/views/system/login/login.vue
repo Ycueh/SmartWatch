@@ -10,70 +10,34 @@
 -->
 <template>
   <div class="login-container">
-    <div class="box-item desc">
-      <div class="welcome">
-        <p>欢迎登录 SmartAdmin V2</p>
-        <p class="desc">
-          SmartAdmin 是由 河南·洛阳
-          <a target="_blank" href="https://www.1024lab.net"
-            style="color: white; weight: bolder; font-size: 15px; text-decoration: underline">1024创新实验室（1024Lab）</a>
-          使用SpringBoot2.x 和 Vue3.2 Setup语法糖、 Composition Api (同时支持JavaScript和TypeScript双版本) ，开发出的一套简洁、易用的中后台解决方案！
-          <br />
-          <br />
-          <span class="setence">
-            致伟大的开发者 ：
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;我们希望用一套漂亮优雅的代码和一套整洁高效的代码规范，让大家在这浮躁的世界里感受到一股把代码写好的清流 !
-            <br />
-            保持谦逊，保持学习，热爱代码，更热爱生活 !<br />
-            永远年轻，永远前行 !<br />
-            <span class="author">
-              <a target="_blank" href="https://zhuoda.vip"
-                style="color: white;  font-size: 13px; text-decoration: underline">
-                1024创新实验室-主任：卓大 
-              </a>
-            </span>
-          </span>
-        </p>
-      </div>
-      <div class="app-qr-box">
-        <div class="app-qr">
-          <img :src="zhuoda" />
-          <span class="qr-desc"> 加微信，骚扰卓大 :) </span>
-        </div>
-        <div class="app-qr">
-          <img :src="xiaozhen" />
-          <div class="qr-desc-marquee"><div class="marquee"><span>关注：小镇程序员，了解二三线城市程序员的代码与“钱途”，技术与生活，城市可能无法选择，但未来可以拼搏。</span></div></div>
-        </div>
-      </div>
-    </div>
+    
     <div class="box-item login">
       <img class="login-qr" :src="loginQR" />
-      <div class="login-title">账号登录</div>
+      <div class="login-title">Login</div>
       <a-form ref="formRef" class="login-form" :model="loginForm" :rules="rules">
         <a-form-item name="loginName">
-          <a-input v-model:value.trim="loginForm.loginName" placeholder="请输入用户名" />
+          <a-input v-model:value.trim="loginForm.loginName" placeholder="Username" />
         </a-form-item>
         <a-form-item name="password">
           <a-input-password v-model:value="loginForm.password" autocomplete="on"
-            :type="showPassword ? 'text' : 'password'" placeholder="请输入密码" />
+            :type="showPassword ? 'text' : 'password'" placeholder="Password" />
         </a-form-item>
         <a-form-item name="captchaCode">
-          <a-input class="captcha-input" v-model:value.trim="loginForm.captchaCode" placeholder="请输入验证码" />
+          <a-input class="captcha-input" v-model:value.trim="loginForm.captchaCode" placeholder="Enter the code" />
           <img class="captcha-img" :src="captchaBase64Image" @click="getCaptcha" />
         </a-form-item>
         <a-form-item>
-          <a-checkbox v-model:checked="rememberPwd">记住密码</a-checkbox>
-          <span> ( 账号：admin, 密码：123456)</span>
+          <a-checkbox v-model:checked="rememberPwd">Remember the password</a-checkbox>
+          <span> ( Account：admin, password：123456)</span>
         </a-form-item>
         <a-form-item>
-          <div class="btn" @click="onLogin">登录</div>
+          <div class="btn" @click="onLogin">Log in</div>
         </a-form-item>
       </a-form>
       <div class="more">
         <div class="title-box">
           <p class="line"></p>
-          <p class="title">其他方式登录</p>
+          <p class="title">Other way</p>
           <p class="line"></p>
         </div>
         <div class="login-type">
@@ -119,9 +83,9 @@ const loginForm = reactive({
   loginDevice: LOGIN_DEVICE_ENUM.PC.value,
 });
 const rules = {
-  loginName: [{ required: true, message: '用户名不能为空' }],
-  password: [{ required: true, message: '密码不能为空' }],
-  captchaCode: [{ required: true, message: '验证码不能为空' }],
+  loginName: [{ required: true, message: 'User name can not be null' }],
+  password: [{ required: true, message: 'Password can not be null' }],
+  captchaCode: [{ required: true, message: 'Code can not be null' }],
 };
 
 const showPassword = ref(false);
@@ -149,7 +113,7 @@ async function onLogin() {
       const res = await loginApi.login(loginForm);
       stopRefrestCaptchaInterval();
       saveTokenToCookie(res.data.token ? res.data.token : '');
-      message.success('登录成功');
+      message.success('Login successfully');
       //更新用户信息到pinia
       useUserStore().setUserLoginInfo(res.data);
       //构建系统的路由
