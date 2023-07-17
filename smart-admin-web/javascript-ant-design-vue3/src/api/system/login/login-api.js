@@ -1,17 +1,11 @@
 /*
- *  登录
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-03 21:59:58
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * log in
  */
 import { getRequest, postRequest } from '/@/lib/axios';
 
 export const loginApi = {
   /**
-   * 登录 @author 卓大
+   * log in
    * @param param
    */
   login: (param) => {
@@ -19,7 +13,7 @@ export const loginApi = {
   },
 
   /**
-   * 退出登录 @author 卓大
+   * log out
    * @param param
    */
   logout: () => {
@@ -27,7 +21,7 @@ export const loginApi = {
   },
 
   /**
-   * 获取验证码 @author 卓大
+   * get captcha
    * @param param
    */
   getCaptcha: () => {
@@ -35,7 +29,7 @@ export const loginApi = {
   },
 
   /**
-   * 获取登录信息 @author 卓大
+   * get login information
    * @param param
    */
   getLoginInfo: () => {
@@ -43,7 +37,7 @@ export const loginApi = {
   },
 
   /**
-   * 刷新用户信息（包含用户基础信息、权限信息等等）   @author 卓大
+   * refresh user information
    */
   refresh: () => {
     return getRequest('/login/refresh');

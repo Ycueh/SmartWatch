@@ -1,11 +1,5 @@
 <!--
-  * 枚举 多选框
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-08 20:32:30 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * enum checkbox
   *
 -->
 <template>
@@ -24,11 +18,11 @@
     },
   });
 
-  // ------------ 枚举数据 加载和构建 ------------
+  // ------------ Enumerate data load and build ------------
 
   const optionList = ref([]);
   function buildOptionList() {
-    const internalInstance = getCurrentInstance(); // 有效  全局
+    const internalInstance = getCurrentInstance(); // effective, global
     const smartEnumPlugin = internalInstance.appContext.config.globalProperties.$smartEnumPlugin;
     const valueList = smartEnumPlugin.getValueDescList(props.enumName);
     optionList.value = valueList.map((e) => Object.assign({}, { value: e.value, label: e.desc }));
@@ -36,7 +30,7 @@
 
   onMounted(buildOptionList);
 
-  // ------------ 数据选中 事件及其相关 ------------
+  // ------------ Data selection, event ------------
 
   const selectValue = ref(props.value);
 

@@ -1,11 +1,5 @@
 <!--
-  * 公司银行 下拉选择框
-  * 
-  * @Author:    1024创新实验室：开云
-  * @Date:      2022-09-02 22:12:20 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * enterprise Banking drop-down selection box
   *
 -->
 <template>
@@ -40,7 +34,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'Please select',
     },
     size: {
       type: String,
@@ -59,10 +53,10 @@
     },
   });
 
-  // ------------------------ 选中 事件 ------------------------
+  // ------------------------ select event ------------------------
   const emit = defineEmits(['update:value', 'change']);
   const selectValue = ref(props.value);
-  // 箭头value变化
+  // Arrow value change
   watch(
     () => props.value,
     (newValue) => {
@@ -70,7 +64,7 @@
     }
   );
 
-  // 箭头货主ID变化
+  // id change
   watch(
     () => props.enterpriseId,
     (newValue) => {
@@ -83,7 +77,7 @@
     emit('change', value);
   }
 
-  // ------------------------ 数据查询 ------------------------
+  // ------------------------ query data ------------------------
   const dataList = ref([]);
   async function queryData() {
     if (!props.enterpriseId) {
@@ -97,7 +91,7 @@
     }
   }
 
-  // 银行卡号 中间位数 加星 处理
+  // Bank card number, median digit, star processing
   function starAccountNumber(accountNumber) {
     if (accountNumber.length < 7) {
       return accountNumber;

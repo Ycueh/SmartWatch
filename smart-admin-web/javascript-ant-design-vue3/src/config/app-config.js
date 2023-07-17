@@ -1,29 +1,23 @@
 /*
- * 应用默认配置
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-03 22:07:01
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * Apply default configuration
  */
 export const appDefaultConfig = {
-  // i18n 语言选择
+  // i18n language selection
   language: 'en_US',
-  // 布局: side 或者 side-expand
+  // layout: side or side-expand
   layout: 'side',
-  // 侧边菜单宽度 ， 默认为200px
+  // side menu width, default: 200px
   sideMenuWidth: 200,
-  // 菜单主题
+  // side menu theme
   sideMenuTheme: 'dark',
-  // 标签页
+  // page tag flag
   pageTagFlag: true,
-  // 面包屑
+  // bread crumb flag
   breadCrumbFlag: true,
-  // 页脚
+  // footer flag
   footerFlag: true,
-  // 帮助文档
+  // help doc
   helpDocFlag: true,
-  // 网站名称
+  // website name
   websiteName: 'EMA Testing',
 };

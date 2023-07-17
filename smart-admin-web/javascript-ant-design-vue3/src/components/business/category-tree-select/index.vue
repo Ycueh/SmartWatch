@@ -1,11 +1,5 @@
 <!--
-  *  目录 树形选择组件
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-12 21:01:52 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  *  category tree selection component
   *
 -->
 <template>
@@ -29,7 +23,7 @@
     value: Number,
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'Please select',
     },
     categoryType: Number,
     width: {
@@ -40,7 +34,7 @@
 
   const emit = defineEmits(['update:value', 'change']);
 
-  // -----------------  查询 目录 数据 -----------------
+  // -----------------  query category date -----------------
   const categoryTreeData = ref([]);
   async function queryCategoryTree() {
     if (!props.categoryType) {
@@ -58,9 +52,9 @@
     }
   }
 
-  // -----------------  选中相关监听、事件 -----------------
+  // -----------------  Select related monitors and events -----------------
   const selectValue = ref(props.value);
-  // 箭头value变化
+  // Arrow value change
   watch(
     () => props.value,
     (newValue) => {
@@ -68,7 +62,7 @@
     }
   );
 
-  // 监听类型变化
+  // Monitor type changes
   watch(
     () => props.categoryType,
     () => {

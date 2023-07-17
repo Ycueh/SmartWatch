@@ -1,11 +1,5 @@
 <!--
-  * 企业列表 下拉选择框 
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-26 19:16:24 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * enterprise drop-down selection box
   *
 -->
 <template>
@@ -39,7 +33,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'please select',
     },
     size: {
       type: String,
@@ -53,7 +47,7 @@
       type: Boolean,
       default: false,
     },
-    // 类型 ENTERPRISE_TYPE_ENUM
+    // type ENTERPRISE_TYPE_ENUM
     type: {
       type: Number,
     },
@@ -62,7 +56,7 @@
 
   const selectValue = ref(props.value);
 
-  // 箭头value变化
+  // arrow value change
   watch(
     () => props.value,
     (newValue) => {

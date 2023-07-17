@@ -1,17 +1,11 @@
 /*
- * 部门
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-03 21:58:50
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * department
  */
 import { getRequest, postRequest } from '/@/lib/axios';
 
 export const departmentApi = {
   /**
-   * @description: 查询部门列表 @author 卓大
+   * @description: query department list
    * @param {*}
    * @return {*}
    */
@@ -20,7 +14,7 @@ export const departmentApi = {
   },
 
   /**
-   * @description: 查询部门树形列表 @author 卓大
+   * @description: query tree list
    * @param {*}
    * @return {*}
    */
@@ -29,7 +23,7 @@ export const departmentApi = {
   },
 
   /**
-   * @description: 添加部门 @author 卓大
+   * @description: add
    * @param {*}
    * @return {*}
    */
@@ -37,7 +31,7 @@ export const departmentApi = {
     return postRequest('/department/add', param);
   },
   /**
-   * @description: 更新部门信息 @author 卓大
+   * @description: update
    * @param {*}
    * @return {*}
    */
@@ -45,7 +39,7 @@ export const departmentApi = {
     return postRequest('/department/update', param);
   },
   /**
-   * @description: 获取校区列表 @author 卓大
+   * @description: delete
    * @param {*}
    * @return {*}
    */

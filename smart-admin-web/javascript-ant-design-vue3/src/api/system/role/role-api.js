@@ -1,17 +1,11 @@
 /*
- * 角色
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-03 22:00:41
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * role
  */
 import { getRequest, postRequest } from '/@/lib/axios';
 
 export const roleApi = {
   /**
-   * @description: 获取所有角色
+   * @description: get all roles
    * @param {*}
    * @return {*}
    */
@@ -19,7 +13,7 @@ export const roleApi = {
     return getRequest('/role/getAll');
   },
   /**
-   * @description:添加角色
+   * @description:add role
    * @param {*}
    * @return {*}
    */
@@ -27,7 +21,7 @@ export const roleApi = {
     return postRequest('/role/add', data);
   },
   /**
-   * @description:更新角色
+   * @description:update role
    * @param {*}
    * @return {*}
    */
@@ -35,7 +29,7 @@ export const roleApi = {
     return postRequest('/role/update', data);
   },
   /**
-   * @description: 删除角色
+   * @description: delete role
    * @param {number} roleId
    * @return {*}
    */
@@ -43,7 +37,7 @@ export const roleApi = {
     return getRequest(`/role/delete/${roleId}`);
   },
   /**
-   * @description: 批量设置某角色数据范围
+   * @description: batch set data scope
    * @param {DataScopeBatchSetRoleDto} data
    * @return {*}
    */
@@ -51,7 +45,7 @@ export const roleApi = {
     return postRequest('/role/dataScope/updateRoleDataScopeList', data);
   },
   /**
-   * @description: 获取当前系统所配置的所有数据范围
+   * @description: get all data scope
    * @param {*}
    * @return {*}
    */
@@ -59,7 +53,7 @@ export const roleApi = {
     return getRequest('/dataScope/list');
   },
   /**
-   * @description: 获取某角色所设置的数据范围
+   * @description: get all data scope by role id
    * @param {number} roleId
    * @return {*}
    */
@@ -67,7 +61,7 @@ export const roleApi = {
     return getRequest(`/role/dataScope/getRoleDataScopeList/${roleId}`);
   },
   /**
-   * @description: 获取角色成员-员工列表
+   * @description: get employee list
    * @param {*}
    * @return {*}
    */
@@ -75,7 +69,7 @@ export const roleApi = {
     return postRequest('/role/employee/queryEmployee', params);
   },
   /**
-   * @description: 从角色成员列表中移除员工
+   * @description: delete employee
    * @param {number} employeeId
    * @param {number} roleId
    * @return {*}
@@ -84,7 +78,7 @@ export const roleApi = {
     return getRequest('/role/employee/removeEmployee?employeeId=' + employeeId + '&roleId=' + roleId);
   },
   /**
-   * @description: 从角色成员列表中批量移除员工
+   * @description: batch delete employee
    * @param {RoleEmployeeBatchDto} data
    * @return {*}
    */
@@ -92,7 +86,7 @@ export const roleApi = {
     return postRequest('/role/employee/batchRemoveRoleEmployee', data);
   },
   /**
-   * @description: 根据角色id获取角色员工列表(无分页)
+   * @description: get employee by role id
    * @param {*}
    * @return {*}
    */
@@ -100,7 +94,7 @@ export const roleApi = {
     return getRequest(`/role/employee/getAllEmployeeByRoleId/${roleId}`);
   },
   /**
-   * @description: 角色成员列表中批量添加员工
+   * @description: batch add employee
    * @param  data
    * @return {*}
    */

@@ -1,11 +1,5 @@
 <!--
-  *  布尔 树形选择组件
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-08-12 21:01:52 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  *  Boolean tree selection component
   *
 -->
 <template>
@@ -37,7 +31,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'please select',
     },
     size: {
       type: String,
@@ -60,7 +54,7 @@
     }
     return result;
   }
-  // 箭头value变化
+  // arrow value change
   const selectValue = ref(convertBoolean2number(props.value));
   watch(
     () => props.value,

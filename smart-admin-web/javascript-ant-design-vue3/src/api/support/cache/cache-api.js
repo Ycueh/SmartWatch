@@ -1,24 +1,16 @@
-/*
- * 缓存
- *
- * @Author:    罗伊
- * @Date:      2022-09-03 21:51:34
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+
 import { postRequest, getRequest } from '/@/lib/axios';
 
 export const cacheApi = {
-  // 获取某个缓存的所有key @author 罗伊
+  // Get all keys of a cache
   getKeys: (cacheName) => {
     return getRequest(`/support/cache/keys/${cacheName}`);
   },
-  // 移除某个缓存 @author 罗伊
+  // remove a cache
   remove: (cacheName) => {
     return getRequest(`/support/cache/remove/${cacheName}`);
   },
-  // 获取所有缓存 @author 罗伊
+  // get all caches
   getAllCacheNames: () => {
     return getRequest('/support/cache/names');
   },

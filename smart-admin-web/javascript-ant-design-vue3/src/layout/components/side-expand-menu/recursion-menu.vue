@@ -1,19 +1,13 @@
 <!--
-  * 递归菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * recursive menu
 -->
 <template>
   <div class="resursion-container">
-    <!-- 顶部顶级菜单名称 -->
+    <!-- top menu name -->
     <div class="top-menu">
       <span class="ant-menu">{{ props.selectedMenu.menuName }}</span>
     </div>
-    <!-- 次级菜单展示 -->
+    <!-- secondary menu display -->
     <a-menu :selectedKeys="selectedKeys" :openKeys="openKeys" mode="inline">
       <template v-for="item in props.selectedMenu.children" :key="item.menuId">
         <template v-if="item.visibleFlag">
@@ -48,7 +42,7 @@
 
   defineEmits('update:value');
 
-  //展开的菜单
+  //expanded menu
   let currentRoute = useRoute();
   const selectedKeys = computed(() => {
     return [currentRoute.name];
@@ -64,16 +58,16 @@
   });
 
   const openKeys = computed(() => {
-    // // 仅展开当前页面
+    // expand the current page
     // return parentMenuList.value.map((e) => e.name);
-    // 展开所有
+    // expand all pages
     let children = props.selectedMenu.children;
     if (!children || _.isEmpty(children)) {
       return [];
     }
     return children.map((e) => e.menuId.toString());
   });
-  // 页面跳转
+  // page jump
   function turnToPage(route) {
     router.push({ name: route.menuId.toString() });
   }

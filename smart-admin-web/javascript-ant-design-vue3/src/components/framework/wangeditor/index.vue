@@ -1,12 +1,5 @@
 <!-- 
-  * 编辑器
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 15:34:33 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
-  *
+  *editor
 -->
 <template>
   <div style="border: 1px solid #ccc">
@@ -29,10 +22,10 @@
   import { Editor, Toolbar } from '@wangeditor/editor-for-vue';
   import { smartSentry } from '/@/lib/smart-sentry';
 
-  //菜单
+  //menu
   const editorConfig = { MENU_CONF: {} };
 
-  //上传
+  //upload
   let customUpload = {
     async customUpload(file, insertFn) {
       try {
@@ -49,7 +42,7 @@
   editorConfig.MENU_CONF['uploadImage'] = customUpload;
   editorConfig.MENU_CONF['uploadVideo'] = customUpload;
 
-  // ----------------------- 以下是公用变量 emits props ----------------
+  // ----------------------- emits props ----------------
   const editorHtml = ref();
   let props = defineProps({
     modelValue: String,
@@ -70,7 +63,7 @@
     }
   );
 
-  // 获取编辑器实例html
+  // Get the editor instance html
   const emit = defineEmits(['update:modelValue']);
   const editorRef = shallowRef();
   const handleCreated = (editor) => {
@@ -88,7 +81,7 @@
     return editorRef.value.getText();
   }
 
-  // 组件销毁时，也及时销毁编辑器
+  // destroy editor
   onBeforeUnmount(() => {
     const editor = editorRef.value;
     if (editor == null) return;

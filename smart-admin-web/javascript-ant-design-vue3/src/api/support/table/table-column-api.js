@@ -1,25 +1,20 @@
 /*
- * @Description:表格自定义列
- * @version:
- * @Author: zhuoda
- * @Date: 2022-08-17 23:32:36
- * @LastEditors: zhuoda
- * @LastEditTime: 2022-08-21
+ * Table Custom Columns
  */
 import { postRequest, getRequest } from '/@/lib/axios';
 
 export const tableColumnApi = {
-  // 修改表格列 @author zhuoda
+  // update columns
   updateTableColumn: (param) => {
     return postRequest('/support/tableColumn/update', param);
   },
 
-  // 查询表格列 @author zhuoda
+  // query columns
   getColumns: (tableId) => {
     return getRequest(`/support/tableColumn/getColumns/${tableId}`);
   },
 
-  // 删除表格列 @author zhuoda
+  // delete columns
   deleteColumns: (tableId) => {
     return getRequest(`/support/tableColumn/delete/${tableId}`);
   },

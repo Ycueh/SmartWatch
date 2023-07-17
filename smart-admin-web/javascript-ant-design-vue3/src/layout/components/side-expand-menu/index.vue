@@ -1,17 +1,11 @@
 <!--
-  * 展开菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * expand menu
 -->
 <template>
   <div class="menu-container">
-    <!-- logo 第一列：一级导航 -->
+    <!-- logo, First column: top menu -->
     <TopMenu ref="topMenu" class="topMenu" :menuTree="menuTree" />
-    <!-- 第二列：导航 -->
+    <!-- second column: menu -->
     <RecursionMenu v-if="showRecursionMenu" class="recursion-menu" :selectedMenu="selectedMenu" />
   </div>
 </template>

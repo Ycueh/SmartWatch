@@ -1,11 +1,5 @@
 <!--
-  * 头部一整行
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:18:20 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * header
 -->
 <template>
   <a-space :size="10">
@@ -24,12 +18,12 @@
         <template #icon><switcher-outlined /></template>
         i18n
       </a-button> -->
-      <!---设置--->
+      <!---setting-->
       <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><setting-outlined /></template>
       </a-button>
     </div>
-    <!---头像信息--->
+    <!---avatar info--->
     <div class="user-space-item">
       <HeaderAvatar />
     </div>
@@ -50,24 +44,24 @@
   import { useAppConfigStore } from '/@/store/modules/system/app-config';
   import { ref } from 'vue';
 
-  // 设置
+  // setting
   const headerSetting = ref();
   function showSetting() {
     headerSetting.value.show();
   }
 
-  //消息通知
+  //message
   const headerMessage = ref();
   function showMessage() {
     headerMessage.value.showMessage();
   }
 
-  //帮助文档
+  //help doc
   function showHelpDoc() {
     useAppConfigStore().showHelpDoc();
   }
 
-  //搜索
+  //search
   function search(){
     window.open("https://1024lab.net");
   }

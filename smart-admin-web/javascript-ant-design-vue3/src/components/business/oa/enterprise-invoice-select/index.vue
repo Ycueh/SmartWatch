@@ -1,11 +1,5 @@
 <!--
-  * 公司的开票信息 下拉选择框
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-01 23:14:49 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * invoice information drop-down selection box
 -->
 <template>
   <a-select
@@ -39,7 +33,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'please select',
     },
     size: {
       type: String,
@@ -58,13 +52,13 @@
     },
   });
 
-  // ------------------------ 选中 事件 ------------------------
+  // ------------------------ select event ------------------------
 
   const emit = defineEmits(['update:value', 'change']);
 
   const selectValue = ref(props.value);
 
-  // 箭头value变化
+  // arrow value change
   watch(
     () => props.value,
     (newValue) => {
@@ -72,7 +66,7 @@
     }
   );
 
-  // 箭头货主ID变化
+  // id change
   watch(
     () => props.enterpriseId,
     (newValue) => {
@@ -89,7 +83,7 @@
     );
   }
 
-  // ------------------------ 数据查询 ------------------------
+  // ------------------------ query data ------------------------
 
   const dataList = ref([]);
   async function queryData() {

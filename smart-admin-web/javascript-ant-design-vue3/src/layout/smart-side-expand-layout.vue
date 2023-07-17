@@ -1,23 +1,16 @@
 <!--
-  *  展开菜单模式
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:40:16 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  *  expand layout mode
 -->
 <template>
   <a-layout class="admin-layout" style="min-height: 100%">
-    <!-- 侧边菜单 side-menu -->
+    <!-- side-menu -->
     <a-layout-sider :theme="theme" class="side-menu" :collapsed="collapsed" :trigger="null">
-      <!-- 左侧菜单 -->
       <SideExpandMenu :collapsed="collapsed" />
     </a-layout-sider>
 
-    <!--中间内容，一共三部分：1、顶部;2、中间内容区域;3、底部（一般是公司版权信息）;-->
+    <!--Middle content: 1.top, 2.content area, 3.footer-->
     <a-layout class="admin-layout-main" :style="`height: ${windowHeight}px`" id="smartAdminMain">
-      <!-- 顶部头部信息 -->
+      <!-- top info -->
       <a-layout-header class="smart-layout-header">
         <a-row justify="space-between" class="smart-layout-header-user">
           <a-col class="smart-layout-header-left">
@@ -26,7 +19,7 @@
               <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
             </span>
             <a-tooltip placement="bottom">
-              <template #title>首页</template>
+              <template #title>Home</template>
               <span class="home-button" @click="goHome">
                 <home-outlined class="trigger" />
               </span>
@@ -35,7 +28,7 @@
               <MenuLocationBreadcrumb />
             </span>
           </a-col>
-          <!---用戶操作区域-->
+          <!---user operation-->
           <a-col class="smart-layout-header-right">
             <HeaderUserSpace />
           </a-col>
@@ -43,11 +36,11 @@
         <PageTag />
       </a-layout-header>
 
-      <!--中间内容-->
+      <!--main content-->
       <a-layout-content class="admin-layout-content" id="smartAdminLayoutContent">
-        <!--不keepAlive的iframe使用单个iframe组件-->
+        <!--not keepAlive iframe-->
         <IframeIndex v-show="iframeNotKeepAlivePageFlag" :key="route.name" :name="route.name" :url="route.meta.frameUrl" />
-        <!--keepAlive的iframe 每个页面一个iframe组件-->
+        <!--keepAlive iframe-->
         <IframeIndex
           v-for="item in keepAliveIframePages"
           v-show="route.name == item.name"
@@ -55,7 +48,7 @@
           :name="item.name"
           :url="item.meta.frameUrl"
         />
-        <!--非iframe使用router-view-->
+        <!--not iframe router-view-->
         <div v-show="!iframeNotKeepAlivePageFlag && keepAliveIframePages.every((e) => route.name != e.name)">
           <router-view v-slot="{ Component }">
             <keep-alive :include="keepAliveIncludes">
@@ -66,12 +59,12 @@
           </router-view>
         </div>
       </a-layout-content>
-      <!-- footer 版权公司信息 -->
+      <!-- footer -->
       <a-layout-footer class="smart-layout-footer" v-show="footerFlag"> <SmartFooter /></a-layout-footer>
-      <!---- 回到顶部 --->
+      <!---- back top --->
       <a-back-top :target="backTopTarget" :visibilityHeight="80" />
     </a-layout>
-    <!-- 右侧帮助文档 help-doc -->
+    <!-- help-doc -->
     <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">
       <SideHelpDoc />
     </a-layout-sider>
@@ -95,15 +88,15 @@
 
   const windowHeight = ref(window.innerHeight);
 
-  //主题颜色
+  //theme color
   const theme = computed(() => useAppConfigStore().$state.sideMenuTheme);
-  //是否显示标签页
+  //page tag display
   const pageTagFlag = computed(() => useAppConfigStore().$state.pageTagFlag);
-  // 是否显示帮助文档
+  // help doc display
   const helpDocFlag = computed(() => useAppConfigStore().$state.helpDocFlag);
-  // 是否显示页脚
+  // footer display
   const footerFlag = computed(() => useAppConfigStore().$state.footerFlag);
-  // 多余高度
+  // due height
   const dueHeight = computed(() => {
     let due = 40;
     if (useAppConfigStore().$state.pageTagFlag) {
@@ -114,10 +107,10 @@
     }
     return due;
   });
-  //是否隐藏菜单
+  //hide menu
   const collapsed = ref(false);
 
-  //页面初始化的时候加载水印
+  //initialize watermark
   onMounted(() => {
     watermark.set('smartAdminLayoutContent', useUserStore().actualName);
   });
@@ -126,11 +119,11 @@
     windowHeight.value = window.innerHeight;
   });
 
-  //回到顶部
+  //back top
   const backTopTarget = () => {
     return document.getElementById('smartAdminMain');
   };
-  // ----------------------- keep-alive相关 -----------------------
+  // ----------------------- keep-alive-----------------------
   let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages } = smartKeepAlive();
   const router = useRouter();
   function goHome() {

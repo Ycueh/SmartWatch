@@ -1,14 +1,13 @@
 <template>
   <a-layout class="admin-layout" style="min-height: 100%">
-    <!-- 侧边菜单 side-menu -->
+    <!--side-menu -->
     <a-layout-sider class="side-menu" :width="sideMenuWidth" :collapsed="collapsed" :theme="theme">
-      <!-- 左侧菜单 -->
       <SideMenu :collapsed="collapsed" />
     </a-layout-sider>
 
-    <!--中间内容，一共三部分：1、顶部;2、中间内容区域;3、底部（一般是公司版权信息）;-->
+    <!--Middle content: 1.top, 2.content area, 3.footer-->
     <a-layout id="smartAdminMain" :style="`height: ${windowHeight}px`" class="admin-layout-main">
-      <!-- 顶部头部信息 -->
+      <!-- top info -->
       <a-layout-header class="layout-header">
         <a-row class="layout-header-user" justify="space-between">
           <a-col class="layout-header-left">
@@ -26,7 +25,7 @@
               <MenuLocationBreadcrumb />
             </span>
           </a-col>
-          <!---用戶操作区域-->
+          <!---user operation area-->
           <a-col class="layout-header-right">
             <HeaderUserSpace />
           </a-col>
@@ -34,11 +33,11 @@
         <PageTag />
       </a-layout-header>
 
-      <!--中间内容-->
+      <!--main content-->
       <a-layout-content id="smartAdminLayoutContent" class="admin-layout-content">
-        <!--不keepAlive的iframe使用单个iframe组件-->
+        <!--not keepAlive iframe-->
         <IframeIndex v-if="iframeNotKeepAlivePageFlag" :key="route.name" :name="route.name" :url="route.meta.frameUrl" />
-        <!--keepAlive的iframe 每个页面一个iframe组件-->
+        <!--keepAlive iframe -->
         <IframeIndex
           v-for="item in keepAliveIframePages"
           v-show="route.name == item.name"
@@ -46,7 +45,7 @@
           :name="item.name"
           :url="item.meta.frameUrl"
         />
-        <!--非iframe使用router-view-->
+        <!--not iframe router-view-->
         <div v-show="!iframeNotKeepAlivePageFlag && keepAliveIframePages.every((e) => route.name != e.name)">
           <router-view v-slot="{ Component }">
             <keep-alive :include="keepAliveIncludes">
@@ -56,11 +55,11 @@
         </div>
       </a-layout-content>
 
-      <!-- footer 版权公司信息 -->
+      <!-- footer -->
       <a-layout-footer class="layout-footer" v-show="footerFlag">
         <smart-footer />
       </a-layout-footer>
-      <!--- 回到顶部 -->
+      <!---back top -->
       <a-back-top :target="backTopTarget" :visibilityHeight="80" />
     </a-layout>
     <!-- 右侧帮助文档 help-doc -->
@@ -87,17 +86,17 @@
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 
   const windowHeight = ref(window.innerHeight);
-  //菜单宽度
+  //menu width
   const sideMenuWidth = computed(() => useAppConfigStore().$state.sideMenuWidth);
-  //主题颜色
+  //theme color
   const theme = computed(() => useAppConfigStore().$state.sideMenuTheme);
-  //是否显示标签页
+  //page tag
   const pageTagFlag = computed(() => useAppConfigStore().$state.pageTagFlag);
-  // 是否显示帮助文档
+  // help tag
   const helpDocFlag = computed(() => useAppConfigStore().$state.helpDocFlag);
-  // 是否显示页脚
+  // footer
   const footerFlag = computed(() => useAppConfigStore().$state.footerFlag);
-  // 多余高度
+  // due height
   const dueHeight = computed(() => {
     let due = 40;
     if (useAppConfigStore().$state.pageTagFlag) {
@@ -108,15 +107,15 @@
     }
     return due;
   });
-  //是否隐藏菜单
+  //hide menu
   const collapsed = ref(false);
 
-  //页面初始化的时候加载水印
+  //initialize watermark
   onMounted(() => {
     watermark.set('smartAdminLayoutContent', useUserStore().actualName);
   });
 
-  //回到顶部
+  //back top
   const backTopTarget = () => {
     return document.getElementById('smartAdminMain');
   };
@@ -130,7 +129,7 @@
     windowHeight.value = window.innerHeight;
   });
 
-  // ----------------------- keep-alive相关 -----------------------
+  // ----------------------- keep-alive -----------------------
   let { route, keepAliveIncludes, iframeNotKeepAlivePageFlag, keepAliveIframePages } = smartKeepAlive();
 </script>
 

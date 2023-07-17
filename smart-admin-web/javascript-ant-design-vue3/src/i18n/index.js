@@ -1,11 +1,5 @@
 /*
- * 国际化入口文件
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:01:19
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * Internationalization entry file
  */
 
 import en_US from './lang/en-US/index';
@@ -32,10 +26,10 @@ export const messages = {
 };
 
 const i18n = createI18n({
-  fallbackLocale: 'en_US', //预设语言环境
+  fallbackLocale: 'en_US', //default locale
   globalInjection: true,
   legacy: false, //
-  locale: getInitializedLanguage(), //默认初始化的语言
+  locale: getInitializedLanguage(), //default-initialized language
   messages, //
 
 });

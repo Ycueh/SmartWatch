@@ -1,14 +1,8 @@
 <!--
-  * 标签页
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * page tag
 -->
 <template>
-  <!-- 标签页，共两部分：1、标签 ；2、标签操作区 -->
+  <!-- page tag: 1.tag, 2.tag operation -->
   <a-row style="border-bottom: 1px solid #eeeeee; position: relative" v-show="pageTagFlag">
     <a-dropdown :trigger="['contextmenu']">
       <div class="smart-page-tag">
@@ -32,7 +26,7 @@
     </a-dropdown>
 
     <a-dropdown>
-      <!--标签页操作区-->
+      <!--tag operation-->
       <div class="smart-page-tag-operate">
         <div class="smart-page-tag-operate-icon">
           <AppstoreOutlined />
@@ -56,7 +50,7 @@
   import { useAppConfigStore } from '/@/store/modules/system/app-config';
   import { useUserStore } from '/@/store/modules/system/user';
 
-  //标签页 是否显示
+  //displayed or not
   const pageTagFlag = computed(() => useAppConfigStore().$state.pageTagFlag);
 
   const router = useRouter();
@@ -73,12 +67,12 @@
     { immediate: true }
   );
 
-  //选择某个标签页
+  //select page tag
   function selectTab(name) {
     if (selectedKey.value === name) {
       return;
     }
-    // 寻找tag
+    // get tag
     let tag = tagNav.value.find((e) => e.menuName == name);
     if (!tag) {
       router.push({ name: HOME_PAGE_NAME });
@@ -87,7 +81,7 @@
     router.push({ name, query: tag.menuQuery, params: { keepAlive: 1 } });
   }
 
-  //通过菜单关闭
+  //close by menu
   function closeByMenu(closeAll) {
     let find = tagNav.value.find((e) => e.menuName == selectedKey.value);
     if (!find || closeAll) {
@@ -97,9 +91,9 @@
     }
   }
 
-  //直接关闭
+  //close directly
   function closeTag(item, closeAll) {
-    // 关闭单个tag
+    // close a tag
     if (item && !closeAll) {
       let goName = HOME_PAGE_NAME;
       let goQuery = undefined;
@@ -107,10 +101,9 @@
         goName = item.fromMenuName;
         goQuery = item.fromMenuQuery;
       } else {
-        // 查询左侧tag
+        // query tag
         let index = tagNav.value.findIndex((e) => e.menuName == item.menuName);
         if (index > 0) {
-          // 查询左侧tag
           let leftTagNav = tagNav.value[index - 1];
           goName = leftTagNav.menuName;
           goQuery = leftTagNav.menuQuery;
@@ -118,10 +111,10 @@
       }
       router.push({ name: goName, query: goQuery, params: { keepAlive: 1 } });
     } else if (!item && closeAll) {
-      // 关闭所有tag
+      // close all tags
       router.push({ name: HOME_PAGE_NAME });
     }
-    // 关闭其他tag不做处理 直接调用closeTagNav
+    // closeTagNav
     useUserStore().closeTagNav(item ? item.menuName : null, closeAll);
   }
 </script>
@@ -186,7 +179,7 @@
       color: #8c8c8c;
     }
 
-    /**  覆盖 ant design vue的 tabs 样式，变小一点 **/
+    /**  override tabs style **/
 
     :deep(.ant-tabs-nav) {
       margin: 0;

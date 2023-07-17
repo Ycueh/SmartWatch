@@ -1,11 +1,5 @@
 <!--
-  * 传统菜单-递归菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * classic, recursive menu
 -->
 <template>
   <a-menu
@@ -53,22 +47,21 @@
 
   const menuTree = computed(() => useUserStore().getMenuTree || []);
 
-  //展开的菜单
+  //expand menu
   let currentRoute = useRoute();
   const selectedKeys = ref([]);
   const openKeys = ref([]);
 
-  // 页面跳转
+  // page jump
   function turnToPage(menu) {
     router.push({ path: menu.path });
   }
 
   /**
-   * SmartAdmin中 router的name 就是 后端存储menu的id
-   * 所以此处可以直接监听路由，根据路由更新菜单的选中和展开
+   * monitor router
    */
   function updateOpenKeysAndSelectKeys() {
-    // 更新选中
+    // update selection
     selectedKeys.value = [_.toNumber(currentRoute.name)];
 
     /**

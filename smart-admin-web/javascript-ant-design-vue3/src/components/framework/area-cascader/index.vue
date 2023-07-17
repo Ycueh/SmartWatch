@@ -1,11 +1,5 @@
 <!-- 
-  * 地区选择框
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 15:22:45 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * area selection box
   *
 -->
 
@@ -26,7 +20,7 @@
   import { PROVINCE_CITY } from "./province-city";
   import { ref, toRaw, watch } from "vue";
 
-  // ============ 组件属性 ============
+  // ============ component property ============
 
   const TYPE_PROVINCE_CITY_DISTRICT = "province_city_district";
   const TYPE_PROVINCE_CITY = "province_city";
@@ -40,7 +34,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择地区',
+      default: 'select area',
     },
     size: {
       type: String,
@@ -54,13 +48,13 @@
 
   const emit = defineEmits(['update:value', 'change']);
 
-  // ============ 组件业务 ============
+  // ============ Component business ============
   const areaOptionData =
     props.type === TYPE_PROVINCE_CITY_DISTRICT ? PROVINCE_CITY_DISTRICT : PROVINCE_CITY;
 
-  // 绑定地区数据
+  // Bind area data
   const areaValue = ref([]);
-  // 监听value变化
+  // Monitor value changes
   watch(
       () => props.value,
       (newValue) => {
