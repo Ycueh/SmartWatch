@@ -1,17 +1,8 @@
 package net.lab1024.sa.admin.module.business.smartWatch.response.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import net.lab1024.sa.admin.module.business.goods.constant.GoodsStatusEnum;
-import net.lab1024.sa.common.common.json.deserializer.DictValueVoDeserializer;
-import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
-import net.lab1024.sa.common.common.validator.enumeration.CheckEnum;
-
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 /**
  * 商品 添加表单
