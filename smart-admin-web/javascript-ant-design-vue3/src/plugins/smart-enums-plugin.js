@@ -1,13 +1,4 @@
-/*
- * 枚举插件
- * 此插件为 1024创新实验室 自创的插件
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:51:03
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//enumerate plugins
 import _ from 'lodash';
 import { FLAG_NUMBER_ENUM } from '/@/constants/common-const';
 
@@ -15,16 +6,16 @@ export default {
   install: (app, smartEnumWrapper) => {
     const smartEnumPlugin = {};
     /**
-     * 根据枚举值获取描述
-     * @param {*} constantName 枚举名
-     * @param {*} value          枚举值
+     * Get description based on enumeration value
+     * @param {*} constantName enum name
+     * @param {*} value          enumeration value
      * @returns
      */
     smartEnumPlugin.getDescByValue = function (constantName, value) {
       if (!smartEnumWrapper || !Object.prototype.hasOwnProperty.call(smartEnumWrapper, constantName)) {
         return '';
       }
-      // boolean类型需要做特殊处理
+      // The boolean type requires special handling
       if (constantName === 'FLAG_NUMBER_ENUM' && !_.isUndefined(value) && typeof value === 'boolean') {
         value = value ? FLAG_NUMBER_ENUM.TRUE.value : FLAG_NUMBER_ENUM.FALSE.value;
       }
@@ -38,8 +29,8 @@ export default {
       return '';
     };
     /**
-     * 根据枚举名获取对应的描述键值对[{value:desc}]
-     * @param {*} constantName 枚举名
+     * Obtain the corresponding description key-value pair [{value:desc}] according to the enumeration name
+     * @param {*} constantName enum name
      * @returns
      */
     smartEnumPlugin.getValueDescList = function (constantName) {
@@ -55,8 +46,8 @@ export default {
     };
 
     /**
-     * 根据枚举名获取对应的value描述键值对{value:desc}
-     * @param {*} constantName 枚举名
+     * Obtain the corresponding value description key-value pair {value:desc} according to the enumeration name
+     * @param {*} constantName enum name
      * @returns
      */
     smartEnumPlugin.getValueDesc = function (constantName) {

@@ -1,24 +1,18 @@
-/*
- * 水印
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:50:10
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//watermark
 
 import dayjs from 'dayjs';
 
 /**
- *  水印DOM id
+ *  Watermark DOM id
  */
 const WATER_MARK_DOM_ID = 'smart_admin_water_mark';
 let smartAdminWaterMarkIntervalId = null;
 
 /**
  *
- * 因为modal的z-index为1000，所以为了modal的黑色背景隐藏掉，z-index为 999
+ * Because the z-index of the modal is 1000, 
+ * so for the black background of the modal to be hidden,
+ *  the z-index is 999
  *
  * @param id
  * @param str
@@ -27,7 +21,7 @@ let smartAdminWaterMarkIntervalId = null;
  */
 
 function setWatermark(id, str) {
-  //删掉之前的水印
+  //delete previous watermark
   if (document.getElementById(WATER_MARK_DOM_ID) !== null) {
     document.getElementById(WATER_MARK_DOM_ID).remove();
   }
@@ -72,17 +66,17 @@ const watermark = {
   hide: function () {
     document.getElementById(WATER_MARK_DOM_ID).style.display = 'hide';
   },
-  // 该方法只允许调用一次
+  // This method is only allowed to be called once
   set: function (id, str) {
-    // 如果存在水印，则不允许再调用了
+    // If there is a watermark, no more calls are allowed
     if (document.getElementById(WATER_MARK_DOM_ID) !== null) {
-      alert('已经添加过全局水印了，请不要再重复添加!');
+      alert('The global watermark has already been added, please do not add it again!');
       return;
     }
 
     setWatermark(id, str);
 
-    //每隔1分钟检查一次水印
+    //Check the watermark every 1 minute
     smartAdminWaterMarkIntervalId = setInterval(() => {
       setWatermark(id, str);
     }, 60000);
@@ -91,7 +85,7 @@ const watermark = {
       setWatermark(id, str);
     };
   },
-  // 清空水印
+  // clear watermark
   clear: function () {
     document.getElementById(WATER_MARK_DOM_ID).remove();
     window.removeEventListener('resize', setWatermark);

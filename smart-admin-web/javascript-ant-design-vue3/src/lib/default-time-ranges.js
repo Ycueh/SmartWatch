@@ -1,12 +1,4 @@
-/*
- * 时间选择框快捷选择
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:49:28
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//default time ranges
 
 import dayjs from 'dayjs';
 
@@ -19,7 +11,7 @@ export const defaultTimeRanges = {
   上年度: [dayjs().subtract(1, 'years').startOf('year'), dayjs().subtract(1, 'years').endOf('year')],
 };
 
-// 不可跨月
+// can not cross the month
 export const defaultLimitMonth = {
   今日: [dayjs(), dayjs()],
   昨日: [dayjs().subtract(1, 'days'), dayjs().subtract(1, 'days')],

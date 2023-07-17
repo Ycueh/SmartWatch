@@ -1,30 +1,23 @@
-/*
- *  ajax请求
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:46:03
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//axios
+
 import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { clearAllCoolies, getTokenFromCookie } from '/@/utils/cookie-util';
 import { localClear } from '/@/utils/local-util';
 
-// token的消息头
+// token message header
 const TOKEN_HEADER = 'x-access-token';
 
-// 创建axios对象
+// Create an axios object
 const smartAxios = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 });
 
-// ================================= 请求拦截器 =================================
+// ================================= request interceptor =================================
 
 smartAxios.interceptors.request.use(
   (config) => {
-    // 在发送请求之前消息头加入token token
+    // Add token to the message header before sending the request
     const token = getTokenFromCookie();
     if (token) {
       config.headers[TOKEN_HEADER] = token;
@@ -34,25 +27,25 @@ smartAxios.interceptors.request.use(
     return config;
   },
   (error) => {
-    // 对请求错误做些什么
+    // Do something about request errors
     return Promise.reject(error);
   }
 );
 
-// ================================= 响应拦截器 =================================
+// ================================= response interceptor =================================
 
-// 添加响应拦截器
+// Add response interceptor
 smartAxios.interceptors.response.use(
   (response) => {
-    // 对响应数据做点什么
+    // Do something with the response data
     const res = response.data;
     if (res.code && res.code !== 1) {
-      // `token` 过期或者账号已在别处登录
+      // `token` has expired or the account has been logged in elsewhere
       if (res.code === 30007 || res.code === 30008) {
-        message.error('您没有登录，请重新登录');
+        message.error('You are not logged in, please log in again');
         clearAllCoolies();
         localClear();
-        //跳转到登录页面，直接使用页面刷新的策略
+        //Jump to the login page and directly use the page refresh strategy
         setTimeout(() => {
           location.href = '/';
         }, 300);
@@ -65,22 +58,22 @@ smartAxios.interceptors.response.use(
     }
   },
   (error) => {
-    // 对响应错误做点什么
+    // Do something with response errors
     if (error.message.indexOf('timeout') != -1) {
-      message.error('网络超时');
+      message.error('network timeout');
     } else if (error.message == 'Network Error') {
-      message.error('网络连接错误');
+      message.error('network connection error');
     }else if (error.message.indexOf('Request') != -1) {
-      message.error('网络发生错误');
+      message.error('network error');
     }
     return Promise.reject(error);
   }
 );
 
-// ================================= 对外提供请求方法：通用请求，get， post, 下载download等 =================================
+// ================================= Provide external request methods: general request, get, post, download, etc.=================================
 
 /**
- * 通用请求封装
+ * Generic request encapsulation
  * @param config
  */
 export const request = (config) => {
@@ -88,21 +81,21 @@ export const request = (config) => {
 };
 
 /**
- * post请求
+ * post request
  */
 export const postRequest = (url, data) => {
   return request({ data, url, method: 'post' });
 };
 
 /**
- * get请求
+ * get request
  */
 export const getRequest = (url, params) => {
   return request({ url, method: 'get', params });
 };
 
 /**
- * 文件下载
+ * Download Document
  */
 export const download = function (fileName, url, params) {
   request({

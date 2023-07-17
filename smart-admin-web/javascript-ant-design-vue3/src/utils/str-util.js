@@ -1,15 +1,7 @@
-/*
- * 字符串 相关操作
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:58:49
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//String related operations
 
 /**
- * 转为 小写中划线
+ * Convert to lower hyphen
  */
 export function convertLowerHyphen(str) {
   if (!str) {
@@ -22,7 +14,7 @@ export function convertLowerHyphen(str) {
     .substring(1);
 }
 /**
- * 转为驼峰
+ * convert to upper camel
  */
 export function convertUpperCamel(str) {
   if (!str) {
@@ -30,12 +22,12 @@ export function convertUpperCamel(str) {
   }
 
   str = str.replace(/_(\w)/g, (_, letter) => letter.toUpperCase());
-  // 首字母大写
+  // capitalize the first letter
   return str[0].toUpperCase() + str.substring(1);
 }
 
 /**
- * 转为驼峰
+ * convert to lower camel
  */
 export function convertLowerCamel(str) {
   if (!str) {

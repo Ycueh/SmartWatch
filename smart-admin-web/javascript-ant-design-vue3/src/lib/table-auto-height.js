@@ -1,5 +1,5 @@
 /**
- * 计算表格自适应高度
+ * Calculate form adaptive height
  *
  * @param {*} heightRef
  * @param {*} removeRefArray
