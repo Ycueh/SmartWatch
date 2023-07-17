@@ -79,10 +79,8 @@
   import SmartFooter from './components/smart-footer/index.vue';
   import { smartKeepAlive } from './smart-keep-alive';
   import IframeIndex from '/@/components/framework/iframe/iframe-index.vue';
-  import watermark from '/@/lib/smart-wartermark';
   import { useAppConfigStore } from '/@/store/modules/system/app-config';
   import { useUserStore } from '/@/store/modules/system/user';
-  import SideHelpDoc from './components/side-help-doc/index.vue';
   import { useRouter } from 'vue-router';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 
@@ -111,9 +109,9 @@
   const collapsed = ref(false);
 
   //initialize watermark
-  onMounted(() => {
-    watermark.set('smartAdminLayoutContent', useUserStore().actualName);
-  });
+  // onMounted(() => {
+  //   watermark.set('smartAdminLayoutContent', useUserStore().actualName);
+  // });
 
   window.addEventListener('resize', function () {
     windowHeight.value = window.innerHeight;

@@ -62,10 +62,6 @@
       <!---back top -->
       <a-back-top :target="backTopTarget" :visibilityHeight="80" />
     </a-layout>
-    <!-- 右侧帮助文档 help-doc -->
-<!--    <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">-->
-<!--      <SideHelpDoc />-->
-<!--    </a-layout-sider>-->
   </a-layout>
 </template>
 
@@ -79,9 +75,7 @@
   import SmartFooter from './components/smart-footer/index.vue';
   import { smartKeepAlive } from './smart-keep-alive';
   import IframeIndex from '/@/components/framework/iframe/iframe-index.vue';
-  import watermark from '/@/lib/smart-wartermark';
   import { useUserStore } from '/@/store/modules/system/user';
-  import SideHelpDoc from './components/side-help-doc/index.vue';
   import { useRouter } from 'vue-router';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
 
@@ -111,9 +105,9 @@
   const collapsed = ref(false);
 
   //initialize watermark
-  onMounted(() => {
-    watermark.set('smartAdminLayoutContent', useUserStore().actualName);
-  });
+  // onMounted(() => {
+  //   watermark.set('smartAdminLayoutContent', useUserStore().actualName);
+  // });
 
   //back top
   const backTopTarget = () => {

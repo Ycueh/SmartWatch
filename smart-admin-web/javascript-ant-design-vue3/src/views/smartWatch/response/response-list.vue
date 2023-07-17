@@ -114,7 +114,6 @@
   import { responseApi } from '/@/api/smartWatch/response/response-api';
   import { PAGE_SIZE_OPTIONS } from '/@/constants/common-const';
   import { smartSentry } from '/@/lib/smart-sentry';
-  import TableOperator from '/@/components/support/table-operator/index.vue';
   import SmartEnumSelect from '/@/components/framework/smart-enum-select/index.vue';
   import responseForm from './reponse-form.vue';
   // ---------------------------- 表格列 ----------------------------

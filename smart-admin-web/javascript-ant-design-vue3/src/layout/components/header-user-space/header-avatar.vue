@@ -15,12 +15,12 @@
     </div>
     <template #overlay>
       <a-menu :class="['avatar-menu']">
-<!--        <a-menu-item @click="onRefresh">-->
-<!--          <span>Refresh permissions</span>-->
-<!--        </a-menu-item>-->
-<!--        <a-menu-item @click="showUpdatePwdModal">-->
-<!--          <span>update password</span>-->
-<!--        </a-menu-item>-->
+        <a-menu-item @click="onRefresh">
+          <span>Refresh permissions</span>
+        </a-menu-item>
+        <a-menu-item @click="showUpdatePwdModal">
+          <span>update password</span>
+        </a-menu-item>
         <a-menu-item @click="onLogout">
           <span>Log out</span>
         </a-menu-item>

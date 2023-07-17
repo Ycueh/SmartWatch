@@ -65,13 +65,13 @@
     selectedKeys.value = [_.toNumber(currentRoute.name)];
 
     /**
-     * 更新展开（1、获取新展开的menu key集合；2、保留原有的openkeys，然后把新展开的与之合并）
+     * update expand menu
      */
-    //获取需要展开的menu key集合
+    //get expand menu key
     let menuParentIdListMap = useUserStore().getMenuParentIdListMap;
     let parentList = menuParentIdListMap.get(currentRoute.name) || [];
     let needOpenKeys = _.map(parentList, 'name').map(Number);
-    // 使用lodash的union函数，进行 去重合并两个数组
+    // merge arrays
     openKeys.value = _.union(openKeys.value, needOpenKeys);
   }
 

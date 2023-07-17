@@ -58,7 +58,7 @@
     return parentMenuList.value.map((e) => e.name);
   });
 
-  // 展开菜单的顶级目录名字适配，只展示两个字为好
+  // top menu name adaptation
   function menuNameAdapter(name){
     return name.substr(0,2);
   }

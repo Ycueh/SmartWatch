@@ -4,8 +4,6 @@
 <template>
   <div class="version" >
     <a target="_blank" href="#">
-<!--      SmartAdmin V2.x @copyright 河南·洛阳【1024创新实验室】 Since 2012-{{ currentYear }}
--->
       University of Bristol
     </a>
   </div>

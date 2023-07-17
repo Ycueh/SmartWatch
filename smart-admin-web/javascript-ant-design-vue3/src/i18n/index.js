@@ -7,7 +7,7 @@ import zh_CN from './lang/zh-CN/index';
 import { createI18n } from 'vue-i18n';
 import { getInitializedLanguage } from '/@/store/modules/system/app-config';
 
-// 语言选择数组
+// language selection array
 export const i18nList = [
   {
     text: '简体中文',
