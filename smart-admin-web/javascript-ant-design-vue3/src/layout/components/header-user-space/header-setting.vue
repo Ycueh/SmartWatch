@@ -11,7 +11,7 @@
 <template>
   <a-drawer :title="$t('setting.title')" placement="right" :visible="visible" @close="close">
     <a-form layout="horizontal" :label-col="{ span: 8 }">
-      <a-form-item label="语言/Language">
+      <a-form-item label="Language">
         <a-select v-model:value="formState.language" @change="changeLanguage" style="width: 120px">
           <a-select-option v-for="item in i18nList" :key="item.value" :value="item.value">{{ item.text }}</a-select-option>
         </a-select>
@@ -25,7 +25,7 @@
       </a-form-item>
       <a-form-item :label="$t('setting.menu.width')" v-if="formState.layout === LAYOUT_ENUM.SIDE.value">
         <a-input-number @change="changeSideMenuWidth" v-model:value="formState.sideMenuWidth" :min="1" />
-        像素（px）
+        （px）
       </a-form-item>
       <a-form-item :label="$t('setting.menu.theme')">
         <a-radio-group v-model:value="formState.sideMenuTheme" button-style="solid" @change="changeMenuTheme">
@@ -34,21 +34,21 @@
         </a-radio-group>
       </a-form-item>
       <a-form-item :label="$t('setting.bread')">
-        <a-switch @change="changeBreadCrumbFlag" v-model:checked="formState.breadCrumbFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeBreadCrumbFlag" v-model:checked="formState.breadCrumbFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.pagetag')">
-        <a-switch @change="changePageTagFlag" v-model:checked="formState.pageTagFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changePageTagFlag" v-model:checked="formState.pageTagFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.footer')">
-        <a-switch @change="changeFooterFlag" v-model:checked="formState.footerFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeFooterFlag" v-model:checked="formState.footerFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.helpdoc')">
-        <a-switch @change="changeHelpDocFlag" v-model:checked="formState.helpDocFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeHelpDocFlag" v-model:checked="formState.helpDocFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
     </a-form>
     <div class="footer">
-      <a-button style="margin-right: 8px" type="primary" @click="copy">复制配置信息</a-button>
-      <a-button type="block" danger @click="reset">恢复默认配置 </a-button>
+      <a-button style="margin-right: 8px" type="primary" @click="copy">Copy configuration</a-button>
+      <a-button type="block" danger @click="reset">Restore configuration </a-button>
     </div>
   </a-drawer>
 </template>

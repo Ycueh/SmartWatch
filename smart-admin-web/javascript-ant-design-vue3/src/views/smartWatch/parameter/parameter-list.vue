@@ -36,9 +36,9 @@
           Add parameter
         </a-button>
       </div>
-      <div class="smart-table-setting-block">
-        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />
-      </div>
+<!--      <div class="smart-table-setting-block">-->
+<!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
+<!--      </div>-->
     </a-row>
 
     <a-table

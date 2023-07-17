@@ -26,8 +26,9 @@ export const i18nList = [
 ];
 
 export const messages = {
-  zh_CN: zh_CN,
   en_US: en_US,
+  zh_CN: zh_CN,
+
 };
 
 const i18n = createI18n({
@@ -36,6 +37,7 @@ const i18n = createI18n({
   legacy: false, //
   locale: getInitializedLanguage(), //默认初始化的语言
   messages, //
+
 });
 
 export default i18n;

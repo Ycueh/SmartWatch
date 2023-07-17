@@ -12,20 +12,23 @@
   <a-dropdown class="header-trigger">
     <div class="wrapper">
       <a-avatar style="margin: 0 5px" :size="24" id="smartAdminAvatar">
-        {{ avatarName }}
+<!--        {{ avatarName }}-->
+        U
       </a-avatar>
-      <span class="name">{{ actualName }}</span>
+
+<!--      <span class="name">{{ actualName }}</span>-->
+      <span class="name">User</span>
     </div>
     <template #overlay>
       <a-menu :class="['avatar-menu']">
-        <a-menu-item @click="onRefresh">
-          <span>刷新权限</span>
-        </a-menu-item>
-        <a-menu-item @click="showUpdatePwdModal">
-          <span>修改密码</span>
-        </a-menu-item>
+<!--        <a-menu-item @click="onRefresh">-->
+<!--          <span>刷新权限</span>-->
+<!--        </a-menu-item>-->
+<!--        <a-menu-item @click="showUpdatePwdModal">-->
+<!--          <span>修改密码</span>-->
+<!--        </a-menu-item>-->
         <a-menu-item @click="onLogout">
-          <span>退出登录</span>
+          <span>Log out</span>
         </a-menu-item>
       </a-menu>
     </template>

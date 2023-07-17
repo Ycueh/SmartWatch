@@ -10,10 +10,10 @@
 export const LAYOUT_ENUM = {
   SIDE_EXPAND: {
     value: 'side-expand',
-    desc: '展开菜单',
+    desc: 'side-expand',
   },
   SIDE: {
     value: 'side',
-    desc: '传统菜单',
+    desc: 'side',
   },
 };

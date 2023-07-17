@@ -9,60 +9,61 @@
   *
 -->
 <template>
-  <!--  顶部用户信息-->
-  <a-row>
-    <HomeHeader />
-  </a-row>
-  <!--下方左右布局-->
-  <a-row :gutter="[10, 10]">
-    <!--左侧-->
-    <a-col :span="16">
-      <a-row :gutter="[10, 10]">
-        <!--公告信息-->
-        <a-col :span="12">
-          <HomeNotice title="公告" :noticeTypeId="1" />
-        </a-col>
-        <!--企业动态-->
-        <a-col :span="12">
-          <HomeNotice title="通知" :noticeTypeId="2" />
-        </a-col>
-        <!--各类报表-->
-        <!-- <a-col :span="6">
-          <Gauge :percent="saleTargetPercent" />
-        </a-col> -->
-        <a-col :span="12">
-          <Pie />
-        </a-col>
-        <a-col :span="12">
-          <Category />
-        </a-col>
-        <a-col :span="24">
-          <Gradient />
-        </a-col>
-      </a-row>
-    </a-col>
-    <!--右侧-->
-    <a-col :span="8">
-      <a-row :gutter="[10, 10]">
-        <!--快捷入口-->
-        <!-- <a-col :span="24">
-          <HomeQuickEntry />
-        </a-col> -->
-        <!--关注公众号-->
-        <a-col :span="24">
-          <OfficialAccountCard />
-        </a-col>
-        <!--待办、已办-->
-        <a-col :span="24">
-          <ToBeDoneCard />
-        </a-col>
-        <!--更新日志-->
-        <a-col :span="24">
-          <ChangelogCard />
-        </a-col>
-      </a-row>
-    </a-col>
-  </a-row>
+  <div style="font-size: 30px; margin: 20px 20px">Instruction</div>
+<!--  &lt;!&ndash;  顶部用户信息&ndash;&gt;-->
+<!--  <a-row>-->
+<!--    <HomeHeader />-->
+<!--  </a-row>-->
+<!--  &lt;!&ndash;下方左右布局&ndash;&gt;-->
+<!--  <a-row :gutter="[10, 10]">-->
+<!--    &lt;!&ndash;左侧&ndash;&gt;-->
+<!--    <a-col :span="16">-->
+<!--      <a-row :gutter="[10, 10]">-->
+<!--        &lt;!&ndash;公告信息&ndash;&gt;-->
+<!--        <a-col :span="12">-->
+<!--          <HomeNotice title="公告" :noticeTypeId="1" />-->
+<!--        </a-col>-->
+<!--        &lt;!&ndash;企业动态&ndash;&gt;-->
+<!--        <a-col :span="12">-->
+<!--          <HomeNotice title="通知" :noticeTypeId="2" />-->
+<!--        </a-col>-->
+<!--        &lt;!&ndash;各类报表&ndash;&gt;-->
+<!--        &lt;!&ndash; <a-col :span="6">-->
+<!--          <Gauge :percent="saleTargetPercent" />-->
+<!--        </a-col> &ndash;&gt;-->
+<!--        <a-col :span="12">-->
+<!--          <Pie />-->
+<!--        </a-col>-->
+<!--        <a-col :span="12">-->
+<!--          <Category />-->
+<!--        </a-col>-->
+<!--        <a-col :span="24">-->
+<!--          <Gradient />-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </a-col>-->
+<!--    &lt;!&ndash;右侧&ndash;&gt;-->
+<!--    <a-col :span="8">-->
+<!--      <a-row :gutter="[10, 10]">-->
+<!--        &lt;!&ndash;快捷入口&ndash;&gt;-->
+<!--        &lt;!&ndash; <a-col :span="24">-->
+<!--          <HomeQuickEntry />-->
+<!--        </a-col> &ndash;&gt;-->
+<!--        &lt;!&ndash;关注公众号&ndash;&gt;-->
+<!--        <a-col :span="24">-->
+<!--          <OfficialAccountCard />-->
+<!--        </a-col>-->
+<!--        &lt;!&ndash;待办、已办&ndash;&gt;-->
+<!--        <a-col :span="24">-->
+<!--          <ToBeDoneCard />-->
+<!--        </a-col>-->
+<!--        &lt;!&ndash;更新日志&ndash;&gt;-->
+<!--        <a-col :span="24">-->
+<!--          <ChangelogCard />-->
+<!--        </a-col>-->
+<!--      </a-row>-->
+<!--    </a-col>-->
+<!--  </a-row>-->
 </template>
 <script setup>
   import { computed } from 'vue';

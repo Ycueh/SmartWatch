@@ -10,15 +10,15 @@
 <template>
   <a-space :size="10">
     <div class="setting">
-      <a-input-search
-        @click="search"
-        style="margin-right: 30px; width: 250px"
-        placeholder="1024创新实验室、小镇程序员"
-        enter-button="搜索"
-        size="small"
-      />
+<!--      <a-input-search-->
+<!--        @click="search"-->
+<!--        style="margin-right: 30px; width: 250px"-->
+<!--        placeholder="1024创新实验室、小镇程序员"-->
+<!--        enter-button="搜索"-->
+<!--        size="small"-->
+<!--      />-->
       <!---消息通知--->
-      <HeaderMessage ref="headerMessage" />
+<!--      <HeaderMessage ref="headerMessage" />-->
       <!---国际化--->
       <!-- <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><switcher-outlined /></template>
@@ -34,10 +34,10 @@
       <HeaderAvatar />
     </div>
     <!---帮助文档--->
-    <div class="user-space-item" @click="showHelpDoc">
-      <question-circle-two-tone style="font-size: 18px; margin-right: 5px; margin-top: 5px" />
-      <span>帮助文档</span>
-    </div>
+<!--    <div class="user-space-item" @click="showHelpDoc">-->
+<!--      <question-circle-two-tone style="font-size: 18px; margin-right: 5px; margin-top: 5px" />-->
+<!--      <span>帮助文档</span>-->
+<!--    </div>-->
 
     <HeaderSetting ref="headerSetting" />
   </a-space>

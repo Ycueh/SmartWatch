@@ -92,7 +92,7 @@
       z-index: 9999;
       display: flex;
       cursor: pointer;
-      justify-content:space-around;
+      //justify-content:space-around;
 
       .logo-img {
         width: 40px;
@@ -109,6 +109,7 @@
       }
       .title-dark {
         color:#ffffff;
+        margin-left: 9px;
       }
     }
   }

@@ -17,7 +17,7 @@
               <menu-fold-outlined v-else class="trigger" @click="() => (collapsed = !collapsed)" />
             </span>
             <a-tooltip placement="bottom">
-              <template #title>首页</template>
+              <template #title>Home</template>
               <span class="home-button" @click="goHome">
                 <home-outlined class="trigger" />
               </span>
@@ -64,9 +64,9 @@
       <a-back-top :target="backTopTarget" :visibilityHeight="80" />
     </a-layout>
     <!-- 右侧帮助文档 help-doc -->
-    <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">
-      <SideHelpDoc />
-    </a-layout-sider>
+<!--    <a-layout-sider v-show="helpDocFlag" theme="light" :width="180" class="help-doc-sider" :trigger="null" style="min-height: 100%">-->
+<!--      <SideHelpDoc />-->
+<!--    </a-layout-sider>-->
   </a-layout>
 </template>
 
