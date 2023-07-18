@@ -18,13 +18,12 @@ import net.lab1024.sa.common.common.enumeration.BaseEnum;
 @Getter
 public enum DataTracerTypeEnum implements BaseEnum {
 
-    GOODS(1, "商品"),
 
     OA_NOTICE(2, "OA-通知公告"),
 
     OA_ENTERPRISE(3, "OA-企业信息"),
 
-    RESPONSE(4,"response"),
+    RESPONSE(1,"response"),
 
     ;
 

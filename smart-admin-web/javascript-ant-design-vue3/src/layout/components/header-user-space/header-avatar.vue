@@ -1,31 +1,28 @@
 <!--
-  * 头像
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:02:01 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * avatar
 -->
 
 <template>
   <a-dropdown class="header-trigger">
     <div class="wrapper">
       <a-avatar style="margin: 0 5px" :size="24" id="smartAdminAvatar">
-        {{ avatarName }}
+<!--        {{ avatarName }}-->
+        U
       </a-avatar>
-      <span class="name">{{ actualName }}</span>
+
+<!--      <span class="name">{{ actualName }}</span>-->
+      <span class="name">User</span>
     </div>
     <template #overlay>
       <a-menu :class="['avatar-menu']">
         <a-menu-item @click="onRefresh">
-          <span>刷新权限</span>
+          <span>Refresh permissions</span>
         </a-menu-item>
         <a-menu-item @click="showUpdatePwdModal">
-          <span>修改密码</span>
+          <span>update password</span>
         </a-menu-item>
         <a-menu-item @click="onLogout">
-          <span>退出登录</span>
+          <span>Log out</span>
         </a-menu-item>
       </a-menu>
     </template>
@@ -41,10 +38,10 @@
   import { smartSentry } from '/@/lib/smart-sentry';
   import HeaderResetPassword from './header-reset-password-modal/index.vue';
 
-  // 头像背景颜色
+  // Avatar background color
   const AVATAR_BACKGROUND_COLOR_ARRAY = ['#87d068', '#00B853', '#f56a00', '#1890ff'];
 
-  //监听退出登录方法
+  //Monitor logout method
   async function onLogout() {
     try {
       await loginApi.logout();
@@ -59,24 +56,24 @@
     }
   }
 
-  // 刷新用户信息（包含用户基础信息、权限信息等等）
+  // Refresh user information (including basic user information, permission information, etc.)
   async function onRefresh() {
     await loginApi.refresh();
     location.reload();
   }
 
-  // ------------------------ 修改密码 ------------------------
+  // ------------------------ reset password ------------------------
   const resetPasswordRef = ref();
 
   function showUpdatePwdModal() {
     resetPasswordRef.value.showModal();
   }
 
-  // ------------------------ 以下是 头像和姓名 相关 ------------------------
+  // ------------------------ avatar, name ------------------------
 
   const avatarName = ref('');
   const actualName = computed(() => useUserStore().actualName);
-  // 更新头像信息
+  // update avatar
   function updateAvatar() {
     if (useUserStore().actualName) {
       avatarName.value = useUserStore().actualName.substr(0, 1);
@@ -88,7 +85,7 @@
   }
 
   /**
-   * 通过计算固定字符串的hash，来选择颜色，这也每次登录的颜色是相同的
+   * choose color
    */
   function hashcode(str) {
     let hash = 1,

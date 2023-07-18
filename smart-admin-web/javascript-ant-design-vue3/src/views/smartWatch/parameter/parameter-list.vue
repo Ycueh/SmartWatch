@@ -36,9 +36,9 @@
           Add parameter
         </a-button>
       </div>
-      <div class="smart-table-setting-block">
-        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />
-      </div>
+<!--      <div class="smart-table-setting-block">-->
+<!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
+<!--      </div>-->
     </a-row>
 
     <a-table
@@ -86,7 +86,6 @@ import {smartSentry} from "/@/lib/smart-sentry";
 import {message, Modal} from "ant-design-vue";
 import {SmartLoading} from "/@/components/framework/smart-loading";
 import {PAGE_SIZE_OPTIONS} from "/@/constants/common-const";
-import TableOperator from "/@/components/support/table-operator/index.vue";
 import ParameterFormModal from "./parameter-form-modal.vue";
 
 const columns = ref([

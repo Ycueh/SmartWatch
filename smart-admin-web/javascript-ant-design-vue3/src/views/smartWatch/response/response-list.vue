@@ -59,9 +59,9 @@
           batchDelete
         </a-button>
       </div>
-      <div class="smart-table-setting-block">
-        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />
-      </div>
+<!--      <div class="smart-table-setting-block">-->
+<!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
+<!--      </div>-->
     </a-row>
     <!---------- 表格操作行 end ----------->
 
@@ -78,8 +78,8 @@
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="showForm(record)" type="link" v-privilege="'response:update'">编辑</a-button>
-            <a-button @click="onDelete(record)" danger type="link" v-privilege="'response:delete'">删除</a-button>
+            <a-button @click="showForm(record)" type="link" v-privilege="'response:update'">Edit</a-button>
+            <a-button @click="onDelete(record)" danger type="link" v-privilege="'response:delete'">Delete</a-button>
           </div>
         </template>
       </template>
@@ -114,7 +114,6 @@
   import { responseApi } from '/@/api/smartWatch/response/response-api';
   import { PAGE_SIZE_OPTIONS } from '/@/constants/common-const';
   import { smartSentry } from '/@/lib/smart-sentry';
-  import TableOperator from '/@/components/support/table-operator/index.vue';
   import SmartEnumSelect from '/@/components/framework/smart-enum-select/index.vue';
   import responseForm from './reponse-form.vue';
   // ---------------------------- 表格列 ----------------------------

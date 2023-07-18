@@ -1,11 +1,5 @@
 <!--
-  * 传统菜单-递归菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * classic, recursive menu
 -->
 <template>
   <a-menu
@@ -53,32 +47,31 @@
 
   const menuTree = computed(() => useUserStore().getMenuTree || []);
 
-  //展开的菜单
+  //expand menu
   let currentRoute = useRoute();
   const selectedKeys = ref([]);
   const openKeys = ref([]);
 
-  // 页面跳转
+  // page jump
   function turnToPage(menu) {
     router.push({ path: menu.path });
   }
 
   /**
-   * SmartAdmin中 router的name 就是 后端存储menu的id
-   * 所以此处可以直接监听路由，根据路由更新菜单的选中和展开
+   * monitor router
    */
   function updateOpenKeysAndSelectKeys() {
-    // 更新选中
+    // update selection
     selectedKeys.value = [_.toNumber(currentRoute.name)];
 
     /**
-     * 更新展开（1、获取新展开的menu key集合；2、保留原有的openkeys，然后把新展开的与之合并）
+     * update expand menu
      */
-    //获取需要展开的menu key集合
+    //get expand menu key
     let menuParentIdListMap = useUserStore().getMenuParentIdListMap;
     let parentList = menuParentIdListMap.get(currentRoute.name) || [];
     let needOpenKeys = _.map(parentList, 'name').map(Number);
-    // 使用lodash的union函数，进行 去重合并两个数组
+    // merge arrays
     openKeys.value = _.union(openKeys.value, needOpenKeys);
   }
 

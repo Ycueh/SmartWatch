@@ -1,17 +1,11 @@
 <!--
-  * 设置模块
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:18:20 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * setting component
 -->
 
 <template>
   <a-drawer :title="$t('setting.title')" placement="right" :visible="visible" @close="close">
     <a-form layout="horizontal" :label-col="{ span: 8 }">
-      <a-form-item label="语言/Language">
+      <a-form-item label="Language">
         <a-select v-model:value="formState.language" @change="changeLanguage" style="width: 120px">
           <a-select-option v-for="item in i18nList" :key="item.value" :value="item.value">{{ item.text }}</a-select-option>
         </a-select>
@@ -25,7 +19,7 @@
       </a-form-item>
       <a-form-item :label="$t('setting.menu.width')" v-if="formState.layout === LAYOUT_ENUM.SIDE.value">
         <a-input-number @change="changeSideMenuWidth" v-model:value="formState.sideMenuWidth" :min="1" />
-        像素（px）
+        （px）
       </a-form-item>
       <a-form-item :label="$t('setting.menu.theme')">
         <a-radio-group v-model:value="formState.sideMenuTheme" button-style="solid" @change="changeMenuTheme">
@@ -34,21 +28,21 @@
         </a-radio-group>
       </a-form-item>
       <a-form-item :label="$t('setting.bread')">
-        <a-switch @change="changeBreadCrumbFlag" v-model:checked="formState.breadCrumbFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeBreadCrumbFlag" v-model:checked="formState.breadCrumbFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.pagetag')">
-        <a-switch @change="changePageTagFlag" v-model:checked="formState.pageTagFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changePageTagFlag" v-model:checked="formState.pageTagFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.footer')">
-        <a-switch @change="changeFooterFlag" v-model:checked="formState.footerFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeFooterFlag" v-model:checked="formState.footerFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
       <a-form-item :label="$t('setting.helpdoc')">
-        <a-switch @change="changeHelpDocFlag" v-model:checked="formState.helpDocFlag" checked-children="显示" un-checked-children="隐藏" />
+        <a-switch @change="changeHelpDocFlag" v-model:checked="formState.helpDocFlag" checked-children="show" un-checked-children="hide" />
       </a-form-item>
     </a-form>
     <div class="footer">
-      <a-button style="margin-right: 8px" type="primary" @click="copy">复制配置信息</a-button>
-      <a-button type="block" danger @click="reset">恢复默认配置 </a-button>
+      <a-button style="margin-right: 8px" type="primary" @click="copy">Copy configuration</a-button>
+      <a-button type="block" danger @click="reset">Restore configuration </a-button>
     </div>
   </a-drawer>
 </template>
@@ -63,7 +57,7 @@
   import { Modal } from 'ant-design-vue';
   import { appDefaultConfig } from '/@/config/app-config';
 
-  // ----------------- modal 显示与隐藏 -----------------
+  // ----------------- modal show and hide -----------------
 
   const visible = ref(false);
   defineExpose({
@@ -78,25 +72,25 @@
     visible.value = true;
   }
 
-  // ----------------- 配置信息操作 -----------------
+  // ----------------- Configuration Information Operation -----------------
   function copy() {
     let content = JSON.stringify(formState, null, 2);
-    // 创建元素用于复制
+    // Create elements for copying
     const aux = document.createElement('input');
-    // 设置元素内容
+    // set element content
     aux.setAttribute('value', content);
-    // 将元素插入页面进行调用
+    // Insert the element into the page to call
     document.body.appendChild(aux);
-    // 复制内容
+    // copy content
     aux.select();
-    // 将内容复制到剪贴板
+    // copy content to clipboard
     document.execCommand('copy');
-    // 删除创建元素
+    // delete element
     document.body.removeChild(aux);
 
     Modal.success({
-      title: '复制成功',
-      content: h('div', {}, [h('p', '可以直接修改 /src/config/app-config.js 文件保存此配置')]),
+      title: 'copy successfully',
+      content: h('div', {}, [h('p', 'can modify directly /src/config/app-config.js to save the config')]),
     });
   }
 
@@ -107,31 +101,31 @@
     appConfigStore.reset();
   }
 
-  // ----------------- 表单数据实时保存到localstorage -----------------
+  // ----------------- save form data to localstorage -----------------
 
   const appConfigStore = useAppConfigStore();
   useAppConfigStore().$subscribe((mutation, state) => {
     localSave(localStorageKeyConst.APP_CONFIG, JSON.stringify(state));
   });
 
-  // ----------------- 表单 -----------------
+  // ----------------- form -----------------
 
   let formValue = {
-    // i18n 语言选择
+    // i18n language selection
     language: appConfigStore.language,
-    // 布局: side 或者 side-expand
+    // layout: side or side-expand
     layout: appConfigStore.layout,
-    // 侧边菜单宽度
+    // side menu width
     sideMenuWidth: appConfigStore.sideMenuWidth,
-    // 菜单主题
+    // menu theme
     sideMenuTheme: appConfigStore.sideMenuTheme,
-    // 标签页
+    // page tag
     pageTagFlag: appConfigStore.pageTagFlag,
-    // 面包屑
+    // bread crumb
     breadCrumbFlag: appConfigStore.breadCrumbFlag,
-    // 页脚
+    // footer
     footerFlag: appConfigStore.footerFlag,
-    // 帮助文档
+    // help doc
     helpDocFlag: appConfigStore.helpDocFlag,
   };
 

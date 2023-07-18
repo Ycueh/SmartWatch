@@ -1,23 +1,17 @@
 <!--
-  * 修改密码
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:02:01 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * update password
 -->
 <template>
-  <a-modal :visible="visible" title="修改密码" ok-text="确认" cancel-text="取消" @ok="updatePwd" @cancel="cancelModal">
+  <a-modal :visible="visible" title="update password" ok-text="confirm" cancel-text="cancel" @ok="updatePwd" @cancel="cancelModal">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="原密码" name="oldPassword">
-        <a-input v-model:value.trim="form.oldPassword" type="password" placeholder="请输入原密码" />
+      <a-form-item label="old password" name="oldPassword">
+        <a-input v-model:value.trim="form.oldPassword" type="password" placeholder="Please enter the old password" />
       </a-form-item>
-      <a-form-item label="新密码" name="newPassword" :help="tips">
-        <a-input v-model:value.trim="form.newPassword" type="password" placeholder="请输入新密码" />
+      <a-form-item label="new password" name="newPassword" :help="tips">
+        <a-input v-model:value.trim="form.newPassword" type="password" placeholder="Please enter new password" />
       </a-form-item>
-      <a-form-item label="确认密码" name="confirmPwd" :help="tips">
-        <a-input v-model:value.trim="form.confirmPwd" type="password" placeholder="请输入确认密码" />
+      <a-form-item label="confirm password" name="confirmPwd" :help="tips">
+        <a-input v-model:value.trim="form.confirmPwd" type="password" placeholder="Please enter the password to confirm" />
       </a-form-item>
     </a-form>
   </a-modal>
@@ -31,13 +25,13 @@
 
   const visible = ref(false);
   const formRef = ref();
-  const tips = '字母（不限大小写）+数字组合，6-15位'; //校验规则
-  const reg = /(^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$)/; //校验正则
+  const tips = 'Combination of letters (not limited to uppercase and lowercase) + numbers, 6-15 digits'; //Validation rules
+  const reg = /(^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$)/; //Validation regularity
 
   const rules = {
-    oldPassword: [{ required: true, message: '请输入原密码' }],
-    newPassword: [{ type: 'string',  pattern: reg, message: '密码格式错误' }],
-    confirmPwd: [{ type: 'string',  pattern: reg, message: '请输入确认密码' }],
+    oldPassword: [{ required: true, message: 'Please enter the old password' }],
+    newPassword: [{ type: 'string',  pattern: reg, message: 'wrong password format' }],
+    confirmPwd: [{ type: 'string',  pattern: reg, message: 'Please enter the password to confirm' }],
   };
 
   const formDefault = {
@@ -53,13 +47,13 @@
       .validate()
       .then(async () => {
         if (form.newPassword != form.confirmPwd) {
-          message.error('新密码与确认密码不一致');
+          message.error('The new password does not match the confirmation password');
           return;
         }
         SmartLoading.show();
         try {
           await employeeApi.updateEmployeePassword(form);
-          message.success('修改成功');
+          message.success('Successfully modified');
           visible.value = false;
         } catch (error) {
           smartSentry.captureError(error);
@@ -69,7 +63,7 @@
       })
       .catch((error) => {
         console.log('error', error);
-        message.error('参数验证错误，请仔细填写表单数据!');
+        message.error('Parameter validation error, please fill in the form data carefully!');
       });
   }
 

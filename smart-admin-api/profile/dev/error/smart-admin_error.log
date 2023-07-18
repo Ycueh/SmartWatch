@@ -1,8 +1,76 @@
+<<<<<<< HEAD
 [2023-07-17 14:54:59,846][ERROR][http-nio-1024-exec-6] 捕获全局异常,URL:/login (GlobalExceptionHandler.java:110)
 org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/plain;charset=UTF-8' not supported
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:211) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:160) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133) ~[spring-webmvc-5.3.23.jar:5.3.23]
+=======
+[2023-07-13 20:08:03,652][ERROR][main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 1024 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 1024 or configure this application to listen on another port.
+ (LoggingFailureAnalysisReporter.java:40)
+[2023-07-13 20:08:11,123][ERROR][smart-admin-reload]  (SmartReloadRunnable.java:40)
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+### Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:96) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at jdk.proxy2.$Proxy112.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:166) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at jdk.proxy2.$Proxy113.selectList(Unknown Source) ~[?:?]
+	at net.lab1024.sa.common.module.support.reload.ReloadCommand.readReloadItem(ReloadCommand.java:41) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.AbstractSmartReloadCommand.init(AbstractSmartReloadCommand.java:38) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.thread.SmartReloadRunnable.doTask(SmartReloadRunnable.java:49) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.thread.SmartReloadRunnable.run(SmartReloadRunnable.java:38) ~[classes/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577) ~[?:?]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+### Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:153) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 17 more
+Caused by: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.springframework.context.support.AbstractApplicationContext.assertBeanFactoryActive(AbstractApplicationContext.java:1141) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1153) ~[spring-context-5.3.23.jar:5.3.23]
+	at net.lab1024.sa.admin.module.system.datascope.MyBatisPlugin.dataScopeSqlConfigService(MyBatisPlugin.java:125) ~[classes/:?]
+	at net.lab1024.sa.admin.module.system.datascope.MyBatisPlugin.intercept(MyBatisPlugin.java:51) ~[classes/:?]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.proxy2.$Proxy159.query(Unknown Source) ~[?:?]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 17 more
+[2023-07-13 20:12:10,138][ERROR][http-nio-1024-exec-9] 全局参数异常,URL:/support/tableColumn/getColumns/null (GlobalExceptionHandler.java:61)
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "null"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133) ~[spring-web-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
@@ -100,6 +168,7 @@ org.springframework.web.HttpMediaTypeNotSupportedException: Content type 'text/p
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 [2023-07-17 14:56:26,229][ERROR][http-nio-1024-exec-10] 全局JSON格式错误异常,URL:/login (GlobalExceptionHandler.java:49)
 org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('4' (code 52)): was expecting a colon to separate field name and value; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('4' (code 52)): was expecting a colon to separate field name and value
@@ -109,6 +178,26 @@ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse e
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:185) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:160) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133) ~[spring-webmvc-5.3.23.jar:5.3.23]
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:665) ~[?:?]
+	at java.lang.Integer.valueOf(Integer.java:992) ~[?:?]
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:211) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:729) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-5.3.23.jar:5.3.23]
+	... 98 more
+[2023-07-13 22:18:35,682][ERROR][http-nio-1024-exec-9] 全局参数异常,URL:/support/tableColumn/getColumns/null (GlobalExceptionHandler.java:61)
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "null"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133) ~[spring-web-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
@@ -206,6 +295,7 @@ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse e
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 Caused by: com.fasterxml.jackson.core.JsonParseException: Unexpected character ('4' (code 52)): was expecting a colon to separate field name and value
  at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 2, column: 20]
@@ -276,6 +366,29 @@ org.springframework.data.redis.RedisConnectionFailureException: Unable to connec
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:665) ~[?:?]
+	at java.lang.Integer.valueOf(Integer.java:992) ~[?:?]
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:211) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:729) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-5.3.23.jar:5.3.23]
+	... 98 more
+[2023-07-13 22:23:42,940][ERROR][http-nio-1024-exec-8] 全局参数异常,URL:/support/tableColumn/getColumns/null (GlobalExceptionHandler.java:61)
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "null"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
@@ -283,8 +396,13 @@ org.springframework.data.redis.RedisConnectionFailureException: Unable to connec
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
+<<<<<<< HEAD
 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+=======
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
@@ -314,7 +432,11 @@ org.springframework.data.redis.RedisConnectionFailureException: Unable to connec
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.4.jar:5.7.4]
 	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.7.4.jar:5.7.4]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.4.jar:5.7.4]
+<<<<<<< HEAD
 	at net.lab1024.sa.common.common.security.SecurityTokenFilter.doFilterInternal(SecurityTokenFilter.java:48) ~[classes/:?]
+=======
+	at net.lab1024.sa.common.common.security.SecurityTokenFilter.doFilterInternal(SecurityTokenFilter.java:62) ~[classes/:?]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:346) ~[spring-security-web-5.7.4.jar:5.7.4]
 	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-5.3.23.jar:5.3.23]
@@ -370,6 +492,7 @@ org.springframework.data.redis.RedisConnectionFailureException: Unable to connec
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 Caused by: org.springframework.data.redis.connection.PoolException: Could not get a resource from the pool; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1/<unresolved>:6379
 	at org.springframework.data.redis.connection.lettuce.LettucePoolingConnectionProvider.getConnection(LettucePoolingConnectionProvider.java:109) ~[spring-data-redis-2.7.5.jar:2.7.5]
@@ -461,6 +584,29 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:665) ~[?:?]
+	at java.lang.Integer.valueOf(Integer.java:992) ~[?:?]
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:211) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:729) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-5.3.23.jar:5.3.23]
+	... 98 more
+[2023-07-13 22:23:48,891][ERROR][http-nio-1024-exec-10] 全局参数异常,URL:/support/tableColumn/delete/null (GlobalExceptionHandler.java:61)
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "null"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
@@ -468,8 +614,8 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
@@ -555,6 +701,7 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'event_desc' in 'field list'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.31.jar:8.0.31]
@@ -649,6 +796,29 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.23.jar:5.3.23]
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:665) ~[?:?]
+	at java.lang.Integer.valueOf(Integer.java:992) ~[?:?]
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:211) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:729) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-5.3.23.jar:5.3.23]
+	... 98 more
+[2023-07-13 22:23:52,360][ERROR][http-nio-1024-exec-2] 全局参数异常,URL:/support/tableColumn/getColumns/null (GlobalExceptionHandler.java:61)
+org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; nested exception is java.lang.NumberFormatException: For input string: "null"
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:133) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.23.jar:5.3.23]
@@ -656,8 +826,8 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1071) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:964) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.23.jar:5.3.23]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.23.jar:5.3.23]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:696) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.23.jar:5.3.23]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:670) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:779) ~[tomcat-embed-core-9.0.68.jar:4.0.FR]
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
@@ -743,6 +913,7 @@ org.springframework.jdbc.BadSqlGrammarException:
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'event_desc' in 'field list'
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-j-8.0.31.jar:8.0.31]
@@ -1541,6 +1712,25 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 	... 124 more
 [2023-07-17 18:13:09,518][ERROR][http-nio-1024-exec-7] 全局参数异常,URL:/event/add (GlobalExceptionHandler.java:61)
 org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public net.lab1024.sa.common.common.domain.ResponseDTO<java.lang.String> net.lab1024.sa.admin.module.business.smartWatch.event.eventController.add(net.lab1024.sa.admin.module.business.smartWatch.event.domain.EventAddForm) with 3 errors: [Field error in object 'eventAddForm' on field 'eventType': rejected value [null]; codes [NotNull.eventAddForm.eventType,NotNull.eventType,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [eventAddForm.eventType,eventType]; arguments []; default message [eventType]]; default message [eventType could not be null]] [Field error in object 'eventAddForm' on field 'eventDesc': rejected value [null]; codes [NotNull.eventAddForm.eventDesc,NotNull.eventDesc,NotNull.java.lang.String,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [eventAddForm.eventDesc,eventDesc]; arguments []; default message [eventDesc]]; default message [eventDescription could not be null]] [Field error in object 'eventAddForm' on field 'eventID': rejected value [null]; codes [NotNull.eventAddForm.eventID,NotNull.eventID,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [eventAddForm.eventID,eventID]; arguments []; default message [eventID]]; default message [eventID could not be null]] 
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:67) ~[?:?]
+	at java.lang.Integer.parseInt(Integer.java:665) ~[?:?]
+	at java.lang.Integer.valueOf(Integer.java:992) ~[?:?]
+	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:211) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:115) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:429) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:402) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:155) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:73) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:53) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:729) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:125) ~[spring-web-5.3.23.jar:5.3.23]
+	... 98 more
+[2023-07-13 22:24:05,871][ERROR][http-nio-1024-exec-4] 全局参数异常,URL:/support/tableColumn/update (GlobalExceptionHandler.java:61)
+org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public net.lab1024.sa.common.common.domain.ResponseDTO<java.lang.String> net.lab1024.sa.common.module.support.table.TableColumnController.updateTableColumn(net.lab1024.sa.common.module.support.table.domain.TableColumnUpdateForm): [Field error in object 'tableColumnUpdateForm' on field 'tableId': rejected value [null]; codes [NotNull.tableColumnUpdateForm.tableId,NotNull.tableId,NotNull.java.lang.Integer,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [tableColumnUpdateForm.tableId,tableId]; arguments []; default message [tableId]]; default message [表id不能为空]] 
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:141) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
@@ -1639,6 +1829,7 @@ org.springframework.web.bind.MethodArgumentNotValidException: Validation failed 
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 [2023-07-17 18:19:25,429][ERROR][http-nio-1024-exec-2] 全局JSON格式错误异常,URL:/event/add (GlobalExceptionHandler.java:49)
 org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`)
@@ -1648,6 +1839,12 @@ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse e
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:185) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:160) ~[spring-webmvc-5.3.23.jar:5.3.23]
 	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:133) ~[spring-webmvc-5.3.23.jar:5.3.23]
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+[2023-07-13 22:24:12,906][ERROR][http-nio-1024-exec-6] 全局参数异常,URL:/support/tableColumn/update (GlobalExceptionHandler.java:61)
+org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public net.lab1024.sa.common.common.domain.ResponseDTO<java.lang.String> net.lab1024.sa.common.module.support.table.TableColumnController.updateTableColumn(net.lab1024.sa.common.module.support.table.domain.TableColumnUpdateForm): [Field error in object 'tableColumnUpdateForm' on field 'tableId': rejected value [null]; codes [NotNull.tableColumnUpdateForm.tableId,NotNull.tableId,NotNull.java.lang.Integer,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [tableColumnUpdateForm.tableId,tableId]; arguments []; default message [tableId]]; default message [表id不能为空]] 
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:141) ~[spring-webmvc-5.3.23.jar:5.3.23]
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
 	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:122) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:179) ~[spring-web-5.3.23.jar:5.3.23]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:146) ~[spring-web-5.3.23.jar:5.3.23]
@@ -1745,6 +1942,7 @@ org.springframework.http.converter.HttpMessageNotReadableException: JSON parse e
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
+<<<<<<< HEAD
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.time.LocalTime` from Object value (token `JsonToken.START_OBJECT`)
  at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 5, column: 16] (through reference chain: net.lab1024.sa.admin.module.business.smartWatch.event.domain.EventAddForm["eventtime"])
@@ -1763,3 +1961,68 @@ Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot d
 	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:3682) ~[jackson-databind-2.13.4.2.jar:2.13.4.2]
 	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.readJavaType(AbstractJackson2HttpMessageConverter.java:380) ~[spring-web-5.3.23.jar:5.3.23]
 	... 102 more
+=======
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+[2023-07-17 20:14:49,567][ERROR][main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 1024 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 1024 or configure this application to listen on another port.
+ (LoggingFailureAnalysisReporter.java:40)
+[2023-07-17 20:14:56,897][ERROR][smart-admin-reload]  (SmartReloadRunnable.java:40)
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+### Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:96) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at jdk.proxy2.$Proxy112.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.executeForMany(MybatisMapperMethod.java:166) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.execute(MybatisMapperMethod.java:77) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy$PlainMethodInvoker.invoke(MybatisMapperProxy.java:148) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.invoke(MybatisMapperProxy.java:89) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
+	at jdk.proxy2.$Proxy113.selectList(Unknown Source) ~[?:?]
+	at net.lab1024.sa.common.module.support.reload.ReloadCommand.readReloadItem(ReloadCommand.java:41) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.AbstractSmartReloadCommand.init(AbstractSmartReloadCommand.java:38) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.thread.SmartReloadRunnable.doTask(SmartReloadRunnable.java:49) ~[classes/:?]
+	at net.lab1024.sa.common.module.support.reload.core.thread.SmartReloadRunnable.run(SmartReloadRunnable.java:38) ~[classes/:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:577) ~[?:?]
+	at java.util.concurrent.FutureTask.runAndReset(FutureTask.java:358) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.lang.Thread.run(Thread.java:1589) ~[?:?]
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+### Cause: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:153) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 17 more
+Caused by: java.lang.IllegalStateException: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@58f174d9 has not been refreshed yet
+	at org.springframework.context.support.AbstractApplicationContext.assertBeanFactoryActive(AbstractApplicationContext.java:1141) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1153) ~[spring-context-5.3.23.jar:5.3.23]
+	at net.lab1024.sa.admin.module.system.datascope.MyBatisPlugin.dataScopeSqlConfigService(MyBatisPlugin.java:125) ~[classes/:?]
+	at net.lab1024.sa.admin.module.system.datascope.MyBatisPlugin.intercept(MyBatisPlugin.java:51) ~[classes/:?]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.proxy2.$Proxy159.query(Unknown Source) ~[?:?]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 17 more
+>>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52

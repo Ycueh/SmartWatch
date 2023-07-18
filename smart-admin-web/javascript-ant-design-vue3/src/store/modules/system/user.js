@@ -1,12 +1,4 @@
-/*
- * 登录用户
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 20:55:09
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
- */
+//login user
 import _ from 'lodash';
 import { defineStore } from 'pinia';
 import localKey from '/@/constants/local-storage-key-const';
@@ -94,7 +86,7 @@ export const useUserStore = defineStore({
       let tagNavList = _.cloneDeep(state.tagNav) || [];
       tagNavList.unshift({
         menuName: HOME_PAGE_NAME,
-        menuTitle: '首页',
+        menuTitle: 'Home',
       });
       return tagNavList;
     },

@@ -1,43 +1,37 @@
 /*
- * 菜单类型
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-09-06 19:57:04
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * menu type
  */
 export const MENU_TYPE_ENUM = {
   CATALOG: {
     value: 1,
-    desc: '目录',
+    desc: 'catalog',
   },
   MENU: {
     value: 2,
-    desc: '菜单',
+    desc: 'menu',
   },
   POINTS: {
     value: 3,
-    desc: '按钮',
+    desc: 'button',
   },
 };
 
 /**
- * 权限类型
+ * permission type
  */
 export const MENU_PERMS_TYPE_ENUM = {
   SPRING_SECURITY: {
     value: 1,
-    desc: 'Security模式',
+    desc: 'Security mode',
   },
   URL: {
     value: 2,
-    desc: 'URL模式',
+    desc: 'URL node',
   },
 };
 
 /**
- * 默认的顶级菜单id为0
+ * default top menu's id is 0
  */
 export const MENU_DEFAULT_PARENT_ID = 0;
 

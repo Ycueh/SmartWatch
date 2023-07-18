@@ -1,20 +1,14 @@
 <!--
-  * 第一列菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * top menu
 -->
 <template>
   <div class="top-menu-container">
-    <!-- 顶部logo区域 -->
+    <!-- top area -->
     <div class="logo" @click="onGoHome">
 <!--      <img class="logo-img" :src="logoImg" />-->
       <div class="title" style="color: rgb(35, 105, 255)">EMA Testing</div>
     </div>
-    <!-- 一级菜单展示 -->
+    <!-- top menu display -->
     <a-menu :selectedKeys="selectedKeys" mode="inline" :theme="theme">
       <template v-for="item in props.menuTree" :key="item.menuId">
         <template v-if="item.visibleFlag">
@@ -64,12 +58,12 @@
     return parentMenuList.value.map((e) => e.name);
   });
 
-  // 展开菜单的顶级目录名字适配，只展示两个字为好
+  // top menu name adaptation
   function menuNameAdapter(name){
     return name.substr(0,2);
   }
 
-  //监听路由的变化，进行更新菜单展开项目
+  //monitor route changes
   watch(
     currentRoute,
     () => {
@@ -86,14 +80,14 @@
       immediate: true,
     }
   );
-  // 选中菜单，页面跳转
+  // page jump
   function onSelectMenu(route) {
     selectedMenu.value = route;
     if (route.menuType == MENU_TYPE_ENUM.MENU.value && (_.isEmpty(route.children) || route.children.every((e) => !e.visibleFlag))) {
       router.push({ name: route.menuId.toString() });
     }
   }
-  //点击logo回到首页
+  //go home page
   function onGoHome() {
     router.push({ name: HOME_PAGE_NAME });
   }

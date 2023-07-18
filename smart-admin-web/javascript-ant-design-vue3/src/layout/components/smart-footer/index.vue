@@ -1,16 +1,10 @@
 <!--
-  * 底部：版权、公司等信息
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * footer
 -->
 <template>
   <div class="version" >
-    <a target="_blank" href="https://www.1024lab.net">
-      SmartAdmin V2.x @copyright 河南·洛阳【1024创新实验室】 Since 2012-{{ currentYear }}
+    <a target="_blank" href="#">
+      University of Bristol
     </a>
   </div>
 </template>

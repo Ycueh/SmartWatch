@@ -1,16 +1,10 @@
 <!--
-  * 传统菜单
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-06 20:29:12 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
+  * classic menu
 -->
 <template>
-  <!--左侧菜单分为两部分：1、顶部logo区域，包含 logo和名称;2、下方菜单区域-->
+  <!--side menu: 1.top area, 2. bottom menu area-->
 
-  <!-- 1、顶部logo区域 -->
+  <!-- 1. top area -->
   <div class="logo" @click="onGoHome" :style="sideMenuWidth" v-if="!collapsed">
 <!--    <img class="logo-img" :src="logoImg" />-->
     <div class="title title-light" v-if="sideMenuTheme === 'light'">{{websiteName}}</div>
@@ -20,7 +14,7 @@
     <img class="logo-img" :src="logoImg" />
   </div>
 
-  <!-- 2、下方菜单区域： 这里使用一个递归菜单解决 -->
+  <!-- 2、bottom menu -->
   <RecursionMenu :collapsed="collapsed" ref="menu" />
 </template>
 
@@ -49,7 +43,7 @@
   watch(
     () => props.collapsed,
     (newValue, oldValue) => {
-      // 如果是展开菜单的话，重新获取更新菜单的展开项: openkeys和selectKeys
+      // Retrieve expanded items of update menu
       if (!newValue) {
         menu.value.updateOpenKeysAndSelectKeys();
       }
@@ -92,7 +86,7 @@
       z-index: 9999;
       display: flex;
       cursor: pointer;
-      justify-content:space-around;
+      //justify-content:space-around;
 
       .logo-img {
         width: 40px;
@@ -109,6 +103,7 @@
       }
       .title-dark {
         color:#ffffff;
+        margin-left: 9px;
       }
     }
   }
