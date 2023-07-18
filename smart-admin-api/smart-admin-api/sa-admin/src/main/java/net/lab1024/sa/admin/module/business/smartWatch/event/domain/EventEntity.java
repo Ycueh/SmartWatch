@@ -13,7 +13,6 @@ import java.time.LocalTime;
 
 @Data
 @TableName("event")
-@EntityListeners(eventService.class)
 public class EventEntity {
     @Id
     @TableId(type = IdType.AUTO)
@@ -21,10 +20,10 @@ public class EventEntity {
     private Long id;
 
     @Column(name = "eventdate")
-    LocalDate eventdate;
+    String eventdate;
 
     @Column(name = "eventtime")
-    LocalTime eventtime;
+    String eventtime;
 
     @Column(name = "eventdesc")
     private String eventdesc;
@@ -35,9 +34,4 @@ public class EventEntity {
     @Column(name = "eventtype")
     private String eventtype;
 
-    @PrePersist
-    public void prePersist(Object o) {
-        eventdate = LocalDate.now();
-        eventtime = LocalTime.now();
-    }
 }

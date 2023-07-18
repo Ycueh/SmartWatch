@@ -7,21 +7,24 @@ import javax.persistence.PrePersist;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 public class EventAddForm {
+    public EventAddForm() {
+        InitTimeHere();
+    }
+    /**
+     * Event Time
+     */
+    @ApiModelProperty("eventTime")
+    private String eventtime;
 
-//    /**
-//     * Event Time
-//     */
-//    @ApiModelProperty("eventTime")
-//    private LocalTime eventtime;
-//
-//    /**
-//     * Event date
-//     */
-//    @ApiModelProperty("eventDate")
-//    private LocalDate eventdate;
+    /**
+     * Event date
+     */
+    @ApiModelProperty("eventDate")
+    private String eventdate;
 
     /**
      * event ID
@@ -44,6 +47,13 @@ public class EventAddForm {
     @ApiModelProperty("eventType")
     @NotNull(message = "eventType could not be null")
     private String eventtype;
+
+    private void InitTimeHere() {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        eventdate = date.format(DateTimeFormatter.ISO_DATE);
+        eventtime = time.format(DateTimeFormatter.ISO_TIME);
+    }
 
 
 }
