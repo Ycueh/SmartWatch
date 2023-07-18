@@ -19,7 +19,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "_id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "questionID")
     private String questionId;

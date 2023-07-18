@@ -31,13 +31,6 @@ public class ParamServiceImpl implements ParamService{
         paramMapper.updateParam(parameter);
     }
 
-//    @Override
-//    public ParamPageBean pageQuery(Integer pageNum, Integer pageSize) {
-//        Long count = paramMapper.count();
-//        List<Parameter> parameters = paramMapper.pageQuery((pageNum-1)*pageSize, pageSize);
-//        ParamPageBean PageBean = new ParamPageBean(count, parameters);
-//        return PageBean;
-//    }
     @Transactional
     @Override
     public PageResult<Parameter> queryPage(ParamQueryForm queryForm) {

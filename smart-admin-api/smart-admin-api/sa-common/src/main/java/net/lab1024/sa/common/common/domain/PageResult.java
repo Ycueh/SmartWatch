@@ -6,13 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 分页返回对象
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020/04/28 16:19
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Paging Return Objects
  */
 @Data
 public class PageResult<T> {

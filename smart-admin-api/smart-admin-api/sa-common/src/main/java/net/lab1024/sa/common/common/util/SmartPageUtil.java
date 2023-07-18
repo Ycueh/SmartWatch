@@ -10,26 +10,18 @@ import org.apache.commons.collections4.CollectionUtils;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * 分页工具类
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020-04-23 20:51:40
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
+
 public class SmartPageUtil {
 
     /**
-     * 转换为查询参数
+     * Conversion to query parameters
      *
      * @param baseDTO
      * @return
      */
     public static Page<?> convert2PageQuery(PageParam baseDTO) {
         Page<?> page = new Page<>(baseDTO.getPageNum(), baseDTO.getPageSize());
-        // 设置排序字段
+        // Setting Sort Fields
         List<PageParam.SortItem> sortItemList = baseDTO.getSortItemList();
         if (CollectionUtils.isNotEmpty(sortItemList)) {
             List<OrderItem> orderItemList = sortItemList.stream().map(e -> new OrderItem(e.getColumn(), e.getIsAsc())).collect(Collectors.toList());
@@ -39,11 +31,11 @@ public class SmartPageUtil {
     }
 
     /**
-     * 转换为 PageResultDTO 对象
+     * Convert to PageResultDTO object
      *
      * @param page
-     * @param sourceList  原list
-     * @param targetClazz 目标类
+     * @param sourceList
+     * @param targetClazz
      * @return
      */
     public static <T, E> PageResult<T> convert2PageResult(Page<?> page, List<E> sourceList, Class<T> targetClazz) {
@@ -51,7 +43,7 @@ public class SmartPageUtil {
     }
 
     /**
-     * 转换为 PageResultDTO 对象
+     * Convert to PageResultDTO object
      *
      * @param page
      * @param sourceList list
@@ -69,7 +61,7 @@ public class SmartPageUtil {
     }
 
     /**
-     * 转换分页结果对象
+     * Converting Pagination Result Objects
      *
      * @param pageResult
      * @param targetClazz
@@ -88,7 +80,7 @@ public class SmartPageUtil {
 
     public static <T> PageResult subListPage(Integer pageNum, Integer pageSize, List<T> list) {
         PageResult<T> pageRet = new PageResult<T>();
-        //总条数
+        //total number
         int count = list.size();
         int pages = count % pageSize == 0 ? count / pageSize : (count / pageSize + 1);
         int fromIndex = (pageNum - 1) * pageSize;

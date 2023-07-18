@@ -17,7 +17,7 @@ import java.util.List;
 public interface ParamDAO extends BaseMapper<responseEntity> {
 
     /**
-     * 分页 查询商品
+     * query by pages
      *
      * @param page
      * @param queryForm
