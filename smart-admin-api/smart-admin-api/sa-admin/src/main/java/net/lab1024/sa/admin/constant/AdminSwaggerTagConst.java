@@ -31,6 +31,7 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SW_QUES = "SW_QUESTION";
 
         public static final String SW_PARAM = "SW_PARAMETER";
+        public static final String SW_EVENT = "SW_EVENT";
     }
 
 

@@ -4,8 +4,9 @@ spring:
     url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
 #    password: Qq.3208261999
-    password: zyc992329
+#    password: zyc992329
 #    password: haizhenqi.0349
+    password: 123456
     initial-size: 2
     min-idle: 2
     max-active: 10
@@ -39,7 +40,7 @@ spring:
         max-wait: 30000ms
     port: 6379
     timeout: 10000ms
-    password:
+    password: 123456
 
   # 上传文件大小配置
   servlet:

@@ -35,6 +35,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.1</version>
                 <configuration>
                     <mainClass>net.lab1024.sa.admin.SmartAdminApplication</mainClass>
                 </configuration>

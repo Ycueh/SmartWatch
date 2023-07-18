@@ -1,44 +1,171 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 8_1024db
+ Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 80023
+ Source Server Version : 80033
+ Source Host           : localhost:3306
  Source Schema         : smart_admin_v2
 
  Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 26/10/2022 19:53:12
+ Date: 13/07/2023 23:24:21
 */
-
--- 导出 smart_admin_v2 的数据库结构
-DROP DATABASE IF EXISTS `smart_admin_v2`;
-CREATE DATABASE IF NOT EXISTS `smart_admin_v2` ;
-USE `smart_admin_v2`;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for dataitem
+-- ----------------------------
+DROP TABLE IF EXISTS `dataitem`;
+CREATE TABLE `dataitem`  (
+  `_id` int NOT NULL,
+  `datestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `timestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `dataitem1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `dataitem2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `dataitem3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of dataitem
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for event
+-- ----------------------------
+DROP TABLE IF EXISTS `event`;
+CREATE TABLE `event`  (
+  `_id` int NOT NULL,
+  `eventdate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `eventtime` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `eventdesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of event
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for parameter
+-- ----------------------------
+DROP TABLE IF EXISTS `parameter`;
+CREATE TABLE `parameter`  (
+  `_id` int NOT NULL,
+  `paramname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `paramvalue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of parameter
+-- ----------------------------
+INSERT INTO `parameter` VALUES (1, 'MODE', 'DEMO');
+INSERT INTO `parameter` VALUES (2, 'INTERVAL', '19800000');
+INSERT INTO `parameter` VALUES (3, 'DISPLAY', '300000');
+INSERT INTO `parameter` VALUES (4, 'REPROMPT', '300000');
+INSERT INTO `parameter` VALUES (5, 'NUMBERQ', '3');
+INSERT INTO `parameter` VALUES (6, 'HOUR', '8');
+INSERT INTO `parameter` VALUES (7, 'MINUTE', '00');
+INSERT INTO `parameter` VALUES (8, 'USUAL_DRINK', 'UNSPECIFIED');
+INSERT INTO `parameter` VALUES (9, 'USUAL_SIZE', '');
+INSERT INTO `parameter` VALUES (10, 'USUAL_WHERE', '');
+INSERT INTO `parameter` VALUES (11, 'USUAL_WHO', '');
+INSERT INTO `parameter` VALUES (12, 'NUMBERQINSET', '14');
+
+-- ----------------------------
+-- Table structure for question
+-- ----------------------------
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE `question`  (
+  `_id` int NOT NULL AUTO_INCREMENT,
+  `questionID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer1ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer2ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer3ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer4ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answer4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of question
+-- ----------------------------
+INSERT INTO `question` VALUES (1, '01000', 'How are you feeling overall right now?', '01010', 'Bad', '01020', 'a', '01030', 'Neutral', '01040', 'NULL');
+INSERT INTO `question` VALUES (2, '02000', 'How are you feeling now?', '02010', 'Press', '02020', 'To', '02030', 'Continue...', '02040', 'NULL');
+INSERT INTO `question` VALUES (3, '03000', 'Feeling nervous, anxious, or on edge', '03010', 'Not at all', '03020', 'A little', '03030', 'A lot', '03040', 'Extremely');
+INSERT INTO `question` VALUES (4, '04000', 'Feeling unable to stop or control worrying', '04010', 'Not at all', '04020', 'A little', '04030', 'A lot', '04040', 'Extremely');
+INSERT INTO `question` VALUES (5, '05000', 'Feeling down, depressed, or hopeless', '05010', 'Not at all', '05020', 'A little', '05030', 'A lot', '05040', 'Extremely');
+INSERT INTO `question` VALUES (6, '06000', 'Experiencing little interest or pleasure in doing things', '06010', 'Not at all', '06020', 'A little', '06030', 'A lot', '06040', 'Extremely');
+INSERT INTO `question` VALUES (7, '07000', 'Feeling cheerful, feeling in good spirits', '07010', 'Not at all', '07020', 'A little', '07030', 'A lot', '07040', 'Extremely');
+INSERT INTO `question` VALUES (8, '08000', 'Feeling calm and relaxed', '08010', 'Not at all', '08020', 'A little', '08030', 'A lot', '08040', 'Extremely');
+INSERT INTO `question` VALUES (9, '09000', 'Since we last asked you questions...', '09010', 'Press', '09020', 'To', '09030', 'Continue...', '09040', 'NULL');
+INSERT INTO `question` VALUES (10, '10000', 'How was your sleep since your last response?', '10010', 'Restless', '10020', 'Acceptable', '10030', 'Refreshing', '10040', 'Didn\'t sleep');
+INSERT INTO `question` VALUES (11, '11000', 'Have you had a conversation with anyone?', '11010', 'Yes, in person', '11020', 'Yes, remotely', '11030', 'No', '11040', 'NULL');
+INSERT INTO `question` VALUES (12, '12000', 'Was there a significant event since your last response?', '12010', 'Positive event', '12020', 'Negative event', '12030', 'No event', '12040', 'NULL');
+INSERT INTO `question` VALUES (13, '13000', 'Have you exercised, and if so who with?', '13010', 'With others', '13020', 'Alone', '13030', 'Have not exercised', '13040', 'NULL');
+INSERT INTO `question` VALUES (14, '14000', 'If there is anything else you want to tell us about, please add a tag in the Oura app', '14010', 'Press to', '14020', 'finish', '14030', 'NULL', '14040', 'NULL');
+INSERT INTO `question` VALUES (15, '15000', 'Question Fifteen?', '15010', 'Ans 15.1', '15020', 'Ans 15.2', '15030', 'Ans 15.3', '15040', 'Ans 15.4');
+INSERT INTO `question` VALUES (16, '16000', 'Question Sixteen?', '16010', 'Ans 16.1', '16020', 'Ans 16.2', '16030', 'Ans 16.3', '16040', 'Ans 16.4');
+INSERT INTO `question` VALUES (17, '17000', 'Question Seventeen?', '17010', 'Ans 17.1', '17020', 'Ans 17.2', '17030', 'Ans 17.3', '17040', 'Ans 17.4');
+INSERT INTO `question` VALUES (18, '18000', 'Question Eighteen?', '18010', 'Ans 18.1', '18020', 'Ans 18.2', '18030', 'Ans 18.3', '18040', 'Ans 18.4');
+INSERT INTO `question` VALUES (19, '19000', 'Question Nineteen?', '19010', 'Ans 19.1', '19020', 'Ans 19.2', '19030', 'Ans 19.3', '19040', 'Ans 19.4');
+INSERT INTO `question` VALUES (20, '20000', 'Question Twenty?', '20010', 'Ans 20.1', '20020', 'Ans 20.2', '20030', 'Ans 20.3', '20040', 'Ans 20.4');
+
+-- ----------------------------
+-- Table structure for response
+-- ----------------------------
+DROP TABLE IF EXISTS `response`;
+CREATE TABLE `response`  (
+  `_id` int NOT NULL AUTO_INCREMENT,
+  `date` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `responseTime` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `questionID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `answerID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+  PRIMARY KEY (`_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of response
+-- ----------------------------
+INSERT INTO `response` VALUES (5, '12.5', 'b', '2', '2', '444', 'mary', 'Henry is here');
+INSERT INTO `response` VALUES (7, '12.5', 'd', '4', '34', '32', 'lalise', 'asdads');
+INSERT INTO `response` VALUES (8, '12.5', 'e', 'a5', '1242', '234', '123', 'aa');
+INSERT INTO `response` VALUES (10, '12.5', 'g', '7', '12343434', '12333', '123', 'asdads');
+INSERT INTO `response` VALUES (11, '12.5', 'h', '8', '12343343333', '1233434', '4', '4');
+INSERT INTO `response` VALUES (15, '1', '1', '1', '1', '1', '1', '1');
+INSERT INTO `response` VALUES (16, '3', '3', '3', '2', '2', '3', '3');
 
 -- ----------------------------
 -- Table structure for t_category
 -- ----------------------------
 DROP TABLE IF EXISTS `t_category`;
 CREATE TABLE `t_category`  (
-  `category_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '分类id',
+  `category_id` int NOT NULL AUTO_INCREMENT COMMENT '分类id',
   `category_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '分类名称',
-  `category_type` smallint(0) NOT NULL COMMENT '分类类型',
-  `parent_id` int(0) NOT NULL COMMENT '父级id',
-  `sort` int(0) NOT NULL DEFAULT 0 COMMENT '排序',
-  `disabled_flag` tinyint(0) NOT NULL DEFAULT 0 COMMENT '是否禁用',
-  `deleted_flag` tinyint(0) NOT NULL DEFAULT 0 COMMENT '是否删除',
+  `category_type` smallint NOT NULL COMMENT '分类类型',
+  `parent_id` int NOT NULL COMMENT '父级id',
+  `sort` int NOT NULL DEFAULT 0 COMMENT '排序',
+  `disabled_flag` tinyint NOT NULL DEFAULT 0 COMMENT '是否禁用',
+  `deleted_flag` tinyint NOT NULL DEFAULT 0 COMMENT '是否删除',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`category_id`) USING BTREE,
   INDEX `idx_parent_id`(`parent_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 358 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '分类表，主要用于商品分类' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 357 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '分类表，主要用于商品分类' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_category
@@ -60,18 +187,18 @@ INSERT INTO `t_category` VALUES (357, '小米', 1, 1, 0, 0, 0, NULL, '2022-10-10
 -- ----------------------------
 DROP TABLE IF EXISTS `t_change_log`;
 CREATE TABLE `t_change_log`  (
-  `change_log_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '更新日志id',
+  `change_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '更新日志id',
   `version` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '版本',
-  `type` int(0) NOT NULL COMMENT '更新类型:[1:特大版本功能更新;2:功能更新;3:bug修复]',
+  `type` int NOT NULL COMMENT '更新类型:[1:特大版本功能更新;2:功能更新;3:bug修复]',
   `publish_author` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '发布人',
   `public_date` date NOT NULL COMMENT '发布日期',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '更新内容',
   `link` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '跳转链接',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`change_log_id`) USING BTREE,
   UNIQUE INDEX `version_unique`(`version`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统更新日志' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统更新日志' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_change_log
@@ -100,26 +227,30 @@ CREATE TABLE `t_code_generator_config`  (
   `query_fields` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '查询',
   `table_fields` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '列表',
   `detail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '详情',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`table_name`) USING BTREE,
   UNIQUE INDEX `table_unique`(`table_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成器的每个表的配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '代码生成器的每个表的配置' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_code_generator_config
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_config
 -- ----------------------------
 DROP TABLE IF EXISTS `t_config`;
 CREATE TABLE `t_config`  (
-  `config_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `config_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `config_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '参数名字',
   `config_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '参数key',
   `config_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '上次修改时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '上次修改时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统配置' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '系统配置' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_config
@@ -133,23 +264,23 @@ INSERT INTO `t_config` VALUES (7, '登录失效时间（单位 小时）', 'logi
 -- ----------------------------
 DROP TABLE IF EXISTS `t_data_tracer`;
 CREATE TABLE `t_data_tracer`  (
-  `data_tracer_id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `data_id` bigint(0) NOT NULL COMMENT '各种单据的id',
-  `type` int(0) NOT NULL COMMENT '单据类型',
+  `data_tracer_id` bigint NOT NULL AUTO_INCREMENT,
+  `data_id` bigint NOT NULL COMMENT '各种单据的id',
+  `type` int NOT NULL COMMENT '单据类型',
   `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '操作内容',
   `diff_old` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '差异：旧的数据',
   `diff_new` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '差异：新的数据',
   `extra_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '额外信息',
-  `user_id` bigint(0) NOT NULL COMMENT '用户id',
-  `user_type` int(0) NOT NULL COMMENT '用户类型：1 后管用户 ',
+  `user_id` bigint NOT NULL COMMENT '用户id',
+  `user_type` int NOT NULL COMMENT '用户类型：1 后管用户 ',
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名称',
   `ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `user_agent` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`data_tracer_id`) USING BTREE,
   INDEX `order_id_order_type`(`data_id`, `type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 45 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_data_tracer
@@ -173,22 +304,48 @@ INSERT INTO `t_data_tracer` VALUES (16, 2, 3, '新增银行:<br/>银行信息ID:
 INSERT INTO `t_data_tracer` VALUES (17, 2, 3, '新增发票：<br/>禁用状态:false<br/>开户行:\"中国银行\"<br/>备注:\"\"<br/>银行账户:\"1024lab\"<br/>开票抬头:\"1024创新实验室\"<br/>纳税人识别号:\"1024lab\"', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', '2022-10-22 17:59:35', '2022-10-22 17:59:35');
 INSERT INTO `t_data_tracer` VALUES (18, 2, 3, '修改企业信息', '统一社会信用代码:\"1024lab\"<br/>详细地址:\"1024大楼\"<br/>区县名称:\"洛龙区\"<br/>禁用状态:false<br/>类型:有限企业<br/>城市名称:\"洛阳市\"<br/>删除状态:false<br/>联系人:\"卓大\"<br/>省份名称:\"河南省\"<br/>企业logo:\"public/common/fb827d63dda74a60ab8b4f70cc7c7d0a_20221022145641_jpg\"<br/>联系人电话:\"18637925892\"<br/>企业名称:\"1024创新实验室\"<br/>邮箱:\"lab1024@163.com\"', '统一社会信用代码:\"1024lab\"<br/>详细地址:\"1024大楼\"<br/>区县名称:\"洛龙区\"<br/>禁用状态:false<br/>类型:有限企业<br/>城市名称:\"洛阳市\"<br/>删除状态:false<br/>联系人:\"卓大\"<br/>省份名称:\"河南省\"<br/>企业logo:\"public/common/fb827d63dda74a60ab8b4f70cc7c7d0a_20221022145641_jpg\"<br/>联系人电话:\"18637925892\"<br/>企业名称:\"1024创新实验室1\"<br/>邮箱:\"lab1024@163.com\"', NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', '2022-10-22 17:59:49', '2022-10-22 17:59:49');
 INSERT INTO `t_data_tracer` VALUES (19, 2, 3, '修改企业信息', '统一社会信用代码:\"1024lab\"<br/>详细地址:\"1024大楼\"<br/>区县名称:\"洛龙区\"<br/>禁用状态:false<br/>类型:有限企业<br/>城市名称:\"洛阳市\"<br/>删除状态:false<br/>联系人:\"卓大\"<br/>省份名称:\"河南省\"<br/>企业logo:\"public/common/fb827d63dda74a60ab8b4f70cc7c7d0a_20221022145641_jpg\"<br/>联系人电话:\"18637925892\"<br/>企业名称:\"1024创新实验室1\"<br/>邮箱:\"lab1024@163.com\"', '统一社会信用代码:\"1024lab\"<br/>详细地址:\"1024大楼\"<br/>区县名称:\"洛龙区\"<br/>禁用状态:false<br/>类型:有限企业<br/>城市名称:\"洛阳市\"<br/>删除状态:false<br/>联系人:\"卓大\"<br/>省份名称:\"河南省\"<br/>企业logo:\"public/common/fb827d63dda74a60ab8b4f70cc7c7d0a_20221022145641_jpg\"<br/>联系人电话:\"18637925892\"<br/>企业名称:\"1024创新实验室\"<br/>邮箱:\"lab1024@163.com\"', NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', '2022-10-22 17:59:52', '2022-10-22 17:59:52');
+INSERT INTO `t_data_tracer` VALUES (20, 9, 1, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:39:00', '2023-06-25 16:39:00');
+INSERT INTO `t_data_tracer` VALUES (21, 2, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:42:41', '2023-06-25 16:42:41');
+INSERT INTO `t_data_tracer` VALUES (22, 3, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:44:06', '2023-06-25 16:44:06');
+INSERT INTO `t_data_tracer` VALUES (23, 4, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:55:52', '2023-06-25 16:55:52');
+INSERT INTO `t_data_tracer` VALUES (24, 5, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:57:15', '2023-06-25 16:57:15');
+INSERT INTO `t_data_tracer` VALUES (25, 6, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 16:58:34', '2023-06-25 16:58:34');
+INSERT INTO `t_data_tracer` VALUES (26, 7, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 17:03:00', '2023-06-25 17:03:00');
+INSERT INTO `t_data_tracer` VALUES (27, 8, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 18:18:44', '2023-06-25 18:18:44');
+INSERT INTO `t_data_tracer` VALUES (28, 9, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 18:19:44', '2023-06-25 18:19:44');
+INSERT INTO `t_data_tracer` VALUES (29, 10, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 18:22:38', '2023-06-25 18:22:38');
+INSERT INTO `t_data_tracer` VALUES (30, 1, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:12:54', '2023-06-25 19:12:54');
+INSERT INTO `t_data_tracer` VALUES (31, 3, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:13:10', '2023-06-25 19:13:10');
+INSERT INTO `t_data_tracer` VALUES (32, 8, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:13:35', '2023-06-25 19:13:35');
+INSERT INTO `t_data_tracer` VALUES (33, 8, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:15:09', '2023-06-25 19:15:09');
+INSERT INTO `t_data_tracer` VALUES (34, 11, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:16:49', '2023-06-25 19:16:49');
+INSERT INTO `t_data_tracer` VALUES (35, 1, 1, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:23:10', '2023-06-25 19:23:10');
+INSERT INTO `t_data_tracer` VALUES (36, 8, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:30:57', '2023-06-25 19:30:57');
+INSERT INTO `t_data_tracer` VALUES (37, 12, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'PostmanRuntime/7.32.3', '2023-06-25 19:32:45', '2023-06-25 19:32:45');
+INSERT INTO `t_data_tracer` VALUES (38, 13, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-01 13:45:41', '2023-07-01 13:45:41');
+INSERT INTO `t_data_tracer` VALUES (39, 14, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', '2023-07-12 16:32:54', '2023-07-12 16:32:54');
+INSERT INTO `t_data_tracer` VALUES (40, 5, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 17:39:28', '2023-07-12 17:39:28');
+INSERT INTO `t_data_tracer` VALUES (41, 8, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 17:41:51', '2023-07-12 17:41:51');
+INSERT INTO `t_data_tracer` VALUES (42, 11, 4, '', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 17:42:45', '2023-07-12 17:42:45');
+INSERT INTO `t_data_tracer` VALUES (43, 15, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 18:06:01', '2023-07-12 18:06:01');
+INSERT INTO `t_data_tracer` VALUES (44, 16, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 18:06:43', '2023-07-12 18:06:43');
+INSERT INTO `t_data_tracer` VALUES (45, 17, 4, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-12 21:17:59', '2023-07-12 21:17:59');
 
 -- ----------------------------
 -- Table structure for t_department
 -- ----------------------------
 DROP TABLE IF EXISTS `t_department`;
 CREATE TABLE `t_department`  (
-  `department_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '部门主键id',
+  `department_id` bigint NOT NULL AUTO_INCREMENT COMMENT '部门主键id',
   `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '部门名称',
-  `manager_id` bigint(0) NULL DEFAULT NULL COMMENT '部门负责人id',
-  `parent_id` bigint(0) NOT NULL DEFAULT 0 COMMENT '部门的父级id',
-  `sort` int(0) NOT NULL COMMENT '部门排序',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `manager_id` bigint NULL DEFAULT NULL COMMENT '部门负责人id',
+  `parent_id` bigint NOT NULL DEFAULT 0 COMMENT '部门的父级id',
+  `sort` int NOT NULL COMMENT '部门排序',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`department_id`) USING BTREE,
   INDEX `parent_id`(`parent_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '部门' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '部门' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_department
@@ -203,15 +360,15 @@ INSERT INTO `t_department` VALUES (4, '销售部', 64, 1, 9, '2022-10-21 10:25:4
 -- ----------------------------
 DROP TABLE IF EXISTS `t_dict_key`;
 CREATE TABLE `t_dict_key`  (
-  `dict_key_id` bigint(0) NOT NULL AUTO_INCREMENT,
+  `dict_key_id` bigint NOT NULL AUTO_INCREMENT,
   `key_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '编码',
   `key_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `deleted_flag` tinyint(0) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_flag` tinyint NOT NULL DEFAULT 0 COMMENT '删除状态',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`dict_key_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字段key' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字段key' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_dict_key
@@ -223,17 +380,17 @@ INSERT INTO `t_dict_key` VALUES (1, 'GODOS_PLACE', '商品产地', '商品产地
 -- ----------------------------
 DROP TABLE IF EXISTS `t_dict_value`;
 CREATE TABLE `t_dict_value`  (
-  `dict_value_id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `dict_key_id` bigint(0) NOT NULL,
+  `dict_value_id` bigint NOT NULL AUTO_INCREMENT,
+  `dict_key_id` bigint NOT NULL,
   `value_code` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '编码',
   `value_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
   `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `sort` int(0) NOT NULL DEFAULT 0 COMMENT '排序',
-  `deleted_flag` tinyint(0) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sort` int NOT NULL DEFAULT 0 COMMENT '排序',
+  `deleted_flag` tinyint NOT NULL DEFAULT 0 COMMENT '删除状态',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`dict_value_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典的值' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典的值' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_dict_value
@@ -247,21 +404,21 @@ INSERT INTO `t_dict_value` VALUES (3, 1, 'BEI_JING', '北京', '', 3, 0, '2022-1
 -- ----------------------------
 DROP TABLE IF EXISTS `t_employee`;
 CREATE TABLE `t_employee`  (
-  `employee_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `login_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登录帐号',
-  `login_pwd` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登录密码',
-  `actual_name` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '员工名称',
+  `employee_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `login_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '登录帐号',
+  `login_pwd` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '登录密码',
+  `actual_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '员工名称',
   `gender` tinyint(1) NOT NULL DEFAULT 0 COMMENT '性别',
-  `phone` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '手机号码',
-  `department_id` int(0) NOT NULL COMMENT '部门id',
-  `disabled_flag` tinyint unsigned NOT NULL COMMENT '是否被禁用 0否1是',
-  `deleted_flag` tinyint unsigned NOT NULL COMMENT '是否删除0否 1是',
-  `administrator_flag` tinyint(0) NOT NULL DEFAULT 0 COMMENT '是否为超级管理员: 0 不是，1是',
+  `phone` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '手机号码',
+  `department_id` int NOT NULL COMMENT '部门id',
+  `disabled_flag` tinyint UNSIGNED NOT NULL COMMENT '是否被禁用 0否1是',
+  `deleted_flag` tinyint UNSIGNED NOT NULL COMMENT '是否删除0否 1是',
+  `administrator_flag` tinyint NOT NULL DEFAULT 0 COMMENT '是否为超级管理员: 0 不是，1是',
   `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`employee_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_employee
@@ -284,16 +441,16 @@ INSERT INTO `t_employee` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c
 -- ----------------------------
 DROP TABLE IF EXISTS `t_feedback`;
 CREATE TABLE `t_feedback`  (
-  `feedback_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `feedback_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `feedback_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '反馈内容',
   `feedback_attachment` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '反馈图片',
-  `user_id` bigint(0) NOT NULL COMMENT '创建人id',
-  `user_type` int(0) NOT NULL COMMENT '创建人用户类型',
+  `user_id` bigint NOT NULL COMMENT '创建人id',
+  `user_type` int NOT NULL COMMENT '创建人用户类型',
   `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '创建人姓名',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`feedback_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '意见反馈' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '意见反馈' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_feedback
@@ -307,22 +464,22 @@ INSERT INTO `t_feedback` VALUES (3, 'app版本什么时候能推出？', '', 1, 
 -- ----------------------------
 DROP TABLE IF EXISTS `t_file`;
 CREATE TABLE `t_file`  (
-  `file_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-  `folder_type` tinyint unsigned NOT NULL COMMENT '文件夹类型',
+  `file_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `folder_type` tinyint UNSIGNED NOT NULL COMMENT '文件夹类型',
   `file_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文件名称',
-  `file_size` int(0) NULL DEFAULT NULL COMMENT '文件大小',
+  `file_size` int NULL DEFAULT NULL COMMENT '文件大小',
   `file_key` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件key，用于文件下载',
   `file_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文件类型',
-  `creator_id` int(0) NULL DEFAULT NULL COMMENT '创建人，即上传人',
-  `creator_user_type` int(0) NULL DEFAULT NULL COMMENT '创建人用户类型',
+  `creator_id` int NULL DEFAULT NULL COMMENT '创建人，即上传人',
+  `creator_user_type` int NULL DEFAULT NULL COMMENT '创建人用户类型',
   `creator_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '创建人姓名',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上次更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上次更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`file_id`) USING BTREE,
   UNIQUE INDEX `uk_file_key`(`file_key`) USING BTREE,
   INDEX `module_id_module_type`(`folder_type`) USING BTREE,
   INDEX `module_type`(`folder_type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文件' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_file
@@ -341,40 +498,41 @@ INSERT INTO `t_file` VALUES (21, 1, '1024lab-gzh.jpg', 27898, 'public/common/852
 -- ----------------------------
 DROP TABLE IF EXISTS `t_goods`;
 CREATE TABLE `t_goods`  (
-  `goods_id` int(0) NOT NULL AUTO_INCREMENT,
-  `goods_status` int(0) NULL DEFAULT NULL COMMENT '商品状态:[1:预约中,2:售卖中,3:售罄]',
-  `category_id` int(0) NOT NULL COMMENT '商品类目',
+  `goods_id` int NOT NULL AUTO_INCREMENT,
+  `goods_status` int NULL DEFAULT NULL COMMENT '商品状态:[1:预约中,2:售卖中,3:售罄]',
+  `category_id` int NOT NULL COMMENT '商品类目',
   `goods_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品名称',
   `place` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产地',
   `price` decimal(10, 2) UNSIGNED NOT NULL COMMENT '价格',
-  `shelves_flag` tinyint unsigned NOT NULL COMMENT '上架状态',
-  `deleted_flag` tinyint unsigned NOT NULL COMMENT '删除状态',
+  `shelves_flag` tinyint UNSIGNED NOT NULL COMMENT '上架状态',
+  `deleted_flag` tinyint UNSIGNED NOT NULL COMMENT '删除状态',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`goods_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商品' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_goods
 -- ----------------------------
-INSERT INTO `t_goods` VALUES (1, 1, 353, 'Mote60', 'BEI_JING', 9999.00, 1, 0, NULL, '2022-10-21 19:57:49', '2021-09-01 22:25:30');
+INSERT INTO `t_goods` VALUES (1, 0, 353, 'string', 'string', 0.00, 0, 0, 'string', '2023-06-25 19:23:07', '2021-09-01 22:25:30');
 INSERT INTO `t_goods` VALUES (7, 1, 352, 'iphone15 pro', 'LUO_YANG', 50000.00, 1, 0, '备注', '2022-10-21 19:58:07', '2022-09-15 14:17:11');
 INSERT INTO `t_goods` VALUES (8, 1, 352, 'iphone14', 'ZHENG_ZHOU', 150.00, 0, 0, '', '2022-10-21 19:12:49', '2022-10-21 19:00:11');
+INSERT INTO `t_goods` VALUES (9, 0, 0, 'string', 'string', 0.00, 0, 0, 'string', '2023-06-25 16:38:49', '2023-06-25 16:38:49');
 
 -- ----------------------------
 -- Table structure for t_heart_beat_record
 -- ----------------------------
 DROP TABLE IF EXISTS `t_heart_beat_record`;
 CREATE TABLE `t_heart_beat_record`  (
-  `heart_beat_record_id` int(0) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+  `heart_beat_record_id` int NOT NULL AUTO_INCREMENT COMMENT '自增id',
   `project_path` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '项目名称',
   `server_ip` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '服务器ip',
-  `process_no` int(0) NOT NULL COMMENT '进程号',
-  `process_start_time` datetime(0) NOT NULL COMMENT '进程开启时间',
-  `heart_beat_time` datetime(0) NOT NULL COMMENT '心跳时间',
+  `process_no` int NOT NULL COMMENT '进程号',
+  `process_start_time` datetime NOT NULL COMMENT '进程开启时间',
+  `heart_beat_time` datetime NOT NULL COMMENT '心跳时间',
   PRIMARY KEY (`heart_beat_record_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 319 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '公用服务 - 服务心跳' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 429 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '公用服务 - 服务心跳' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_heart_beat_record
@@ -389,92 +547,220 @@ INSERT INTO `t_heart_beat_record` VALUES (315, 'E:\\code_work_space\\idea\\smart
 INSERT INTO `t_heart_beat_record` VALUES (316, 'E:\\code_work_space\\idea\\smart-admin-developing\\smart-admin-developing', '127.0.0.1;192.168.7.31', 31948, '2022-10-24 20:43:32', '2022-10-24 21:05:52');
 INSERT INTO `t_heart_beat_record` VALUES (317, 'E:\\code_work_space\\idea\\smart-admin-developing\\smart-admin-api-developing', '127.0.0.1;192.168.0.101', 62692, '2022-10-26 17:41:31', '2022-10-26 18:33:48');
 INSERT INTO `t_heart_beat_record` VALUES (318, 'E:\\code_work_space\\idea\\smart-admin-developing\\smart-admin-api-developing', '127.0.0.1;192.168.0.101', 64756, '2022-10-26 19:51:40', '2022-10-26 19:52:49');
+INSERT INTO `t_heart_beat_record` VALUES (319, 'D:\\Google Download\\新建文件夹\\smart-admin\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.31.80.1', 24500, '2023-06-20 20:00:10', '2023-06-20 20:01:16');
+INSERT INTO `t_heart_beat_record` VALUES (320, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1', 13176, '2023-06-21 18:09:40', '2023-06-21 20:00:47');
+INSERT INTO `t_heart_beat_record` VALUES (321, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 820, '2023-06-24 13:01:57', '2023-06-24 13:08:04');
+INSERT INTO `t_heart_beat_record` VALUES (322, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 20268, '2023-06-24 13:12:01', '2023-06-24 13:13:08');
+INSERT INTO `t_heart_beat_record` VALUES (323, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 2856, '2023-06-24 13:14:03', '2023-06-24 15:50:10');
+INSERT INTO `t_heart_beat_record` VALUES (324, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 14500, '2023-06-24 15:54:05', '2023-06-24 16:10:11');
+INSERT INTO `t_heart_beat_record` VALUES (325, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 11872, '2023-06-24 16:15:20', '2023-06-24 16:16:27');
+INSERT INTO `t_heart_beat_record` VALUES (326, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 5820, '2023-06-24 16:17:30', '2023-06-24 16:23:37');
+INSERT INTO `t_heart_beat_record` VALUES (327, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.80.1', 26284, '2023-06-24 16:24:39', '2023-06-24 16:30:45');
+INSERT INTO `t_heart_beat_record` VALUES (328, 'D:\\Google Download\\新建文件夹\\smart-admin\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1', 21688, '2023-06-24 16:38:58', '2023-06-24 16:45:04');
+INSERT INTO `t_heart_beat_record` VALUES (329, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 17440, '2023-06-24 16:48:24', '2023-06-24 16:54:31');
+INSERT INTO `t_heart_beat_record` VALUES (330, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 24776, '2023-06-24 16:54:36', '2023-06-24 16:55:42');
+INSERT INTO `t_heart_beat_record` VALUES (331, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 23096, '2023-06-24 17:03:23', '2023-06-24 17:04:29');
+INSERT INTO `t_heart_beat_record` VALUES (332, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 2716, '2023-06-24 17:06:30', '2023-06-24 17:07:36');
+INSERT INTO `t_heart_beat_record` VALUES (333, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 24732, '2023-06-24 17:08:16', '2023-06-24 18:34:23');
+INSERT INTO `t_heart_beat_record` VALUES (334, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 26824, '2023-06-24 18:39:13', '2023-06-24 18:40:23');
+INSERT INTO `t_heart_beat_record` VALUES (335, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 23940, '2023-06-24 18:43:51', '2023-06-24 18:44:57');
+INSERT INTO `t_heart_beat_record` VALUES (336, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 27456, '2023-06-24 18:56:34', '2023-06-24 19:37:41');
+INSERT INTO `t_heart_beat_record` VALUES (337, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 20116, '2023-06-25 15:57:39', '2023-06-25 16:18:46');
+INSERT INTO `t_heart_beat_record` VALUES (338, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 11060, '2023-06-25 16:19:18', '2023-06-25 16:20:24');
+INSERT INTO `t_heart_beat_record` VALUES (339, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 21272, '2023-06-25 16:21:02', '2023-06-25 16:22:09');
+INSERT INTO `t_heart_beat_record` VALUES (340, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 3932, '2023-06-25 16:23:16', '2023-06-25 16:24:23');
+INSERT INTO `t_heart_beat_record` VALUES (341, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 24840, '2023-06-25 16:25:08', '2023-06-25 16:26:15');
+INSERT INTO `t_heart_beat_record` VALUES (342, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 22224, '2023-06-25 16:27:42', '2023-06-25 16:28:49');
+INSERT INTO `t_heart_beat_record` VALUES (343, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 16256, '2023-06-25 16:31:31', '2023-06-25 16:32:38');
+INSERT INTO `t_heart_beat_record` VALUES (344, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 11580, '2023-06-25 16:33:36', '2023-06-25 16:34:43');
+INSERT INTO `t_heart_beat_record` VALUES (345, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 15832, '2023-06-25 16:36:00', '2023-06-25 16:37:07');
+INSERT INTO `t_heart_beat_record` VALUES (346, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 29012, '2023-06-25 16:40:03', '2023-06-25 16:41:10');
+INSERT INTO `t_heart_beat_record` VALUES (347, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 12224, '2023-06-25 16:42:13', '2023-06-25 16:43:20');
+INSERT INTO `t_heart_beat_record` VALUES (348, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 11708, '2023-06-25 16:46:22', '2023-06-25 16:47:29');
+INSERT INTO `t_heart_beat_record` VALUES (349, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 24680, '2023-06-25 16:51:09', '2023-06-25 16:52:16');
+INSERT INTO `t_heart_beat_record` VALUES (350, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 29452, '2023-06-25 16:54:25', '2023-06-25 16:55:32');
+INSERT INTO `t_heart_beat_record` VALUES (351, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 16884, '2023-06-25 16:59:49', '2023-06-25 17:02:20');
+INSERT INTO `t_heart_beat_record` VALUES (352, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 1788, '2023-06-25 17:03:28', '2023-06-25 17:19:35');
+INSERT INTO `t_heart_beat_record` VALUES (353, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 23964, '2023-06-25 17:24:50', '2023-06-25 17:35:57');
+INSERT INTO `t_heart_beat_record` VALUES (354, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 16020, '2023-06-25 17:36:21', '2023-06-25 17:37:28');
+INSERT INTO `t_heart_beat_record` VALUES (355, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 27548, '2023-06-25 17:41:01', '2023-06-25 18:07:08');
+INSERT INTO `t_heart_beat_record` VALUES (356, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 14568, '2023-06-25 18:10:21', '2023-06-25 18:11:27');
+INSERT INTO `t_heart_beat_record` VALUES (357, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 3524, '2023-06-25 18:21:01', '2023-06-25 18:22:07');
+INSERT INTO `t_heart_beat_record` VALUES (358, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 26904, '2023-06-25 18:22:20', '2023-06-25 19:13:26');
+INSERT INTO `t_heart_beat_record` VALUES (359, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19912, '2023-06-25 19:13:55', '2023-06-25 19:15:09');
+INSERT INTO `t_heart_beat_record` VALUES (360, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19204, '2023-06-25 19:19:52', '2023-06-25 19:20:59');
+INSERT INTO `t_heart_beat_record` VALUES (361, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 13736, '2023-06-25 19:22:03', '2023-06-25 19:23:10');
+INSERT INTO `t_heart_beat_record` VALUES (362, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 16616, '2023-06-25 19:26:34', '2023-06-25 19:27:41');
+INSERT INTO `t_heart_beat_record` VALUES (363, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19840, '2023-06-25 19:28:10', '2023-06-25 19:29:17');
+INSERT INTO `t_heart_beat_record` VALUES (364, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19836, '2023-06-25 19:30:09', '2023-06-25 19:31:15');
+INSERT INTO `t_heart_beat_record` VALUES (365, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 12368, '2023-06-25 19:33:41', '2023-06-25 19:39:47');
+INSERT INTO `t_heart_beat_record` VALUES (366, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 20632, '2023-06-25 19:41:11', '2023-06-25 19:42:18');
+INSERT INTO `t_heart_beat_record` VALUES (367, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 14952, '2023-06-25 19:45:09', '2023-06-25 19:46:16');
+INSERT INTO `t_heart_beat_record` VALUES (368, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19832, '2023-06-25 19:48:09', '2023-06-25 19:54:18');
+INSERT INTO `t_heart_beat_record` VALUES (369, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 13660, '2023-06-25 19:56:09', '2023-06-25 19:57:15');
+INSERT INTO `t_heart_beat_record` VALUES (370, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 8584, '2023-06-25 19:59:13', '2023-06-25 20:00:19');
+INSERT INTO `t_heart_beat_record` VALUES (371, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 28708, '2023-06-25 20:03:51', '2023-06-25 20:04:57');
+INSERT INTO `t_heart_beat_record` VALUES (372, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 14972, '2023-06-25 20:06:11', '2023-06-25 20:17:17');
+INSERT INTO `t_heart_beat_record` VALUES (373, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 10912, '2023-06-25 20:19:37', '2023-06-25 20:25:43');
+INSERT INTO `t_heart_beat_record` VALUES (374, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 15540, '2023-06-25 20:30:22', '2023-06-25 20:41:28');
+INSERT INTO `t_heart_beat_record` VALUES (375, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 27568, '2023-06-25 20:58:48', '2023-06-25 21:19:54');
+INSERT INTO `t_heart_beat_record` VALUES (376, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 4368, '2023-06-25 21:21:02', '2023-06-25 21:22:08');
+INSERT INTO `t_heart_beat_record` VALUES (377, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 24724, '2023-06-25 21:22:58', '2023-06-25 21:24:04');
+INSERT INTO `t_heart_beat_record` VALUES (378, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 12648, '2023-06-25 21:26:09', '2023-06-25 21:27:15');
+INSERT INTO `t_heart_beat_record` VALUES (379, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 27816, '2023-06-25 21:30:31', '2023-06-25 21:31:48');
+INSERT INTO `t_heart_beat_record` VALUES (380, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19332, '2023-06-25 21:33:15', '2023-06-25 21:36:25');
+INSERT INTO `t_heart_beat_record` VALUES (381, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 5924, '2023-06-25 21:41:30', '2023-06-25 21:42:37');
+INSERT INTO `t_heart_beat_record` VALUES (382, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 18680, '2023-06-25 21:43:19', '2023-06-25 21:44:25');
+INSERT INTO `t_heart_beat_record` VALUES (383, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 19572, '2023-06-25 21:45:15', '2023-06-25 21:46:21');
+INSERT INTO `t_heart_beat_record` VALUES (384, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 21640, '2023-06-25 21:47:40', '2023-06-25 22:03:47');
+INSERT INTO `t_heart_beat_record` VALUES (385, 'D:\\Android Wear\\Smart-watch-back-terminal\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.20.144.1', 23916, '2023-06-25 22:06:19', '2023-06-25 22:52:26');
+INSERT INTO `t_heart_beat_record` VALUES (386, 'D:\\Android Wear\\smart\\SmartWatch\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 11036, '2023-06-30 17:11:00', '2023-06-30 17:32:07');
+INSERT INTO `t_heart_beat_record` VALUES (387, 'D:\\Android Wear\\smart\\SmartWatch\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 18372, '2023-06-30 17:33:40', '2023-06-30 17:49:46');
+INSERT INTO `t_heart_beat_record` VALUES (388, 'D:\\Android Wear\\smart\\SmartWatch\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 5540, '2023-07-01 12:37:57', '2023-07-01 13:24:05');
+INSERT INTO `t_heart_beat_record` VALUES (389, 'D:\\Android Wear\\smart\\SmartWatch\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 12656, '2023-07-01 13:24:18', '2023-07-01 13:45:24');
+INSERT INTO `t_heart_beat_record` VALUES (390, 'D:\\Android Wear\\SmartWatch\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 15284, '2023-07-06 17:37:31', '2023-07-06 17:48:37');
+INSERT INTO `t_heart_beat_record` VALUES (391, 'C:\\Users\\Z\\Desktop\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 13052, '2023-07-06 17:49:56', '2023-07-06 17:51:04');
+INSERT INTO `t_heart_beat_record` VALUES (392, 'C:\\Users\\Z\\Desktop\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 28112, '2023-07-06 17:59:07', '2023-07-06 18:40:16');
+INSERT INTO `t_heart_beat_record` VALUES (393, 'C:\\Users\\Z\\Desktop\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 19296, '2023-07-06 18:46:09', '2023-07-06 18:47:16');
+INSERT INTO `t_heart_beat_record` VALUES (394, 'C:\\Users\\Z\\Desktop\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 13140, '2023-07-06 19:07:10', '2023-07-06 19:23:17');
+INSERT INTO `t_heart_beat_record` VALUES (395, 'D:\\TecentFiles\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 9788, '2023-07-06 19:28:53', '2023-07-06 20:35:00');
+INSERT INTO `t_heart_beat_record` VALUES (396, 'D:\\TecentFiles\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 2564, '2023-07-07 14:21:44', '2023-07-07 14:22:52');
+INSERT INTO `t_heart_beat_record` VALUES (397, 'D:\\TecentFiles\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.18.208.1', 20468, '2023-07-07 14:23:45', '2023-07-07 14:24:51');
+INSERT INTO `t_heart_beat_record` VALUES (398, 'D:\\Android Wear\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 25920, '2023-07-09 20:30:47', '2023-07-09 20:31:54');
+INSERT INTO `t_heart_beat_record` VALUES (399, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 11176, '2023-07-09 20:38:03', '2023-07-09 20:39:10');
+INSERT INTO `t_heart_beat_record` VALUES (400, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 26660, '2023-07-09 20:41:44', '2023-07-09 20:42:50');
+INSERT INTO `t_heart_beat_record` VALUES (401, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 19572, '2023-07-12 16:11:49', '2023-07-12 16:27:56');
+INSERT INTO `t_heart_beat_record` VALUES (402, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 15848, '2023-07-12 16:32:25', '2023-07-12 16:38:31');
+INSERT INTO `t_heart_beat_record` VALUES (403, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 12012, '2023-07-12 17:34:00', '2023-07-12 17:35:06');
+INSERT INTO `t_heart_beat_record` VALUES (404, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 22340, '2023-07-12 17:39:13', '2023-07-12 17:40:20');
+INSERT INTO `t_heart_beat_record` VALUES (405, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 25908, '2023-07-12 17:44:34', '2023-07-12 17:45:40');
+INSERT INTO `t_heart_beat_record` VALUES (406, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 14604, '2023-07-12 17:45:51', '2023-07-12 17:46:57');
+INSERT INTO `t_heart_beat_record` VALUES (407, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 21564, '2023-07-12 17:47:16', '2023-07-12 17:48:22');
+INSERT INTO `t_heart_beat_record` VALUES (408, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 14132, '2023-07-12 17:50:12', '2023-07-12 17:51:18');
+INSERT INTO `t_heart_beat_record` VALUES (409, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 11252, '2023-07-12 17:52:09', '2023-07-12 17:53:17');
+INSERT INTO `t_heart_beat_record` VALUES (410, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 16748, '2023-07-12 17:57:54', '2023-07-12 18:09:00');
+INSERT INTO `t_heart_beat_record` VALUES (411, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 18636, '2023-07-12 18:09:21', '2023-07-12 18:10:27');
+INSERT INTO `t_heart_beat_record` VALUES (412, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 15876, '2023-07-12 18:12:18', '2023-07-12 18:23:25');
+INSERT INTO `t_heart_beat_record` VALUES (413, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 25652, '2023-07-12 18:24:50', '2023-07-12 18:30:56');
+INSERT INTO `t_heart_beat_record` VALUES (414, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 18616, '2023-07-12 18:35:14', '2023-07-12 18:36:20');
+INSERT INTO `t_heart_beat_record` VALUES (415, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 16864, '2023-07-12 18:36:51', '2023-07-12 18:37:57');
+INSERT INTO `t_heart_beat_record` VALUES (416, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 8104, '2023-07-12 18:38:05', '2023-07-12 18:39:11');
+INSERT INTO `t_heart_beat_record` VALUES (417, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 29544, '2023-07-12 18:41:25', '2023-07-12 18:42:31');
+INSERT INTO `t_heart_beat_record` VALUES (418, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 24200, '2023-07-12 18:46:34', '2023-07-12 18:47:40');
+INSERT INTO `t_heart_beat_record` VALUES (419, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 28936, '2023-07-12 18:48:43', '2023-07-12 18:49:49');
+INSERT INTO `t_heart_beat_record` VALUES (420, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 19552, '2023-07-12 18:50:05', '2023-07-12 18:51:11');
+INSERT INTO `t_heart_beat_record` VALUES (421, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 9984, '2023-07-12 18:55:30', '2023-07-12 21:01:36');
+INSERT INTO `t_heart_beat_record` VALUES (422, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 10148, '2023-07-12 21:04:33', '2023-07-12 21:05:39');
+INSERT INTO `t_heart_beat_record` VALUES (423, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 13364, '2023-07-12 21:06:02', '2023-07-12 21:17:08');
+INSERT INTO `t_heart_beat_record` VALUES (424, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 28304, '2023-07-12 21:22:09', '2023-07-12 21:38:16');
+INSERT INTO `t_heart_beat_record` VALUES (425, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.25.144.1', 26644, '2023-07-12 21:41:39', '2023-07-12 21:42:46');
+INSERT INTO `t_heart_beat_record` VALUES (426, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.16.1', 2268, '2023-07-13 15:39:55', '2023-07-13 16:11:02');
+INSERT INTO `t_heart_beat_record` VALUES (427, 'D:\\Android Wear\\watch\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.22.16.1', 12444, '2023-07-13 16:11:43', '2023-07-13 16:17:50');
+INSERT INTO `t_heart_beat_record` VALUES (428, 'D:\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.26.0.1', 13824, '2023-07-13 16:25:51', '2023-07-13 16:42:04');
+INSERT INTO `t_heart_beat_record` VALUES (429, 'D:\\Android Wear\\新建文件夹\\SmartWatch\\smart-admin-api\\smart-admin-api', '127.0.0.1;10.52.136.67;192.168.56.1;172.26.0.1', 9548, '2023-07-13 18:13:43', '2023-07-13 23:19:50');
 
 -- ----------------------------
 -- Table structure for t_help_doc
 -- ----------------------------
 DROP TABLE IF EXISTS `t_help_doc`;
 CREATE TABLE `t_help_doc`  (
-  `help_doc_id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `help_doc_catalog_id` bigint(0) NOT NULL COMMENT '类型1公告 2动态',
+  `help_doc_id` bigint NOT NULL AUTO_INCREMENT,
+  `help_doc_catalog_id` bigint NOT NULL COMMENT '类型1公告 2动态',
   `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题',
   `content_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文本内容',
   `content_html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'html内容',
   `attachment` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '附件',
-  `sort` int(0) NOT NULL DEFAULT 0 COMMENT '排序',
-  `page_view_count` int(0) NOT NULL DEFAULT 0 COMMENT '页面浏览量，传说中的pv',
-  `user_view_count` int(0) NOT NULL DEFAULT 0 COMMENT '用户浏览量，传说中的uv',
+  `sort` int NOT NULL DEFAULT 0 COMMENT '排序',
+  `page_view_count` int NOT NULL DEFAULT 0 COMMENT '页面浏览量，传说中的pv',
+  `user_view_count` int NOT NULL DEFAULT 0 COMMENT '用户浏览量，传说中的uv',
   `author` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`help_doc_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_help_doc
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_help_doc_catalog
 -- ----------------------------
 DROP TABLE IF EXISTS `t_help_doc_catalog`;
 CREATE TABLE `t_help_doc_catalog`  (
-  `help_doc_catalog_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '帮助文档目录',
+  `help_doc_catalog_id` bigint NOT NULL AUTO_INCREMENT COMMENT '帮助文档目录',
   `name` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '名称',
-  `sort` int(0) NOT NULL DEFAULT 0 COMMENT '排序字段',
-  `parent_id` bigint(0) NOT NULL COMMENT '父级id',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `sort` int NOT NULL DEFAULT 0 COMMENT '排序字段',
+  `parent_id` bigint NOT NULL COMMENT '父级id',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`help_doc_catalog_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-目录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-目录' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_help_doc_catalog
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_help_doc_relation
 -- ----------------------------
 DROP TABLE IF EXISTS `t_help_doc_relation`;
 CREATE TABLE `t_help_doc_relation`  (
-  `relation_id` bigint(0) NOT NULL COMMENT '关联id',
+  `relation_id` bigint NOT NULL COMMENT '关联id',
   `relation_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '关联名称',
-  `help_doc_id` bigint(0) NOT NULL COMMENT '文档id',
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `help_doc_id` bigint NOT NULL COMMENT '文档id',
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`relation_id`, `help_doc_id`) USING BTREE,
   UNIQUE INDEX `uni_menu_help_doc`(`relation_id`, `help_doc_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-关联表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-关联表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_help_doc_relation
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_help_doc_view_record
 -- ----------------------------
 DROP TABLE IF EXISTS `t_help_doc_view_record`;
 CREATE TABLE `t_help_doc_view_record`  (
-  `help_doc_id` bigint(0) NOT NULL COMMENT '通知公告id',
-  `user_id` bigint(0) NOT NULL COMMENT '用户id',
+  `help_doc_id` bigint NOT NULL COMMENT '通知公告id',
+  `user_id` bigint NOT NULL COMMENT '用户id',
   `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户名称',
-  `page_view_count` int(0) NULL DEFAULT 0 COMMENT '查看次数',
+  `page_view_count` int NULL DEFAULT 0 COMMENT '查看次数',
   `first_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '首次ip',
   `first_user_agent` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '首次用户设备等标识',
   `last_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最后一次ip',
   `last_user_agent` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最后一次用户设备等标识',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`help_doc_id`, `user_id`) USING BTREE,
   UNIQUE INDEX `uk_notice_employee`(`help_doc_id`, `user_id`) USING BTREE COMMENT '资讯员工'
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-查看记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '帮助文档-查看记录' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_help_doc_view_record
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_login_log
 -- ----------------------------
 DROP TABLE IF EXISTS `t_login_log`;
-CREATE TABLE `t_login_log` (
+CREATE TABLE `t_login_log`  (
   `login_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
   `user_id` int NOT NULL COMMENT '用户id',
   `user_type` int NOT NULL COMMENT '用户类型',
   `user_name` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名',
-  `login_ip` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '用户ip',
-  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci COMMENT 'user-agent信息',
+  `login_ip` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '用户ip',
+  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'user-agent信息',
   `login_result` int NOT NULL COMMENT '登录结果：0成功 1失败 2 退出',
-  `remark` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '备注',
+  `remark` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`login_log_id`) USING BTREE,
-  KEY `customer_id` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC COMMENT='用户登录日志';
+  INDEX `customer_id`(`user_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户登录日志' ROW_FORMAT = DYNAMIC;
+
 -- ----------------------------
 -- Records of t_login_log
 -- ----------------------------
@@ -495,50 +781,66 @@ INSERT INTO `t_login_log` VALUES (14, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5
 INSERT INTO `t_login_log` VALUES (15, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 0, '电脑端', '2022-10-22 20:38:49', '2022-10-22 20:38:50');
 INSERT INTO `t_login_log` VALUES (16, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 0, '电脑端', '2022-10-24 19:34:35', '2022-10-24 19:34:35');
 INSERT INTO `t_login_log` VALUES (17, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 0, '电脑端', '2022-10-26 17:50:50', '2022-10-26 17:50:51');
+INSERT INTO `t_login_log` VALUES (18, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 0, '电脑端', '2023-06-21 18:10:54', '2023-06-21 18:10:55');
+INSERT INTO `t_login_log` VALUES (19, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 2, NULL, '2023-06-24 15:17:45', '2023-06-24 15:17:46');
+INSERT INTO `t_login_log` VALUES (20, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 0, '电脑端', '2023-06-24 15:19:16', '2023-06-24 15:19:16');
+INSERT INTO `t_login_log` VALUES (21, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 2, NULL, '2023-06-24 15:20:36', '2023-06-24 15:20:37');
+INSERT INTO `t_login_log` VALUES (22, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 0, '电脑端', '2023-06-24 15:20:59', '2023-06-24 15:21:00');
+INSERT INTO `t_login_log` VALUES (23, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 2, NULL, '2023-06-24 15:21:10', '2023-06-24 15:21:10');
+INSERT INTO `t_login_log` VALUES (24, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 0, '电脑端', '2023-06-24 15:21:37', '2023-06-24 15:21:38');
+INSERT INTO `t_login_log` VALUES (25, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 2, NULL, '2023-06-24 15:35:49', '2023-06-24 15:35:50');
+INSERT INTO `t_login_log` VALUES (26, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 0, '电脑端', '2023-06-24 15:36:45', '2023-06-24 15:36:46');
+INSERT INTO `t_login_log` VALUES (27, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 2, NULL, '2023-06-24 15:54:23', '2023-06-24 15:54:23');
+INSERT INTO `t_login_log` VALUES (28, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 0, '电脑端', '2023-06-24 15:54:29', '2023-06-24 15:54:30');
+INSERT INTO `t_login_log` VALUES (29, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 0, '电脑端', '2023-06-24 16:46:31', '2023-06-24 16:46:31');
+INSERT INTO `t_login_log` VALUES (30, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 0, '电脑端', '2023-06-24 16:55:28', '2023-06-24 16:55:28');
+INSERT INTO `t_login_log` VALUES (31, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 2, NULL, '2023-07-12 17:35:16', '2023-07-12 17:35:17');
+INSERT INTO `t_login_log` VALUES (32, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 2, NULL, '2023-07-13 18:18:22', '2023-07-13 18:18:23');
+INSERT INTO `t_login_log` VALUES (33, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 2, NULL, '2023-07-13 18:18:53', '2023-07-13 18:18:53');
 
 -- ----------------------------
 -- Table structure for t_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `t_menu`;
 CREATE TABLE `t_menu`  (
-  `menu_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
+  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
   `menu_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
-  `menu_type` int(0) NOT NULL COMMENT '类型',
-  `parent_id` bigint(0) NOT NULL COMMENT '父菜单ID',
-  `sort` int(0) NULL DEFAULT NULL COMMENT '显示顺序',
+  `menu_type` int NOT NULL COMMENT '类型',
+  `parent_id` bigint NOT NULL COMMENT '父菜单ID',
+  `sort` int NULL DEFAULT NULL COMMENT '显示顺序',
   `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '路由地址',
   `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '组件路径',
-  `perms_type` int(0) NULL DEFAULT NULL COMMENT '权限类型',
+  `perms_type` int NULL DEFAULT NULL COMMENT '权限类型',
   `api_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '后端权限字符串',
   `web_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '前端权限字符串',
   `icon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单图标',
-  `context_menu_id` bigint(0) NULL DEFAULT NULL COMMENT '功能点关联菜单ID',
+  `context_menu_id` bigint NULL DEFAULT NULL COMMENT '功能点关联菜单ID',
   `frame_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否为外链',
   `frame_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '外链地址',
   `cache_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否缓存',
   `visible_flag` tinyint(1) NOT NULL DEFAULT 1 COMMENT '显示状态',
   `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态',
   `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `create_user_id` bigint(0) NOT NULL COMMENT '创建人',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_user_id` bigint(0) NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_user_id` bigint NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_user_id` bigint NULL DEFAULT NULL COMMENT '更新人',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 208 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 210 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_menu
 -- ----------------------------
-INSERT INTO `t_menu` VALUES (26, '菜单管理', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 1, 0, 0, 2, '2021-08-09 15:04:35', 1, '2022-10-16 00:04:19');
+INSERT INTO `t_menu` VALUES (26, 'Menu', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 1, 0, 0, 2, '2021-08-09 15:04:35', 1, '2023-07-13 18:17:33');
 INSERT INTO `t_menu` VALUES (40, '批量删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:batch:delete', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 09:45:56', 1, '2022-10-22 10:39:01');
-INSERT INTO `t_menu` VALUES (45, '部门员工', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:13:27', 44, '2022-10-22 11:19:49');
+INSERT INTO `t_menu` VALUES (45, '部门员工', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 16:13:27', 1, '2023-07-13 16:26:59');
 INSERT INTO `t_menu` VALUES (46, '部门员工', 2, 45, 1, '/employee/department', '/system/employee/department/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2022-06-23 16:19:54');
-INSERT INTO `t_menu` VALUES (47, '商品管理', 2, 48, 3, '/erp/goods/list', '/business/erp/goods/goods-list.vue', NULL, NULL, NULL, 'AliwangwangOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 17:58:39', 1, '2022-09-14 21:50:11');
-INSERT INTO `t_menu` VALUES (48, '商品管理', 1, 137, 10, '/goods', NULL, NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 18:02:59', 1, '2022-06-24 20:07:35');
-INSERT INTO `t_menu` VALUES (50, '系统设置', 1, 0, 200, '/setting', NULL, NULL, NULL, NULL, 'SettingOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-13 16:41:33', 1, '2022-09-14 15:46:51');
+INSERT INTO `t_menu` VALUES (47, '商品管理', 2, 48, 3, '/erp/goods/list', '/business/erp/goods/goods-list.vue', NULL, NULL, NULL, 'AliwangwangOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2021-08-12 17:58:39', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (48, '商品管理', 1, 137, 10, '/goods', NULL, NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2021-08-12 18:02:59', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (50, 'System', 1, 0, 200, '/setting', NULL, NULL, NULL, NULL, 'SettingOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-13 16:41:33', 1, '2023-07-13 18:17:24');
 INSERT INTO `t_menu` VALUES (76, '角色管理', 2, 45, 2, '/employee/role', '/system/employee/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2022-06-23 16:21:06');
-INSERT INTO `t_menu` VALUES (78, '商品分类', 2, 48, 1, '/erp/catalog/goods', '/business/erp/catalog/goods-catalog.vue', NULL, NULL, NULL, 'ApartmentOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-18 23:34:14', 1, '2022-09-14 21:52:12');
-INSERT INTO `t_menu` VALUES (79, '自定义分组', 2, 48, 2, '/erp/catalog/custom', '/business/erp/catalog/custom-catalog.vue', NULL, NULL, NULL, 'AppstoreAddOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-18 23:37:53', 1, '2022-09-14 21:50:58');
+INSERT INTO `t_menu` VALUES (78, '商品分类', 2, 48, 1, '/erp/catalog/goods', '/business/erp/catalog/goods-catalog.vue', NULL, NULL, NULL, 'ApartmentOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-05-18 23:34:14', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (79, '自定义分组', 2, 48, 2, '/erp/catalog/custom', '/business/erp/catalog/custom-catalog.vue', NULL, NULL, NULL, 'AppstoreAddOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-05-18 23:37:53', 1, '2023-07-13 16:28:22');
 INSERT INTO `t_menu` VALUES (81, '请求监控', 2, 111, 3, '/support/operate-log/operate-log-list', '/support/operate-log/operate-log-list.vue', NULL, NULL, NULL, 'VideoCameraOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-20 12:37:24', 1, '2022-10-22 18:33:10');
 INSERT INTO `t_menu` VALUES (85, '组件演示', 2, 84, NULL, '/demonstration/index', '/support/demonstration/index.vue', NULL, NULL, NULL, 'ClearOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-20 23:16:46', NULL, '2022-05-20 23:16:46');
 INSERT INTO `t_menu` VALUES (86, '添加部门', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:department:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-26 23:33:37', NULL, '2022-10-22 10:39:01');
@@ -561,28 +863,28 @@ INSERT INTO `t_menu` VALUES (104, '修改权限', 3, 76, NULL, NULL, NULL, 1, NU
 INSERT INTO `t_menu` VALUES (105, '添加', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:add', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:44:37', 1, '2022-10-22 10:39:41');
 INSERT INTO `t_menu` VALUES (106, '编辑', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:update', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:44:59', 1, '2022-10-22 10:39:44');
 INSERT INTO `t_menu` VALUES (108, '删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:delete', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:45:55', 1, '2022-10-22 10:39:43');
-INSERT INTO `t_menu` VALUES (109, '参数配置', 2, 50, 3, '/config/config-list', '/support/config/config-list.vue', NULL, NULL, NULL, 'AntDesignOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 13:34:41', 1, '2022-06-23 16:24:16');
-INSERT INTO `t_menu` VALUES (110, '数据字典', 2, 50, 4, '/setting/dict', '/support/dict/index.vue', NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 17:53:00', 1, '2022-05-27 18:09:14');
-INSERT INTO `t_menu` VALUES (111, '监控服务', 1, 0, 4, '/monitor', NULL, NULL, NULL, NULL, 'BarChartOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-17 11:13:23', 1, '2022-10-22 18:32:31');
+INSERT INTO `t_menu` VALUES (109, '参数配置', 2, 50, 3, '/config/config-list', '/support/config/config-list.vue', NULL, NULL, NULL, 'AntDesignOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-05-27 13:34:41', 1, '2023-07-13 18:17:38');
+INSERT INTO `t_menu` VALUES (110, '数据字典', 2, 50, 4, '/setting/dict', '/support/dict/index.vue', NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-05-27 17:53:00', 1, '2023-07-13 18:17:42');
+INSERT INTO `t_menu` VALUES (111, '监控服务', 1, 0, 4, '/monitor', NULL, NULL, NULL, NULL, 'BarChartOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-17 11:13:23', 1, '2023-07-13 16:26:47');
 INSERT INTO `t_menu` VALUES (113, '查询', 3, 112, NULL, NULL, NULL, NULL, NULL, 'ad', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-17 11:31:36', NULL, '2022-06-17 11:31:36');
-INSERT INTO `t_menu` VALUES (114, '运维工具', 1, 0, 5, NULL, NULL, NULL, NULL, NULL, 'NodeCollapseOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-20 10:09:16', 1, '2022-10-22 18:32:37');
+INSERT INTO `t_menu` VALUES (114, '运维工具', 1, 0, 5, NULL, NULL, NULL, NULL, NULL, 'NodeCollapseOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-20 10:09:16', 1, '2023-07-13 16:26:53');
 INSERT INTO `t_menu` VALUES (117, 'Reload', 2, 114, NULL, '/hook', '/support/reload/reload-list.vue', NULL, NULL, NULL, 'ReloadOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-20 10:16:49', NULL, '2022-06-20 10:16:49');
 INSERT INTO `t_menu` VALUES (122, '数据库监控', 2, 111, 4, '/support/druid/index', NULL, NULL, NULL, NULL, 'ConsoleSqlOutlined', NULL, 1, 'http://localhost:60001/druid/index.html', 0, 1, 0, 0, 1, '2022-06-20 14:49:33', 1, '2022-10-22 18:33:07');
-INSERT INTO `t_menu` VALUES (130, '单号管理', 2, 50, 6, '/support/serial-number/serial-number-list', '/support/serial-number/serial-number-list.vue', NULL, NULL, NULL, 'NumberOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 14:45:22', 1, '2022-06-28 16:23:41');
-INSERT INTO `t_menu` VALUES (132, '通知公告', 2, 138, NULL, '/oa/notice/notice-list', '/business/oa/notice/notice-list.vue', NULL, NULL, NULL, 'SoundOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 18:23:09', 1, '2022-09-14 19:54:34');
+INSERT INTO `t_menu` VALUES (130, '单号管理', 2, 50, 6, '/support/serial-number/serial-number-list', '/support/serial-number/serial-number-list.vue', NULL, NULL, NULL, 'NumberOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-24 14:45:22', 1, '2023-07-13 18:17:47');
+INSERT INTO `t_menu` VALUES (132, '通知公告', 2, 138, NULL, '/oa/notice/notice-list', '/business/oa/notice/notice-list.vue', NULL, NULL, NULL, 'SoundOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-06-24 18:23:09', 1, '2023-07-12 21:41:20');
 INSERT INTO `t_menu` VALUES (133, '缓存管理', 2, 114, NULL, '/support/cache/cache-list', '/support/cache/cache-list.vue', NULL, NULL, NULL, 'BorderInnerOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 18:52:25', NULL, '2022-06-24 18:52:25');
-INSERT INTO `t_menu` VALUES (137, '进销存系统', 1, 0, 2, NULL, NULL, NULL, NULL, NULL, 'AccountBookOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 20:07:20', 1, '2022-10-22 18:30:19');
-INSERT INTO `t_menu` VALUES (138, 'OA系统', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, 'BankOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 20:09:18', 1, '2022-10-22 18:30:15');
-INSERT INTO `t_menu` VALUES (142, '公告详情', 2, 132, NULL, '/oa/notice/notice-detail', '/business/oa/notice/notice-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-25 16:38:47', 1, '2022-09-14 19:46:17');
+INSERT INTO `t_menu` VALUES (137, '进销存系统', 1, 0, 2, NULL, NULL, NULL, NULL, NULL, 'AccountBookOutlined', NULL, 0, NULL, 0, 0, 0, 1, 1, '2022-06-24 20:07:20', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (138, 'OA系统', 1, 0, 1, NULL, NULL, NULL, NULL, NULL, 'BankOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-06-24 20:09:18', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (142, '公告详情', 2, 132, NULL, '/oa/notice/notice-detail', '/business/oa/notice/notice-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 1, 1, '2022-06-25 16:38:47', 1, '2023-07-12 21:41:20');
 INSERT INTO `t_menu` VALUES (143, '登录日志', 2, 111, 2, '/support/login-log/login-log-list', '/support/login-log/login-log-list.vue', NULL, NULL, NULL, 'LoginOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-28 15:01:38', 1, '2022-10-22 18:33:03');
-INSERT INTO `t_menu` VALUES (144, '企业信息', 2, 138, 2, '/oa/enterprise/enterprise-list', '/business/oa/enterprise/enterprise-list.vue', NULL, NULL, NULL, 'ShopOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 17:00:07', 1, '2022-09-14 19:04:58');
-INSERT INTO `t_menu` VALUES (145, '企业详情', 2, 144, NULL, '/oa/enterprise/enterprise-detail', '/business/oa/enterprise/enterprise-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 18:52:52', NULL, '2022-09-14 18:52:52');
-INSERT INTO `t_menu` VALUES (146, '系统文档', 1, 0, 3, NULL, NULL, NULL, NULL, NULL, 'FileWordOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 19:56:53', 1, '2022-10-22 18:30:26');
+INSERT INTO `t_menu` VALUES (144, '企业信息', 2, 138, 2, '/oa/enterprise/enterprise-list', '/business/oa/enterprise/enterprise-list.vue', NULL, NULL, NULL, 'ShopOutlined', NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-09-14 17:00:07', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (145, '企业详情', 2, 144, NULL, '/oa/enterprise/enterprise-detail', '/business/oa/enterprise/enterprise-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 1, 1, '2022-09-14 18:52:52', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (146, '系统文档', 1, 0, 3, NULL, NULL, NULL, NULL, NULL, 'FileWordOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 19:56:53', 1, '2023-07-13 16:26:42');
 INSERT INTO `t_menu` VALUES (147, '系统手册', 2, 146, NULL, '/help-doc/help-doc-manage-list', '/support/help-doc/management/help-doc-manage-list.vue', NULL, NULL, NULL, 'FolderViewOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 19:59:01', NULL, '2022-09-14 19:59:01');
 INSERT INTO `t_menu` VALUES (148, '意见反馈', 2, 146, NULL, '/feedback/feedback-list', '/support/feedback/feedback-list.vue', NULL, NULL, NULL, 'CoffeeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 19:59:52', 1, '2022-09-14 20:00:37');
-INSERT INTO `t_menu` VALUES (149, '我的通知', 2, 132, NULL, '/oa/notice/notice-employee-list', '/business/oa/notice/notice-employee-list.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 20:29:41', 1, '2022-09-14 20:31:23');
-INSERT INTO `t_menu` VALUES (150, '我的通知公告详情', 2, 132, NULL, '/oa/notice/notice-employee-detail', '/business/oa/notice/notice-employee-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 20:30:25', 1, '2022-09-14 20:31:38');
-INSERT INTO `t_menu` VALUES (151, '代码生成', 2, 0, 600, '/support/code-generator', '/support/code-generator/code-generator-list.vue', NULL, NULL, NULL, 'CoffeeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-21 18:25:05', 1, '2022-10-22 11:27:58');
+INSERT INTO `t_menu` VALUES (149, '我的通知', 2, 132, NULL, '/oa/notice/notice-employee-list', '/business/oa/notice/notice-employee-list.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 1, 1, '2022-09-14 20:29:41', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (150, '我的通知公告详情', 2, 132, NULL, '/oa/notice/notice-employee-detail', '/business/oa/notice/notice-employee-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 1, 1, '2022-09-14 20:30:25', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (151, '代码生成', 2, 0, 600, '/support/code-generator', '/support/code-generator/code-generator-list.vue', NULL, NULL, NULL, 'CoffeeOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-21 18:25:05', 1, '2023-07-13 16:27:23');
 INSERT INTO `t_menu` VALUES (152, '更新日志', 2, 146, 3, '/support/change-log/change-log-list', '/support/change-log/change-log-list.vue', NULL, NULL, NULL, 'HeartOutlined', NULL, 0, NULL, 0, 1, 0, 0, 44, '2022-10-10 10:31:20', 44, '2022-10-10 10:31:45');
 INSERT INTO `t_menu` VALUES (153, '清除缓存', 3, 133, NULL, NULL, NULL, 1, NULL, 'support:cache:delete', NULL, 133, 0, NULL, 0, 1, 1, 0, 1, '2022-10-15 22:45:13', 1, '2022-10-21 20:37:13');
 INSERT INTO `t_menu` VALUES (154, '获取缓存key', 3, 133, NULL, NULL, NULL, NULL, NULL, 'support:cache:keys', NULL, 133, 0, NULL, 0, 1, 1, 0, 1, '2022-10-15 22:45:48', 1, '2022-10-15 23:40:09');
@@ -596,37 +898,37 @@ INSERT INTO `t_menu` VALUES (161, '批量删除', 3, 110, NULL, NULL, NULL, 1, N
 INSERT INTO `t_menu` VALUES (162, '刷新缓存', 3, 110, NULL, NULL, NULL, 1, NULL, 'support:dict:refresh', NULL, 110, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:24:55', NULL, '2022-10-22 10:41:10');
 INSERT INTO `t_menu` VALUES (163, '新建', 3, 109, NULL, NULL, NULL, 1, NULL, 'support:config:add', NULL, 109, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:26:56', NULL, '2022-10-22 10:41:10');
 INSERT INTO `t_menu` VALUES (164, '编辑', 3, 109, NULL, NULL, NULL, 11, NULL, 'support:config:update', NULL, 109, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:27:07', NULL, '2022-10-22 10:41:12');
-INSERT INTO `t_menu` VALUES (165, '查询', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:query', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:55:39', NULL, '2022-10-22 10:41:13');
-INSERT INTO `t_menu` VALUES (166, '新建', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:add', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:56:00', NULL, '2022-10-22 10:41:14');
-INSERT INTO `t_menu` VALUES (167, '批量删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:batchDelete', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:56:15', NULL, '2022-10-22 10:41:15');
+INSERT INTO `t_menu` VALUES (165, '查询', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:query', NULL, 47, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 19:55:39', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (166, '新建', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:add', NULL, 47, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 19:56:00', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (167, '批量删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:batchDelete', NULL, 47, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 19:56:15', 1, '2023-07-13 16:28:22');
 INSERT INTO `t_menu` VALUES (168, '查询', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:query', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:13', NULL, '2022-10-22 10:41:17');
 INSERT INTO `t_menu` VALUES (169, '新建', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:add', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:37', 1, '2022-10-21 20:49:24');
 INSERT INTO `t_menu` VALUES (170, '新建目录', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDocCatalog:addCategory', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:57', NULL, '2022-10-22 10:41:18');
 INSERT INTO `t_menu` VALUES (171, '修改目录', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDocCatalog:edit', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:13:46', 1, '2022-10-21 20:50:01');
-INSERT INTO `t_menu` VALUES (173, '新建', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:02', NULL, '2022-10-22 10:41:19');
-INSERT INTO `t_menu` VALUES (174, '添加子分类', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:22', NULL, '2022-10-22 10:41:21');
-INSERT INTO `t_menu` VALUES (175, '编辑', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:38', NULL, '2022-10-22 10:41:22');
-INSERT INTO `t_menu` VALUES (176, '删除', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:50', NULL, '2022-10-22 10:41:22');
-INSERT INTO `t_menu` VALUES (177, '新建', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:02', NULL, '2022-10-22 10:41:23');
-INSERT INTO `t_menu` VALUES (178, '添加子分类', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:22', NULL, '2022-10-22 10:41:24');
-INSERT INTO `t_menu` VALUES (179, '编辑', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:38', NULL, '2022-10-22 10:41:24');
-INSERT INTO `t_menu` VALUES (180, '删除', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:50', NULL, '2022-10-22 10:41:25');
-INSERT INTO `t_menu` VALUES (181, '查询', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:query', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:14', 1, '2022-10-21 20:15:12');
-INSERT INTO `t_menu` VALUES (182, '新建', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.createEnterprise', 'enterprise:add', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:25', 1, '2022-10-21 20:15:30');
-INSERT INTO `t_menu` VALUES (183, '编辑', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.updateEnterprise', 'enterprise:edit', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:36', 1, '2022-10-21 20:15:39');
-INSERT INTO `t_menu` VALUES (184, '删除', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:delete', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:53', 1, '2022-10-21 20:11:24');
-INSERT INTO `t_menu` VALUES (185, '查询', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.query', 'notice:query', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:26:38', 1, '2022-10-21 20:19:24');
-INSERT INTO `t_menu` VALUES (186, '新建', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.add', 'notice:add', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:04', 1, '2022-10-21 20:19:49');
-INSERT INTO `t_menu` VALUES (187, '编辑', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.update', 'notice:edit', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:15', 1, '2022-10-21 20:21:16');
-INSERT INTO `t_menu` VALUES (188, '删除', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.delete', 'notice:delete', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:23', 1, '2022-10-21 20:21:25');
+INSERT INTO `t_menu` VALUES (173, '新建', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:02', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (174, '添加子分类', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:22', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (175, '编辑', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:38', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (176, '删除', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:50', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (177, '新建', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:02', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (178, '添加子分类', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:22', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (179, '编辑', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:38', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (180, '删除', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:17:50', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (181, '查询', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:query', NULL, 144, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:25:14', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (182, '新建', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.createEnterprise', 'enterprise:add', NULL, 144, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:25:25', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (183, '编辑', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.updateEnterprise', 'enterprise:edit', NULL, 144, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:25:36', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (184, '删除', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:delete', NULL, 144, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:25:53', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (185, '查询', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.query', 'notice:query', NULL, 132, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:26:38', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (186, '新建', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.add', 'notice:add', NULL, 132, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:27:04', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (187, '编辑', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.update', 'notice:edit', NULL, 132, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:27:15', 1, '2023-07-12 21:41:20');
+INSERT INTO `t_menu` VALUES (188, '删除', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.delete', 'notice:delete', NULL, 132, 0, NULL, 0, 1, 0, 1, 1, '2022-10-16 20:27:23', 1, '2023-07-12 21:41:20');
 INSERT INTO `t_menu` VALUES (189, '查询', 3, 148, NULL, NULL, NULL, 1, NULL, 'feedback:query', NULL, 148, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:04', 1, '2022-10-22 10:38:46');
 INSERT INTO `t_menu` VALUES (190, '查询', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:query', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:33', 1, '2022-10-21 20:42:00');
 INSERT INTO `t_menu` VALUES (191, '新建', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:add', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:46', 1, '2022-10-21 20:42:09');
 INSERT INTO `t_menu` VALUES (192, '批量删除', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:batchDelete', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:29:10', 1, '2022-10-21 20:42:16');
 INSERT INTO `t_menu` VALUES (193, '文件管理', 2, 50, 20, '/support/file/file-list', '/support/file/file-list.vue', NULL, NULL, NULL, 'FolderOpenOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 11:26:11', 1, '2022-10-22 11:29:22');
-INSERT INTO `t_menu` VALUES (194, '删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:delete', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:00:12', 1, '2022-10-21 20:04:58');
-INSERT INTO `t_menu` VALUES (195, '修改', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:05:23', NULL, '2022-10-21 20:05:23');
-INSERT INTO `t_menu` VALUES (196, '查看详情', 3, 145, NULL, NULL, NULL, 2, 'EnterpriseController.getDetail', 'enterprise:detail', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:16:47', NULL, '2022-10-21 20:16:47');
+INSERT INTO `t_menu` VALUES (194, '删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:delete', NULL, 47, 0, NULL, 0, 1, 0, 1, 1, '2022-10-21 20:00:12', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (195, '修改', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:update', NULL, NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-10-21 20:05:23', 1, '2023-07-13 16:28:22');
+INSERT INTO `t_menu` VALUES (196, '查看详情', 3, 145, NULL, NULL, NULL, 2, 'EnterpriseController.getDetail', 'enterprise:detail', NULL, NULL, 0, NULL, 0, 1, 0, 1, 1, '2022-10-21 20:16:47', 1, '2023-07-12 21:41:20');
 INSERT INTO `t_menu` VALUES (198, '删除', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:42:34', NULL, '2022-10-21 20:42:34');
 INSERT INTO `t_menu` VALUES (199, '查询', 3, 109, NULL, NULL, NULL, 1, NULL, 'support:config:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:45:14', NULL, '2022-10-21 20:45:14');
 INSERT INTO `t_menu` VALUES (200, '查询', 3, 193, NULL, NULL, NULL, 1, NULL, 'support:file:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:47:23', 1, '2022-10-22 11:21:10');
@@ -637,32 +939,34 @@ INSERT INTO `t_menu` VALUES (204, '查询', 3, 81, NULL, NULL, NULL, 1, NULL, 'o
 INSERT INTO `t_menu` VALUES (205, '详情', 3, 81, NULL, NULL, NULL, 1, NULL, 'operateLog:detail', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 10:33:49', NULL, '2022-10-22 10:33:49');
 INSERT INTO `t_menu` VALUES (206, '心跳监控', 2, 111, 1, '/support/heart-beat/heart-beat-list', '/support/heart-beat/heart-beat-list.vue', 1, NULL, NULL, 'FallOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 10:47:03', 1, '2022-10-22 18:32:52');
 INSERT INTO `t_menu` VALUES (207, '更新', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 11:51:32', NULL, '2022-10-22 11:51:32');
+INSERT INTO `t_menu` VALUES (208, 'Response', 2, 0, 1, '/response', 'smartWatch/response/response-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-07-01 13:08:07', NULL, '2023-07-01 13:08:07');
+INSERT INTO `t_menu` VALUES (209, 'Question', 2, 0, 1, '/question', 'smartWatch/question/question-list.vue', 1, NULL, NULL, 'AppstoreOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-07-12 21:38:08', 1, '2023-07-12 21:38:42');
 
 -- ----------------------------
 -- Table structure for t_notice
 -- ----------------------------
 DROP TABLE IF EXISTS `t_notice`;
 CREATE TABLE `t_notice`  (
-  `notice_id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `notice_type_id` bigint(0) NOT NULL COMMENT '类型1公告 2动态',
+  `notice_id` bigint NOT NULL AUTO_INCREMENT,
+  `notice_type_id` bigint NOT NULL COMMENT '类型1公告 2动态',
   `title` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '标题',
   `all_visible_flag` tinyint(1) NOT NULL COMMENT '是否全部可见',
   `scheduled_publish_flag` tinyint(1) NOT NULL COMMENT '是否定时发布',
-  `publish_time` datetime(0) NOT NULL COMMENT '发布时间',
+  `publish_time` datetime NOT NULL COMMENT '发布时间',
   `content_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '文本内容',
   `content_html` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'html内容',
   `attachment` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '附件',
-  `page_view_count` int(0) NOT NULL DEFAULT 0 COMMENT '页面浏览量，传说中的pv',
-  `user_view_count` int(0) NOT NULL DEFAULT 0 COMMENT '用户浏览量，传说中的uv',
+  `page_view_count` int NOT NULL DEFAULT 0 COMMENT '页面浏览量，传说中的pv',
+  `user_view_count` int NOT NULL DEFAULT 0 COMMENT '用户浏览量，传说中的uv',
   `source` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '来源',
   `author` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '作者',
   `document_number` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '文号，如：1024创新实验室发〔2022〕字第36号',
   `deleted_flag` tinyint(1) NOT NULL DEFAULT 0,
-  `create_user_id` bigint(0) NULL DEFAULT NULL COMMENT '创建人',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `create_user_id` bigint NULL DEFAULT NULL COMMENT '创建人',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`notice_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_notice
@@ -685,12 +989,12 @@ INSERT INTO `t_notice` VALUES (60, 2, '1024创新实验室 春节放假通知', 
 -- ----------------------------
 DROP TABLE IF EXISTS `t_notice_type`;
 CREATE TABLE `t_notice_type`  (
-  `notice_type_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '通知类型',
+  `notice_type_id` bigint NOT NULL AUTO_INCREMENT COMMENT '通知类型',
   `notice_type_name` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '类型名称',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`notice_type_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知类型' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知类型' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_notice_type
@@ -703,18 +1007,18 @@ INSERT INTO `t_notice_type` VALUES (2, '通知', '2022-08-16 20:29:20', '2022-08
 -- ----------------------------
 DROP TABLE IF EXISTS `t_notice_view_record`;
 CREATE TABLE `t_notice_view_record`  (
-  `notice_id` bigint(0) NOT NULL COMMENT '通知公告id',
-  `employee_id` bigint(0) NOT NULL COMMENT '员工id',
-  `page_view_count` int(0) NULL DEFAULT 0 COMMENT '查看次数',
+  `notice_id` bigint NOT NULL COMMENT '通知公告id',
+  `employee_id` bigint NOT NULL COMMENT '员工id',
+  `page_view_count` int NULL DEFAULT 0 COMMENT '查看次数',
   `first_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '首次ip',
   `first_user_agent` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '首次用户设备等标识',
   `last_ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最后一次ip',
   `last_user_agent` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '最后一次用户设备等标识',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`notice_id`, `employee_id`) USING BTREE,
   UNIQUE INDEX `uk_notice_employee`(`notice_id`, `employee_id`) USING BTREE COMMENT '资讯员工'
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知查看记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知查看记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_notice_view_record
@@ -726,34 +1030,38 @@ INSERT INTO `t_notice_view_record` VALUES (60, 1, 1, '127.0.0.1', 'Mozilla/5.0 (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_notice_visible_range`;
 CREATE TABLE `t_notice_visible_range`  (
-  `notice_id` bigint(0) NOT NULL COMMENT '资讯id',
-  `data_type` tinyint(0) NOT NULL COMMENT '数据类型1员工 2部门',
-  `data_id` bigint(0) NOT NULL COMMENT '员工or部门id',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `notice_id` bigint NOT NULL COMMENT '资讯id',
+  `data_type` tinyint NOT NULL COMMENT '数据类型1员工 2部门',
+  `data_id` bigint NOT NULL COMMENT '员工or部门id',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE INDEX `uk_notice_data`(`notice_id`, `data_type`, `data_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知可见范围' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '通知可见范围' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_notice_visible_range
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_oa_bank
 -- ----------------------------
 DROP TABLE IF EXISTS `t_oa_bank`;
 CREATE TABLE `t_oa_bank`  (
-  `bank_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '银行信息ID',
+  `bank_id` bigint NOT NULL AUTO_INCREMENT COMMENT '银行信息ID',
   `bank_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '开户银行',
   `account_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账户名称',
   `account_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '账号',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   `business_flag` tinyint(1) NOT NULL COMMENT '是否对公',
-  `enterprise_id` bigint(0) NOT NULL COMMENT '企业ID',
+  `enterprise_id` bigint NOT NULL COMMENT '企业ID',
   `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态',
   `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `create_user_id` bigint(0) NOT NULL COMMENT '创建人ID',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
   `create_user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建人',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`bank_id`) USING BTREE,
   INDEX `idx_enterprise_id`(`enterprise_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA银行信息\n' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA银行信息\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_oa_bank
@@ -766,10 +1074,10 @@ INSERT INTO `t_oa_bank` VALUES (27, '建设银行', '1024创新实验室', '1024
 -- ----------------------------
 DROP TABLE IF EXISTS `t_oa_enterprise`;
 CREATE TABLE `t_oa_enterprise`  (
-  `enterprise_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '企业ID',
+  `enterprise_id` bigint NOT NULL AUTO_INCREMENT COMMENT '企业ID',
   `enterprise_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '企业名称',
   `enterprise_logo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '企业logo',
-  `type` int(0) NOT NULL DEFAULT 1 COMMENT '类型（1:有限公司;2:合伙公司）',
+  `type` int NOT NULL DEFAULT 1 COMMENT '类型（1:有限公司;2:合伙公司）',
   `unified_social_credit_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '统一社会信用代码',
   `contact` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '联系人',
   `contact_phone` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '联系人电话',
@@ -784,12 +1092,12 @@ CREATE TABLE `t_oa_enterprise`  (
   `business_license` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '营业执照',
   `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态',
   `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `create_user_id` bigint(0) NOT NULL COMMENT '创建人ID',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
   `create_user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建人',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`enterprise_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 119 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA企业模块\r\n' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA企业模块\r\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_oa_enterprise
@@ -802,16 +1110,16 @@ INSERT INTO `t_oa_enterprise` VALUES (2, '1024创新实验室', 'public/common/f
 -- ----------------------------
 DROP TABLE IF EXISTS `t_oa_enterprise_employee`;
 CREATE TABLE `t_oa_enterprise_employee`  (
-  `enterprise_employee_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `enterprise_employee_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键ID',
   `enterprise_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '企业ID',
   `employee_id` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '员工ID',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`enterprise_employee_id`) USING BTREE,
   UNIQUE INDEX `uk_enterprise_employee`(`enterprise_id`, `employee_id`) USING BTREE,
   INDEX `idx_employee_id`(`employee_id`) USING BTREE,
   INDEX `idx_enterprise_id`(`enterprise_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '企业关联的员工' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 155 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '企业关联的员工' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_oa_enterprise_employee
@@ -824,22 +1132,22 @@ INSERT INTO `t_oa_enterprise_employee` VALUES (155, '2', '44', '2022-10-22 17:57
 -- ----------------------------
 DROP TABLE IF EXISTS `t_oa_invoice`;
 CREATE TABLE `t_oa_invoice`  (
-  `invoice_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '发票信息ID',
+  `invoice_id` bigint NOT NULL AUTO_INCREMENT COMMENT '发票信息ID',
   `invoice_heads` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '开票抬头',
   `taxpayer_identification_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '纳税人识别号',
   `account_number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '银行账户',
   `bank_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '开户行',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `enterprise_id` bigint(0) NOT NULL COMMENT '企业ID',
+  `enterprise_id` bigint NOT NULL COMMENT '企业ID',
   `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态',
   `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `create_user_id` bigint(0) NOT NULL COMMENT '创建人ID',
+  `create_user_id` bigint NOT NULL COMMENT '创建人ID',
   `create_user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '创建人',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`invoice_id`) USING BTREE,
   INDEX `idx_enterprise_id`(`enterprise_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA发票信息\n' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'OA发票信息\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_oa_invoice
@@ -851,9 +1159,9 @@ INSERT INTO `t_oa_invoice` VALUES (15, '1024创新实验室', '1024lab', '1024la
 -- ----------------------------
 DROP TABLE IF EXISTS `t_operate_log`;
 CREATE TABLE `t_operate_log`  (
-  `operate_log_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `operate_user_id` bigint(0) NOT NULL COMMENT '用户id',
-  `operate_user_type` int(0) NOT NULL COMMENT '用户类型',
+  `operate_log_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `operate_user_id` bigint NOT NULL COMMENT '用户id',
+  `operate_user_type` int NOT NULL COMMENT '用户类型',
   `operate_user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名称',
   `module` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '操作模块',
   `content` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '操作内容',
@@ -862,12 +1170,12 @@ CREATE TABLE `t_operate_log`  (
   `param` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '请求参数',
   `ip` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '请求ip',
   `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '请求user-agent',
-  `success_flag` tinyint(0) NULL DEFAULT NULL COMMENT '请求结果 0失败 1成功',
+  `success_flag` tinyint NULL DEFAULT NULL COMMENT '请求结果 0失败 1成功',
   `fail_reason` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '失败原因',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`operate_log_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 988 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作记录' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1174 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '操作记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_operate_log
@@ -1859,19 +2167,233 @@ INSERT INTO `t_operate_log` VALUES (984, 1, 1, '管理员', 'OA办公-企业', '
 INSERT INTO `t_operate_log` VALUES (985, 1, 1, '管理员', 'OA办公-发票信息', '分页查询发票信息 @author 善逸', '/oa/invoice/page/query', 'net.lab1024.sa.admin.module.business.oa.invoice.InvoiceController.queryByPage', '[{\"deletedFlag\":false,\"enterpriseId\":2,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, NULL, '2022-10-26 17:51:34', '2022-10-26 17:51:34');
 INSERT INTO `t_operate_log` VALUES (986, 1, 1, '管理员', 'OA办公-企业', '查询企业详情 @author 开云', '/oa/enterprise/get/2', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.getDetail', '[2]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, NULL, '2022-10-26 17:51:36', '2022-10-26 17:51:36');
 INSERT INTO `t_operate_log` VALUES (987, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36', 1, NULL, '2022-10-26 17:51:49', '2022-10-26 17:51:49');
+INSERT INTO `t_operate_log` VALUES (988, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:19', '2023-06-21 18:11:19');
+INSERT INTO `t_operate_log` VALUES (989, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:19', '2023-06-21 18:11:19');
+INSERT INTO `t_operate_log` VALUES (990, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:19', '2023-06-21 18:11:19');
+INSERT INTO `t_operate_log` VALUES (991, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:30', '2023-06-21 18:11:30');
+INSERT INTO `t_operate_log` VALUES (992, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:30', '2023-06-21 18:11:30');
+INSERT INTO `t_operate_log` VALUES (993, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:30', '2023-06-21 18:11:30');
+INSERT INTO `t_operate_log` VALUES (994, 1, 1, '管理员', '系统-角色', '获取所有角色 @author 卓大', '/role/getAll', 'net.lab1024.sa.admin.module.system.role.controller.RoleController.getAllRole', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:34', '2023-06-21 18:11:34');
+INSERT INTO `t_operate_log` VALUES (995, 1, 1, '管理员', '系统-角色-菜单', '获取角色关联菜单权限 @author 卓大', '/role/menu/getRoleSelectedMenu/1', 'net.lab1024.sa.admin.module.system.role.controller.RoleMenuController.getRoleSelectedMenu', '[1]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:11:34', '2023-06-21 18:11:34');
+INSERT INTO `t_operate_log` VALUES (996, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:33', '2023-06-21 18:12:33');
+INSERT INTO `t_operate_log` VALUES (997, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:33', '2023-06-21 18:12:33');
+INSERT INTO `t_operate_log` VALUES (998, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:33', '2023-06-21 18:12:33');
+INSERT INTO `t_operate_log` VALUES (999, 1, 1, '管理员', '系统-角色', '获取所有角色 @author 卓大', '/role/getAll', 'net.lab1024.sa.admin.module.system.role.controller.RoleController.getAllRole', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:34', '2023-06-21 18:12:34');
+INSERT INTO `t_operate_log` VALUES (1000, 1, 1, '管理员', '系统-角色-菜单', '获取角色关联菜单权限 @author 卓大', '/role/menu/getRoleSelectedMenu/1', 'net.lab1024.sa.admin.module.system.role.controller.RoleMenuController.getRoleSelectedMenu', '[1]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:34', '2023-06-21 18:12:34');
+INSERT INTO `t_operate_log` VALUES (1001, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:12:49', '2023-06-21 18:12:49');
+INSERT INTO `t_operate_log` VALUES (1002, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:13:00', '2023-06-21 18:13:00');
+INSERT INTO `t_operate_log` VALUES (1003, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:13:00', '2023-06-21 18:13:00');
+INSERT INTO `t_operate_log` VALUES (1004, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:13:00', '2023-06-21 18:13:00');
+INSERT INTO `t_operate_log` VALUES (1005, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:13:01', '2023-06-21 18:13:01');
+INSERT INTO `t_operate_log` VALUES (1006, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:13:24', '2023-06-21 18:13:24');
+INSERT INTO `t_operate_log` VALUES (1007, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:14:38', '2023-06-21 18:14:38');
+INSERT INTO `t_operate_log` VALUES (1008, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:14:38', '2023-06-21 18:14:38');
+INSERT INTO `t_operate_log` VALUES (1009, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 18:14:38', '2023-06-21 18:14:38');
+INSERT INTO `t_operate_log` VALUES (1010, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:00', '2023-06-21 19:18:00');
+INSERT INTO `t_operate_log` VALUES (1011, 1, 1, '管理员', 'OA办公-企业', '查询企业详情 @author 开云', '/oa/enterprise/get/2', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.getDetail', '[2]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:43', '2023-06-21 19:18:43');
+INSERT INTO `t_operate_log` VALUES (1012, 1, 1, '管理员', 'OA办公-企业', '分页查询企业员工 @author 卓大', '/oa/enterprise/employee/queryPage', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryPageEmployeeList', '[{\"enterpriseId\":2,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:43', '2023-06-21 19:18:43');
+INSERT INTO `t_operate_log` VALUES (1013, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:44', '2023-06-21 19:18:44');
+INSERT INTO `t_operate_log` VALUES (1014, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:44', '2023-06-21 19:18:44');
+INSERT INTO `t_operate_log` VALUES (1015, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:45', '2023-06-21 19:18:45');
+INSERT INTO `t_operate_log` VALUES (1016, 1, 1, '管理员', 'OA办公-企业', '查询企业详情 @author 开云', '/oa/enterprise/get/2', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.getDetail', '[2]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:46', '2023-06-21 19:18:46');
+INSERT INTO `t_operate_log` VALUES (1017, 1, 1, '管理员', 'OA办公-企业', '分页查询企业员工 @author 卓大', '/oa/enterprise/employee/queryPage', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryPageEmployeeList', '[{\"enterpriseId\":2,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:46', '2023-06-21 19:18:46');
+INSERT INTO `t_operate_log` VALUES (1018, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:47', '2023-06-21 19:18:47');
+INSERT INTO `t_operate_log` VALUES (1019, 1, 1, '管理员', 'OA办公-企业', '查询企业详情 @author 开云', '/oa/enterprise/get/2', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.getDetail', '[2]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:49', '2023-06-21 19:18:49');
+INSERT INTO `t_operate_log` VALUES (1020, 1, 1, '管理员', 'OA办公-企业', '分页查询企业员工 @author 卓大', '/oa/enterprise/employee/queryPage', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryPageEmployeeList', '[{\"enterpriseId\":2,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:49', '2023-06-21 19:18:49');
+INSERT INTO `t_operate_log` VALUES (1021, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:18:52', '2023-06-21 19:18:52');
+INSERT INTO `t_operate_log` VALUES (1022, 1, 1, '管理员', 'OA办公-企业', '分页查询企业员工 @author 卓大', '/oa/enterprise/employee/queryPage', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryPageEmployeeList', '[{\"enterpriseId\":2,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:19:43', '2023-06-21 19:19:43');
+INSERT INTO `t_operate_log` VALUES (1023, 1, 1, '管理员', 'OA办公-企业', '查询企业详情 @author 开云', '/oa/enterprise/get/2', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.getDetail', '[2]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:19:43', '2023-06-21 19:19:43');
+INSERT INTO `t_operate_log` VALUES (1024, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:56:30', '2023-06-21 19:56:30');
+INSERT INTO `t_operate_log` VALUES (1025, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":2,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:56:31', '2023-06-21 19:56:31');
+INSERT INTO `t_operate_log` VALUES (1026, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:56:32', '2023-06-21 19:56:32');
+INSERT INTO `t_operate_log` VALUES (1027, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:56:32', '2023-06-21 19:56:32');
+INSERT INTO `t_operate_log` VALUES (1028, 1, 1, '管理员', 'OA办公-企业', '分页查询企业模块 @author 开云', '/oa/enterprise/page/query', 'net.lab1024.sa.admin.module.business.oa.enterprise.EnterpriseController.queryByPage', '[{\"deletedFlag\":false,\"keywords\":\"\",\"pageNum\":1,\"pageSize\":10,\"searchCount\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:03', '2023-06-21 19:59:03');
+INSERT INTO `t_operate_log` VALUES (1029, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:05', '2023-06-21 19:59:05');
+INSERT INTO `t_operate_log` VALUES (1030, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:05', '2023-06-21 19:59:05');
+INSERT INTO `t_operate_log` VALUES (1031, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:30', '2023-06-21 19:59:30');
+INSERT INTO `t_operate_log` VALUES (1032, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:31', '2023-06-21 19:59:31');
+INSERT INTO `t_operate_log` VALUES (1033, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-06-21 19:59:31', '2023-06-21 19:59:31');
+INSERT INTO `t_operate_log` VALUES (1034, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:19:54', '2023-06-24 15:19:54');
+INSERT INTO `t_operate_log` VALUES (1035, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:19:55', '2023-06-24 15:19:55');
+INSERT INTO `t_operate_log` VALUES (1036, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:19:55', '2023-06-24 15:19:55');
+INSERT INTO `t_operate_log` VALUES (1037, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:20:03', '2023-06-24 15:20:03');
+INSERT INTO `t_operate_log` VALUES (1038, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:20:03', '2023-06-24 15:20:03');
+INSERT INTO `t_operate_log` VALUES (1039, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:20:06', '2023-06-24 15:20:06');
+INSERT INTO `t_operate_log` VALUES (1040, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:20:06', '2023-06-24 15:20:06');
+INSERT INTO `t_operate_log` VALUES (1041, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 15:20:18', '2023-06-24 15:20:18');
+INSERT INTO `t_operate_log` VALUES (1042, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:57:18', '2023-06-24 17:57:18');
+INSERT INTO `t_operate_log` VALUES (1043, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":2,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:57:21', '2023-06-24 17:57:21');
+INSERT INTO `t_operate_log` VALUES (1044, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:57:23', '2023-06-24 17:57:23');
+INSERT INTO `t_operate_log` VALUES (1045, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:57:23', '2023-06-24 17:57:23');
+INSERT INTO `t_operate_log` VALUES (1046, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:57:41', '2023-06-24 17:57:41');
+INSERT INTO `t_operate_log` VALUES (1047, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:58:05', '2023-06-24 17:58:05');
+INSERT INTO `t_operate_log` VALUES (1048, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 17:58:05', '2023-06-24 17:58:05');
+INSERT INTO `t_operate_log` VALUES (1049, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":2,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:29:51', '2023-06-24 18:29:51');
+INSERT INTO `t_operate_log` VALUES (1050, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:29:53', '2023-06-24 18:29:53');
+INSERT INTO `t_operate_log` VALUES (1051, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:29:53', '2023-06-24 18:29:53');
+INSERT INTO `t_operate_log` VALUES (1052, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:29:57', '2023-06-24 18:29:57');
+INSERT INTO `t_operate_log` VALUES (1053, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:29:57', '2023-06-24 18:29:57');
+INSERT INTO `t_operate_log` VALUES (1054, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:56:59', '2023-06-24 18:56:59');
+INSERT INTO `t_operate_log` VALUES (1055, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-06-24 18:56:59', '2023-06-24 18:56:59');
+INSERT INTO `t_operate_log` VALUES (1056, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'PostmanRuntime/7.32.3', 1, NULL, '2023-06-24 18:59:32', '2023-06-24 18:59:32');
+INSERT INTO `t_operate_log` VALUES (1057, 1, 1, '管理员', 'ERP进销存-商品管理', '添加商品 @author 胡克', '/goods/add', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.add', '[{\"categoryId\":0,\"goodsName\":\"string\",\"goodsStatus\":0,\"place\":\"string\",\"price\":0,\"remark\":\"string\",\"shelvesFlag\":false}]', '127.0.0.1', 'PostmanRuntime/7.32.3', 1, NULL, '2023-06-25 16:39:00', '2023-06-25 16:39:00');
+INSERT INTO `t_operate_log` VALUES (1058, 1, 1, '管理员', 'ERP进销存-商品管理', '更新商品 @author 胡克', '/goods/update', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.update', '[{\"categoryId\":353,\"goodsId\":1,\"goodsName\":\"string\",\"goodsStatus\":0,\"place\":\"string\",\"price\":0,\"remark\":\"string\",\"shelvesFlag\":false}]', '127.0.0.1', 'PostmanRuntime/7.32.3', 1, NULL, '2023-06-25 19:23:27', '2023-06-25 19:23:27');
+INSERT INTO `t_operate_log` VALUES (1059, 1, 1, '管理员', 'ERP进销存-商品管理', '删除 @author 卓大', '/goods/delete/8', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.delete', '[8]', '127.0.0.1', 'PostmanRuntime/7.32.3', 1, NULL, '2023-06-25 19:39:48', '2023-06-25 19:39:48');
+INSERT INTO `t_operate_log` VALUES (1060, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:14', '2023-07-01 13:04:14');
+INSERT INTO `t_operate_log` VALUES (1061, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:17', '2023-07-01 13:04:17');
+INSERT INTO `t_operate_log` VALUES (1062, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:17', '2023-07-01 13:04:17');
+INSERT INTO `t_operate_log` VALUES (1063, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:17', '2023-07-01 13:04:17');
+INSERT INTO `t_operate_log` VALUES (1064, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:25', '2023-07-01 13:04:25');
+INSERT INTO `t_operate_log` VALUES (1065, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:36', '2023-07-01 13:04:36');
+INSERT INTO `t_operate_log` VALUES (1066, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:36', '2023-07-01 13:04:36');
+INSERT INTO `t_operate_log` VALUES (1067, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:41', '2023-07-01 13:04:41');
+INSERT INTO `t_operate_log` VALUES (1068, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:44', '2023-07-01 13:04:44');
+INSERT INTO `t_operate_log` VALUES (1069, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:04:44', '2023-07-01 13:04:44');
+INSERT INTO `t_operate_log` VALUES (1070, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:08:03', '2023-07-01 13:08:03');
+INSERT INTO `t_operate_log` VALUES (1071, 1, 1, '管理员', '系统-菜单', '添加菜单 @author 卓大', '/menu/add', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.addMenu', '[{\"cacheFlag\":false,\"component\":\"smartWatch/response/response-list.vue\",\"createUserId\":1,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"AlignCenterOutlined\",\"menuName\":\"Response\",\"menuType\":2,\"parentId\":0,\"path\":\"/response\",\"permsType\":1,\"sort\":1,\"visibleFlag\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:08:07', '2023-07-01 13:08:07');
+INSERT INTO `t_operate_log` VALUES (1072, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:08:07', '2023-07-01 13:08:07');
+INSERT INTO `t_operate_log` VALUES (1073, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:08:13', '2023-07-01 13:08:13');
+INSERT INTO `t_operate_log` VALUES (1074, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:08:58', '2023-07-01 13:08:58');
+INSERT INTO `t_operate_log` VALUES (1075, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:10:22', '2023-07-01 13:10:22');
+INSERT INTO `t_operate_log` VALUES (1076, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:10:54', '2023-07-01 13:10:54');
+INSERT INTO `t_operate_log` VALUES (1077, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:12:08', '2023-07-01 13:12:08');
+INSERT INTO `t_operate_log` VALUES (1078, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-07-01 13:12:52', '2023-07-01 13:12:52');
+INSERT INTO `t_operate_log` VALUES (1079, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:14:51', '2023-07-01 13:14:51');
+INSERT INTO `t_operate_log` VALUES (1080, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:14:51', '2023-07-01 13:14:51');
+INSERT INTO `t_operate_log` VALUES (1081, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:14:51', '2023-07-01 13:14:51');
+INSERT INTO `t_operate_log` VALUES (1082, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-01 13:14:52', '2023-07-01 13:14:52');
+INSERT INTO `t_operate_log` VALUES (1083, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:39:52', '2023-07-09 20:39:52');
+INSERT INTO `t_operate_log` VALUES (1084, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:39:56', '2023-07-09 20:39:56');
+INSERT INTO `t_operate_log` VALUES (1085, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:39:56', '2023-07-09 20:39:56');
+INSERT INTO `t_operate_log` VALUES (1086, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:39:56', '2023-07-09 20:39:56');
+INSERT INTO `t_operate_log` VALUES (1087, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:40:14', '2023-07-09 20:40:14');
+INSERT INTO `t_operate_log` VALUES (1088, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-09 20:40:21', '2023-07-09 20:40:21');
+INSERT INTO `t_operate_log` VALUES (1089, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:02', '2023-07-12 21:32:02');
+INSERT INTO `t_operate_log` VALUES (1090, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":2,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:11', '2023-07-12 21:32:11');
+INSERT INTO `t_operate_log` VALUES (1091, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:14', '2023-07-12 21:32:14');
+INSERT INTO `t_operate_log` VALUES (1092, 1, 1, '管理员', 'ERP进销存-商品管理', '分页查询 @author 胡克', '/goods/query', 'net.lab1024.sa.admin.module.business.goods.controller.GoodsController.query', '[{\"deletedFlag\":false,\"pageNum\":1,\"pageSize\":10,\"searchWord\":\"\"}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:14', '2023-07-12 21:32:14');
+INSERT INTO `t_operate_log` VALUES (1093, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:15', '2023-07-12 21:32:15');
+INSERT INTO `t_operate_log` VALUES (1094, 1, 1, '管理员', '系统-部门管理', '查询部门列表 @author 卓大', '/department/listAll', 'net.lab1024.sa.admin.module.system.department.controller.DepartmentController.listAll', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:50', '2023-07-12 21:32:50');
+INSERT INTO `t_operate_log` VALUES (1095, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:50', '2023-07-12 21:32:50');
+INSERT INTO `t_operate_log` VALUES (1096, 1, 1, '管理员', '系统-员工管理', '员工管理查询 @author 卓大', '/employee/query', 'net.lab1024.sa.admin.module.system.employee.controller.EmployeeController.query', '[{\"deletedFlag\":false,\"departmentId\":1,\"disabledFlag\":false,\"pageNum\":1,\"pageSize\":10}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:50', '2023-07-12 21:32:50');
+INSERT INTO `t_operate_log` VALUES (1097, 1, 1, '管理员', '系统-角色', '获取所有角色 @author 卓大', '/role/getAll', 'net.lab1024.sa.admin.module.system.role.controller.RoleController.getAllRole', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:56', '2023-07-12 21:32:56');
+INSERT INTO `t_operate_log` VALUES (1098, 1, 1, '管理员', '系统-角色-菜单', '获取角色关联菜单权限 @author 卓大', '/role/menu/getRoleSelectedMenu/1', 'net.lab1024.sa.admin.module.system.role.controller.RoleMenuController.getRoleSelectedMenu', '[1]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:32:56', '2023-07-12 21:32:56');
+INSERT INTO `t_operate_log` VALUES (1099, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:33:01', '2023-07-12 21:33:01');
+INSERT INTO `t_operate_log` VALUES (1100, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":2,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:33:08', '2023-07-12 21:33:08');
+INSERT INTO `t_operate_log` VALUES (1101, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:33:37', '2023-07-12 21:33:37');
+INSERT INTO `t_operate_log` VALUES (1102, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:36:40', '2023-07-12 21:36:40');
+INSERT INTO `t_operate_log` VALUES (1103, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:36:43', '2023-07-12 21:36:43');
+INSERT INTO `t_operate_log` VALUES (1104, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:36:43', '2023-07-12 21:36:43');
+INSERT INTO `t_operate_log` VALUES (1105, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:36:43', '2023-07-12 21:36:43');
+INSERT INTO `t_operate_log` VALUES (1106, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:06', '2023-07-12 21:37:06');
+INSERT INTO `t_operate_log` VALUES (1107, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:06', '2023-07-12 21:37:06');
+INSERT INTO `t_operate_log` VALUES (1108, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:13', '2023-07-12 21:37:13');
+INSERT INTO `t_operate_log` VALUES (1109, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:13', '2023-07-12 21:37:13');
+INSERT INTO `t_operate_log` VALUES (1110, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:26', '2023-07-12 21:37:26');
+INSERT INTO `t_operate_log` VALUES (1111, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:26', '2023-07-12 21:37:26');
+INSERT INTO `t_operate_log` VALUES (1112, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:41', '2023-07-12 21:37:41');
+INSERT INTO `t_operate_log` VALUES (1113, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:37:41', '2023-07-12 21:37:41');
+INSERT INTO `t_operate_log` VALUES (1114, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:06', '2023-07-12 21:38:06');
+INSERT INTO `t_operate_log` VALUES (1115, 1, 1, '管理员', '系统-菜单', '添加菜单 @author 卓大', '/menu/add', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.addMenu', '[{\"cacheFlag\":false,\"component\":\"smartWatch/response/question-list.vue\",\"createUserId\":1,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"AppstoreOutlined\",\"menuName\":\"Question\",\"menuType\":2,\"parentId\":0,\"path\":\"/question\",\"permsType\":1,\"sort\":1,\"visibleFlag\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:08', '2023-07-12 21:38:08');
+INSERT INTO `t_operate_log` VALUES (1116, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:09', '2023-07-12 21:38:09');
+INSERT INTO `t_operate_log` VALUES (1117, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:12', '2023-07-12 21:38:12');
+INSERT INTO `t_operate_log` VALUES (1118, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:36', '2023-07-12 21:38:36');
+INSERT INTO `t_operate_log` VALUES (1119, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:36', '2023-07-12 21:38:36');
+INSERT INTO `t_operate_log` VALUES (1120, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:36', '2023-07-12 21:38:36');
+INSERT INTO `t_operate_log` VALUES (1121, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"component\":\"smartWatch/question/question-list.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"AppstoreOutlined\",\"menuId\":209,\"menuName\":\"Question\",\"menuType\":2,\"parentId\":0,\"path\":\"/question\",\"permsType\":1,\"sort\":1,\"updateUserId\":1,\"visibleFlag\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:42', '2023-07-12 21:38:42');
+INSERT INTO `t_operate_log` VALUES (1122, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:43', '2023-07-12 21:38:43');
+INSERT INTO `t_operate_log` VALUES (1123, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:38:45', '2023-07-12 21:38:45');
+INSERT INTO `t_operate_log` VALUES (1124, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:39:31', '2023-07-12 21:39:31');
+INSERT INTO `t_operate_log` VALUES (1125, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:41:04', '2023-07-12 21:41:04');
+INSERT INTO `t_operate_log` VALUES (1126, 1, 1, '管理员', '系统-菜单', '批量删除菜单 @author 卓大', '/menu/batchDelete', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.batchDeleteMenu', '[[138]]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:41:20', '2023-07-12 21:41:20');
+INSERT INTO `t_operate_log` VALUES (1127, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:41:20', '2023-07-12 21:41:20');
+INSERT INTO `t_operate_log` VALUES (1128, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:41:22', '2023-07-12 21:41:22');
+INSERT INTO `t_operate_log` VALUES (1129, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-12 21:41:54', '2023-07-12 21:41:54');
+INSERT INTO `t_operate_log` VALUES (1130, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:20', '2023-07-13 16:26:20');
+INSERT INTO `t_operate_log` VALUES (1131, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:30', '2023-07-13 16:26:30');
+INSERT INTO `t_operate_log` VALUES (1132, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:30', '2023-07-13 16:26:30');
+INSERT INTO `t_operate_log` VALUES (1133, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:30', '2023-07-13 16:26:30');
+INSERT INTO `t_operate_log` VALUES (1134, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"AccountBookOutlined\",\"menuId\":137,\"menuName\":\"进销存系统\",\"menuType\":1,\"parentId\":0,\"sort\":2,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:37', '2023-07-13 16:26:37');
+INSERT INTO `t_operate_log` VALUES (1135, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:37', '2023-07-13 16:26:37');
+INSERT INTO `t_operate_log` VALUES (1136, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:40', '2023-07-13 16:26:40');
+INSERT INTO `t_operate_log` VALUES (1137, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:40', '2023-07-13 16:26:40');
+INSERT INTO `t_operate_log` VALUES (1138, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"FileWordOutlined\",\"menuId\":146,\"menuName\":\"系统文档\",\"menuType\":1,\"parentId\":0,\"sort\":3,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:42', '2023-07-13 16:26:42');
+INSERT INTO `t_operate_log` VALUES (1139, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:43', '2023-07-13 16:26:43');
+INSERT INTO `t_operate_log` VALUES (1140, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:45', '2023-07-13 16:26:45');
+INSERT INTO `t_operate_log` VALUES (1141, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:45', '2023-07-13 16:26:45');
+INSERT INTO `t_operate_log` VALUES (1142, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"BarChartOutlined\",\"menuId\":111,\"menuName\":\"监控服务\",\"menuType\":1,\"parentId\":0,\"path\":\"/monitor\",\"sort\":4,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:47', '2023-07-13 16:26:47');
+INSERT INTO `t_operate_log` VALUES (1143, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:47', '2023-07-13 16:26:47');
+INSERT INTO `t_operate_log` VALUES (1144, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:49', '2023-07-13 16:26:49');
+INSERT INTO `t_operate_log` VALUES (1145, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:49', '2023-07-13 16:26:49');
+INSERT INTO `t_operate_log` VALUES (1146, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"NodeCollapseOutlined\",\"menuId\":114,\"menuName\":\"运维工具\",\"menuType\":1,\"parentId\":0,\"sort\":5,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:53', '2023-07-13 16:26:53');
+INSERT INTO `t_operate_log` VALUES (1147, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:53', '2023-07-13 16:26:53');
+INSERT INTO `t_operate_log` VALUES (1148, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:55', '2023-07-13 16:26:55');
+INSERT INTO `t_operate_log` VALUES (1149, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:55', '2023-07-13 16:26:55');
+INSERT INTO `t_operate_log` VALUES (1150, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"UserSwitchOutlined\",\"menuId\":45,\"menuName\":\"部门员工\",\"menuType\":1,\"parentId\":0,\"path\":\"/organization\",\"sort\":100,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:59', '2023-07-13 16:26:59');
+INSERT INTO `t_operate_log` VALUES (1151, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:26:59', '2023-07-13 16:26:59');
+INSERT INTO `t_operate_log` VALUES (1152, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:01', '2023-07-13 16:27:01');
+INSERT INTO `t_operate_log` VALUES (1153, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:01', '2023-07-13 16:27:01');
+INSERT INTO `t_operate_log` VALUES (1154, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:14', '2023-07-13 16:27:14');
+INSERT INTO `t_operate_log` VALUES (1155, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:14', '2023-07-13 16:27:14');
+INSERT INTO `t_operate_log` VALUES (1156, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"UserSwitchOutlined\",\"menuId\":45,\"menuName\":\"部门员工\",\"menuType\":1,\"parentId\":0,\"path\":\"/organization\",\"sort\":100,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:16', '2023-07-13 16:27:16');
+INSERT INTO `t_operate_log` VALUES (1157, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:16', '2023-07-13 16:27:16');
+INSERT INTO `t_operate_log` VALUES (1158, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:19', '2023-07-13 16:27:19');
+INSERT INTO `t_operate_log` VALUES (1159, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:19', '2023-07-13 16:27:19');
+INSERT INTO `t_operate_log` VALUES (1160, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"component\":\"/support/code-generator/code-generator-list.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"CoffeeOutlined\",\"menuId\":151,\"menuName\":\"代码生成\",\"menuType\":2,\"parentId\":0,\"path\":\"/support/code-generator\",\"sort\":600,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:23', '2023-07-13 16:27:23');
+INSERT INTO `t_operate_log` VALUES (1161, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:23', '2023-07-13 16:27:23');
+INSERT INTO `t_operate_log` VALUES (1162, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:29', '2023-07-13 16:27:29');
+INSERT INTO `t_operate_log` VALUES (1163, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:27:59', '2023-07-13 16:27:59');
+INSERT INTO `t_operate_log` VALUES (1164, 1, 1, '管理员', '系统-菜单', '批量删除菜单 @author 卓大', '/menu/batchDelete', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.batchDeleteMenu', '[[137]]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:28:22', '2023-07-13 16:28:22');
+INSERT INTO `t_operate_log` VALUES (1165, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:28:22', '2023-07-13 16:28:22');
+INSERT INTO `t_operate_log` VALUES (1166, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:28:26', '2023-07-13 16:28:26');
+INSERT INTO `t_operate_log` VALUES (1167, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:28:42', '2023-07-13 16:28:42');
+INSERT INTO `t_operate_log` VALUES (1168, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:29:42', '2023-07-13 16:29:42');
+INSERT INTO `t_operate_log` VALUES (1169, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:30:02', '2023-07-13 16:30:02');
+INSERT INTO `t_operate_log` VALUES (1170, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:30:20', '2023-07-13 16:30:20');
+INSERT INTO `t_operate_log` VALUES (1171, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:30:50', '2023-07-13 16:30:50');
+INSERT INTO `t_operate_log` VALUES (1172, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 16:31:05', '2023-07-13 16:31:05');
+INSERT INTO `t_operate_log` VALUES (1173, 1, 1, '管理员', 'ERP进销存-分类管理', '查询类目层级树 @author 胡克', '/category/tree', 'net.lab1024.sa.admin.module.business.category.controller.CategoryController.queryTree', '[{\"categoryType\":1,\"parentId\":0}]', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', 1, NULL, '2023-07-13 16:31:20', '2023-07-13 16:31:20');
+INSERT INTO `t_operate_log` VALUES (1174, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:14:47', '2023-07-13 18:14:47');
+INSERT INTO `t_operate_log` VALUES (1175, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:15:25', '2023-07-13 18:15:25');
+INSERT INTO `t_operate_log` VALUES (1176, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:15:30', '2023-07-13 18:15:30');
+INSERT INTO `t_operate_log` VALUES (1177, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:17', '2023-07-13 18:17:17');
+INSERT INTO `t_operate_log` VALUES (1178, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:17', '2023-07-13 18:17:17');
+INSERT INTO `t_operate_log` VALUES (1179, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:18', '2023-07-13 18:17:18');
+INSERT INTO `t_operate_log` VALUES (1180, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"SettingOutlined\",\"menuId\":50,\"menuName\":\"System\",\"menuType\":1,\"parentId\":0,\"path\":\"/setting\",\"sort\":200,\"updateUserId\":1,\"visibleFlag\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:24', '2023-07-13 18:17:24');
+INSERT INTO `t_operate_log` VALUES (1181, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:24', '2023-07-13 18:17:24');
+INSERT INTO `t_operate_log` VALUES (1182, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:27', '2023-07-13 18:17:27');
+INSERT INTO `t_operate_log` VALUES (1183, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:27', '2023-07-13 18:17:27');
+INSERT INTO `t_operate_log` VALUES (1184, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":true,\"component\":\"/system/menu/menu-list.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"CopyOutlined\",\"menuId\":26,\"menuName\":\"Menu\",\"menuType\":2,\"parentId\":50,\"path\":\"/menu/list\",\"sort\":0,\"updateUserId\":1,\"visibleFlag\":true}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:33', '2023-07-13 18:17:33');
+INSERT INTO `t_operate_log` VALUES (1185, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:33', '2023-07-13 18:17:33');
+INSERT INTO `t_operate_log` VALUES (1186, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:34', '2023-07-13 18:17:34');
+INSERT INTO `t_operate_log` VALUES (1187, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:34', '2023-07-13 18:17:34');
+INSERT INTO `t_operate_log` VALUES (1188, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"component\":\"/support/config/config-list.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"AntDesignOutlined\",\"menuId\":109,\"menuName\":\"参数配置\",\"menuType\":2,\"parentId\":50,\"path\":\"/config/config-list\",\"sort\":3,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:38', '2023-07-13 18:17:38');
+INSERT INTO `t_operate_log` VALUES (1189, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:38', '2023-07-13 18:17:38');
+INSERT INTO `t_operate_log` VALUES (1190, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:40', '2023-07-13 18:17:40');
+INSERT INTO `t_operate_log` VALUES (1191, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:40', '2023-07-13 18:17:40');
+INSERT INTO `t_operate_log` VALUES (1192, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"component\":\"/support/dict/index.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"BarcodeOutlined\",\"menuId\":110,\"menuName\":\"数据字典\",\"menuType\":2,\"parentId\":50,\"path\":\"/setting/dict\",\"sort\":4,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:42', '2023-07-13 18:17:42');
+INSERT INTO `t_operate_log` VALUES (1193, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:42', '2023-07-13 18:17:42');
+INSERT INTO `t_operate_log` VALUES (1194, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:44', '2023-07-13 18:17:44');
+INSERT INTO `t_operate_log` VALUES (1195, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:44', '2023-07-13 18:17:44');
+INSERT INTO `t_operate_log` VALUES (1196, 1, 1, '管理员', '系统-菜单', '更新菜单 @author 卓大', '/menu/update', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.updateMenu', '[{\"apiPermsList\":[],\"cacheFlag\":false,\"component\":\"/support/serial-number/serial-number-list.vue\",\"disabledFlag\":false,\"frameFlag\":false,\"icon\":\"NumberOutlined\",\"menuId\":130,\"menuName\":\"单号管理\",\"menuType\":2,\"parentId\":50,\"path\":\"/support/serial-number/serial-number-list\",\"sort\":6,\"updateUserId\":1,\"visibleFlag\":false}]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:47', '2023-07-13 18:17:47');
+INSERT INTO `t_operate_log` VALUES (1197, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:47', '2023-07-13 18:17:47');
+INSERT INTO `t_operate_log` VALUES (1198, 1, 1, '管理员', '系统-菜单', '获取所有请求路径 @author 卓大', '/menu/auth/url', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.getAuthUrl', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:48', '2023-07-13 18:17:48');
+INSERT INTO `t_operate_log` VALUES (1199, 1, 1, '管理员', '系统-菜单', '查询菜单树 @author 卓大', '/menu/tree', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuTree', '[true]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:17:48', '2023-07-13 18:17:48');
+INSERT INTO `t_operate_log` VALUES (1200, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:18:17', '2023-07-13 18:18:17');
+INSERT INTO `t_operate_log` VALUES (1201, 1, 1, '管理员', '系统-菜单', '查询菜单列表 @author 卓大', '/menu/query', 'net.lab1024.sa.admin.module.system.menu.controller.MenuController.queryMenuList', '[]', '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36', 1, NULL, '2023-07-13 18:18:33', '2023-07-13 18:18:33');
 
 -- ----------------------------
 -- Table structure for t_reload_item
 -- ----------------------------
 DROP TABLE IF EXISTS `t_reload_item`;
 CREATE TABLE `t_reload_item`  (
-  `tag` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '项名称',
+  `tag` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '项名称',
   `args` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '参数 可选',
-  `identification` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '运行标识',
-  `update_time` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `identification` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '运行标识',
+  `update_time` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`tag`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'reload项目' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'reload项目' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_reload_item
@@ -1887,23 +2409,27 @@ CREATE TABLE `t_reload_result`  (
   `tag` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `identification` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '运行标识',
   `args` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `result` tinyint unsigned NOT NULL COMMENT '是否成功 ',
+  `result` tinyint UNSIGNED NOT NULL COMMENT '是否成功 ',
   `exception` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL,
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'reload结果' ROW_FORMAT = Dynamic;
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'reload结果' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_reload_result
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_role
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role`  (
-  `role_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '角色名称',
-  `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色描述',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '创建时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `role_name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '角色名称',
+  `remark` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '角色描述',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role
@@ -1919,28 +2445,32 @@ INSERT INTO `t_role` VALUES (37, '财务', '', '2019-08-30 09:31:16', '2019-08-3
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_data_scope`;
 CREATE TABLE `t_role_data_scope`  (
-  `id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `data_scope_type` int(0) NOT NULL COMMENT '数据范围id',
-  `view_type` int(0) NOT NULL COMMENT '数据范围类型',
-  `role_id` bigint(0) NOT NULL COMMENT '角色id',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `data_scope_type` int NOT NULL COMMENT '数据范围id',
+  `view_type` int NOT NULL COMMENT '数据范围类型',
+  `role_id` bigint NOT NULL COMMENT '角色id',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色的数据范围' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色的数据范围' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_role_data_scope
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for t_role_employee
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_employee`;
 CREATE TABLE `t_role_employee`  (
-  `id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `role_id` bigint(0) NOT NULL COMMENT '角色id',
-  `employee_id` bigint(0) NOT NULL COMMENT '员工id',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `role_id` bigint NOT NULL COMMENT '角色id',
+  `employee_id` bigint NOT NULL COMMENT '员工id',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_role_employee`(`role_id`, `employee_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 327 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 327 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_employee
@@ -1953,15 +2483,15 @@ INSERT INTO `t_role_employee` VALUES (326, 1, 44, '2022-10-22 10:54:35', '2022-1
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_menu`;
 CREATE TABLE `t_role_menu`  (
-  `role_menu_id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `role_id` bigint(0) NOT NULL COMMENT '角色id',
-  `menu_id` bigint(0) NOT NULL COMMENT '菜单id',
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `role_menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `role_id` bigint NOT NULL COMMENT '角色id',
+  `menu_id` bigint NOT NULL COMMENT '菜单id',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`role_menu_id`) USING BTREE,
   INDEX `idx_role_id`(`role_id`) USING BTREE,
   INDEX `idx_menu_id`(`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_menu
@@ -2006,20 +2536,20 @@ INSERT INTO `t_role_menu` VALUES (34, 1, 143, '2022-10-22 10:54:27', '2022-10-22
 -- ----------------------------
 DROP TABLE IF EXISTS `t_serial_number`;
 CREATE TABLE `t_serial_number`  (
-  `serial_number_id` int(0) NOT NULL,
+  `serial_number_id` int NOT NULL,
   `business_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '业务名称',
   `format` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '格式[yyyy]表示年,[mm]标识月,[dd]表示日,[nnn]表示三位数字',
   `rule_type` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '规则格式。none没有周期, year 年周期, month月周期, day日周期',
-  `init_number` int unsigned NOT NULL COMMENT '初始值',
-  `step_random_range` int unsigned NOT NULL COMMENT '步长随机数',
+  `init_number` int UNSIGNED NOT NULL COMMENT '初始值',
+  `step_random_range` int UNSIGNED NOT NULL COMMENT '步长随机数',
   `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
-  `last_number` bigint(0) NULL DEFAULT NULL COMMENT '上次产生的单号, 默认为空',
-  `last_time` datetime(0) NULL DEFAULT NULL COMMENT '上次产生的单号时间',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_number` bigint NULL DEFAULT NULL COMMENT '上次产生的单号, 默认为空',
+  `last_time` datetime NULL DEFAULT NULL COMMENT '上次产生的单号时间',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`serial_number_id`) USING BTREE,
   UNIQUE INDEX `key_name`(`business_name`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '单号生成器定义表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '单号生成器定义表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_serial_number
@@ -2032,15 +2562,15 @@ INSERT INTO `t_serial_number` VALUES (2, '合同编号', 'HT[yyyy][mm][dd][nnnnn
 -- ----------------------------
 DROP TABLE IF EXISTS `t_serial_number_record`;
 CREATE TABLE `t_serial_number_record`  (
-  `serial_number_id` int(0) NOT NULL,
+  `serial_number_id` int NOT NULL,
   `record_date` date NOT NULL COMMENT '记录日期',
-  `last_number` bigint(0) NOT NULL DEFAULT 0 COMMENT '最后更新值',
-  `last_time` datetime(0) NOT NULL COMMENT '最后更新时间',
-  `count` bigint(0) NOT NULL DEFAULT 0 COMMENT '更新次数',
-  `update_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
-  `create_time` datetime(0) NULL DEFAULT CURRENT_TIMESTAMP,
+  `last_number` bigint NOT NULL DEFAULT 0 COMMENT '最后更新值',
+  `last_time` datetime NOT NULL COMMENT '最后更新时间',
+  `count` bigint NOT NULL DEFAULT 0 COMMENT '更新次数',
+  `update_time` datetime NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_time` datetime NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX `uk_generator`(`serial_number_id`, `record_date`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'serial_number记录表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'serial_number记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_serial_number_record
@@ -2054,15 +2584,19 @@ INSERT INTO `t_serial_number_record` VALUES (1, '2022-06-24', 1082, '2022-06-24 
 -- ----------------------------
 DROP TABLE IF EXISTS `t_table_column`;
 CREATE TABLE `t_table_column`  (
-  `table_column_id` bigint(0) NOT NULL AUTO_INCREMENT,
-  `user_id` bigint(0) NOT NULL COMMENT '用户id',
-  `user_type` int(0) NOT NULL COMMENT '用户类型',
-  `table_id` int(0) NOT NULL COMMENT '表格id',
+  `table_column_id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL COMMENT '用户id',
+  `user_type` int NOT NULL COMMENT '用户类型',
+  `table_id` int NOT NULL COMMENT '表格id',
   `columns` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '具体的表格列，存入的json',
-  `create_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `update_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`table_column_id`) USING BTREE,
   UNIQUE INDEX `uni_employee_table`(`user_id`, `table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_table_column
+-- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;
