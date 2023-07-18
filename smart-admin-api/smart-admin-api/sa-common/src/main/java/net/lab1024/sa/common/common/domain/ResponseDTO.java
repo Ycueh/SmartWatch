@@ -7,13 +7,7 @@ import net.lab1024.sa.common.common.code.UserErrorCode;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * 请求返回对象
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-10-31 21:06:11
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Request return object
  */
 @Data
 public class ResponseDTO<T> {
@@ -64,7 +58,7 @@ public class ResponseDTO<T> {
         return new ResponseDTO<>(OK_CODE, null, true, msg, null);
     }
 
-    // -------------------------------------------- 最常用的 用户参数 错误码 --------------------------------------------
+    // -------------------------------------------- Most Common User Parameters Error Codes --------------------------------------------
 
     public static <T> ResponseDTO<T> userErrorParam() {
         return new ResponseDTO<>(UserErrorCode.PARAM_ERROR, false, null, null);
@@ -75,7 +69,7 @@ public class ResponseDTO<T> {
         return new ResponseDTO<>(UserErrorCode.PARAM_ERROR, false, msg, null);
     }
 
-    // -------------------------------------------- 错误码 --------------------------------------------
+    // -------------------------------------------- ERROR CODE --------------------------------------------
 
     public static <T> ResponseDTO<T> error(ErrorCode errorCode) {
         return new ResponseDTO<>(errorCode, false, null, null);

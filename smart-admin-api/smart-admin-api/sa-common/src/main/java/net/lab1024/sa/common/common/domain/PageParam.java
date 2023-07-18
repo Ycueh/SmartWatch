@@ -11,15 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-/**
- * 分页基础参数
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020/04/28 16:19
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @Data
 public class PageParam {
 
