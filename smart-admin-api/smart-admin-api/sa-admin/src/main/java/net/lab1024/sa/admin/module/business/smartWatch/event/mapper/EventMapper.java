@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface EventMapper extends BaseMapper<EventEntity> {
-    @Select("select * from Event where _id = #{id}")
+    @Select("select * from Event where id = #{id}")
     EventEntity selectById(Long id);
 
     void update(@Param("updateForm") EventUpdateForm updateForm);

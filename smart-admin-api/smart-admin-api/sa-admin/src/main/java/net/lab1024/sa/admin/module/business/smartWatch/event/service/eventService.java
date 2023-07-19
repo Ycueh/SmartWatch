@@ -13,11 +13,13 @@ import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityListeners;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -50,6 +52,33 @@ public class eventService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> update(EventUpdateForm updateForm) {
         eventMapper.update(updateForm);
+        return ResponseDTO.ok();
+    }
+
+    /**
+     * 删除
+     */
+    /**
+     * Delete batchIds
+     *
+     * @param idList
+     * @return
+     */
+    public synchronized ResponseDTO<String> batchDelete(List<Long> idList) {
+        if (CollectionUtils.isEmpty(idList)) {
+            return ResponseDTO.ok();
+        }
+        eventMapper.deleteBatchIds(idList);
+        return ResponseDTO.ok();
+    }
+    /**
+     * Delete one event
+     */
+    public synchronized ResponseDTO<String> delete(Long eventId) {
+        if (null == eventId) {
+            return ResponseDTO.ok();
+        }
+        eventMapper.deleteById(eventId);
         return ResponseDTO.ok();
     }
 }

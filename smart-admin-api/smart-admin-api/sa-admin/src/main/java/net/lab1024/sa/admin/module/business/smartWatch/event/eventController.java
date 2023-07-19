@@ -11,6 +11,7 @@ import net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseA
 import net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseUpdateForm;
 import net.lab1024.sa.admin.module.business.smartWatch.response.service.responseService;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,5 +33,17 @@ public class eventController {
     @PostMapping("/event/update")
     public ResponseDTO<String> update(@RequestBody @Valid EventUpdateForm updateForm) {
         return eventService.update(updateForm);
+    }
+
+    @ApiOperation("Delete event")
+    @GetMapping("/event/delete/{eventId}")
+    public ResponseDTO<String> delete(@PathVariable("eventId") Long eventId) {
+        return eventService.delete(eventId);
+    }
+
+    @ApiOperation("Group delete")
+    @PostMapping("/event/batchDelete")
+    public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
+        return eventService.batchDelete(idList);
     }
 }

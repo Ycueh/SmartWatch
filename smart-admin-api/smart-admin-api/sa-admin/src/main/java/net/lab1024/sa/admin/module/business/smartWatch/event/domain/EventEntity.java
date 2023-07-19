@@ -16,7 +16,7 @@ import java.time.LocalTime;
 public class EventEntity {
     @Id
     @TableId(type = IdType.AUTO)
-    @Column(name = "_id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "eventdate")
