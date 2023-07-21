@@ -1,10 +1,11 @@
 spring:
   # 数据库连接信息
   datasource:
+#    url: jdbc:sqlite:database/smart_admin_v2.db
     url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
-    password: 3@!23A7k
-#    password: zyc992329
+    password: zyc992329
+#    password: 3@!23A7k
 #    password: haizhenqi.0349
 #    password: 123456
     initial-size: 2

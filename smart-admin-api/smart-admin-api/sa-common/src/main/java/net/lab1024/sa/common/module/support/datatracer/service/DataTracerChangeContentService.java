@@ -15,7 +15,6 @@ import net.lab1024.sa.common.common.util.SmartStringUtil;
 import net.lab1024.sa.common.module.support.datatracer.annoation.*;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerConst;
 import net.lab1024.sa.common.module.support.datatracer.domain.bo.DataTracerContentBO;
-import net.lab1024.sa.common.module.support.dict.service.DictCacheService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +46,6 @@ public class DataTracerChangeContentService {
 
     @Autowired
     private ApplicationContext applicationContext;
-    @Autowired
-    private DictCacheService dictCacheService;
     /**
      * 字段描述缓存
      */
@@ -307,9 +304,7 @@ public class DataTracerChangeContentService {
             } else {
                 fieldContent = SmartEnumUtil.getEnumDescByValue(fieldValue, dataTracerFieldEnum.enumClass());
             }
-        } else if (dataTracerFieldDict != null) {
-            fieldContent = dictCacheService.selectValueNameByValueCodeSplit(fieldValue.toString());
-        } else if (dataTracerFieldSql != null) {
+        }  else if (dataTracerFieldSql != null) {
             fieldContent = this.getRelateDisplayValue(fieldValue, dataTracerFieldSql);
         } else if (fieldValue instanceof Date) {
             fieldContent = DateUtil.formatDateTime((Date) fieldValue);

@@ -11,7 +11,6 @@ import net.lab1024.sa.admin.module.system.role.domain.vo.RoleSelectedVO;
 import net.lab1024.sa.admin.module.system.role.service.RoleEmployeeService;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
-import net.lab1024.sa.common.module.support.operatelog.annoation.OperateLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,6 @@ import java.util.List;
  * @Email lab1024@163.com
  * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
-@OperateLog
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_ROLE_EMPLOYEE})
 public class RoleEmployeeController extends AdminBaseController {

@@ -2,17 +2,11 @@ package net.lab1024.sa.admin.module.system.employee.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Lists;
-import net.lab1024.sa.admin.module.system.department.dao.DepartmentDao;
-import net.lab1024.sa.admin.module.system.department.domain.entity.DepartmentEntity;
-import net.lab1024.sa.admin.module.system.department.domain.vo.DepartmentVO;
-import net.lab1024.sa.admin.module.system.department.service.DepartmentService;
 import net.lab1024.sa.admin.module.system.employee.dao.EmployeeDao;
 import net.lab1024.sa.admin.module.system.employee.domain.entity.EmployeeEntity;
 import net.lab1024.sa.admin.module.system.employee.domain.form.*;
 import net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO;
 import net.lab1024.sa.admin.module.system.employee.manager.EmployeeManager;
-import net.lab1024.sa.admin.module.system.role.dao.RoleEmployeeDao;
-import net.lab1024.sa.admin.module.system.role.domain.vo.RoleEmployeeVO;
 import net.lab1024.sa.common.common.code.UserErrorCode;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
@@ -47,16 +41,7 @@ public class EmployeeService {
     private EmployeeDao employeeDao;
 
     @Autowired
-    private DepartmentDao departmentDao;
-
-    @Autowired
     private EmployeeManager employeeManager;
-
-    @Autowired
-    private RoleEmployeeDao roleEmployeeDao;
-
-    @Autowired
-    private DepartmentService departmentService;
 
     @Autowired
     private TokenService tokenService;
@@ -78,9 +63,6 @@ public class EmployeeService {
         Page pageParam = SmartPageUtil.convert2PageQuery(employeeQueryForm);
 
         List<Long> departmentIdList = new ArrayList<>();
-        if (employeeQueryForm.getDepartmentId() != null) {
-            departmentIdList.addAll(departmentService.selfAndChildrenIdList(employeeQueryForm.getDepartmentId()));
-        }
 
         List<EmployeeVO> employeeList = employeeDao.queryEmployee(pageParam, employeeQueryForm, departmentIdList);
         if (CollectionUtils.isEmpty(employeeList)) {
@@ -88,18 +70,7 @@ public class EmployeeService {
             return ResponseDTO.ok(PageResult);
         }
 
-        List<Long> employeeIdList = employeeList.stream().map(EmployeeVO::getEmployeeId).collect(Collectors.toList());
-        // 查询员工角色
-        List<RoleEmployeeVO> roleEmployeeEntityList = roleEmployeeDao.selectRoleByEmployeeIdList(employeeIdList);
-        Map<Long, List<Long>> employeeRoleIdListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleEmployeeVO::getEmployeeId, Collectors.mapping(RoleEmployeeVO::getRoleId, Collectors.toList())));
-        Map<Long, List<String>> employeeRoleNameListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleEmployeeVO::getEmployeeId, Collectors.mapping(RoleEmployeeVO::getRoleName, Collectors.toList())));
-
-        employeeList.forEach(e -> {
-            e.setRoleIdList(employeeRoleIdListMap.getOrDefault(e.getEmployeeId(), Lists.newArrayList()));
-            e.setRoleNameList(employeeRoleNameListMap.getOrDefault(e.getEmployeeId(), Lists.newArrayList()));
-            e.setDepartmentName(departmentService.getDepartmentPath(e.getDepartmentId()));
-        });
-        PageResult<EmployeeVO> PageResult = SmartPageUtil.convert2PageResult(pageParam, employeeList);
+         PageResult<EmployeeVO> PageResult = SmartPageUtil.convert2PageResult(pageParam, employeeList);
         return ResponseDTO.ok(PageResult);
     }
 
@@ -125,12 +96,6 @@ public class EmployeeService {
         if (null != employeeEntity) {
             return ResponseDTO.userErrorParam("手机号已存在");
         }
-        // 部门是否存在
-        Long departmentId = employeeAddForm.getDepartmentId();
-        DepartmentEntity department = departmentDao.selectById(departmentId);
-        if (department == null) {
-            return ResponseDTO.userErrorParam("部门不存在");
-        }
 
         EmployeeEntity entity = SmartBeanUtil.copy(employeeAddForm, EmployeeEntity.class);
         // 设置密码 默认密码
@@ -139,7 +104,7 @@ public class EmployeeService {
 
         // 保存数据
         entity.setDeletedFlag(Boolean.FALSE);
-        employeeManager.saveEmployee(entity, employeeAddForm.getRoleIdList());
+        employeeManager.saveEmployee(entity);
 
         return ResponseDTO.ok(password);
     }
@@ -157,14 +122,6 @@ public class EmployeeService {
         if (null == employeeEntity) {
             return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST);
         }
-
-        // 部门是否存在
-        Long departmentId = employeeUpdateForm.getDepartmentId();
-        DepartmentEntity departmentEntity = departmentDao.selectById(departmentId);
-        if (departmentEntity == null) {
-            return ResponseDTO.userErrorParam("部门不存在");
-        }
-
 
         EmployeeEntity existEntity = employeeDao.getByLoginName(employeeUpdateForm.getLoginName(), null);
         if (null != existEntity && !Objects.equals(existEntity.getEmployeeId(), employeeId)) {
@@ -186,7 +143,7 @@ public class EmployeeService {
         entity.setLoginPwd(null);
 
         // 更新数据
-        employeeManager.updateEmployee(entity, employeeUpdateForm.getRoleIdList());
+        employeeManager.updateEmployee(entity);
 
         return ResponseDTO.ok();
     }
@@ -304,35 +261,6 @@ public class EmployeeService {
 
         return ResponseDTO.ok();
     }
-
-    /**
-     * 获取某个部门的员工信息
-     *
-     * @param departmentId
-     * @return
-     */
-    public ResponseDTO<List<EmployeeVO>> getAllEmployeeByDepartmentId(Long departmentId, Boolean disabledFlag) {
-        List<EmployeeEntity> employeeEntityList = employeeDao.selectByDepartmentId(departmentId, disabledFlag);
-        if (disabledFlag != null) {
-            employeeEntityList = employeeEntityList.stream().filter(e -> e.getDisabledFlag().equals(disabledFlag)).collect(Collectors.toList());
-        }
-
-        if (CollectionUtils.isEmpty(employeeEntityList)) {
-            return ResponseDTO.ok(Collections.emptyList());
-        }
-
-        DepartmentVO department = departmentService.getDepartmentById(departmentId);
-
-        List<EmployeeVO> voList = employeeEntityList.stream().map(e -> {
-            EmployeeVO employeeVO = SmartBeanUtil.copy(e, EmployeeVO.class);
-            if (department != null) {
-                employeeVO.setDepartmentName(department.getName());
-            }
-            return employeeVO;
-        }).collect(Collectors.toList());
-        return ResponseDTO.ok(voList);
-    }
-
 
     /**
      * 重置密码

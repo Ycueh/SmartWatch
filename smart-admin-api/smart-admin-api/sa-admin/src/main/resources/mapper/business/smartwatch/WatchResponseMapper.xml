@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO">
-    <select id="queryPage" resultType="net.lab1024.sa.admin.module.business.smartWatch.response.domain.ResponseVO">
+<mapper namespace="net.lab1024.sa.admin.module.smartWatch.response.dao.responseDAO">
+    <select id="queryPage" resultType="net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseVO">
         SELECT
         *
         FROM response
@@ -36,6 +36,13 @@
                 response.response=#{updateForm.response}
         <where>
             response._id = #{updateForm.id}
+        </where>
+    </select>
+
+    <select id="deleteById"  >
+        DELETE FROM response
+        <where>
+            response._id = #{responseId}
         </where>
     </select>
 

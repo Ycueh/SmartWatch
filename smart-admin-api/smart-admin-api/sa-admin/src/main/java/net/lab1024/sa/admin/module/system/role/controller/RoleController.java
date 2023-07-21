@@ -9,7 +9,6 @@ import net.lab1024.sa.admin.module.system.role.domain.form.RoleUpdateForm;
 import net.lab1024.sa.admin.module.system.role.domain.vo.RoleVO;
 import net.lab1024.sa.admin.module.system.role.service.RoleService;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
-import net.lab1024.sa.common.module.support.operatelog.annoation.OperateLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +25,6 @@ import java.util.List;
  * @Email lab1024@163.com
  * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
-@OperateLog
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_ROLE})
 public class RoleController extends AdminBaseController {

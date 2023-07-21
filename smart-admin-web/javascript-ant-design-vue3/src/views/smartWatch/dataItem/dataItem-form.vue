@@ -93,7 +93,7 @@
   import {message} from "ant-design-vue";
   import {smartSentry} from "/@/lib/smart-sentry";
   import {SmartLoading} from "/@/components/framework/smart-loading";
-  import {parameterApi} from "/@/api/smartWatch/dataItem/dataItem-api";
+
   
   const emit = defineEmits('reloadList');
   
