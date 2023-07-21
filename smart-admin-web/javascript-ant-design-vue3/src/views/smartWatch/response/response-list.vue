@@ -78,7 +78,6 @@
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="showForm(record)" type="link" v-privilege="'response:update'">Edit</a-button>
             <a-button @click="onDelete(record)" danger type="link" v-privilege="'response:delete'">Delete</a-button>
           </div>
         </template>
@@ -231,7 +230,7 @@
   function onDelete(data) {
     Modal.confirm({
       title: 'Hint',
-      content: 'Are you sure to delete item',
+      content: 'Are you sure to delete item [' + data.id + ']?',
       okText: 'Delete',
       okType: 'danger',
       onOk() {
@@ -249,7 +248,7 @@
       let deleteForm = {
         goodsIdList: selectedRowKeyList.value,
       };
-      await responseApi.delete(data.responseId);
+      await responseApi.delete(data.id);
       message.success('Delete successfully');
       queryData();
     } catch (e) {
