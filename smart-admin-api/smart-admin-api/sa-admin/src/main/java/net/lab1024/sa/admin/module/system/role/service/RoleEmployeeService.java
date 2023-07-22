@@ -1,23 +1,20 @@
 package net.lab1024.sa.admin.module.system.role.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO;
 import net.lab1024.sa.admin.module.system.role.dao.RoleDao;
 import net.lab1024.sa.admin.module.system.role.dao.RoleEmployeeDao;
+import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEmployeeEntity;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEntity;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleEmployeeQueryForm;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleEmployeeUpdateForm;
 import net.lab1024.sa.admin.module.system.role.domain.vo.RoleSelectedVO;
-import net.lab1024.sa.common.common.code.UserErrorCode;
+import net.lab1024.sa.admin.module.system.role.manager.RoleEmployeeManager;
 import net.lab1024.sa.common.common.constant.StringConst;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
 import net.lab1024.sa.common.common.util.SmartPageUtil;
-import net.lab1024.sa.admin.module.system.department.dao.DepartmentDao;
-import net.lab1024.sa.admin.module.system.department.domain.entity.DepartmentEntity;
-import net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO;
-import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEmployeeEntity;
-import net.lab1024.sa.admin.module.system.role.manager.RoleEmployeeManager;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +42,6 @@ public class RoleEmployeeService {
     @Autowired
     private RoleDao roleDao;
     @Autowired
-    private DepartmentDao departmentDao;
-    @Autowired
     private RoleEmployeeManager roleEmployeeManager;
 
     /**
@@ -62,13 +57,6 @@ public class RoleEmployeeService {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
         List<Long> departmentIdList = employeeDTOS.stream().filter(e -> e != null && e.getDepartmentId() != null).map(EmployeeVO::getDepartmentId).collect(Collectors.toList());
-        if (CollectionUtils.isNotEmpty(departmentIdList)) {
-            List<DepartmentEntity> departmentEntities = departmentDao.selectBatchIds(departmentIdList);
-            Map<Long, String> departmentIdNameMap = departmentEntities.stream().collect(Collectors.toMap(DepartmentEntity::getDepartmentId, DepartmentEntity::getName));
-            employeeDTOS.forEach(e -> {
-                e.setDepartmentName(departmentIdNameMap.getOrDefault(e.getDepartmentId(), StringConst.EMPTY));
-            });
-        }
         PageResult<EmployeeVO> PageResult = SmartPageUtil.convert2PageResult(page, employeeDTOS, EmployeeVO.class);
         return ResponseDTO.ok(PageResult);
     }

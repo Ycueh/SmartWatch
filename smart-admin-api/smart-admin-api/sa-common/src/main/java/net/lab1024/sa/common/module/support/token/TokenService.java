@@ -46,26 +46,18 @@ public class TokenService {
      * @param userId
      * @param userName
      * @param userTypeEnum
-     * @param superPasswordFlag 特殊万能密码标识
      * @return
      */
-    public String generateToken(Long userId, String userName, UserTypeEnum userTypeEnum, Boolean superPasswordFlag) {
+    public String generateToken(Long userId, String userName, UserTypeEnum userTypeEnum) {
         long nowTimeMilli = System.currentTimeMillis();
         Claims jwtClaims = Jwts.claims();
         jwtClaims.put(JwtConst.CLAIM_ID_KEY, userId);
         jwtClaims.put(JwtConst.CLAIM_NAME_KEY, userName);
         jwtClaims.put(JwtConst.CLAIM_USER_TYPE_KEY, userTypeEnum.getValue());
-        jwtClaims.put(JwtConst.CLAIM_SUPER_PASSWORD_FLAG, superPasswordFlag);
         JwtBuilder jwtBuilder = Jwts.builder()
                 .setClaims(jwtClaims)
                 .setIssuedAt(new Date(nowTimeMilli))
                 .signWith(SignatureAlgorithm.HS512, tokenKey);
-
-        // 如果是万能密码，则不需要记录到redis中;万能密码最多半个小时有效期
-        if (superPasswordFlag) {
-            jwtBuilder.setExpiration(new Date(nowTimeMilli + (HOUR_TIME_MILLI / 2)));
-            return jwtBuilder.compact();
-        }
 
         jwtBuilder.setExpiration(new Date(nowTimeMilli + tokenExpire * 24 * HOUR_TIME_MILLI));
         String token = jwtBuilder.compact();

@@ -10,7 +10,6 @@ import net.lab1024.sa.admin.module.system.employee.service.EmployeeService;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartRequestUtil;
-import net.lab1024.sa.common.module.support.operatelog.annoation.OperateLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,6 @@ import java.util.List;
  * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @RestController
-@OperateLog
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_EMPLOYEE})
 public class EmployeeController extends AdminBaseController {
 
@@ -88,12 +86,6 @@ public class EmployeeController extends AdminBaseController {
     @PreAuthorize("@saAuth.checkPermission('system:employee:password:reset')")
     public ResponseDTO<String> resetPassword(@PathVariable Integer employeeId) {
         return employeeService.resetPassword(employeeId);
-    }
-
-    @ApiOperation(value = "查询员工-根据部门id @author 卓大")
-    @GetMapping("/employee/getAllEmployeeByDepartmentId/{departmentId}")
-    public ResponseDTO<List<EmployeeVO>> getAllEmployeeByDepartmentId(@PathVariable Long departmentId) {
-        return employeeService.getAllEmployeeByDepartmentId(departmentId, Boolean.FALSE);
     }
 
     @ApiOperation("查询所有员工 @author 卓大")

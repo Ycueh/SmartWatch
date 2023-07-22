@@ -3,8 +3,6 @@ package net.lab1024.sa.admin.module.system.employee.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.lab1024.sa.admin.module.system.employee.dao.EmployeeDao;
-import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEmployeeEntity;
-import net.lab1024.sa.admin.module.system.role.manager.RoleEmployeeManager;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,23 +27,15 @@ public class EmployeeManager extends ServiceImpl<EmployeeDao, EmployeeEntity> {
     @Autowired
     private EmployeeDao employeeDao;
 
-    @Autowired
-    private RoleEmployeeManager roleEmployeeManager;
-
     /**
      * 保存员工
      *
      * @param employee
      */
     @Transactional(rollbackFor = Throwable.class)
-    public void saveEmployee(EmployeeEntity employee, List<Long> roleIdList) {
+    public void saveEmployee(EmployeeEntity employee) {
         // 保存员工 获得id
         employeeDao.insert(employee);
-
-        if (CollectionUtils.isNotEmpty(roleIdList)) {
-            List<RoleEmployeeEntity> roleEmployeeList = roleIdList.stream().map(e -> new RoleEmployeeEntity(e, employee.getEmployeeId())).collect(Collectors.toList());
-            roleEmployeeManager.saveBatch(roleEmployeeList);
-        }
     }
 
     /**
@@ -54,29 +44,10 @@ public class EmployeeManager extends ServiceImpl<EmployeeDao, EmployeeEntity> {
      * @param employee
      */
     @Transactional(rollbackFor = Throwable.class)
-    public void updateEmployee(EmployeeEntity employee, List<Long> roleIdList) {
+    public void updateEmployee(EmployeeEntity employee) {
         // 保存员工 获得id
         employeeDao.updateById(employee);
-
-        if (CollectionUtils.isNotEmpty(roleIdList)) {
-            List<RoleEmployeeEntity> roleEmployeeList = roleIdList.stream().map(e -> new RoleEmployeeEntity(e, employee.getEmployeeId())).collect(Collectors.toList());
-            this.updateEmployeeRole(employee.getEmployeeId(), roleEmployeeList);
-        }
     }
 
-    /**
-     * 更新员工角色
-     *
-     * @param employeeId
-     * @param roleEmployeeList
-     */
-    @Transactional(rollbackFor = Throwable.class)
-    public void updateEmployeeRole(Long employeeId, List<RoleEmployeeEntity> roleEmployeeList) {
-        roleEmployeeManager.getBaseMapper().deleteByEmployeeId(employeeId);
-
-        if (CollectionUtils.isNotEmpty(roleEmployeeList)) {
-            roleEmployeeManager.saveBatch(roleEmployeeList);
-        }
-    }
 
 }

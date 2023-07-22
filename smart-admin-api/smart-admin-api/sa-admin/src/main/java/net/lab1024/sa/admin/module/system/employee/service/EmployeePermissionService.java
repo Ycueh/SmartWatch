@@ -32,7 +32,6 @@ public class EmployeePermissionService {
 
     @Autowired
     private RoleMenuService roleMenuService;
-
     /**
      * 构建权限集合
      *

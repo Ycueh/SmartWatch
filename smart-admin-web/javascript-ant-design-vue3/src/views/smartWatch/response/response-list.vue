@@ -27,13 +27,13 @@
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
           <template #icon>
-            <ReloadOutlined />
+            <SearchOutlined />
           </template>
           Search
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
-            <SearchOutlined />
+            <ReloadOutlined />
           </template>
           Reset
         </a-button>
@@ -78,7 +78,6 @@
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="showForm(record)" type="link" v-privilege="'response:update'">Edit</a-button>
             <a-button @click="onDelete(record)" danger type="link" v-privilege="'response:delete'">Delete</a-button>
           </div>
         </template>
@@ -196,6 +195,7 @@
     tableLoading.value = true;
     try {
       let queryResult = await responseApi.queryPage(queryForm);
+      console.log(queryResult);
       tableData.value = queryResult.data.list;
       total.value = queryResult.data.total;
     } catch (e) {
@@ -231,7 +231,7 @@
   function onDelete(data) {
     Modal.confirm({
       title: 'Hint',
-      content: 'Are you sure to delete item',
+      content: 'Are you sure to delete item [' + data.id + ']?',
       okText: 'Delete',
       okType: 'danger',
       onOk() {
@@ -249,7 +249,7 @@
       let deleteForm = {
         goodsIdList: selectedRowKeyList.value,
       };
-      await responseApi.delete(data.responseId);
+      await responseApi.delete(data.id);
       message.success('Delete successfully');
       queryData();
     } catch (e) {

@@ -4,8 +4,6 @@ import net.lab1024.sa.common.common.domain.RequestUser;
 import net.lab1024.sa.common.common.util.SmartRequestUtil;
 import net.lab1024.sa.common.module.support.jwe.JweAspect;
 import net.lab1024.sa.common.module.support.jwe.JweUserKey;
-import net.lab1024.sa.common.module.support.operatelog.core.OperateLogAspect;
-import net.lab1024.sa.common.module.support.operatelog.core.OperateLogConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

@@ -4,10 +4,8 @@
 
     <select id="queryEmployee" resultType="net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO">
         SELECT
-        t_employee.*,
-        t_department.name AS departmentName
+        t_employee.*
         FROM t_employee
-        LEFT JOIN t_department ON t_department.department_id = t_employee.department_id
         <where>
             <if test="queryForm.keyword != null and queryForm.keyword != ''">
                 AND (
@@ -15,14 +13,6 @@
                 OR INSTR(t_employee.phone,#{queryForm.keyword})
                 OR INSTR(t_employee.login_name,#{queryForm.keyword})
                 )
-            </if>
-            <if test="departmentIdList != null and departmentIdList.size > 0">
-                and
-                t_employee.department_id
-                in
-                <foreach collection="departmentIdList" open="(" close=")" separator="," item="item">
-                    #{item}
-                </foreach>
             </if>
             <if test="queryForm.disabledFlag != null">
                 AND t_employee.disabled_flag = #{queryForm.disabledFlag}
@@ -166,20 +156,16 @@
 
 
     <select id="getEmployeeById" resultType="net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO">
-        SELECT t_employee.*,
-               t_department.name AS departmentName
+        SELECT t_employee.*
         FROM t_employee
-                 LEFT JOIN t_department ON t_department.department_id = t_employee.department_id
         where t_employee.employee_id = #{employeeId}
     </select>
 
     <select id="selectEmployeeByDisabledAndDeleted"
             resultType="net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO">
         SELECT
-        t_employee.*,
-        t_department.name AS departmentName
+        t_employee.*
         FROM t_employee
-        LEFT JOIN t_department ON t_department.department_id = t_employee.department_id
         <where>
             <if test="disabledFlag != null">
                 AND t_employee.disabled_flag = #{disabledFlag}
