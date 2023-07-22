@@ -2,23 +2,20 @@
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row" v-privilege="'parameter:query'">
 
-      <a-form-item label="id" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.searchParameterId" placeholder="parameterID" />
-      </a-form-item>
-      <a-form-item label="parameter" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.searchParameter" placeholder="parameter" />
+      <a-form-item label="keyword" class="smart-query-form-item">
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="parameter" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData" v-privilege="'parameter:query'">
           <template #icon>
-            <ReloadOutlined />
+            <SearchOutlined />
           </template>
           Search
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'parameter:query'">
           <template #icon>
-            <SearchOutlined />
+            <ReloadOutlined />
           </template>
           Reset
         </a-button>
@@ -110,8 +107,7 @@ const columns = ref([
 ]);
 
 const queryFormState = {
-  searchParameterId: '',
-  searchParameter: '',
+  keyword: '',
   pageNum: 1,
   pageSize: 10,
 };

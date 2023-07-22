@@ -27,13 +27,13 @@
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
           <template #icon>
-            <ReloadOutlined />
+            <SearchOutlined />
           </template>
           Search
         </a-button>
         <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
-            <SearchOutlined />
+            <ReloadOutlined />
           </template>
           Reset
         </a-button>
@@ -195,6 +195,7 @@
     tableLoading.value = true;
     try {
       let queryResult = await responseApi.queryPage(queryForm);
+      console.log(queryResult);
       tableData.value = queryResult.data.list;
       total.value = queryResult.data.total;
     } catch (e) {
