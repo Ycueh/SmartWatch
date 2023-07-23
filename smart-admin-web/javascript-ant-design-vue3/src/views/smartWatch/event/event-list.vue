@@ -101,6 +101,14 @@ const columns = ref([
     dataIndex: 'eventdesc',
   },
   {
+    title: 'eventID',
+    dataIndex: 'eventID',
+  },
+  {
+    title: 'eventType',
+    dataIndex: 'eventType',
+  },
+  {
     title: 'Action',
     dataIndex: 'action',
     fixed: 'right',

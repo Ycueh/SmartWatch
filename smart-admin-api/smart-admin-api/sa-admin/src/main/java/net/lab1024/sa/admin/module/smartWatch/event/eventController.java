@@ -4,8 +4,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
+import net.lab1024.sa.admin.module.smartWatch.event.domain.EventQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventUpdateForm;
+import net.lab1024.sa.admin.module.smartWatch.event.domain.EventVO;
+import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseQueryForm;
+import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseVO;
+import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,5 +33,23 @@ public class eventController {
     @PostMapping("/event/update")
     public ResponseDTO<String> update(@RequestBody @Valid EventUpdateForm updateForm) {
         return eventService.update(updateForm);
+    }
+
+    @ApiOperation("Delete event")
+    @GetMapping("/event/delete/{eventId}")
+    public ResponseDTO<String> delete(@PathVariable("eventId") Long eventId) {
+        return eventService.delete(eventId);
+    }
+
+    @ApiOperation("Group delete")
+    @PostMapping("/event/batchDelete")
+    public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
+        return eventService.batchDelete(idList);
+    }
+
+    @ApiOperation("queryPage")
+    @PostMapping("/event/queryPage")
+    public ResponseDTO<PageResult<EventVO>> queryPage(@RequestBody @Valid EventQueryForm queryForm) {
+        return ResponseDTO.ok(eventService.queryPage(queryForm));
     }
 }

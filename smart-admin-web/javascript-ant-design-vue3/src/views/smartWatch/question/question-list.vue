@@ -1,24 +1,24 @@
 <template>
-  <a-form class="smart-query-form">
-    <a-row class="smart-query-form-row" v-privilege="'question:query'">
+  <a-form class="smart-query-form" v-privilege="'question:query'">
+    <a-row class="smart-query-form-row">
 
 <!--      <a-form-item label="questionId" class="smart-query-form-item">-->
 <!--        <a-input style="width: 200px" v-model:value="queryForm.searchQuestionId" placeholder="questionID" />-->
 <!--      </a-form-item>-->
-      <a-form-item label="question" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.searchQuestion" placeholder="question" />
+      <a-form-item label="keyword" class="smart-query-form-item">
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="question" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item">
-        <a-button type="primary" @click="queryData" v-privilege="'question:query'">
+        <a-button type="primary" @click="queryData">
           <template #icon>
-            <ReloadOutlined />
+            <SearchOutlined />
           </template>
           Search
         </a-button>
-        <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'question:query'">
+        <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
-            <SearchOutlined />
+            <ReloadOutlined />
           </template>
           Reset
         </a-button>
@@ -142,8 +142,7 @@ const columns = ref([
 ]);
 
 const queryFormState = {
-  searchQuestionId: '',
-  searchQuestion: undefined,
+  keyword: undefined,
   pageNum: 1,
   pageSize: 10,
 };
@@ -164,6 +163,7 @@ async function queryData() {
   tableLoading.value = true;
   try {
     let queryResult = await questionApi.pageQuery(queryForm);
+    console.log(queryResult);
     tableData.value = queryResult.data.list;
     total.value = queryResult.data.total;
   } catch (e) {
