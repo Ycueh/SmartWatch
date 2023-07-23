@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-
 /**
  * 员工 实体表
  *
@@ -73,9 +71,9 @@ public class EmployeeEntity {
      */
     private String remark;
 
-    private LocalDateTime updateTime;
+    private String updateTime;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
 
 }

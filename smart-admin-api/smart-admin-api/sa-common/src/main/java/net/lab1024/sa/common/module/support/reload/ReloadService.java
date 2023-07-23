@@ -60,7 +60,7 @@ public class ReloadService {
             return ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST);
         }
         reloadItemEntity.setIdentification(reloadForm.getIdentification());
-        reloadItemEntity.setUpdateTime(LocalDateTime.now());
+        reloadItemEntity.setUpdateTime(LocalDateTime.now().toString());
         reloadItemEntity.setArgs(reloadForm.getArgs());
         reloadItemDao.updateById(reloadItemEntity);
         return ResponseDTO.ok();

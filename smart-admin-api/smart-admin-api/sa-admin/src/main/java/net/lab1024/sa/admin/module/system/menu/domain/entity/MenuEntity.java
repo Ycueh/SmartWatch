@@ -9,7 +9,7 @@ import net.lab1024.sa.admin.module.system.menu.constant.MenuTypeEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import net.lab1024.sa.common.common.validator.enumeration.CheckEnum;
 
-import java.time.LocalDateTime;
+
 
 /**
  * 菜单 表
@@ -120,7 +120,7 @@ public class MenuEntity {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private String createTime;
 
     /**
      * 创建人
@@ -130,7 +130,7 @@ public class MenuEntity {
     /**
      * 更新时间
      */
-    private LocalDateTime updateTime;
+    private String updateTime;
 
     /**
      * 更新人

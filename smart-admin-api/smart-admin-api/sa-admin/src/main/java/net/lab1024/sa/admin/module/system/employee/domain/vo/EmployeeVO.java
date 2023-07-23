@@ -5,7 +5,7 @@ import lombok.Data;
 import net.lab1024.sa.common.common.enumeration.GenderEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 
-import java.time.LocalDateTime;
+
 import java.util.List;
 
 /**
@@ -48,7 +48,7 @@ public class EmployeeVO {
     private String departmentName;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime createTime;
+    private String createTime;
 
     @ApiModelProperty("角色列表")
     private List<Long> roleIdList;

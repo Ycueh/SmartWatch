@@ -27,10 +27,10 @@ public class ReloadItemVO {
     private String identification;
 
     @ApiModelProperty("更新时间")
-    private LocalDateTime updateTime;
+    private String updateTime;
 
     @ApiModelProperty("创建时间")
-    private LocalDateTime createTime;
+    private String createTime;
 
 
 }

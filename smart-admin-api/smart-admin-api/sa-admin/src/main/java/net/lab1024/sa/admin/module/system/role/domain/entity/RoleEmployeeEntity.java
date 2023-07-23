@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
-import java.time.LocalDateTime;
+
 
 /**
  * 角色 员工关系
@@ -27,9 +27,9 @@ public class RoleEmployeeEntity {
 
     private Long employeeId;
 
-    private LocalDateTime updateTime;
+    private String updateTime;
 
-    private LocalDateTime createTime;
+    private String createTime;
 
     public RoleEmployeeEntity() {
     }

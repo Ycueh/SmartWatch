@@ -83,3 +83,7 @@
 [23/Jul/2023:12:17:46 +0100] - 127.0.0.1 "POST /event/queryPage HTTP/1.1" 200 229 (229 ms)
 [23/Jul/2023:12:17:52 +0100] - 127.0.0.1 "OPTIONS /event/delete/6 HTTP/1.1" 200 4 (4 ms)
 [23/Jul/2023:12:17:52 +0100] - 127.0.0.1 "GET /event/delete/6 HTTP/1.1" 200 45 (45 ms)
+[23/Jul/2023:18:26:17 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 42 (42 ms)
+[23/Jul/2023:18:26:17 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 500 400 (400 ms)
+[23/Jul/2023:18:28:14 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 40 (40 ms)
+[23/Jul/2023:18:28:14 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 500 532 (532 ms)

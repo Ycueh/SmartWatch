@@ -1,8 +1,6 @@
 package net.lab1024.sa.common.module.support.cache;
 
 import com.google.common.collect.Lists;
-import net.lab1024.sa.common.constant.ReloadConst;
-import net.lab1024.sa.common.module.support.reload.core.annoation.SmartReload;
 import org.springframework.cache.caffeine.CaffeineCache;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.stereotype.Service;
@@ -13,15 +11,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * 缓存操作
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021/10/11 20:07
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
 @Service
 public class CacheService {
 
@@ -29,7 +18,7 @@ public class CacheService {
     private CaffeineCacheManager caffeineCacheManager;
 
     /**
-     * 获取所有缓存名称
+     * Acquire all cache name
      *
      * @return
      */
@@ -38,7 +27,7 @@ public class CacheService {
     }
 
     /**
-     * 某个缓存下的所有key
+     * All the keys after one cache
      *
      * @param cacheName
      * @return
@@ -53,7 +42,7 @@ public class CacheService {
     }
 
     /**
-     * 移除某个key
+     * Remove key
      *
      * @param cacheName
      */
@@ -65,7 +54,6 @@ public class CacheService {
         }
     }
 
-    @SmartReload(ReloadConst.CACHE_SERVICE)
     public void clearAllCache() {
         Collection<String> cacheNames = caffeineCacheManager.getCacheNames();
         for (String name : cacheNames) {
