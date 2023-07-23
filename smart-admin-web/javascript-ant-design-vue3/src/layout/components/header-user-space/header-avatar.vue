@@ -32,6 +32,7 @@
 <script setup>
   import { computed, ref, onMounted } from 'vue';
   import { loginApi } from '/@/api/system/login/login-api';
+
   import { useUserStore } from '/@/store/modules/system/user';
   import { clearAllCoolies } from '/@/utils/cookie-util';
   import { localClear } from '/@/utils/local-util';
@@ -55,6 +56,8 @@
       location.reload();
     }
   }
+
+  
 
   // Refresh user information (including basic user information, permission information, etc.)
   async function onRefresh() {
