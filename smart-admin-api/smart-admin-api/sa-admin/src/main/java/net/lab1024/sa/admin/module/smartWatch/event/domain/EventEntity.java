@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class EventEntity {
     @Id
     @TableId(type = IdType.AUTO)
-    @Column(name = "id")
+    @Column(name = "_id")
     private Long id;
 
     @Column(name = "eventdate")

@@ -1,17 +1,23 @@
 package net.lab1024.sa.admin.module.smartWatch.event.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
-import net.lab1024.sa.admin.module.smartWatch.event.domain.EventEntity;
-import net.lab1024.sa.admin.module.smartWatch.event.domain.EventUpdateForm;
+import net.lab1024.sa.admin.module.smartWatch.event.domain.*;
 import net.lab1024.sa.admin.module.smartWatch.event.mapper.EventMapper;
+import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseQueryForm;
+import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseVO;
+import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
+import net.lab1024.sa.common.common.util.SmartPageUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -45,5 +51,45 @@ public class eventService {
     public ResponseDTO<String> update(EventUpdateForm updateForm) {
         eventMapper.update(updateForm);
         return ResponseDTO.ok();
+    }
+
+    /**
+     * 删除
+     */
+    /**
+     * Delete batchIds
+     *
+     * @param idList
+     * @return
+     */
+    public synchronized ResponseDTO<String> batchDelete(List<Long> idList) {
+        if (CollectionUtils.isEmpty(idList)) {
+            return ResponseDTO.ok();
+        }
+        eventMapper.deleteBatchIds(idList);
+        return ResponseDTO.ok();
+    }
+    /**
+     * Delete one response
+     */
+    public synchronized ResponseDTO<String> delete(Long eventId) {
+        if (null == eventId) {
+            return ResponseDTO.ok();
+        }
+        eventMapper.deleteById(eventId);
+        return ResponseDTO.ok();
+    }
+
+    /**
+     * Query response list
+     *
+     * @param queryForm
+     * @return
+     */
+    public PageResult<EventVO> queryPage(EventQueryForm queryForm) {
+        Page<?> page = SmartPageUtil.convert2PageQuery(queryForm);
+        List<EventVO> list = eventMapper.queryPage(page, queryForm);
+        PageResult<EventVO> pageResult = SmartPageUtil.convert2PageResult(page, list);
+        return pageResult;
     }
 }

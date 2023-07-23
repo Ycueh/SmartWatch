@@ -17,13 +17,13 @@ public class EventAddForm {
     /**
      * Event Time
      */
-    @ApiModelProperty("eventTime")
+    //@ApiModelProperty("eventTime")
     private String eventtime;
 
     /**
      * Event date
      */
-    @ApiModelProperty("eventDate")
+    //ApiModelProperty("eventDate")
     private String eventdate;
 
     /**
