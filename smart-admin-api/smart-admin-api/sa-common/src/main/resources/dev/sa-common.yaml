@@ -1,13 +1,16 @@
 spring:
   # 数据库连接信息
   datasource:
-#    url: jdbc:sqlite:database/smart_admin_v2.db
-    url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    username: root
-    password: zyc992329
+    url: jdbc:sqlite:smart-admin-api/smart-admin-api/database/smart_admin_v2.db
+#    url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: zyc992329
 #    password: 3@!23A7k
 #    password: haizhenqi.0349
 #    password: 123456
+#    password: Qq.3208261999
+
+
     initial-size: 2
     min-idle: 2
     max-active: 10
@@ -23,7 +26,12 @@ spring:
         enabled: false
       method:
         pointcut: net.lab1024.sa..*Service.*
-
+  # JPA设置
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLiteDialect
+    show-sql: true
   # mvc swagger bugfix
   mvc:
     pathmatch:

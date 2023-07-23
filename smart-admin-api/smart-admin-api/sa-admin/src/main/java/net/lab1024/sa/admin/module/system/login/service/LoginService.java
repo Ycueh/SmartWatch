@@ -72,10 +72,10 @@ public class LoginService {
      */
     public ResponseDTO<LoginEmployeeDetail> login(LoginForm loginForm, String ip, String userAgent) {
         // 校验 图形验证码
-        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
-        if (!checkCaptcha.getOk()) {
-            return ResponseDTO.error(checkCaptcha);
-        }
+//        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
+//        if (!checkCaptcha.getOk()) {
+//            return ResponseDTO.error(checkCaptcha);
+//        }
 
         /**
          * 验证账号和账号状态
