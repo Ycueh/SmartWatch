@@ -85,6 +85,13 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- 添加SQLite依赖 -->
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.36.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
@@ -95,6 +102,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>

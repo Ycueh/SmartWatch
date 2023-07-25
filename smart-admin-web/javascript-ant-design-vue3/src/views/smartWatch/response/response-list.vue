@@ -46,12 +46,12 @@
     <!---------- 表格操作行 begin ----------->
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="showForm" type="primary" size="small" v-privilege="'response:add'">
+        <!-- <a-button @click="showForm" type="primary" size="small" v-privilege="'response:add'">
           <template #icon>
             <PlusOutlined />
           </template>
           New
-        </a-button>
+        </a-button> -->
         <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'response:batchDelete'">
           <template #icon>
             <DeleteOutlined />

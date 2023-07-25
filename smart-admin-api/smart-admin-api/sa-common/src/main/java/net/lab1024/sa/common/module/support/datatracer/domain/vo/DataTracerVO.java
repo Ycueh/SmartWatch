@@ -6,7 +6,6 @@ import net.lab1024.sa.common.common.enumeration.UserTypeEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 
-import java.time.LocalDateTime;
 
 /**
  * 变动记录
@@ -57,6 +56,6 @@ public class DataTracerVO {
     private String ip;
 
     @ApiModelProperty("操作时间")
-    private LocalDateTime createTime;
+    private String createTime;
 
 }

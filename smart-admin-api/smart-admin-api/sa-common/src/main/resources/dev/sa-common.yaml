@@ -1,20 +1,22 @@
 spring:
   # 数据库连接信息
   datasource:
-#    url: jdbc:sqlite:database/smart_admin_v2.db
-    url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
-    username: root
+    url: jdbc:sqlite:database/smart_admin_v2.db
+#    url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+#    username: root
 #    password: zyc992329
 #    password: 3@!23A7k
 #    password: haizhenqi.0349
-    password: 123456
+#    password: 123456
+#    password: Qq.3208261999t
     initial-size: 2
     min-idle: 2
     max-active: 10
     max-wait: 60000
     time-between-eviction-runs-millis: 60000
     min-evictable-idle-time-millis: 300000
-    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    driver-class-name: org.sqlite.JDBC # sqlite驱动
+#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     filters: stat
     druid:
       username: druid
@@ -23,7 +25,12 @@ spring:
         enabled: false
       method:
         pointcut: net.lab1024.sa..*Service.*
-
+  # JPA设置
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.SQLiteDialect
+    show-sql: true
   # mvc swagger bugfix
   mvc:
     pathmatch:
@@ -41,7 +48,7 @@ spring:
         max-wait: 30000ms
     port: 6379
     timeout: 10000ms
-    password: 123456
+    password:
 
   # 上传文件大小配置
   servlet:
@@ -80,19 +87,19 @@ logging:
 
 # 文件上传 配置
 file:
-  storage:
-    mode: cloud
-    local:
-      path: ${localPath:/home}/smart_admin_v2/upload/
-    cloud:
-      region: oss-cn-hangzhou
-      endpoint: oss-cn-hangzhou.aliyuncs.com
-      bucket-name: 1024lab-smart-admin
-      access-key:
-      secret-key:
-      url:
-        expire: 7200000
-        public: https://${file.storage.cloud.bucket-name}.${file.storage.cloud.endpoint}/
+#  storage:
+#    mode: cloud
+#    local:
+#      path: ${localPath:/home}/smart_admin_v2/upload/
+#    cloud:
+#      region: oss-cn-hangzhou
+#      endpoint: oss-cn-hangzhou.aliyuncs.com
+#      bucket-name: 1024lab-smart-admin
+#      access-key:
+#      secret-key:
+#      url:
+#        expire: 7200000
+#        public: https://${file.storage.cloud.bucket-name}.${file.storage.cloud.endpoint}/
 
 # swagger 配置
 swagger:

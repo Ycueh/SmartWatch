@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
+
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 
@@ -72,10 +72,10 @@ public class LoginService {
      */
     public ResponseDTO<LoginEmployeeDetail> login(LoginForm loginForm, String ip, String userAgent) {
         // 校验 图形验证码
-        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
-        if (!checkCaptcha.getOk()) {
-            return ResponseDTO.error(checkCaptcha);
-        }
+//        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
+//        if (!checkCaptcha.getOk()) {
+//            return ResponseDTO.error(checkCaptcha);
+//        }
 
         /**
          * 验证账号和账号状态

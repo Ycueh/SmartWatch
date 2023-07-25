@@ -47,7 +47,7 @@ public class ReloadResultEntity {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private String createTime;
 
 
 }

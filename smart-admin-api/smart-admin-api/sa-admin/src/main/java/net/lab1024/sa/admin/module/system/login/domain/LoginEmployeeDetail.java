@@ -11,7 +11,7 @@ import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.time.LocalDateTime;
+
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -71,7 +71,7 @@ public class LoginEmployeeDetail implements UserDetails, RequestUser {
     private String lastLoginUserAgent;
 
     @ApiModelProperty("上次登录时间")
-    private LocalDateTime lastLoginTime;
+    private String lastLoginTime;
 
     @ApiModelProperty("请求ip")
     private String ip;

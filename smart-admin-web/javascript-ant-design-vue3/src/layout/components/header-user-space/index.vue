@@ -5,6 +5,13 @@
   <a-space :size="10">
     <div class="setting">
       <!---setting-->
+      <a-button type="text" @click="downloadFile" >
+        Download
+      </a-button>
+    </div>
+
+    <div class="download">
+      <!---setting-->
       <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><setting-outlined /></template>
       </a-button>
@@ -20,6 +27,7 @@
 <script setup>
   import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
+  import { fileApi } from '/@/api/smartWatch/file/file-api';
   import { useAppConfigStore } from '/@/store/modules/system/app-config';
   import { ref } from 'vue';
 
@@ -27,6 +35,14 @@
   const headerSetting = ref();
   function showSetting() {
     headerSetting.value.show();
+  }
+  async function downloadFile() {
+    try {
+      let queryResult = await fileApi.download();
+      console.log(queryResult);
+    } catch (e) {
+      smartSentry.captureError(e);
+    } 
   }
 
   //message

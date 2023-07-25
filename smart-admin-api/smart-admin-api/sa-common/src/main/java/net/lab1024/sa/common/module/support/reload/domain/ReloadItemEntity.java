@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * t_reload_item 数据表 实体类
@@ -39,12 +40,12 @@ public class ReloadItemEntity {
     /**
      * 更新时间
      */
-    private LocalDateTime updateTime;
+    private String updateTime;
 
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private String createTime;
 
 
 }
