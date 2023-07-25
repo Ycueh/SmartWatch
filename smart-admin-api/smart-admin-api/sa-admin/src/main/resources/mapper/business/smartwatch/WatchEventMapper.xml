@@ -15,11 +15,8 @@
             <if test="queryForm.eventtime != null">
                 AND event.eventtime= #{queryForm.eventtime}
             </if>
-            <if test="queryForm.eventid != null">
-                AND event.eventid= #{queryForm.eventid}
-            </if>
-            <if test="queryForm.eventtype != null">
-                AND event.eventtype= #{queryForm.eventtype}
+            <if test="queryForm.id != null">
+                AND event._id= #{queryForm.id}
             </if>
         </where>
         order by event._id asc

@@ -22,20 +22,8 @@ public class EventVO {
 
 
     /**
-     * event ID
-     */
-    private Long eventid;
-
-
-    /**
      * event description
      */
     @ApiModelProperty(value = "eventdesc")
     private String eventdesc;
-
-    /**
-     * event type
-     */
-    @ApiModelProperty(value = "eventtype")
-    private String eventtype;
 }

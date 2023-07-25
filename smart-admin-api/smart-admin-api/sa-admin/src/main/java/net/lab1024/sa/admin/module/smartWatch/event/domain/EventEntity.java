@@ -25,10 +25,4 @@ public class EventEntity {
     @Column(name = "eventdesc")
     private String eventdesc;
 
-    @Column(name = "eventid")
-    private Long eventid;
-
-    @Column(name = "eventtype")
-    private String eventtype;
-
 }

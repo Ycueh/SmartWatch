@@ -26,13 +26,6 @@ public class EventAddForm {
     //ApiModelProperty("eventDate")
     private String eventdate;
 
-    /**
-     * event ID
-     */
-    @ApiModelProperty("eventID")
-    @NotNull(message = "eventID could not be null")
-    private Long eventid;
-
 
     /**
      * eventDescription
@@ -40,13 +33,6 @@ public class EventAddForm {
     @ApiModelProperty("eventDescription")
     @NotNull(message = "eventDescription could not be null")
     private String eventdesc;
-
-    /**
-     * eventType
-     */
-    @ApiModelProperty("eventType")
-    @NotNull(message = "eventType could not be null")
-    private String eventtype;
 
     private void InitTimeHere() {
         LocalDate date = LocalDate.now();

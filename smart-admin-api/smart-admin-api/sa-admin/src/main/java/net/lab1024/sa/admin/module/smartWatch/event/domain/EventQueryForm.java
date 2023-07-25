@@ -14,10 +14,4 @@ public class EventQueryForm extends PageParam {
     @ApiModelProperty(value = "eventtime")
     private String eventtime;
 
-    @ApiModelProperty(value = "eventid")
-    private String eventid;
-
-    @ApiModelProperty(value = "eventtype")
-    private String eventtype;
-
 }
