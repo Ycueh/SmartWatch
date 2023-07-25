@@ -15,7 +15,7 @@ import lombok.Data;
  * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
-@TableName("t_employee")
+@TableName("t_user")
 public class EmployeeEntity {
 
     @TableId(type = IdType.AUTO)
