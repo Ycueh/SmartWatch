@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
+
 
 @RestController
 @Api(tags = {AdminSwaggerTagConst.Business.SW_RESP})
@@ -17,7 +19,11 @@ public class FileController {
     FileService fileService;
     @ApiOperation("downLoadDatabase")
     @GetMapping("file/download")
-    public ResponseEntity<byte[]>  download(){
-        return fileService.exportDatabase();
+    public ResponseEntity<byte[]> download() {
+        try {
+            return fileService.download();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

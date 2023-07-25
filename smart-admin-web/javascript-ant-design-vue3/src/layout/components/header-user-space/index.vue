@@ -28,7 +28,6 @@
   import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
   import { fileApi } from '/@/api/smartWatch/file/file-api';
-  import { useAppConfigStore } from '/@/store/modules/system/app-config';
   import { ref } from 'vue';
 
   // setting
@@ -38,11 +37,27 @@
   }
   async function downloadFile() {
     try {
-      let queryResult = await fileApi.download();
-      console.log(queryResult);
+      let response = await fileApi.download(); // Make the Axios GET request to download the file
+
+      // Handle the response data as a Blob
+      const blob = new Blob([response], { type: 'application/octet-stream' });
+
+      // Create a temporary URL for the Blob
+      const url = URL.createObjectURL(blob);
+
+      // Create a hidden link and trigger the download
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'exported_smart_admin_v2.db';
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+
+      // Clean up the temporary URL
+      URL.revokeObjectURL(url);
     } catch (e) {
-      smartSentry.captureError(e);
-    } 
+      console.error('Error downloading file:', e);
+    }
   }
 
   //message
