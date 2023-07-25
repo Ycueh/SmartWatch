@@ -16,26 +16,26 @@
 
     <select id="selectRoleEmployeeByName" resultMap="EmployeeVO">
         SELECT
-        t_employee.employee_id,
-        t_employee.login_name,
-        t_employee.login_pwd,
-        t_employee.actual_name,
-        t_employee.phone,
-        t_employee.department_id,
-        t_employee.disabled_flag,
-        t_employee.remark,
-        t_employee.update_time,
-        t_employee.create_time
+        t_user.employee_id,
+        t_user.login_name,
+        t_user.login_pwd,
+        t_user.actual_name,
+        t_user.phone,
+        t_user.department_id,
+        t_user.disabled_flag,
+        t_user.remark,
+        t_user.update_time,
+        t_user.create_time
         FROM
         t_role_employee
-        left join t_employee  on t_role_employee.employee_id = t_employee.employee_id
+        left join t_user  on t_role_employee.employee_id = t_user.employee_id
         left join t_role  on t_role_employee.role_id = t_role.role_id
         <where>
             <if test="queryForm.keywords != null and queryForm.keywords!= ''">
                 AND (
-                INSTR(t_employeeactual_name,#{queryForm.keywords})
-                OR INSTR(t_employeephone,#{queryForm.keywords})
-                OR INSTR(t_employeelogin_name,#{queryForm.keywords})
+                INSTR(t_useractual_name,#{queryForm.keywords})
+                OR INSTR(t_userphone,#{queryForm.keywords})
+                OR INSTR(t_userlogin_name,#{queryForm.keywords})
                 )
             </if>
             <if test="queryForm.roleId != null">
@@ -45,18 +45,18 @@
     </select>
 
     <select id="selectEmployeeByRoleId" resultMap="EmployeeVO">
-        SELECT t_employee.employee_id,
-               t_employee.login_name,
-               t_employee.login_pwd,
-               t_employee.actual_name,
-               t_employee.phone,
-               t_employee.department_id,
-               t_employee.disabled_flag,
-               t_employee.remark,
-               t_employee.update_time,
-               t_employee.create_time
+        SELECT t_user.employee_id,
+               t_user.login_name,
+               t_user.login_pwd,
+               t_user.actual_name,
+               t_user.phone,
+               t_user.department_id,
+               t_user.disabled_flag,
+               t_user.remark,
+               t_user.update_time,
+               t_user.create_time
         FROM t_role_employee
-        left join t_employee  on t_role_employee.employee_id = t_employee.employee_id
+        left join t_user  on t_role_employee.employee_id = t_user.employee_id
         WHERE t_role_employee.role_id = #{roleId}
     </select>
 

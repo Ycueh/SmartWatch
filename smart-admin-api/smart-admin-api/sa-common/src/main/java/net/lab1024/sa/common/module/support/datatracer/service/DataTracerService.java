@@ -21,6 +21,8 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -174,6 +176,10 @@ public class DataTracerService {
             tracerEntity.setUserId(requestUser.getUserId());
             tracerEntity.setUserType(requestUser.getUserType().getValue());
             tracerEntity.setUserName(requestUser.getUserName());
+            SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String currentTime = tempDate.format(new Date(System.currentTimeMillis()));
+            tracerEntity.setCreateTime(currentTime);
+            tracerEntity.setUpdateTime(currentTime);
         }
         dataTracerManger.save(tracerEntity);
     }

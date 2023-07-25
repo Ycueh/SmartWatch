@@ -212,10 +212,10 @@ INSERT INTO `t_data_tracer` VALUES (38, 13, 4, '新增', NULL, NULL, NULL, 1, 1,
 INSERT INTO `t_data_tracer` VALUES (39, 17, 1, '新增', NULL, NULL, NULL, 1, 1, '管理员', '127.0.0.1', 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Mobile Safari/537.36', '2023-07-21 14:51:27', '2023-07-21 14:51:27');
 
 -- ----------------------------
--- Table structure for t_employee
+-- Table structure for t_user
 -- ----------------------------
-DROP TABLE IF EXISTS `t_employee`;
-CREATE TABLE `t_employee`  (
+DROP TABLE IF EXISTS `t_user`;
+CREATE TABLE `t_user`  (
   `employee_id` int NOT NULL AUTO_INCREMENT,
   `login_name` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `login_pwd` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -233,20 +233,20 @@ CREATE TABLE `t_employee`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 70 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of t_employee
+-- Records of t_user
 -- ----------------------------
-INSERT INTO `t_employee` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', '管理员', 0, '13500000000', 1, 0, 0, 1, NULL, '2022-10-22 19:33:02', '2018-05-11 09:38:54');
-INSERT INTO `t_employee` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 1, 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
-INSERT INTO `t_employee` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 1, 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
-INSERT INTO `t_employee` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 1, 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
-INSERT INTO `t_employee` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
-INSERT INTO `t_employee` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
-INSERT INTO `t_employee` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
-INSERT INTO `t_employee` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 1, 0, 0, 0, NULL, '2022-09-15 16:51:09', '2022-06-16 17:24:18');
-INSERT INTO `t_employee` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, 0, NULL, '2022-09-15 16:51:19', '2022-06-16 17:24:56');
-INSERT INTO `t_employee` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 1, 0, 0, 0, NULL, '2022-09-17 15:42:42', '2022-06-16 17:28:32');
-INSERT INTO `t_employee` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 1, 0, 0, 0, NULL, '2022-09-15 16:51:43', '2022-06-16 17:30:17');
-INSERT INTO `t_employee` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 1, 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
+INSERT INTO `t_user` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', '管理员', 0, '13500000000', 1, 0, 0, 1, NULL, '2022-10-22 19:33:02', '2018-05-11 09:38:54');
+INSERT INTO `t_user` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 1, 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
+INSERT INTO `t_user` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 1, 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
+INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 1, 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
+INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
+INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
+INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
+INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 1, 0, 0, 0, NULL, '2022-09-15 16:51:09', '2022-06-16 17:24:18');
+INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, 0, NULL, '2022-09-15 16:51:19', '2022-06-16 17:24:56');
+INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 1, 0, 0, 0, NULL, '2022-09-17 15:42:42', '2022-06-16 17:28:32');
+INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 1, 0, 0, 0, NULL, '2022-09-15 16:51:43', '2022-06-16 17:30:17');
+INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 1, 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
 
 -- ----------------------------
 -- Table structure for t_menu
