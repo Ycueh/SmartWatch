@@ -8,10 +8,10 @@ import net.lab1024.sa.common.common.domain.ResponseDTO;
 
 public interface QuesService {
     //delete question by id
-    ResponseDTO<String> deleteById(Long id);
+//    ResponseDTO<String> deleteById(Long id);
 
     //add new question
-    ResponseDTO<String> add(Question question);
+//    ResponseDTO<String> add(Question question);
 
     //select question by id
     Question selectById(Long id);
