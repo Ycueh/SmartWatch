@@ -100,14 +100,7 @@ const columns = ref([
     title: 'eventdesc',
     dataIndex: 'eventdesc',
   },
-  {
-    title: 'eventID',
-    dataIndex: 'eventID',
-  },
-  {
-    title: 'eventType',
-    dataIndex: 'eventType',
-  },
+ 
   {
     title: 'Action',
     dataIndex: 'action',

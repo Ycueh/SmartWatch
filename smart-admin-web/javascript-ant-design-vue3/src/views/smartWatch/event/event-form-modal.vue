@@ -10,12 +10,7 @@
       <a-form-item label="eventdesc" name="eventdesc">
         <a-input v-model:value="form.eventdesc" placeholder="Please enter eventdesc" />
       </a-form-item>
-      <a-form-item label="eventID" name="eventID">
-        <a-input v-model:value="form.eventID" placeholder="Please enter eventID" />
-      </a-form-item>
-      <a-form-item label="eventType" name="eventType">
-        <a-input v-model:value="form.eventType" placeholder="Please enter eventType" />
-      </a-form-item>
+      
     </a-form>
     <div
         :style="{
@@ -52,8 +47,7 @@
     eventdate:undefined,
     eventtime:undefined,
     eventdesc:undefined,
-    eventID:undefined,
-    eventType:undefined,
+    
   };
   let form = reactive({ ...formDefault });
   const rules = {
