@@ -8,34 +8,29 @@ import lombok.Data;
 
 
 /**
- * 角色 员工关系
+ * Role-User
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-03-07 18:54:42
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
-@TableName("t_role_employee")
-public class RoleEmployeeEntity {
+@TableName("t_role_user")
+public class RoleUserEntity {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
     private Long roleId;
 
-    private Long employeeId;
+    private Long userId;
 
     private String updateTime;
 
     private String createTime;
 
-    public RoleEmployeeEntity() {
+    public RoleUserEntity() {
     }
 
-    public RoleEmployeeEntity(Long roleId, Long employeeId) {
+    public RoleUserEntity(Long roleId, Long userId) {
         this.roleId = roleId;
-        this.employeeId = employeeId;
+        this.userId = userId;
     }
 }
