@@ -16,57 +16,7 @@
         <a-form-item label="dataitem3" name="dataitem3">
           <a-input v-model:value="form.dataitem3" placeholder="Please enter dataitem3" />
         </a-form-item>
-        <a-form-item label="dataitem4" name="dataitem4">
-          <a-input v-model:value="form.dataitem4" placeholder="Please enter dataitem4" />
-        </a-form-item>
-        <a-form-item label="dataitem5" name="dataitem5">
-          <a-input v-model:value="form.dataitem5" placeholder="Please enter dataitem5" />
-        </a-form-item>
-        <a-form-item label="dataitem6" name="dataitem6">
-          <a-input v-model:value="form.dataitem6" placeholder="Please enter dataitem6" />
-        </a-form-item>
-        <a-form-item label="dataitem7" name="dataitem7">
-          <a-input v-model:value="form.dataitem7" placeholder="Please enter dataitem7" />
-        </a-form-item>
-        <a-form-item label="dataitem8" name="dataitem8">
-          <a-input v-model:value="form.dataitem8" placeholder="Please enter dataitem8" />
-        </a-form-item>
-        <a-form-item label="dataitem9" name="dataitem9">
-          <a-input v-model:value="form.dataitem9" placeholder="Please enter dataitem9" />
-        </a-form-item>
-        <a-form-item label="dataitem10" name="dataitem10">
-          <a-input v-model:value="form.dataitem10" placeholder="Please enter dataitem10" />
-        </a-form-item>
-        <a-form-item label="dataitem11" name="dataitem11">
-          <a-input v-model:value="form.dataitem11" placeholder="Please enter dataitem11" />
-        </a-form-item>
-        <a-form-item label="dataitem12" name="dataitem12">
-          <a-input v-model:value="form.dataitem12" placeholder="Please enter dataitem12" />
-        </a-form-item>
-        <a-form-item label="dataitem13" name="dataitem13">
-          <a-input v-model:value="form.dataitem13" placeholder="Please enter dataitem13" />
-        </a-form-item>
-        <a-form-item label="dataitem14" name="dataitem14">
-          <a-input v-model:value="form.dataitem14" placeholder="Please enter dataitem14" />
-        </a-form-item>
-        <a-form-item label="dataitem15" name="dataitem1">
-          <a-input v-model:value="form.dataitem15" placeholder="Please enter dataitem15" />
-        </a-form-item>
-        <a-form-item label="dataitem16" name="dataitem1">
-          <a-input v-model:value="form.dataitem16" placeholder="Please enter dataitem16" />
-        </a-form-item>
-        <a-form-item label="dataitem17" name="dataitem17">
-          <a-input v-model:value="form.dataitem17" placeholder="Please enter dataitem17" />
-        </a-form-item>
-        <a-form-item label="dataitem18" name="dataitem18">
-          <a-input v-model:value="form.dataitem18" placeholder="Please enter dataitem18" />
-        </a-form-item>
-        <a-form-item label="dataitem19" name="dataitem19">
-          <a-input v-model:value="form.dataitem19" placeholder="Please enter dataitem19" />
-        </a-form-item>
-        <a-form-item label="dataitem20" name="dataitem20">
-          <a-input v-model:value="form.dataitem20" placeholder="Please enter dataitem20" />
-        </a-form-item>
+        
 
     </a-form>
     <div
@@ -106,23 +56,7 @@
     dataitem1:undefined,
     dataitem2:undefined,
     dataitem3:undefined,
-    dataitem4:undefined,
-    dataitem5:undefined,
-    dataitem6:undefined,
-    dataitem7:undefined,
-    dataitem8:undefined,
-    dataitem9:undefined,
-    dataitem10:undefined,
-    dataitem11:undefined,
-    dataitem12:undefined,
-    dataitem13:undefined,
-    dataitem14:undefined,
-    dataitem15:undefined,
-    dataitem16:undefined,
-    dataitem17:undefined,
-    dataitem18:undefined,
-    dataitem19:undefined,
-    dataitem20:undefined,
+    
   };
   let form = reactive({ ...formDefault });
   const rules = {
