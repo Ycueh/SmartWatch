@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.smartWatch.dataItem.mapper.DataItemMapper">
+    <select id="update"  >
+        UPDATE dataitem SET
+        dataitem.datestamp = #{updateForm.datestamp},
+        dataitem.timestamp = #{updateForm.timestamp},
+        dataitem.dataitem1 = #{updateForm.dataitem1},
+        dataitem.dataitem2 = #{updateForm.dataitem2},
+        dataitem.dataitem3 = #{updateForm.dataitem3},
+        <where>
+            dataitem._id = #{updateForm.id}
+        </where>
+    </select>
+
+    <select id="deleteById"  >
+        DELETE FROM dataitem
+        <where>
+            dataitem._id = #{dataitemId}
+        </where>
+    </select>
+
+</mapper>
