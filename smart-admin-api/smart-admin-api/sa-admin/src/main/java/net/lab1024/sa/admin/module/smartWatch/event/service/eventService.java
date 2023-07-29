@@ -70,7 +70,7 @@ public class eventService {
         return ResponseDTO.ok();
     }
     /**
-     * Delete one response
+     * Delete one event
      */
     public synchronized ResponseDTO<String> delete(Long eventId) {
         if (null == eventId) {

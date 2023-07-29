@@ -25,5 +25,5 @@ public interface EventMapper extends BaseMapper<EventEntity> {
 
     List<EventVO> queryPage(Page page, @Param("queryForm") EventQueryForm queryForm);
 
-    void deleteById(@Param("responseId") Long responseId);
+    void deleteById(@Param("eventId") Long eventId);
 }

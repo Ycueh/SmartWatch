@@ -105,57 +105,6 @@ const columns = ref([
     },{
       title: 'dataItem3',
       dataIndex: 'dataItem3',
-    },{
-      title: 'dataItem4',
-      dataIndex: 'dataItem4',
-    },{
-      title: 'dataItem5',
-      dataIndex: 'dataItem5',
-    },{
-      title: 'dataItem6',
-      dataIndex: 'dataItem6',
-    },{
-      title: 'dataItem7',
-      dataIndex: 'dataItem7',
-    },{
-      title: 'dataItem8',
-      dataIndex: 'dataItem8',
-    },{
-      title: 'dataItem9',
-      dataIndex: 'dataItem9',
-    },{
-      title: 'dataItem10',
-      dataIndex: 'dataItem10',
-    },{
-      title: 'dataItem11',
-      dataIndex: 'dataItem11',
-    },{
-      title: 'dataItem12',
-      dataIndex: 'dataItem12',
-    },{
-      title: 'dataItem13',
-      dataIndex: 'dataItem13',
-    },{
-      title: 'dataItem14',
-      dataIndex: 'dataItem14',
-    },{
-      title: 'dataItem15',
-      dataIndex: 'dataItem15',
-    },{
-      title: 'dataItem16',
-      dataIndex: 'dataItem16',
-    },{
-      title: 'dataItem17',
-      dataIndex: 'dataItem17',
-    },{
-      title: 'dataItem18',
-      dataIndex: 'dataItem18',
-    },{
-      title: 'dataItem19',
-      dataIndex: 'dataItem19',
-    },{
-      title: 'dataItem20',
-      dataIndex: 'dataItem20',
     },
   {
     title: 'Action',
