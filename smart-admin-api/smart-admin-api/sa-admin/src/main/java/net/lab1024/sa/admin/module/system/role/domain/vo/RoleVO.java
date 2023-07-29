@@ -4,23 +4,18 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 角色
+ * Role
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-04-08 21:53:04
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class RoleVO {
 
-    @ApiModelProperty("角色ID")
+    @ApiModelProperty("role id")
     private Long roleId;
 
-    @ApiModelProperty("角色名称")
+    @ApiModelProperty("role name")
     private String roleName;
 
-    @ApiModelProperty("角色备注")
+    @ApiModelProperty("role remark")
     private String remark;
 }

@@ -4,14 +4,13 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
-import net.lab1024.sa.common.module.support.datatracer.annoation.DataTracerFieldLabel;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Column;
 
 @Data
 @TableName("response")
-public class responseEntity {
+public class ResponseEntity {
     @Id
     @TableId(type = IdType.AUTO)
     @Column(name="_id")

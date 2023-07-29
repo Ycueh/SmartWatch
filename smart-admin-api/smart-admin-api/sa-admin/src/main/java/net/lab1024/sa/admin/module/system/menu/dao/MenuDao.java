@@ -76,12 +76,12 @@ public interface MenuDao extends BaseMapper<MenuEntity> {
      *
      * @param deletedFlag  是否删除
      * @param disabledFlag 禁用标识
-     * @param employeeId   员工id
+     * @param userId   员工id
      * @return
      */
-    List<MenuVO> queryMenuByEmployeeId(@Param("deletedFlag") Boolean deletedFlag,
+    List<MenuVO> queryMenuByUserId(@Param("deletedFlag") Boolean deletedFlag,
                                        @Param("disabledFlag") Boolean disabledFlag,
-                                       @Param("employeeId") Long employeeId);
+                                       @Param("userId") Long userId);
 
     /**
      * 根据菜单类型查询

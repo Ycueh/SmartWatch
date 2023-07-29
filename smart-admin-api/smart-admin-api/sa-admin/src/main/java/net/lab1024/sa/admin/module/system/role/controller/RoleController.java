@@ -17,13 +17,8 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * 角色
+ * Role
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-12-14 19:40:28
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_ROLE})
@@ -34,7 +29,7 @@ public class RoleController extends AdminBaseController {
 
     @ApiOperation("添加角色 @author 卓大")
     @PostMapping("/role/add")
-    @PreAuthorize("@saAuth.checkPermission('system:role:add')")
+//    @PreAuthorize("@saAuth.checkPermission('system:role:add')")
     public ResponseDTO addRole(@Valid @RequestBody RoleAddForm roleAddForm) {
         return roleService.addRole(roleAddForm);
     }

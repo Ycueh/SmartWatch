@@ -4,7 +4,7 @@ import cn.hutool.extra.servlet.ServletUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
-import net.lab1024.sa.admin.module.system.login.domain.LoginEmployeeDetail;
+import net.lab1024.sa.admin.module.system.login.domain.LoginUserDetail;
 import net.lab1024.sa.admin.module.system.login.domain.LoginForm;
 import net.lab1024.sa.admin.module.system.login.service.LoginService;
 import net.lab1024.sa.common.common.annoation.NoNeedLogin;
@@ -42,7 +42,7 @@ public class LoginController {
     @NoNeedLogin
     @PostMapping("/login")
     @ApiOperation("登录 @author 卓大")
-    public ResponseDTO<LoginEmployeeDetail> login(@Valid @RequestBody LoginForm loginForm) {
+    public ResponseDTO<LoginUserDetail> login(@Valid @RequestBody LoginForm loginForm) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
@@ -58,20 +58,20 @@ public class LoginController {
 
     @GetMapping("/login/getLoginInfo")
     @ApiOperation("获取登录结果信息  @author 卓大")
-    public ResponseDTO<LoginEmployeeDetail> getLoginInfo() {
+    public ResponseDTO<LoginUserDetail> getLoginInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null) {
             return ResponseDTO.error(UserErrorCode.LOGIN_STATE_INVALID);
         }
 
         Object principal = authentication.getPrincipal();
-        if (!(principal instanceof LoginEmployeeDetail)) {
+        if (!(principal instanceof LoginUserDetail)) {
             return ResponseDTO.error(UserErrorCode.LOGIN_STATE_INVALID);
         }
 
-        LoginEmployeeDetail loginEmployeeDetail = (LoginEmployeeDetail) authentication.getPrincipal();
-        loginEmployeeDetail.setLoginPassword(null);
-        return ResponseDTO.ok(loginEmployeeDetail);
+        LoginUserDetail loginUserDetail = (LoginUserDetail) authentication.getPrincipal();
+        loginUserDetail.setLoginPassword(null);
+        return ResponseDTO.ok(loginUserDetail);
     }
 
     @ApiOperation("退出登陆  @author 卓大")

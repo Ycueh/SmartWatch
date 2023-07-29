@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.lab1024.sa.admin.module.system.role.dao.RoleEmployeeDao">
+<mapper namespace="net.lab1024.sa.admin.module.system.role.dao.RoleUserDao">
 
 
-    <resultMap id="EmployeeVO"
-               type="net.lab1024.sa.admin.module.system.employee.domain.vo.EmployeeVO"></resultMap>
+    <resultMap id="UserVO"
+               type="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO"></resultMap>
 
 
-    <select id="selectRoleIdByEmployeeId" resultType="java.lang.Long">
+    <select id="selectRoleIdByUserId" resultType="java.lang.Long">
         SELECT er.role_id
-        FROM t_role_employee er
-        WHERE er.employee_id = #{employeeId}
+        FROM t_role_user er
+        WHERE er.user_id = #{userId}
     </select>
 
 
-    <select id="selectRoleEmployeeByName" resultMap="EmployeeVO">
+    <select id="selectRoleUserByName" resultMap="UserVO">
         SELECT
-        t_user.employee_id,
+        t_user.user_id,
         t_user.login_name,
         t_user.login_pwd,
         t_user.actual_name,
@@ -27,9 +27,9 @@
         t_user.update_time,
         t_user.create_time
         FROM
-        t_role_employee
-        left join t_user  on t_role_employee.employee_id = t_user.employee_id
-        left join t_role  on t_role_employee.role_id = t_role.role_id
+        t_role_user
+        left join t_user  on t_role_user.user_id = t_user.user_id
+        left join t_role  on t_role_user.role_id = t_role.role_id
         <where>
             <if test="queryForm.keywords != null and queryForm.keywords!= ''">
                 AND (
@@ -39,13 +39,13 @@
                 )
             </if>
             <if test="queryForm.roleId != null">
-                AND t_role_employee.role_id = #{queryForm.roleId}
+                AND t_role_user.role_id = #{queryForm.roleId}
             </if>
         </where>
     </select>
 
-    <select id="selectEmployeeByRoleId" resultMap="EmployeeVO">
-        SELECT t_user.employee_id,
+    <select id="selectUserByRoleId" resultMap="UserVO">
+        SELECT t_user.user_id,
                t_user.login_name,
                t_user.login_pwd,
                t_user.actual_name,
@@ -55,47 +55,47 @@
                t_user.remark,
                t_user.update_time,
                t_user.create_time
-        FROM t_role_employee
-        left join t_user  on t_role_employee.employee_id = t_user.employee_id
-        WHERE t_role_employee.role_id = #{roleId}
+        FROM t_role_user
+        left join t_user  on t_role_user.user_id = t_user.user_id
+        WHERE t_role_user.role_id = #{roleId}
     </select>
 
-    <select id="selectEmployeeIdByRoleIdList" resultType="java.lang.Long">
+    <select id="selectUserIdByRoleIdList" resultType="java.lang.Long">
         SELECT
-        employee_id
+        user_id
         FROM
-        t_role_employee
+        t_role_user
         WHERE
         role_id in
         <foreach collection="roleIdList" item="item" open="(" close=")" separator=",">
             #{item}
         </foreach>
     </select>
-    <select id="selectRoleIdByEmployeeIdList"
-            resultType="net.lab1024.sa.admin.module.system.role.domain.entity.RoleEmployeeEntity">
+    <select id="selectRoleIdByUserIdList"
+            resultType="net.lab1024.sa.admin.module.system.role.domain.entity.RoleUserEntity">
         SELECT
         *
         FROM
-        t_role_employee
+        t_role_user
         WHERE
-        employee_id in
-        <foreach collection="employeeIdList" item="item" open="(" close=")" separator=",">
+        user_id in
+        <foreach collection="userIdList" item="item" open="(" close=")" separator=",">
             #{item}
         </foreach>
     </select>
 
-    <select id="selectRoleByEmployeeIdList"
-            resultType="net.lab1024.sa.admin.module.system.role.domain.vo.RoleEmployeeVO">
+    <select id="selectRoleByUserIdList"
+            resultType="net.lab1024.sa.admin.module.system.role.domain.vo.RoleUserVO">
         SELECT
-        t_role_employee.role_id,
-        t_role_employee.employee_id,
+        t_role_user.role_id,
+        t_role_user.user_id,
         t_role.role_name
         FROM
-        t_role_employee
-        LEFT JOIN t_role  ON t_role.role_id = t_role_employee.role_id
+        t_role_user
+        LEFT JOIN t_role  ON t_role.role_id = t_role_user.role_id
         WHERE
-        employee_id in
-        <foreach collection="employeeIdList" item="item" open="(" close=")" separator=",">
+        user_id in
+        <foreach collection="userIdList" item="item" open="(" close=")" separator=",">
             #{item}
         </foreach>
     </select>
@@ -103,31 +103,31 @@
 
 
 
-    <delete id="deleteByEmployeeId">
+    <delete id="deleteByUserId">
         DELETE
-        FROM t_role_employee
-        WHERE employee_id = #{employeeId}
+        FROM t_role_user
+        WHERE user_id = #{userId}
     </delete>
 
 
     <delete id="deleteByRoleId">
         DELETE
-        FROM t_role_employee
+        FROM t_role_user
         WHERE role_id = #{roleId}
     </delete>
 
-    <delete id="deleteByEmployeeIdRoleId">
+    <delete id="deleteByUserIdRoleId">
         DELETE
-        FROM t_role_employee
+        FROM t_role_user
         WHERE role_id = #{roleId}
-          and employee_id = #{employeeId}
+          and user_id = #{userId}
     </delete>
 
 
-    <delete id="batchDeleteEmployeeRole">
-        DELETE FROM t_role_employee
-        WHERE role_id = #{roleId} and employee_id in
-        <foreach collection="employeeIds" item="item" open="(" close=")" separator=",">
+    <delete id="batchDeleteUserRole">
+        DELETE FROM t_role_user
+        WHERE role_id = #{roleId} and user_id in
+        <foreach collection="userIds" item="item" open="(" close=")" separator=",">
             #{item}
         </foreach>
     </delete>

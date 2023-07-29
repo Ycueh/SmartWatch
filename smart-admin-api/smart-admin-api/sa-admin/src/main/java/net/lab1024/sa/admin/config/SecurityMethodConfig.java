@@ -1,6 +1,6 @@
 package net.lab1024.sa.admin.config;
 
-import net.lab1024.sa.admin.module.system.login.domain.LoginEmployeeDetail;
+import net.lab1024.sa.admin.module.system.login.domain.LoginUserDetail;
 import net.lab1024.sa.common.common.annoation.SaAuth;
 import net.lab1024.sa.common.common.security.SecurityMethodSource;
 import net.lab1024.sa.common.common.security.SecurityPermissionCheckService;
@@ -33,11 +33,11 @@ public class SecurityMethodConfig extends GlobalMethodSecurityConfiguration {
         return new SecurityPermissionCheckService() {
             @Override
             public boolean checkPermission(Authentication authentication, String permission) {
-                LoginEmployeeDetail loginEmployeeDetail = (LoginEmployeeDetail) authentication.getPrincipal();
-                if (loginEmployeeDetail.getAdministratorFlag()) {
+                LoginUserDetail loginUserDetail = (LoginUserDetail) authentication.getPrincipal();
+                if (loginUserDetail.getAdministratorFlag()) {
                     return true;
                 }
-                return super.permissionJudge(loginEmployeeDetail, permission);
+                return super.permissionJudge(loginUserDetail, permission);
             }
         };
     }

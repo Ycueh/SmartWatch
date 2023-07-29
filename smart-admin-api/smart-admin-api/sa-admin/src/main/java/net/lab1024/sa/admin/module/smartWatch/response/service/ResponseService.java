@@ -2,7 +2,7 @@ package net.lab1024.sa.admin.module.smartWatch.response.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.smartWatch.response.dao.responseDAO;
+import net.lab1024.sa.admin.module.smartWatch.response.dao.ResponseDAO;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.*;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
@@ -19,9 +19,9 @@ import java.util.*;
 
 @Service
 @Slf4j
-public class responseService {
+public class ResponseService {
     @Autowired
-    private responseDAO resDAO;
+    private ResponseDAO resDAO;
     @Autowired
     private DataTracerService dataTracerService;
 
@@ -33,7 +33,7 @@ public class responseService {
      */
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> add(ResponseAddForm addForm) {
-        responseEntity resEntity = SmartBeanUtil.copy(addForm, responseEntity.class);
+        ResponseEntity resEntity = SmartBeanUtil.copy(addForm, ResponseEntity.class);
         resDAO.insert(resEntity);
         dataTracerService.insert(resEntity.getId(), DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
@@ -69,7 +69,9 @@ public class responseService {
         if (CollectionUtils.isEmpty(idList)) {
             return ResponseDTO.ok();
         }
-        resDAO.deleteBatchIds(idList);
+        for(Long id:idList){
+            resDAO.deleteById(id);
+        }
         return ResponseDTO.ok();
     }
     /**

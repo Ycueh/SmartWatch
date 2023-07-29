@@ -110,26 +110,26 @@ public class MenuService {
      * 批量删除菜单
      *
      * @param menuIdList
-     * @param employeeId
+     * @param userId
      * @return
      */
-    public synchronized ResponseDTO<String> batchDeleteMenu(List<Long> menuIdList, Long employeeId) {
+    public synchronized ResponseDTO<String> batchDeleteMenu(List<Long> menuIdList, Long userId) {
         if (CollectionUtils.isEmpty(menuIdList)) {
             return ResponseDTO.userErrorParam("所选菜单不能为空");
         }
-        menuDao.deleteByMenuIdList(menuIdList, employeeId, Boolean.TRUE);
+        menuDao.deleteByMenuIdList(menuIdList, userId, Boolean.TRUE);
         //孩子节点也需要删除
-        this.recursiveDeleteChildren(menuIdList, employeeId);
+        this.recursiveDeleteChildren(menuIdList, userId);
         return ResponseDTO.ok();
     }
 
-    private void recursiveDeleteChildren(List<Long> menuIdList, Long employeeId) {
+    private void recursiveDeleteChildren(List<Long> menuIdList, Long userId) {
         List<Long> childrenMenuIdList = menuDao.selectMenuIdByParentIdList(menuIdList);
         if (CollectionUtil.isEmpty(childrenMenuIdList)) {
             return;
         }
-        menuDao.deleteByMenuIdList(childrenMenuIdList, employeeId, Boolean.TRUE);
-        recursiveDeleteChildren(childrenMenuIdList, employeeId);
+        menuDao.deleteByMenuIdList(childrenMenuIdList, userId, Boolean.TRUE);
+        recursiveDeleteChildren(childrenMenuIdList, userId);
     }
 
     /**

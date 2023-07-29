@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseUpdateForm;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseVO;
-import net.lab1024.sa.admin.module.smartWatch.response.domain.responseEntity;
+import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Mapper
 @Component
-public interface responseDAO extends BaseMapper<responseEntity> {
+public interface ResponseDAO extends BaseMapper<ResponseEntity> {
 
     /**
      * 分页 查询商品

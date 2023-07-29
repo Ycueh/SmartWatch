@@ -31,25 +31,18 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
 
     public static class System {
 
-        public static final String SYSTEM_LOGIN = "系统-员工登录";
+        public static final String SYSTEM_LOGIN = "System-Login";
 
-        public static final String SYSTEM_EMPLOYEE = "系统-员工管理";
+        public static final String SYSTEM_USER = "System-User management";
 
-        public static final String SYSTEM_DEPARTMENT = "系统-部门管理";
 
-        public static final String SYSTEM_MENU = "系统-菜单";
+        public static final String SYSTEM_MENU = "System-Menu";
 
-        public static final String SYSTEM_DATA_SCOPE = "系统-系统-数据范围";
+        public static final String SYSTEM_ROLE = "System-Role";
 
-        public static final String SYSTEM_ROLE = "系统-角色";
+        public static final String SYSTEM_ROLE_USER = "System-Role-User";
 
-        public static final String SYSTEM_ROLE_DATA_SCOPE = "系统-角色-数据范围";
-
-        public static final String SYSTEM_ROLE_EMPLOYEE = "系统-角色-员工";
-
-        public static final String SYSTEM_ROLE_MENU = "系统-角色-菜单";
-
-        public static final String SYSTEM_DATA_TRACER = "系统-";
+        public static final String SYSTEM_ROLE_MENU = "System-Role-Menu";
     }
 
 

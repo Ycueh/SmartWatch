@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.lab1024.sa.admin.module.smartWatch.question.pojo.Question;
 import net.lab1024.sa.admin.module.smartWatch.question.pojo.QuestionQueryForm;
-import net.lab1024.sa.admin.module.smartWatch.response.domain.responseEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 //use for page query
 @Mapper
 @Component
-public interface QuestionDAO extends BaseMapper<responseEntity> {
+public interface QuestionDAO extends BaseMapper<ResponseEntity> {
 
     /**
      * query by pages

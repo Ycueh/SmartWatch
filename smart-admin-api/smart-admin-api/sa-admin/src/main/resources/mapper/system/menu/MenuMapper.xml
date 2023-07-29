@@ -44,14 +44,14 @@
           and menu_type = #{menuType}
     </select>
 
-    <select id="queryMenuByEmployeeId"
+    <select id="queryMenuByUserId"
             resultType="net.lab1024.sa.admin.module.system.menu.domain.vo.MenuVO">
         select t_menu.* from t_menu
         left join t_role_menu on t_role_menu.menu_id = t_menu.menu_id
-        left join t_role_employee on t_role_employee.role_id = t_role_menu.role_id
+        left join t_role_user on t_role_user.role_id = t_role_menu.role_id
         where t_menu.disabled_flag = #{disabledFlag} and t_menu.deleted_flag = #{deletedFlag}
-        <if test="employeeId != null">
-            and t_role_employee.employee_id = #{employeeId}
+        <if test="userId != null">
+            and t_role_user.user_id = #{userId}
         </if>
     </select>
     <select id="queryMenuByType" resultType="net.lab1024.sa.admin.module.system.menu.domain.entity.MenuEntity">

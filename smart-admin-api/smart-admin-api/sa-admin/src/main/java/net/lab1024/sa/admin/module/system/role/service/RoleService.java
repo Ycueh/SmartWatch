@@ -1,7 +1,7 @@
 package net.lab1024.sa.admin.module.system.role.service;
 
 import net.lab1024.sa.admin.module.system.role.dao.RoleDao;
-import net.lab1024.sa.admin.module.system.role.dao.RoleEmployeeDao;
+import net.lab1024.sa.admin.module.system.role.dao.RoleUserDao;
 import net.lab1024.sa.admin.module.system.role.dao.RoleMenuDao;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEntity;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleAddForm;
@@ -35,7 +35,7 @@ public class RoleService {
     private RoleMenuDao roleMenuDao;
 
     @Autowired
-    private RoleEmployeeDao roleEmployeeDao;
+    private RoleUserDao roleUserDao;
 
     /**
      * 新增添加角色
@@ -67,7 +67,7 @@ public class RoleService {
         }
         roleDao.deleteById(roleId);
         roleMenuDao.deleteByRoleId(roleId);
-        roleEmployeeDao.deleteByRoleId(roleId);
+        roleUserDao.deleteByRoleId(roleId);
         return ResponseDTO.ok();
     }
 

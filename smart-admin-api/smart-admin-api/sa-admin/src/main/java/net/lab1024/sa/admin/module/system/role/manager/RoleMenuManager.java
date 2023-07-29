@@ -10,13 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 角色-菜单 manager
+ * Role-menu manager
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-04-09 19:05:49
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Service
 public class RoleMenuManager extends ServiceImpl<RoleMenuDao, RoleMenuEntity> {
@@ -25,16 +20,14 @@ public class RoleMenuManager extends ServiceImpl<RoleMenuDao, RoleMenuEntity> {
     private RoleMenuDao roleMenuDao;
 
     /**
-     * 更新角色权限
+     * Update role permission
      *
      * @param roleId
      * @param roleMenuEntityList
      */
     @Transactional(rollbackFor = Exception.class)
     public void updateRoleMenu(Long roleId, List<RoleMenuEntity> roleMenuEntityList) {
-        // 根据角色ID删除菜单权限
         roleMenuDao.deleteByRoleId(roleId);
-        // 批量添加菜单权限
         saveBatch(roleMenuEntityList);
     }
 }

@@ -3,10 +3,10 @@ package net.lab1024.sa.admin.module.system.login.service;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.system.employee.domain.entity.EmployeeEntity;
-import net.lab1024.sa.admin.module.system.employee.service.EmployeePermissionService;
-import net.lab1024.sa.admin.module.system.employee.service.EmployeeService;
-import net.lab1024.sa.admin.module.system.login.domain.LoginEmployeeDetail;
+import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
+import net.lab1024.sa.admin.module.system.user.service.UserPermissionService;
+import net.lab1024.sa.admin.module.system.user.service.UserService;
+import net.lab1024.sa.admin.module.system.login.domain.LoginUserDetail;
 import net.lab1024.sa.admin.module.system.login.domain.LoginForm;
 import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuVO;
 import net.lab1024.sa.common.common.constant.RequestHeaderConst;
@@ -39,7 +39,7 @@ import java.util.concurrent.ConcurrentMap;
 public class LoginService {
 
     @Autowired
-    private EmployeeService employeeService;
+    private UserService userService;
 
     @Autowired
     private TokenService tokenService;
@@ -48,12 +48,12 @@ public class LoginService {
     private CaptchaService captchaService;
 
     @Autowired
-    private EmployeePermissionService employeePermissionService;
+    private UserPermissionService userPermissionService;
 
     /**
      * 登录信息二级缓存
      */
-    private ConcurrentMap<Long, LoginEmployeeDetail> loginUserDetailCache = new ConcurrentLinkedHashMap.Builder<Long, LoginEmployeeDetail>().maximumWeightedCapacity(1000).build();
+    private ConcurrentMap<Long, LoginUserDetail> loginUserDetailCache = new ConcurrentLinkedHashMap.Builder<Long, LoginUserDetail>().maximumWeightedCapacity(1000).build();
 
     /**
      * 获取验证码
@@ -70,7 +70,7 @@ public class LoginService {
      * @param loginForm
      * @return 返回用户登录信息
      */
-    public ResponseDTO<LoginEmployeeDetail> login(LoginForm loginForm, String ip, String userAgent) {
+    public ResponseDTO<LoginUserDetail> login(LoginForm loginForm, String ip, String userAgent) {
         // 校验 图形验证码
 //        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
 //        if (!checkCaptcha.getOk()) {
@@ -80,26 +80,26 @@ public class LoginService {
         /**
          * 验证账号和账号状态
          */
-        EmployeeEntity employeeEntity = employeeService.getByLoginName(loginForm.getLoginName());
-        if (null == employeeEntity) {
+        UserEntity userEntity = userService.getByLoginName(loginForm.getLoginName());
+        if (null == userEntity) {
             return ResponseDTO.userErrorParam("Username does not exist");
         }
 
-        if (employeeEntity.getDisabledFlag()) {
+        if (userEntity.getDisabledFlag()) {
             return ResponseDTO.userErrorParam("You account is banned");
         }
-        String requestPassword = EmployeeService.getEncryptPwd(loginForm.getPassword());
+        String requestPassword = UserService.getEncryptPwd(loginForm.getPassword());
         // 生成 登录token，保存token
-        String token = tokenService.generateToken(employeeEntity.getEmployeeId(), employeeEntity.getActualName(), UserTypeEnum.ADMIN_EMPLOYEE);
+        String token = tokenService.generateToken(userEntity.getUserId(), userEntity.getActualName(), UserTypeEnum.ADMIN_USER);
 
         //获取员工登录信息
-        LoginEmployeeDetail loginEmployeeDetail = loadLoginInfo(employeeEntity);
-        loginEmployeeDetail.setToken(token);
+        LoginUserDetail loginUserDetail = loadLoginInfo(userEntity);
+        loginUserDetail.setToken(token);
 
         // 放入缓存
-        loginUserDetailCache.put(employeeEntity.getEmployeeId(), loginEmployeeDetail);
+        loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
 
-        return ResponseDTO.ok(loginEmployeeDetail);
+        return ResponseDTO.ok(loginUserDetail);
     }
 
 
@@ -108,9 +108,9 @@ public class LoginService {
      *
      * @return
      */
-    private LoginEmployeeDetail loadLoginInfo(EmployeeEntity employeeEntity) {
-        LoginEmployeeDetail loginEmployeeDetail = SmartBeanUtil.copy(employeeEntity, LoginEmployeeDetail.class);
-        loginEmployeeDetail.setUserType(UserTypeEnum.ADMIN_EMPLOYEE);
+    private LoginUserDetail loadLoginInfo(UserEntity userEntity) {
+        LoginUserDetail loginUserDetail = SmartBeanUtil.copy( userEntity, LoginUserDetail.class);
+        loginUserDetail.setUserType(UserTypeEnum.ADMIN_USER);
 
 
         /**
@@ -118,13 +118,13 @@ public class LoginService {
          * 1、从数据库获取所有的权限
          * 2、拼凑成菜单和后端权限
          */
-        List<MenuVO> menuAndPointsList = employeePermissionService.getEmployeeMenuAndPointsList(employeeEntity.getEmployeeId(), employeeEntity.getAdministratorFlag());
+        List<MenuVO> menuAndPointsList = userPermissionService.getUserMenuAndPointsList(userEntity.getUserId(), userEntity.getAdministratorFlag());
         //前端菜单
-        loginEmployeeDetail.setMenuList(menuAndPointsList);
+        loginUserDetail.setMenuList(menuAndPointsList);
         //后端权限
-        loginEmployeeDetail.setAuthorities(employeePermissionService.buildAuthorities(menuAndPointsList));
+        loginUserDetail.setAuthorities(userPermissionService.buildAuthorities(menuAndPointsList));
 
-        return loginEmployeeDetail;
+        return loginUserDetail;
     }
 
 
@@ -143,30 +143,30 @@ public class LoginService {
      * @param
      * @return
      */
-    public LoginEmployeeDetail getLoginUserDetail(String token, HttpServletRequest request) {
+    public LoginUserDetail getLoginUserDetail(String token, HttpServletRequest request) {
         Long requestUserId = tokenService.getUserIdAndValidateToken(token);
         if (requestUserId == null) {
             return null;
         }
         // 查询用户信息
-        LoginEmployeeDetail loginEmployeeDetail = loginUserDetailCache.get(requestUserId);
-        if (loginEmployeeDetail == null) {
+        LoginUserDetail loginUserDetail = loginUserDetailCache.get(requestUserId);
+        if (loginUserDetail == null) {
             // 员工基本信息
-            EmployeeEntity employeeEntity = employeeService.getById(requestUserId);
-            if (employeeEntity == null) {
+            UserEntity userEntity = userService.getById(requestUserId);
+            if (userEntity == null) {
                 return null;
             }
 
-            loginEmployeeDetail = this.loadLoginInfo(employeeEntity);
-            loginEmployeeDetail.setToken(token);
-            loginUserDetailCache.put(requestUserId, loginEmployeeDetail);
+            loginUserDetail = this.loadLoginInfo(userEntity);
+            loginUserDetail.setToken(token);
+            loginUserDetailCache.put(requestUserId, loginUserDetail);
         }
 
         //更新请求ip和user agent
-        loginEmployeeDetail.setUserAgent(ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT));
-        loginEmployeeDetail.setIp(ServletUtil.getClientIP(request));
+        loginUserDetail.setUserAgent(ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT));
+        loginUserDetail.setIp(ServletUtil.getClientIP(request));
 
-        return loginEmployeeDetail;
+        return loginUserDetail;
     }
 
 
