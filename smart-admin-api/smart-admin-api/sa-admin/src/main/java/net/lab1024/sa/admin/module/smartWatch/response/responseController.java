@@ -7,7 +7,7 @@ import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseAddForm;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseUpdateForm;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.ResponseVO;
-import net.lab1024.sa.admin.module.smartWatch.response.service.responseService;
+import net.lab1024.sa.admin.module.smartWatch.response.service.ResponseService;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.domain.ValidateList;
@@ -18,9 +18,9 @@ import javax.validation.Valid;
 
 @RestController
 @Api(tags = {AdminSwaggerTagConst.Business.SW_RESP})
-public class responseController {
+public class ResponseController {
     @Autowired
-    private responseService resService;
+    private ResponseService resService;
 
     @ApiOperation("queryPage")
     @PostMapping("/response/queryPage")
