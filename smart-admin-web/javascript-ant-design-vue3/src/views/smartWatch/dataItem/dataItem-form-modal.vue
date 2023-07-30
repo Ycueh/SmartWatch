@@ -1,8 +1,8 @@
 <template>
   <a-drawer :title="form.id ? 'Update' : 'Add'" :width="500" :visible="visible" :body-style="{ paddingBottom: '80px' }" @close="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
-      <a-form-item label="datastamp" name="datastamp">
-          <a-input v-model:value="form.datastamp" placeholder="Please enter datastamp" />
+      <a-form-item label="datestamp" name="datestamp">
+          <a-input v-model:value="form.datestamp" placeholder="Please enter datestamp" />
         </a-form-item>
         <a-form-item label="timestamp" name="timestamp">
           <a-input v-model:value="form.timestamp" placeholder="Please enter timestamp" />
@@ -51,7 +51,7 @@
   const formRef = ref();
   const formDefault = {
     id: 0,
-    datastamp: undefined,
+    datestamp: undefined,
     timestamp: undefined,
     dataitem1:undefined,
     dataitem2:undefined,
@@ -89,7 +89,7 @@
         if(form.id) {
           await dataItemApi.update(params);
         }else {
-          await dataItemApi.create(params);
+          await dataItemApi.add(params);
         }
         message.success(`${form.id ? 'edit' : 'add'}success`);
         onClose();

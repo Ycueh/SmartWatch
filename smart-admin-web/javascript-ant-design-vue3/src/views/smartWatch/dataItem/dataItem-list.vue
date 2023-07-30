@@ -25,7 +25,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="adddataItem" type="primary" size="small" v-privilege="'dataItem:add'">
+        <a-button @click="addDataItem" type="primary" size="small" v-privilege="'dataItem:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -88,23 +88,23 @@ const columns = ref([
       dataIndex: 'id',
     },
     {
-      title: 'datastamp',
-      dataIndex: 'datastamp',
+      title: 'datestamp',
+      dataIndex: 'datestamp',
     },
     {
       title: 'timestamp',
       dataIndex: 'timestamp',
     },
     {
-      title: 'dataItem1',
-      dataIndex: 'dataItem1',
+      title: 'dataitem1',
+      dataIndex: 'dataitem1',
     },
     {
-      title: 'dataItem2',
-      dataIndex: 'dataItem2',
+      title: 'dataitem2',
+      dataIndex: 'dataitem2',
     },{
-      title: 'dataItem3',
-      dataIndex: 'dataItem3',
+      title: 'dataitem3',
+      dataIndex: 'dataitem3',
     },
   {
     title: 'Action',
