@@ -4,9 +4,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
 import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemAddForm;
+import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemUpdateForm;
+import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemVO;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventUpdateForm;
+import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +45,12 @@ public class dataItemController {
     @PostMapping("/dataItem/batchDelete")
     public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
         return dataItemService.batchDelete(idList);
+    }
+
+    @ApiOperation("queryPage")
+    @PostMapping("/dataItem/queryPage")
+    public ResponseDTO<PageResult<DataItemVO>> queryPage(@RequestBody @Valid DataItemQueryForm queryForm) {
+        return ResponseDTO.ok(dataItemService.queryPage(queryForm));
     }
 
 

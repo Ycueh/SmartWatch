@@ -20,4 +20,31 @@
         </where>
     </select>
 
+    <select id="queryPage" resultType="net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemVO">
+        SELECT
+        *
+        FROM dataitem
+        <where>
+            <if test="queryForm.datestamp != null">
+                AND dataitem.datestamp= #{queryForm.datestamp}
+            </if>
+            <if test="queryForm.timestamp != null and queryForm.timestamp != ''">
+                AND dataitem.timestamp= #{queryForm.timestamp}
+            </if>
+            <if test="queryForm.dataitem1 != null">
+                AND dataitem.dataitem1= #{queryForm.dataitem1}
+            </if>
+            <if test="queryForm.dataitem2 != null">
+                AND dataitem.dataitem2= #{queryForm.dataitem2}
+            </if>
+            <if test="queryForm.dataitem3 != null">
+                AND dataitem.dataitem3= #{queryForm.dataitem3}
+            </if>
+            <if test="queryForm.id != null">
+                AND dataitem._id= #{queryForm.id}
+            </if>
+        </where>
+        order by dataitem._id asc
+    </select>
+
 </mapper>

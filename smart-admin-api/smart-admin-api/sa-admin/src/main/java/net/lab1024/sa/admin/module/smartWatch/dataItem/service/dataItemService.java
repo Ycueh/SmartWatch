@@ -1,16 +1,17 @@
 package net.lab1024.sa.admin.module.smartWatch.dataItem.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemAddForm;
-import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemEntity;
-import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.DataItemUpdateForm;
+import net.lab1024.sa.admin.module.smartWatch.dataItem.domain.*;
 import net.lab1024.sa.admin.module.smartWatch.dataItem.mapper.DataItemMapper;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventEntity;
 import net.lab1024.sa.admin.module.smartWatch.event.domain.EventUpdateForm;
 import net.lab1024.sa.admin.module.smartWatch.event.mapper.EventMapper;
+import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
+import net.lab1024.sa.common.common.util.SmartPageUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService;
 import org.apache.commons.collections4.CollectionUtils;
@@ -84,4 +85,16 @@ public class dataItemService {
     }
 
 
+    /**
+     * Query dataItem list
+     *
+     * @param queryForm
+     * @return
+     */
+    public PageResult<DataItemVO> queryPage(DataItemQueryForm queryForm) {
+        Page<?> page = SmartPageUtil.convert2PageQuery(queryForm);
+        List<DataItemVO> list = dataItemMapper.queryPage(page, queryForm);
+        PageResult<DataItemVO> pageResult = SmartPageUtil.convert2PageResult(page, list);
+        return pageResult;
+    }
 }

@@ -81,7 +81,7 @@ public class eventService {
     }
 
     /**
-     * Query response list
+     * Query event list
      *
      * @param queryForm
      * @return
