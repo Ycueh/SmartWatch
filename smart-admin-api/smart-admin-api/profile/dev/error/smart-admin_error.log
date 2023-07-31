@@ -2446,3 +2446,17 @@ Caused by: org.apache.ibatis.reflection.ReflectionException: There is no getter 
 	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
 	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
 	... 116 more
+[2023-07-31 17:27:01,626][ERROR][main] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 1024 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 1024 or configure this application to listen on another port.
+ (LoggingFailureAnalysisReporter.java:40)

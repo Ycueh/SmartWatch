@@ -271,6 +271,10 @@
                 <version>${velocity-tools.version}</version>
             </dependency>
             <!--velocity end-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
