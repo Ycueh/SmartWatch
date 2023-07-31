@@ -76,3 +76,7 @@
 [31/Jul/2023:17:02:47 +0100] - 127.0.0.1 "OPTIONS /question/queryPage HTTP/1.1" 200 2 (2 ms)
 [31/Jul/2023:17:02:48 +0100] - 127.0.0.1 "POST /question/queryPage HTTP/1.1" 200 14 (14 ms)
 >>>>>>> 8fe09ba8592d04164a9402903d45bdefe8f49334
+[31/Jul/2023:18:46:43 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 34 (34 ms)
+[31/Jul/2023:18:46:43 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 200 255 (255 ms)
+[31/Jul/2023:18:46:50 +0100] - 127.0.0.1 "OPTIONS /api/upload HTTP/1.1" 200 3 (3 ms)
+[31/Jul/2023:18:46:50 +0100] - 127.0.0.1 "POST /api/upload HTTP/1.1" 200 41 (41 ms)
