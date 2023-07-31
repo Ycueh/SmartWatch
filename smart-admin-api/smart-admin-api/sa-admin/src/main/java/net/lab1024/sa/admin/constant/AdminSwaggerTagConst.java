@@ -8,18 +8,6 @@ import net.lab1024.sa.common.constant.SwaggerTagConst;
 public class AdminSwaggerTagConst extends SwaggerTagConst {
 
     public static class Business {
-        public static final String MANAGER_CATEGORY = "ERP进销存-分类管理";
-
-        public static final String MANAGER_GOODS = "ERP进销存-商品管理";
-
-        public static final String OA_BANK = "OA办公-银行卡信息";
-
-        public static final String OA_ENTERPRISE = "OA办公-企业";
-
-        public static final String OA_INVOICE = "OA办公-发票信息";
-
-        public static final String OA_NOTICE = "OA办公-通知公告";
-
         public static final String SW_RESP = "SW_RESPONSE";
 
         public static final String SW_QUES = "SW_QUESTION";
@@ -27,6 +15,7 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SW_PARAM = "SW_PARAMETER";
         public static final String SW_EVENT = "SW_EVENT";
 
+        public static final String SW_FILE = "SW_FILE";
         public static final String SW_DATAITEM = "SW_DATAITEM";
     }
 

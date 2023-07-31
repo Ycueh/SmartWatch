@@ -3,14 +3,14 @@
 -->
 <template>
   <a-space :size="10">
-    <div class="setting">
-      <!---setting-->
-      <a-button type="text" @click="downloadFile" >
+    <div class="download">
+      <!---download-->
+      <a-button type="text" @click="download" >
         Download
       </a-button>
     </div>
 
-    <div class="download">
+    <div class="setting">
       <!---setting-->
       <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><setting-outlined /></template>
@@ -35,28 +35,11 @@
   function showSetting() {
     headerSetting.value.show();
   }
-  async function downloadFile() {
+  async function download() {
     try {
-      let response = await fileApi.download(); // Make the Axios GET request to download the file
-
-      // Handle the response data as a Blob
-      const blob = new Blob([response], { type: 'application/octet-stream' });
-
-      // Create a temporary URL for the Blob
-      const url = URL.createObjectURL(blob);
-
-      // Create a hidden link and trigger the download
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = 'exported_smart_admin_v2.db';
-      link.style.display = 'none';
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up the temporary URL
-      URL.revokeObjectURL(url);
+      await fileApi.downloadFile();
     } catch (e) {
-      console.error('Error downloading file:', e);
+      console.log(e);
     }
   }
 

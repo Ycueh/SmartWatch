@@ -1,8 +1,8 @@
-import { postRequest, getRequest } from '/@/lib/axios';
+import { download } from '/@/lib/axios';
 
 export const fileApi = {
    // pagination query
-   download : () => {
-    return getRequest('file/download');
+   downloadFile : () => {
+    return download('/file/download');
   },
 };
