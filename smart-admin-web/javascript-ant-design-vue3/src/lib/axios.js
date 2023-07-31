@@ -97,11 +97,10 @@ export const getRequest = (url, params) => {
 /**
  * Download Document
  */
-export const download = function (fileName, url, params) {
+export const download = function (url) {
   request({
     method: 'get',
     url: url,
-    params: params,
     responseType: 'blob',
   })
     .then((data) => {
@@ -112,7 +111,7 @@ export const download = function (fileName, url, params) {
       let link = document.createElement('a');
       link.style.display = 'none';
       link.href = url;
-      link.setAttribute('download', fileName);
+      link.setAttribute('download', 'EMADATA.db');
       document.body.appendChild(link);
       link.click();
     })
