@@ -66,7 +66,9 @@ public class eventService {
         if (CollectionUtils.isEmpty(idList)) {
             return ResponseDTO.ok();
         }
-        eventMapper.deleteBatchIds(idList);
+        for(Long id:idList){
+            eventMapper.deleteById(id);
+        }
         return ResponseDTO.ok();
     }
     /**

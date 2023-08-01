@@ -69,7 +69,9 @@ public class dataItemService {
         if (CollectionUtils.isEmpty(idList)) {
             return ResponseDTO.ok();
         }
-        dataItemMapper.deleteBatchIds(idList);
+        for(Long id:idList){
+            dataItemMapper.deleteById(id);
+        }
         return ResponseDTO.ok();
     }
 
