@@ -11,8 +11,12 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 07/08/2023 20:31:58
+ Date: 07/08/2023 21:01:18
 */
+DROP DATABASE IF EXISTS `smart_admin_v2`;
+CREATE DATABASE IF NOT EXISTS `smart_admin_v2` ;
+USE `smart_admin_v2`;
+
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -225,7 +229,7 @@ CREATE TABLE `t_menu`  (
   `update_user_id` bigint NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 209 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 213 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_menu
