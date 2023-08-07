@@ -1,5 +1,5 @@
 [2023-07-21 13:49:22,882][ERROR][http-nio-1024-exec-5] 捕获全局异常,URL:/login (GlobalExceptionHandler.java:110)
-org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): net.lab1024.sa.admin.module.system.role.dao.RoleUserDao.selectRoleIdByEmployeeId
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): net.lab1024.sa.admin.module.system.dao.role.RoleUserDao.selectRoleIdByEmployeeId
 	at org.apache.ibatis.binding.MapperMethod$SqlCommand.<init>(MapperMethod.java:235) ~[mybatis-3.5.10.jar:3.5.10]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.<init>(MybatisMapperMethod.java:50) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.lambda$cachedInvoker$0(MybatisMapperProxy.java:111) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
@@ -145,7 +145,7 @@ org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.68.jar:9.0.68]
 	at java.lang.Thread.run(Thread.java:833) ~[?:?]
 [2023-07-21 13:50:01,604][ERROR][http-nio-1024-exec-9] 捕获全局异常,URL:/login (GlobalExceptionHandler.java:110)
-org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): net.lab1024.sa.admin.module.system.role.dao.RoleUserDao.selectRoleIdByEmployeeId
+org.apache.ibatis.binding.BindingException: Invalid bound statement (not found): net.lab1024.sa.admin.module.system.dao.role.RoleUserDao.selectRoleIdByEmployeeId
 	at org.apache.ibatis.binding.MapperMethod$SqlCommand.<init>(MapperMethod.java:235) ~[mybatis-3.5.10.jar:3.5.10]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperMethod.<init>(MybatisMapperMethod.java:50) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
 	at com.baomidou.mybatisplus.core.override.MybatisMapperProxy.lambda$cachedInvoker$0(MybatisMapperProxy.java:111) ~[mybatis-plus-core-3.5.2.jar:3.5.2]
@@ -936,7 +936,7 @@ Caused by: java.lang.NumberFormatException: For input string: "undefined"
 org.springframework.jdbc.BadSqlGrammarException: 
 ### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_data_tracer' doesn't exist
 ### The error may exist in net/lab1024/sa/common/module/support/datatracer/dao/DataTracerDao.java (best guess)
-### The error may involve net.lab1024.sa.common.module.support.datatracer.dao.DataTracerDao.insert-Inline
+### The error may involve net.lab1024.sa.common.module.dao.DataTracerDao.insert-Inline
 ### The error occurred while setting parameters
 ### SQL: INSERT INTO t_data_tracer  ( data_id, type, content,    user_id, user_type, user_name, ip, user_agent )  VALUES  ( ?, ?, ?,    ?, ?, ?, ?, ? )
 ### Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_data_tracer' doesn't exist

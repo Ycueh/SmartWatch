@@ -1,8 +1,8 @@
 package net.lab1024.sa.admin.module.system.role.service;
 
-import net.lab1024.sa.admin.module.system.role.dao.RoleDao;
-import net.lab1024.sa.admin.module.system.role.dao.RoleUserDao;
-import net.lab1024.sa.admin.module.system.role.dao.RoleMenuDao;
+import net.lab1024.sa.admin.module.system.dao.role.RoleDao;
+import net.lab1024.sa.admin.module.system.dao.role.RoleUserDao;
+import net.lab1024.sa.admin.module.system.dao.role.RoleMenuDao;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEntity;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleAddForm;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleUpdateForm;

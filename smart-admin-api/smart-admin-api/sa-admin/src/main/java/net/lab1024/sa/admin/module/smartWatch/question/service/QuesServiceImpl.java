@@ -2,8 +2,8 @@ package net.lab1024.sa.admin.module.smartWatch.question.service;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import net.lab1024.sa.admin.module.smartWatch.question.mapper.QuesMapper;
-import net.lab1024.sa.admin.module.smartWatch.question.mapper.QuestionDAO;
+import net.lab1024.sa.admin.module.smartWatch.dao.question.QuesMapper;
+import net.lab1024.sa.admin.module.smartWatch.dao.question.QuestionDAO;
 import net.lab1024.sa.admin.module.smartWatch.question.pojo.Question;
 import net.lab1024.sa.admin.module.smartWatch.question.pojo.QuestionQueryForm;
 import net.lab1024.sa.common.common.domain.PageResult;

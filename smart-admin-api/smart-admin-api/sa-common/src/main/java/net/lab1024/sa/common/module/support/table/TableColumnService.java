@@ -3,6 +3,7 @@ package net.lab1024.sa.common.module.support.table;
 import com.alibaba.fastjson.JSONArray;
 import net.lab1024.sa.common.common.domain.RequestUser;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.module.dao.TableColumnDao;
 import net.lab1024.sa.common.module.support.table.domain.TableColumnEntity;
 import net.lab1024.sa.common.module.support.table.domain.TableColumnUpdateForm;
 import org.apache.commons.collections4.CollectionUtils;

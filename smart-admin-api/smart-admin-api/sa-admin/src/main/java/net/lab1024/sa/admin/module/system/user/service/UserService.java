@@ -1,7 +1,7 @@
 package net.lab1024.sa.admin.module.system.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import net.lab1024.sa.admin.module.system.user.dao.UserDao;
+import net.lab1024.sa.admin.module.system.dao.user.UserDao;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.domain.form.*;
 import net.lab1024.sa.admin.module.system.user.domain.vo.UserVO;

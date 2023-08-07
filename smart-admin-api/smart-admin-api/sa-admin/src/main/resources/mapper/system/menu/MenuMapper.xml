@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="net.lab1024.sa.admin.module.system.menu.dao.MenuDao">
+<mapper namespace="net.lab1024.sa.admin.module.system.dao.menu.MenuDao">
 
     <delete id="deleteByMenuIdList">
         <if test="menuIdList != null and menuIdList.size > 0">

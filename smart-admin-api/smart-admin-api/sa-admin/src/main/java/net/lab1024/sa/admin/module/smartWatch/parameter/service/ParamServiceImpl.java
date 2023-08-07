@@ -2,8 +2,8 @@ package net.lab1024.sa.admin.module.smartWatch.parameter.service;
 
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import net.lab1024.sa.admin.module.smartWatch.parameter.mapper.ParamDAO;
-import net.lab1024.sa.admin.module.smartWatch.parameter.mapper.ParamMapper;
+import net.lab1024.sa.admin.module.smartWatch.dao.parameter.ParamDAO;
+import net.lab1024.sa.admin.module.smartWatch.dao.parameter.ParamMapper;
 import net.lab1024.sa.admin.module.smartWatch.parameter.pojo.ParamQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.parameter.pojo.Parameter;
 import net.lab1024.sa.common.common.domain.PageResult;

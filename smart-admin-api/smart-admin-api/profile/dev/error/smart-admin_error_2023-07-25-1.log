@@ -137,7 +137,7 @@ Caused by: org.apache.ibatis.binding.BindingException: Parameter 'dataitemId' no
 org.springframework.jdbc.UncategorizedSQLException: 
 ### Error updating database.  Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
 ### The error may exist in net/lab1024/sa/admin/module/smartWatch/dataItem/mapper/DataItemMapper.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.smartWatch.dataItem.mapper.DataItemMapper.deleteBatchIds
+### The error may involve net.lab1024.sa.admin.module.smartWatch.dao.dataItem.DataItemMapper.deleteBatchIds
 ### The error occurred while executing an update
 ### SQL: DELETE FROM dataitem WHERE id IN (     ?      ,  ?      ,  ?    )
 ### Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
@@ -310,7 +310,7 @@ Caused by: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing datab
 org.springframework.jdbc.UncategorizedSQLException: 
 ### Error updating database.  Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
 ### The error may exist in net/lab1024/sa/admin/module/smartWatch/dataItem/mapper/DataItemMapper.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.smartWatch.dataItem.mapper.DataItemMapper.deleteBatchIds
+### The error may involve net.lab1024.sa.admin.module.smartWatch.dao.dataItem.DataItemMapper.deleteBatchIds
 ### The error occurred while executing an update
 ### SQL: DELETE FROM dataitem WHERE id IN (     ?    )
 ### Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
@@ -599,7 +599,7 @@ Caused by: com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot d
 org.springframework.jdbc.UncategorizedSQLException: 
 ### Error updating database.  Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
 ### The error may exist in net/lab1024/sa/admin/module/smartWatch/dataItem/mapper/DataItemMapper.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.smartWatch.dataItem.mapper.DataItemMapper.deleteBatchIds
+### The error may involve net.lab1024.sa.admin.module.smartWatch.dao.dataItem.DataItemMapper.deleteBatchIds
 ### The error occurred while executing an update
 ### SQL: DELETE FROM dataitem WHERE id IN (     ?    )
 ### Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
@@ -771,7 +771,7 @@ Caused by: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing datab
 org.springframework.jdbc.UncategorizedSQLException: 
 ### Error updating database.  Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)
 ### The error may exist in net/lab1024/sa/admin/module/smartWatch/event/mapper/EventMapper.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.smartWatch.event.mapper.EventMapper.deleteBatchIds
+### The error may involve net.lab1024.sa.admin.module.smartWatch.dao.event.EventMapper.deleteBatchIds
 ### The error occurred while executing an update
 ### SQL: DELETE FROM event WHERE id IN (     ?    )
 ### Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (no such column: id)

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.system.dao.user.UserDao">
+
+    <select id="queryUser" resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
+        SELECT
+        t_user.*
+        FROM t_user
+        <where>
+            <if test="queryForm.keyword != null and queryForm.keyword != ''">
+                AND (
+                INSTR(t_user.actual_name,#{queryForm.keyword})
+                OR INSTR(t_user.phone,#{queryForm.keyword})
+                OR INSTR(t_user.login_name,#{queryForm.keyword})
+                )
+            </if>
+            <if test="queryForm.disabledFlag != null">
+                AND t_user.disabled_flag = #{queryForm.disabledFlag}
+            </if>
+            <if test="queryForm.deletedFlag != null">
+                AND t_user.deleted_flag = #{queryForm.deletedFlag}
+            </if>
+        </where>
+    </select>
+
+
+    <update id="updateDisableFlag">
+        UPDATE t_user
+        SET disabled_flag = #{disabledFlag}
+        WHERE user_id = #{userId}
+    </update>
+
+
+    <select id="getByLoginName" resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
+        SELECT *
+        FROM t_user
+        <where>
+            login_name = #{loginName}
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+    </select>
+
+    <select id="getByActualName" resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
+        SELECT *
+        FROM t_user
+        <where>
+            actual_name = #{actualName}
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="getByPhone" resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
+        SELECT *
+        FROM t_user
+        <where>
+            phone = #{phone}
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+    </select>
+
+
+    <select id="listAll" resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
+        SELECT *
+        FROM t_user
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="countByDepartmentId" resultType="integer">
+        SELECT count(1) FROM t_user
+        WHERE
+        department_id = #{departmentId}
+    </select>
+
+
+    <select id="selectByDepartmentId"
+            resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
+        SELECT *
+        FROM t_user
+        <where>
+            department_id = #{departmentId}
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByActualName"
+            resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
+        SELECT * FROM t_user
+        <where>
+            actual_name = #{actualName}
+            AND department_id in
+            <foreach collection="departmentIdList" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+    </select>
+
+    <select id="getUserIdByDepartmentIdList" resultType="java.lang.Long">
+        SELECT user_id
+        FROM t_user
+        <where>
+            department_id IN
+            <foreach collection="departmentIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <select id="getUserId" resultType="java.lang.Long">
+        SELECT user_id
+        FROM t_user
+        <where>
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+    </select>
+
+    <select id="getUserIdByDepartmentId" resultType="java.lang.Long">
+        SELECT user_id
+        FROM t_user
+        <where>
+            department_id = #{departmentId}
+            <if test="disabledFlag != null">
+                AND disabled_flag = #{disabledFlag}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="getUserByIds" resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
+        SELECT * FROM t_user
+        where user_id IN
+        <foreach collection="userIds" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <select id="getUserById" resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
+        SELECT t_user.*
+        FROM t_user
+        where t_user.user_id = #{userId}
+    </select>
+
+    <select id="selectUserByDisabledAndDeleted"
+            resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
+        SELECT
+        t_user.*
+        FROM t_user
+        <where>
+            <if test="disabledFlag != null">
+                AND t_user.disabled_flag = #{disabledFlag}
+            </if>
+            <if test="deletedFlag != null">
+                AND t_user.deleted_flag = #{deletedFlag}
+            </if>
+        </where>
+    </select>
+
+    <update id="updatePassword">
+        UPDATE t_user
+        SET login_pwd = #{password}
+        WHERE user_id = #{userId}
+    </update>
+
+
+</mapper>

@@ -2,7 +2,7 @@ package net.lab1024.sa.admin.module.system.menu.manager;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.lab1024.sa.admin.module.system.menu.constant.MenuTypeEnum;
-import net.lab1024.sa.admin.module.system.menu.dao.MenuDao;
+import net.lab1024.sa.admin.module.system.dao.menu.MenuDao;
 import net.lab1024.sa.admin.module.system.menu.domain.entity.MenuEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

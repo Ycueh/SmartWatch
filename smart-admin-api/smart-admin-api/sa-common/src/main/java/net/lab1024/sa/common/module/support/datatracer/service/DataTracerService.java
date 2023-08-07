@@ -11,7 +11,7 @@ import net.lab1024.sa.common.common.util.SmartPageUtil;
 import net.lab1024.sa.common.common.util.SmartRequestUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerConst;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
-import net.lab1024.sa.common.module.support.datatracer.dao.DataTracerDao;
+import net.lab1024.sa.common.module.dao.DataTracerDao;
 import net.lab1024.sa.common.module.support.datatracer.domain.entity.DataTracerEntity;
 import net.lab1024.sa.common.module.support.datatracer.domain.form.DataTracerForm;
 import net.lab1024.sa.common.module.support.datatracer.domain.form.DataTracerQueryForm;

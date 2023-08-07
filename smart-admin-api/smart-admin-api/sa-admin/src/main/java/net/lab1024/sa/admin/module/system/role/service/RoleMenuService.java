@@ -1,12 +1,12 @@
 package net.lab1024.sa.admin.module.system.role.service;
 
 import com.google.common.collect.Lists;
-import net.lab1024.sa.admin.module.system.menu.dao.MenuDao;
+import net.lab1024.sa.admin.module.system.dao.menu.MenuDao;
 import net.lab1024.sa.admin.module.system.menu.domain.entity.MenuEntity;
 import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuSimpleTreeVO;
 import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuVO;
-import net.lab1024.sa.admin.module.system.role.dao.RoleDao;
-import net.lab1024.sa.admin.module.system.role.dao.RoleMenuDao;
+import net.lab1024.sa.admin.module.system.dao.role.RoleDao;
+import net.lab1024.sa.admin.module.system.dao.role.RoleMenuDao;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleEntity;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleMenuEntity;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleMenuUpdateForm;

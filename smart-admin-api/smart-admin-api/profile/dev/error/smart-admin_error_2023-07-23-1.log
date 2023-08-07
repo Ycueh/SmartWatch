@@ -6412,7 +6412,7 @@ Caused by: java.sql.SQLFeatureNotSupportedException
 org.springframework.jdbc.UncategorizedSQLException: 
 ### Error updating database.  Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (near "AUTO_INCREMENT": syntax error)
 ### The error may exist in net/lab1024/sa/admin/module/smartWatch/question/mapper/QuesMapper.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.smartWatch.question.mapper.QuesMapper.resetAutoIncrement
+### The error may involve net.lab1024.sa.admin.module.smartWatch.dao.question.QuesMapper.resetAutoIncrement
 ### The error occurred while executing an update
 ### SQL: ALTER TABLE question AUTO_INCREMENT = ?
 ### Cause: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing database (near "AUTO_INCREMENT": syntax error)
@@ -7319,7 +7319,7 @@ cn.hutool.core.io.resource.NoResourceException: Resource of path [../database/sm
 org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: path to 'database/smart_admin_v2.db': 'D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\smart-admin-api\database' does not exist
 ### The error may exist in net/lab1024/sa/admin/module/system/employee/dao/EmployeeDao.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.system.user.dao.UserDao.selectById
+### The error may involve net.lab1024.sa.admin.module.system.dao.user.UserDao.selectById
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: path to 'database/smart_admin_v2.db': 'D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\smart-admin-api\database' does not exist
 	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:96) ~[mybatis-spring-2.0.7.jar:2.0.7]
@@ -7393,7 +7393,7 @@ org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis
 Caused by: org.apache.ibatis.exceptions.PersistenceException: 
 ### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: path to 'database/smart_admin_v2.db': 'D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\smart-admin-api\database' does not exist
 ### The error may exist in net/lab1024/sa/admin/module/system/employee/dao/EmployeeDao.java (best guess)
-### The error may involve net.lab1024.sa.admin.module.system.user.dao.UserDao.selectById
+### The error may involve net.lab1024.sa.admin.module.system.dao.user.UserDao.selectById
 ### The error occurred while executing a query
 ### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is java.sql.SQLException: path to 'database/smart_admin_v2.db': 'D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\smart-admin-api\database' does not exist
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.10.jar:3.5.10]

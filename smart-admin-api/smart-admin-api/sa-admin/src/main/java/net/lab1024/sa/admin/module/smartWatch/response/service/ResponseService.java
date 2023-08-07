@@ -2,7 +2,7 @@ package net.lab1024.sa.admin.module.smartWatch.response.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.smartWatch.response.dao.ResponseDAO;
+import net.lab1024.sa.admin.module.smartWatch.dao.response.ResponseDao;
 import net.lab1024.sa.admin.module.smartWatch.response.domain.*;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
@@ -21,7 +21,7 @@ import java.util.*;
 @Slf4j
 public class ResponseService {
     @Autowired
-    private ResponseDAO resDAO;
+    private ResponseDao resDAO;
     @Autowired
     private DataTracerService dataTracerService;
 

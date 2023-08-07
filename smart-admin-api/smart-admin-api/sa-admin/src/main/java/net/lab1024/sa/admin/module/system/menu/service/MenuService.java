@@ -3,7 +3,7 @@ package net.lab1024.sa.admin.module.system.menu.service;
 import cn.hutool.core.collection.CollectionUtil;
 import com.google.common.collect.Lists;
 import net.lab1024.sa.admin.module.system.menu.constant.MenuTypeEnum;
-import net.lab1024.sa.admin.module.system.menu.dao.MenuDao;
+import net.lab1024.sa.admin.module.system.dao.menu.MenuDao;
 import net.lab1024.sa.admin.module.system.menu.domain.entity.MenuEntity;
 import net.lab1024.sa.admin.module.system.menu.domain.form.MenuAddForm;
 import net.lab1024.sa.admin.module.system.menu.domain.form.MenuBaseForm;

@@ -2,7 +2,7 @@ package net.lab1024.sa.admin.module.system.user.manager;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import net.lab1024.sa.admin.module.system.user.dao.UserDao;
+import net.lab1024.sa.admin.module.system.dao.user.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
