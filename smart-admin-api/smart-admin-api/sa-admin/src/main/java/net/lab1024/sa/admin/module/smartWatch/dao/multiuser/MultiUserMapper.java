@@ -10,4 +10,6 @@ import org.springframework.stereotype.Component;
 public interface MultiUserMapper extends BaseMapper<MultiUserEntity> {
 
     void createNewTable();
+
+
 }

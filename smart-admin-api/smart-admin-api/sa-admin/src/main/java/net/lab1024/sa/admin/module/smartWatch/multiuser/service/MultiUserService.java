@@ -35,6 +35,7 @@ public class MultiUserService {
         MultiUserEntity multiUserEntity = SmartBeanUtil.copy(addForm, MultiUserEntity.class);
         multiUserMapper.insert(multiUserEntity);
         CreateNewFile(multiUserEntity.getFileName());
+        multiUserMapper.createNewTable();
         dataTracerService.insert(multiUserEntity.getId(), DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }

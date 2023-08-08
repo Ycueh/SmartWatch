@@ -113,7 +113,7 @@ INSERT INTO `question` VALUES (6, '06000', 'Experiencing little interest or plea
 INSERT INTO `question` VALUES (7, '07000', 'Feeling cheerful, feeling in good spirits', '07010', 'Not at all', '07020', 'A little', '07030', 'A lot', '07040', 'Extremely');
 INSERT INTO `question` VALUES (8, '08000', 'Feeling calm and relaxed', '08010', 'Not at all', '08020', 'A little', '08030', 'A lot', '08040', 'Extremely');
 INSERT INTO `question` VALUES (9, '09000', 'Since we last asked you questions...', '09010', 'Press', '09020', 'To', '09030', 'Continue...', '09040', 'NULL');
-INSERT INTO `question` VALUES (10, '10000', 'How was your sleep since your last response?', '10010', 'Restless', '10020', 'Acceptable', '10030', 'Refreshing', '10040', 'Didn\'t sleep');
+INSERT INTO `question` VALUES (10, '10000', 'How was your sleep since your last response?', '10010', 'Restless', '10020', 'Acceptable', '10030', 'Refreshing', '10040', 'Didn''t sleep');
 INSERT INTO `question` VALUES (11, '11000', 'Have you had a conversation with anyone?', '11010', 'Yes, in person', '11020', 'Yes, remotely', '11030', 'No', '11040', 'NULL');
 INSERT INTO `question` VALUES (12, '12000', 'Was there a significant event since your last response?', '12010', 'Positive event', '12020', 'Negative event', '12030', 'No event', '12040', 'NULL');
 INSERT INTO `question` VALUES (13, '13000', 'Have you exercised, and if so who with?', '13010', 'With others', '13020', 'Alone', '13030', 'Have not exercised', '13040', 'NULL');
