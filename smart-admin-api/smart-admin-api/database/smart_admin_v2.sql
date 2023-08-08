@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 07/08/2023 21:01:18
+ Date: 08/08/2023 14:55:04
 */
 DROP DATABASE IF EXISTS `smart_admin_v2`;
 CREATE DATABASE IF NOT EXISTS `smart_admin_v2` ;
@@ -139,7 +139,7 @@ CREATE TABLE `response`  (
   `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   PRIMARY KEY (`_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of response
@@ -176,7 +176,7 @@ CREATE TABLE `t_data_tracer`  (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`data_tracer_id`) USING BTREE,
   INDEX `order_id_order_type`(`data_id`, `type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_data_tracer
@@ -229,116 +229,28 @@ CREATE TABLE `t_menu`  (
   `update_user_id` bigint NULL DEFAULT NULL COMMENT '更新人',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 213 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 212 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_menu
 -- ----------------------------
 INSERT INTO `t_menu` VALUES (26, '菜单管理', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 0, 0, 0, 2, '2021-08-09 15:04:35', 1, '2023-08-07 16:32:51');
 INSERT INTO `t_menu` VALUES (40, '批量删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:batch:delete', NULL, 26, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 09:45:56', 1, '2023-08-07 16:32:53');
-INSERT INTO `t_menu` VALUES (45, '部门员工', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 16:13:27', 44, '2023-08-07 16:32:55');
-INSERT INTO `t_menu` VALUES (46, '部门员工', 2, 45, 1, '/employee/department', '/system/employee/department/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-07 16:32:56');
-INSERT INTO `t_menu` VALUES (47, '商品管理', 2, 48, 3, '/erp/goods/list', '/business/erp/goods/goods-list.vue', NULL, NULL, NULL, 'AliwangwangOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 17:58:39', 1, '2023-08-07 20:09:27');
-INSERT INTO `t_menu` VALUES (48, '商品管理', 1, 137, 10, '/goods', NULL, NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 18:02:59', 1, '2022-06-24 20:07:35');
-INSERT INTO `t_menu` VALUES (50, '系统设置', 1, 0, 200, '/setting', NULL, NULL, NULL, NULL, 'SettingOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2021-08-13 16:41:33', 1, '2023-08-07 20:15:38');
-INSERT INTO `t_menu` VALUES (76, '角色管理', 2, 45, 2, '/employee/role', '/system/employee/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2022-06-23 16:21:06');
-INSERT INTO `t_menu` VALUES (78, '商品分类', 2, 48, 1, '/erp/catalog/goods', '/business/erp/catalog/goods-catalog.vue', NULL, NULL, NULL, 'ApartmentOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-18 23:34:14', 1, '2022-09-14 21:52:12');
-INSERT INTO `t_menu` VALUES (79, '自定义分组', 2, 48, 2, '/erp/catalog/custom', '/business/erp/catalog/custom-catalog.vue', NULL, NULL, NULL, 'AppstoreAddOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-18 23:37:53', 1, '2022-09-14 21:50:58');
-INSERT INTO `t_menu` VALUES (81, '请求监控', 2, 111, 3, '/support/operate-log/operate-log-list', '/support/operate-log/operate-log-list.vue', NULL, NULL, NULL, 'VideoCameraOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-20 12:37:24', 1, '2022-10-22 18:33:10');
-INSERT INTO `t_menu` VALUES (85, '组件演示', 2, 84, NULL, '/demonstration/index', '/support/demonstration/index.vue', NULL, NULL, NULL, 'ClearOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-20 23:16:46', NULL, '2022-05-20 23:16:46');
-INSERT INTO `t_menu` VALUES (86, '添加部门', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:department:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-26 23:33:37', NULL, '2022-10-22 10:39:01');
-INSERT INTO `t_menu` VALUES (87, '修改部门', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:department:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-26 23:34:11', NULL, '2022-10-22 10:39:02');
-INSERT INTO `t_menu` VALUES (88, '删除部门', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:department:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-26 23:34:49', NULL, '2022-10-22 10:39:03');
-INSERT INTO `t_menu` VALUES (91, '添加员工', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:11:38', NULL, '2022-10-22 10:39:03');
-INSERT INTO `t_menu` VALUES (92, '编辑员工', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:10', NULL, '2022-10-22 10:39:04');
-INSERT INTO `t_menu` VALUES (93, '禁用启用员工', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:disabled', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:37', NULL, '2022-10-22 10:39:05');
-INSERT INTO `t_menu` VALUES (94, '调整部门', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:department:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:59', NULL, '2022-10-22 10:39:06');
-INSERT INTO `t_menu` VALUES (95, '重置密码', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:password:reset', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:13:30', 1, '2022-10-20 13:39:13');
-INSERT INTO `t_menu` VALUES (96, '删除员工', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:employee:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:14:08', NULL, '2022-10-22 10:39:07');
-INSERT INTO `t_menu` VALUES (97, '添加角色', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:00', 1, '2022-10-22 10:39:09');
-INSERT INTO `t_menu` VALUES (98, '删除角色', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:19', 1, '2022-10-22 10:39:09');
-INSERT INTO `t_menu` VALUES (99, '编辑角色', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:55', NULL, '2022-10-22 10:39:10');
-INSERT INTO `t_menu` VALUES (100, '更新数据范围', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:dataScope:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:37:03', NULL, '2022-10-22 10:39:11');
-INSERT INTO `t_menu` VALUES (101, '批量移除员工', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:employee:batch:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:05', NULL, '2022-10-22 10:39:38');
-INSERT INTO `t_menu` VALUES (102, '移除员工', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:employee:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:21', NULL, '2022-10-22 10:39:39');
-INSERT INTO `t_menu` VALUES (103, '添加员工', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:employee:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:38', NULL, '2022-10-22 10:39:40');
-INSERT INTO `t_menu` VALUES (104, '修改权限', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:menu:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:41:55', NULL, '2022-10-22 10:39:41');
-INSERT INTO `t_menu` VALUES (105, '添加', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:add', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:44:37', 1, '2022-10-22 10:39:41');
-INSERT INTO `t_menu` VALUES (106, '编辑', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:update', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:44:59', 1, '2022-10-22 10:39:44');
-INSERT INTO `t_menu` VALUES (108, '删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:delete', NULL, 26, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:45:55', 1, '2022-10-22 10:39:43');
-INSERT INTO `t_menu` VALUES (109, '参数配置', 2, 50, 3, '/config/config-list', '/support/config/config-list.vue', NULL, NULL, NULL, 'AntDesignOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 13:34:41', 1, '2022-06-23 16:24:16');
-INSERT INTO `t_menu` VALUES (110, '数据字典', 2, 50, 4, '/setting/dict', '/support/dict/index.vue', NULL, NULL, NULL, 'BarcodeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 17:53:00', 1, '2022-05-27 18:09:14');
-INSERT INTO `t_menu` VALUES (111, '监控服务', 1, 0, 4, '/monitor', NULL, NULL, NULL, NULL, 'BarChartOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-17 11:13:23', 1, '2023-08-07 20:13:47');
-INSERT INTO `t_menu` VALUES (113, '查询', 3, 112, NULL, NULL, NULL, NULL, NULL, 'ad', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-17 11:31:36', NULL, '2022-06-17 11:31:36');
-INSERT INTO `t_menu` VALUES (114, '运维工具', 1, 0, 5, NULL, NULL, NULL, NULL, NULL, 'NodeCollapseOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-20 10:09:16', 1, '2023-08-07 20:14:02');
-INSERT INTO `t_menu` VALUES (117, 'Reload', 2, 114, NULL, '/hook', '/support/reload/reload-list.vue', NULL, NULL, NULL, 'ReloadOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-20 10:16:49', NULL, '2022-06-20 10:16:49');
-INSERT INTO `t_menu` VALUES (122, '数据库监控', 2, 111, 4, '/support/druid/index', NULL, NULL, NULL, NULL, 'ConsoleSqlOutlined', NULL, 1, 'http://localhost:60001/druid/index.html', 0, 1, 0, 0, 1, '2022-06-20 14:49:33', 1, '2022-10-22 18:33:07');
-INSERT INTO `t_menu` VALUES (130, '单号管理', 2, 50, 6, '/support/serial-number/serial-number-list', '/support/serial-number/serial-number-list.vue', NULL, NULL, NULL, 'NumberOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 14:45:22', 1, '2022-06-28 16:23:41');
-INSERT INTO `t_menu` VALUES (132, '通知公告', 2, 138, NULL, '/oa/notice/notice-list', '/business/oa/notice/notice-list.vue', NULL, NULL, NULL, 'SoundOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 18:23:09', 1, '2022-09-14 19:54:34');
-INSERT INTO `t_menu` VALUES (133, '缓存管理', 2, 114, NULL, '/support/cache/cache-list', '/support/cache/cache-list.vue', NULL, NULL, NULL, 'BorderInnerOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-24 18:52:25', NULL, '2022-06-24 18:52:25');
-INSERT INTO `t_menu` VALUES (142, '公告详情', 2, 132, NULL, '/oa/notice/notice-detail', '/business/oa/notice/notice-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-06-25 16:38:47', 1, '2022-09-14 19:46:17');
-INSERT INTO `t_menu` VALUES (143, '登录日志', 2, 111, 2, '/support/login-log/login-log-list', '/support/login-log/login-log-list.vue', NULL, NULL, NULL, 'LoginOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-06-28 15:01:38', 1, '2022-10-22 18:33:03');
-INSERT INTO `t_menu` VALUES (144, '企业信息', 2, 138, 2, '/oa/enterprise/enterprise-list', '/business/oa/enterprise/enterprise-list.vue', NULL, NULL, NULL, 'ShopOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 17:00:07', 1, '2022-09-14 19:04:58');
-INSERT INTO `t_menu` VALUES (145, '企业详情', 2, 144, NULL, '/oa/enterprise/enterprise-detail', '/business/oa/enterprise/enterprise-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 18:52:52', NULL, '2022-09-14 18:52:52');
-INSERT INTO `t_menu` VALUES (146, '系统文档', 1, 0, 3, NULL, NULL, NULL, NULL, NULL, 'FileWordOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 19:56:53', 1, '2022-10-22 18:30:26');
-INSERT INTO `t_menu` VALUES (147, '系统手册', 2, 146, NULL, '/help-doc/help-doc-manage-list', '/support/help-doc/management/help-doc-manage-list.vue', NULL, NULL, NULL, 'FolderViewOutlined', NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 19:59:01', NULL, '2023-08-07 20:13:33');
-INSERT INTO `t_menu` VALUES (148, '意见反馈', 2, 146, NULL, '/feedback/feedback-list', '/support/feedback/feedback-list.vue', NULL, NULL, NULL, 'CoffeeOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-09-14 19:59:52', 1, '2022-09-14 20:00:37');
-INSERT INTO `t_menu` VALUES (149, '我的通知', 2, 132, NULL, '/oa/notice/notice-employee-list', '/business/oa/notice/notice-employee-list.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 20:29:41', 1, '2022-09-14 20:31:23');
-INSERT INTO `t_menu` VALUES (150, '我的通知公告详情', 2, 132, NULL, '/oa/notice/notice-employee-detail', '/business/oa/notice/notice-employee-detail.vue', NULL, NULL, NULL, NULL, NULL, 0, NULL, 0, 0, 0, 0, 1, '2022-09-14 20:30:25', 1, '2022-09-14 20:31:38');
-INSERT INTO `t_menu` VALUES (152, '更新日志', 2, 146, 3, '/support/change-log/change-log-list', '/support/change-log/change-log-list.vue', NULL, NULL, NULL, 'HeartOutlined', NULL, 0, NULL, 0, 1, 0, 0, 44, '2022-10-10 10:31:20', 44, '2022-10-10 10:31:45');
-INSERT INTO `t_menu` VALUES (153, '清除缓存', 3, 133, NULL, NULL, NULL, 1, NULL, 'support:cache:delete', NULL, 133, 0, NULL, 0, 1, 1, 0, 1, '2022-10-15 22:45:13', 1, '2022-10-21 20:37:13');
-INSERT INTO `t_menu` VALUES (154, '获取缓存key', 3, 133, NULL, NULL, NULL, NULL, NULL, 'support:cache:keys', NULL, 133, 0, NULL, 0, 1, 1, 0, 1, '2022-10-15 22:45:48', 1, '2022-10-15 23:40:09');
-INSERT INTO `t_menu` VALUES (155, '执行', 3, 117, NULL, NULL, NULL, 1, NULL, 'support:reload:execute', NULL, 117, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:16:45', 1, '2022-10-22 10:37:33');
-INSERT INTO `t_menu` VALUES (156, '查看结果', 3, 117, NULL, NULL, NULL, 1, NULL, 'support:reload:result', NULL, 117, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:17:23', 1, '2022-10-22 10:37:36');
-INSERT INTO `t_menu` VALUES (157, '单号生成', 3, 130, NULL, NULL, NULL, 1, NULL, 'support:serial:number:generate', NULL, 130, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:21:06', 1, '2022-10-22 10:36:34');
-INSERT INTO `t_menu` VALUES (158, '生成记录', 3, 130, NULL, NULL, NULL, 1, NULL, 'support:serial:number:record', NULL, 130, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:21:34', 1, '2022-10-22 10:36:42');
-INSERT INTO `t_menu` VALUES (159, '新建', 3, 110, NULL, NULL, NULL, 1, NULL, 'support:dict:add', NULL, 110, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:23:51', NULL, '2022-10-22 10:41:07');
-INSERT INTO `t_menu` VALUES (160, '编辑', 3, 110, NULL, NULL, NULL, 1, NULL, 'support:dict:update', NULL, 110, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:24:05', NULL, '2022-10-22 10:41:08');
-INSERT INTO `t_menu` VALUES (161, '批量删除', 3, 110, NULL, NULL, NULL, 1, NULL, 'support:dict:batch:delete', NULL, 110, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:24:34', NULL, '2022-10-22 10:41:09');
-INSERT INTO `t_menu` VALUES (162, '刷新缓存', 3, 110, NULL, NULL, NULL, 1, NULL, 'support:dict:refresh', NULL, 110, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:24:55', NULL, '2022-10-22 10:41:10');
-INSERT INTO `t_menu` VALUES (163, '新建', 3, 109, NULL, NULL, NULL, 1, NULL, 'support:config:add', NULL, 109, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:26:56', NULL, '2022-10-22 10:41:10');
-INSERT INTO `t_menu` VALUES (164, '编辑', 3, 109, NULL, NULL, NULL, 11, NULL, 'support:config:update', NULL, 109, 0, NULL, 0, 1, 0, 0, 1, '2022-10-15 23:27:07', NULL, '2022-10-22 10:41:12');
-INSERT INTO `t_menu` VALUES (165, '查询', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:query', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:55:39', NULL, '2022-10-22 10:41:13');
-INSERT INTO `t_menu` VALUES (166, '新建', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:add', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:56:00', NULL, '2022-10-22 10:41:14');
-INSERT INTO `t_menu` VALUES (167, '批量删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:batchDelete', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 19:56:15', NULL, '2022-10-22 10:41:15');
-INSERT INTO `t_menu` VALUES (168, '查询', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:query', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:13', NULL, '2022-10-22 10:41:17');
-INSERT INTO `t_menu` VALUES (169, '新建', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:add', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:37', 1, '2022-10-21 20:49:24');
-INSERT INTO `t_menu` VALUES (170, '新建目录', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDocCatalog:addCategory', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:12:57', NULL, '2022-10-22 10:41:18');
-INSERT INTO `t_menu` VALUES (171, '修改目录', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDocCatalog:edit', NULL, 147, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:13:46', 1, '2022-10-21 20:50:01');
-INSERT INTO `t_menu` VALUES (173, '新建', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:02', NULL, '2022-10-22 10:41:19');
-INSERT INTO `t_menu` VALUES (174, '添加子分类', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:22', NULL, '2022-10-22 10:41:21');
-INSERT INTO `t_menu` VALUES (175, '编辑', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:38', NULL, '2022-10-22 10:41:22');
-INSERT INTO `t_menu` VALUES (176, '删除', 3, 78, NULL, NULL, NULL, 1, NULL, 'goodsCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:50', NULL, '2022-10-22 10:41:22');
-INSERT INTO `t_menu` VALUES (177, '新建', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:add', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:02', NULL, '2022-10-22 10:41:23');
-INSERT INTO `t_menu` VALUES (178, '添加子分类', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:addChild', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:22', NULL, '2022-10-22 10:41:24');
-INSERT INTO `t_menu` VALUES (179, '编辑', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:edit', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:38', NULL, '2022-10-22 10:41:24');
-INSERT INTO `t_menu` VALUES (180, '删除', 3, 79, NULL, NULL, NULL, 1, NULL, 'customCategory:delete', NULL, 78, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:17:50', NULL, '2022-10-22 10:41:25');
-INSERT INTO `t_menu` VALUES (181, '查询', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:query', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:14', 1, '2022-10-21 20:15:12');
-INSERT INTO `t_menu` VALUES (182, '新建', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.createEnterprise', 'enterprise:add', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:25', 1, '2022-10-21 20:15:30');
-INSERT INTO `t_menu` VALUES (183, '编辑', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.updateEnterprise', 'enterprise:edit', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:36', 1, '2022-10-21 20:15:39');
-INSERT INTO `t_menu` VALUES (184, '删除', 3, 144, NULL, NULL, NULL, 2, 'EnterpriseController.deleteEnterprise', 'enterprise:delete', NULL, 144, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:25:53', 1, '2022-10-21 20:11:24');
-INSERT INTO `t_menu` VALUES (185, '查询', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.query', 'notice:query', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:26:38', 1, '2022-10-21 20:19:24');
-INSERT INTO `t_menu` VALUES (186, '新建', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.add', 'notice:add', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:04', 1, '2022-10-21 20:19:49');
-INSERT INTO `t_menu` VALUES (187, '编辑', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.update', 'notice:edit', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:15', 1, '2022-10-21 20:21:16');
-INSERT INTO `t_menu` VALUES (188, '删除', 3, 132, NULL, NULL, NULL, 2, 'NoticeController.delete', 'notice:delete', NULL, 132, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:27:23', 1, '2022-10-21 20:21:25');
-INSERT INTO `t_menu` VALUES (189, '查询', 3, 148, NULL, NULL, NULL, 1, NULL, 'feedback:query', NULL, 148, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:04', 1, '2022-10-22 10:38:46');
-INSERT INTO `t_menu` VALUES (190, '查询', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:query', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:33', 1, '2022-10-21 20:42:00');
-INSERT INTO `t_menu` VALUES (191, '新建', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:add', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:28:46', 1, '2022-10-21 20:42:09');
-INSERT INTO `t_menu` VALUES (192, '批量删除', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:batchDelete', NULL, 152, 0, NULL, 0, 1, 0, 0, 1, '2022-10-16 20:29:10', 1, '2022-10-21 20:42:16');
-INSERT INTO `t_menu` VALUES (193, '文件管理', 2, 50, 20, '/support/file/file-list', '/support/file/file-list.vue', NULL, NULL, NULL, 'FolderOpenOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 11:26:11', 1, '2022-10-22 11:29:22');
-INSERT INTO `t_menu` VALUES (194, '删除', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:delete', NULL, 47, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:00:12', 1, '2022-10-21 20:04:58');
-INSERT INTO `t_menu` VALUES (195, '修改', 3, 47, NULL, NULL, NULL, 1, NULL, 'goods:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:05:23', NULL, '2022-10-21 20:05:23');
-INSERT INTO `t_menu` VALUES (196, '查看详情', 3, 145, NULL, NULL, NULL, 2, 'EnterpriseController.getDetail', 'enterprise:detail', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:16:47', NULL, '2022-10-21 20:16:47');
-INSERT INTO `t_menu` VALUES (198, '删除', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:42:34', NULL, '2022-10-21 20:42:34');
-INSERT INTO `t_menu` VALUES (199, '查询', 3, 109, NULL, NULL, NULL, 1, NULL, 'support:config:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:45:14', NULL, '2022-10-21 20:45:14');
-INSERT INTO `t_menu` VALUES (200, '查询', 3, 193, NULL, NULL, NULL, 1, NULL, 'support:file:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 20:47:23', 1, '2022-10-22 11:21:10');
-INSERT INTO `t_menu` VALUES (201, '删除', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 21:03:20', NULL, '2022-10-21 21:03:20');
-INSERT INTO `t_menu` VALUES (202, '更新', 3, 147, NULL, NULL, NULL, 1, NULL, 'helpDoc:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 21:03:32', NULL, '2022-10-21 21:03:32');
-INSERT INTO `t_menu` VALUES (203, '查询', 3, 143, NULL, NULL, NULL, 1, NULL, 'loginLog:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-21 21:05:11', NULL, '2022-10-21 21:05:11');
-INSERT INTO `t_menu` VALUES (204, '查询', 3, 81, NULL, NULL, NULL, 1, NULL, 'operateLog:query', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 10:33:31', NULL, '2022-10-22 10:33:31');
-INSERT INTO `t_menu` VALUES (205, '详情', 3, 81, NULL, NULL, NULL, 1, NULL, 'operateLog:detail', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 10:33:49', NULL, '2022-10-22 10:33:49');
-INSERT INTO `t_menu` VALUES (206, '心跳监控', 2, 111, 1, '/support/heart-beat/heart-beat-list', '/support/heart-beat/heart-beat-list.vue', 1, NULL, NULL, 'FallOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 10:47:03', 1, '2022-10-22 18:32:52');
-INSERT INTO `t_menu` VALUES (207, '更新', 3, 152, NULL, NULL, NULL, 1, NULL, 'changeLog:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-10-22 11:51:32', NULL, '2022-10-22 11:51:32');
+INSERT INTO `t_menu` VALUES (45, 'User management', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:13:27', 44, '2023-08-08 14:52:09');
+INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/department', '/system/user/department/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-08 14:52:04');
+INSERT INTO `t_menu` VALUES (76, 'Role', 2, 45, 2, '/user/role', '/system/user/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2023-08-08 12:36:05');
+INSERT INTO `t_menu` VALUES (91, 'Add user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:11:38', NULL, '2023-08-08 14:52:32');
+INSERT INTO `t_menu` VALUES (92, 'Edit user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:10', NULL, '2023-08-08 14:52:37');
+INSERT INTO `t_menu` VALUES (93, 'Disable/Enable user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:disabled', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:37', NULL, '2023-08-08 14:52:43');
+INSERT INTO `t_menu` VALUES (95, 'Reset password', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:password:reset', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:13:30', 1, '2023-08-08 14:52:47');
+INSERT INTO `t_menu` VALUES (96, 'Delete user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:14:08', NULL, '2023-08-08 14:52:52');
+INSERT INTO `t_menu` VALUES (97, 'Add role', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:00', 1, '2023-08-08 14:52:56');
+INSERT INTO `t_menu` VALUES (98, 'Delete role', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:19', 1, '2023-08-08 14:53:02');
+INSERT INTO `t_menu` VALUES (99, 'Edit role', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:34:55', NULL, '2023-08-08 14:53:06');
+INSERT INTO `t_menu` VALUES (101, 'Batch delete role', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:user:batch:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:05', NULL, '2023-08-08 14:53:19');
+INSERT INTO `t_menu` VALUES (102, 'Delete user', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:user:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:21', NULL, '2023-08-08 14:53:52');
+INSERT INTO `t_menu` VALUES (103, 'Add user', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:user:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:38', NULL, '2023-08-08 14:53:48');
+INSERT INTO `t_menu` VALUES (104, 'Change authority', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:menu:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:41:55', NULL, '2023-08-08 14:53:57');
 INSERT INTO `t_menu` VALUES (208, 'Response', 2, 0, 1, '/response', 'smartWatch/response/response-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-07-01 13:08:07', NULL, '2023-07-01 13:08:07');
 INSERT INTO `t_menu` VALUES (209, 'Question', 2, 0, 1, '/question', 'smartWatch/question/question-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:06', NULL, '2023-08-07 20:11:06');
 INSERT INTO `t_menu` VALUES (210, 'DataItem', 2, 0, 1, '/dataItem', 'smartWatch/dataItem/dataItem-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:43', NULL, '2023-08-07 20:11:43');
@@ -373,7 +285,7 @@ CREATE TABLE `t_role`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 57 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role
@@ -397,7 +309,7 @@ CREATE TABLE `t_role_menu`  (
   PRIMARY KEY (`role_menu_id`) USING BTREE,
   INDEX `idx_role_id`(`role_id`) USING BTREE,
   INDEX `idx_menu_id`(`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_menu
@@ -449,7 +361,7 @@ CREATE TABLE `t_role_user`  (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_role_employee`(`role_id`, `user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 327 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 326 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_user
@@ -471,7 +383,7 @@ CREATE TABLE `t_table_column`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`table_column_id`) USING BTREE,
   UNIQUE INDEX `uni_employee_table`(`user_id`, `table_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_table_column
@@ -496,7 +408,7 @@ CREATE TABLE `t_user`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user
