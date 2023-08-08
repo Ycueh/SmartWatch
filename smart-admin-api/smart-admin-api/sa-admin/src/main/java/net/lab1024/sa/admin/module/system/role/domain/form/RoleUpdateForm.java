@@ -5,22 +5,17 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * 角色更新修改
+ * Role Update Form
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2022-02-26 19:09:42
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class RoleUpdateForm extends RoleAddForm {
 
     /**
-     * 角色id
+     * Role Id
      */
-    @ApiModelProperty("角色id")
-    @NotNull(message = "角色id不能为空")
+    @ApiModelProperty("Role Id")
+    @NotNull(message = "Role Id can not be null")
     protected Long roleId;
 
 

@@ -24,13 +24,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- * 角色-员工
- *
- * @Author 1024创新实验室: 善逸
- * @Date 2021-10-22 23:17:47
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Role-User
  */
 @Service
 public class RoleUserService {
@@ -43,7 +37,7 @@ public class RoleUserService {
     private RoleUserManager roleUserManager;
 
     /**
-     * 通过角色id，分页获取成员员工列表
+     * Acquire user lists based on role
      *
      * @param roleUserQueryForm
      * @return
@@ -63,7 +57,7 @@ public class RoleUserService {
     }
 
     /**
-     * 移除员工角色
+     * Remove user role
      *
      * @param userId
      * @param roleId
@@ -79,7 +73,7 @@ public class RoleUserService {
     }
 
     /**
-     * 批量删除角色的成员员工
+     * Batch delete role user
      *
      * @param roleUserUpdateForm
      * @return ResponseDTO<String>
@@ -90,7 +84,7 @@ public class RoleUserService {
     }
 
     /**
-     * 批量添加角色的成员员工
+     * batch add user to role
      *
      * @param roleUserUpdateForm
      * @return
@@ -98,20 +92,20 @@ public class RoleUserService {
     public ResponseDTO<String> batchAddRoleUser(RoleUserUpdateForm roleUserUpdateForm) {
         Long roleId = roleUserUpdateForm.getRoleId();
         List<Long> userIdList = roleUserUpdateForm.getUserIdList();
-        // 保存新的角色员工
+        // Save new user
         List<RoleUserEntity> roleUserList = null;
         if (CollectionUtils.isNotEmpty(userIdList)) {
             roleUserList = userIdList.stream()
                     .map(userId -> new RoleUserEntity(roleId, userId))
                     .collect(Collectors.toList());
         }
-        // 保存数据
+        // Save data
         roleUserManager.saveRoleUser(roleId, roleUserList);
         return ResponseDTO.ok();
     }
 
     /**
-     * 通过员工id获取员工角色
+     * Acquire role based on userId
      *
      * @param userId
      * @return
@@ -125,7 +119,7 @@ public class RoleUserService {
     }
 
     /**
-     * 根据员工id 查询角色id集合
+     * Acquire role id based on user id
      *
      * @param userId
      * @return

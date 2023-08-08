@@ -7,41 +7,33 @@ import lombok.Data;
 
 
 /**
- * 角色 菜单
+ *  Role Authority menu
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-16 23:00:57
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 @TableName("t_role_menu")
 public class RoleMenuEntity {
 
-    /**
-     * 主键id
-     */
     @TableId(type = IdType.AUTO)
     private Long roleMenuId;
 
     /**
-     * 角色 id
+     * role id
      */
     private Long roleId;
 
     /**
-     * 菜单 id
+     * menu id
      */
     private Long menuId;
 
     /**
-     * 更新时间
+     * update time
      */
     private String updateTime;
 
     /**
-     * 创建时间
+     * create time
      */
     private String createTime;
 

@@ -17,13 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 角色
+ * Role Service
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-08-16 20:19:22
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Service
 public class RoleService {
@@ -38,7 +33,7 @@ public class RoleService {
     private RoleUserDao roleUserDao;
 
     /**
-     * 新增添加角色
+     * Add new role
      *
      * @param roleAddForm
      * @return ResponseDTO
@@ -46,7 +41,7 @@ public class RoleService {
     public ResponseDTO addRole(RoleAddForm roleAddForm) {
         RoleEntity existRoleEntity = roleDao.getByRoleName(roleAddForm.getRoleName());
         if (null != existRoleEntity) {
-            return ResponseDTO.userErrorParam("角色名称重复");
+            return ResponseDTO.userErrorParam("Role Name existed");
         }
         RoleEntity roleEntity = SmartBeanUtil.copy(roleAddForm, RoleEntity.class);
         roleDao.insert(roleEntity);
@@ -54,7 +49,7 @@ public class RoleService {
     }
 
     /**
-     * 根据角色id 删除
+     * Delete role
      *
      * @param roleId
      * @return ResponseDTO
@@ -72,7 +67,7 @@ public class RoleService {
     }
 
     /**
-     * 更新角色
+     * Update role
      *
      * @param roleUpdateForm
      * @return ResponseDTO
@@ -92,7 +87,7 @@ public class RoleService {
     }
 
     /**
-     * 根据id获取角色数据
+     * Get role by id
      *
      * @param roleId
      * @return ResponseDTO
@@ -107,7 +102,7 @@ public class RoleService {
     }
 
     /**
-     * 获取所有角色列表
+     * Acquire role list
      *
      * @return ResponseDTO
      */

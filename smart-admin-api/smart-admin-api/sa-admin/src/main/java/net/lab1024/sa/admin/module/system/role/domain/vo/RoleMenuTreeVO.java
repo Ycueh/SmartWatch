@@ -7,23 +7,18 @@ import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuSimpleTreeVO;
 import java.util.List;
 
 /**
- * 角色菜单树
+ * Role menu tree
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-04-08 21:53:04
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class RoleMenuTreeVO {
 
-    @ApiModelProperty("角色ID")
+    @ApiModelProperty("Role id")
     private Long roleId;
 
-    @ApiModelProperty("菜单列表")
+    @ApiModelProperty("Role menu list")
     private List<MenuSimpleTreeVO> menuTreeList;
 
-    @ApiModelProperty("选中的菜单ID")
+    @ApiModelProperty("Selected menu")
     private List<Long> selectedMenuId;
 }

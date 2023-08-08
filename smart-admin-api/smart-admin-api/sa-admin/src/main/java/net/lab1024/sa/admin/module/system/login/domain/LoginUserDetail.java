@@ -17,13 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 员工登录
- *
- * @Author 1024创新实验室: 善逸
- * @Date 2021/8/4 21:15
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
+ * User Login
  */
 @Data
 public class LoginUserDetail implements UserDetails, RequestUser {
@@ -31,51 +25,51 @@ public class LoginUserDetail implements UserDetails, RequestUser {
     @ApiModelProperty("token")
     private String token;
 
-    @ApiModelProperty("员工id")
+    @ApiModelProperty("user Id")
     private Long userId;
 
     @ApiModelPropertyEnum(UserTypeEnum.class)
     private UserTypeEnum userType;
 
-    @ApiModelProperty("登录账号")
+    @ApiModelProperty("Account")
     private String loginName;
 
-    @ApiModelProperty("员工名称")
+    @ApiModelProperty("User name")
     private String actualName;
 
     @ApiModelPropertyEnum(GenderEnum.class)
     private Integer gender;
 
-    @ApiModelProperty("手机号码")
+    @ApiModelProperty("Phone number")
     private String phone;
 
 
-    @ApiModelProperty("是否为超管")
+    @ApiModelProperty("Admin flag")
     private Boolean administratorFlag;
 
-    @ApiModelProperty("菜单列表")
+    @ApiModelProperty("Menu list")
     private List<MenuVO> menuList;
 
     @JsonIgnore
     private String loginPassword;
 
-    @ApiModelProperty("上次登录id")
+    @ApiModelProperty("Last login id")
     private String lastLoginIp;
 
-    @ApiModelProperty("上次登录user-agent")
+    @ApiModelProperty("Last login user-agent")
     private String lastLoginUserAgent;
 
-    @ApiModelProperty("上次登录时间")
+    @ApiModelProperty("Last login time")
     private String lastLoginTime;
 
-    @ApiModelProperty("请求ip")
+    @ApiModelProperty("ip")
     private String ip;
 
-    @ApiModelProperty("请求user-agent")
+    @ApiModelProperty("user-agent")
     private String userAgent;
 
     /**
-     * security 权限串
+     * security authorities
      */
     private Set<? extends GrantedAuthority> authorities;
 
@@ -96,7 +90,7 @@ public class LoginUserDetail implements UserDetails, RequestUser {
     }
 
     /**
-     * 账户是否未过期,过期无法验证
+     * Check if the account is expired
      */
     @Override
     public boolean isAccountNonExpired() {
@@ -104,7 +98,7 @@ public class LoginUserDetail implements UserDetails, RequestUser {
     }
 
     /**
-     * 指定用户是否解锁,锁定的用户无法进行身份验证
+     * Check if the account is locked
      *
      * @return
      */
@@ -114,7 +108,7 @@ public class LoginUserDetail implements UserDetails, RequestUser {
     }
 
     /**
-     * 指示是否已过期的用户的凭据(密码),过期的凭据防止认证
+     * Check if the credential is expired
      *
      * @return
      */
@@ -123,11 +117,6 @@ public class LoginUserDetail implements UserDetails, RequestUser {
         return true;
     }
 
-    /**
-     * 是否可用 ,禁用的用户不能身份验证
-     *
-     * @return
-     */
     @Override
     public boolean isEnabled() {
         return true;

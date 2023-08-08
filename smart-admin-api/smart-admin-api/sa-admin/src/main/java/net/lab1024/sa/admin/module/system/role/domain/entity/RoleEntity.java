@@ -8,20 +8,12 @@ import lombok.Data;
 
 
 /**
- * 角色
+ * Role
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2022-03-07 18:54:42
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 @TableName("t_role")
 public class RoleEntity {
-    /**
-     * 主键id
-     */
     @TableId(type = IdType.AUTO)
     private Long roleId;
 
@@ -30,12 +22,12 @@ public class RoleEntity {
     private String remark;
 
     /**
-     * 更新时间
+     * Update time
      */
     private String updateTime;
 
     /**
-     * 创建时间
+     * Create time
      */
     private String createTime;
 }

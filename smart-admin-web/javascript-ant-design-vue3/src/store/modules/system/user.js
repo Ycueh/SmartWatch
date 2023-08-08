@@ -12,7 +12,7 @@ export const useUserStore = defineStore({
   state: () => ({
     token: '',
     //员工id
-    employeeId: '',
+    userId: '',
     //登录名
     loginName: '',
     //姓名
@@ -104,7 +104,7 @@ export const useUserStore = defineStore({
     setUserLoginInfo(data) {
       // 用户基本信息
       this.token = data.token;
-      this.employeeId = data.employeeId;
+      this.userId = data.userId;
       this.loginName = data.loginName;
       this.actualName = data.actualName;
       this.phone = data.phone;

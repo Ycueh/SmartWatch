@@ -29,9 +29,9 @@ export const FLAG_NUMBER_ENUM = {
 
 
 export const USER_TYPE_ENUM = {
-  ADMIN_EMPLOYEE: {
+  ADMIN_USER: {
     value: 1,
-    desc: 'employee',
+    desc: 'user',
   },
   
 };

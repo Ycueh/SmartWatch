@@ -26,13 +26,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * 角色-菜单
+ * Role-Menu
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2021-10-22 23:17:47
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Service
 public class RoleMenuService {
@@ -47,13 +42,13 @@ public class RoleMenuService {
     private MenuDao menuDao;
 
     /**
-     * 更新角色权限
+     * Update role authorities
      *
      * @param roleMenuUpdateForm
      * @return
      */
     public ResponseDTO<String> updateRoleMenu(RoleMenuUpdateForm roleMenuUpdateForm) {
-        //查询角色是否存在
+        //Check if the role exists
         Long roleId = roleMenuUpdateForm.getRoleId();
         RoleEntity roleEntity = roleDao.selectById(roleId);
         if (null == roleEntity) {
@@ -72,18 +67,18 @@ public class RoleMenuService {
     }
 
     /**
-     * 根据角色id集合，查询其所有的菜单权限
+     * Acquire menu authorities
      *
      * @param roleIdList
      * @return
      */
     public List<MenuVO> getMenuList(List<Long> roleIdList, Boolean administratorFlag) {
-        //管理员返回所有菜单
+        //Admin
         if(administratorFlag){
             List<MenuEntity> menuEntityList = roleMenuDao.selectMenuListByRoleIdList(Lists.newArrayList(), false);
             return SmartBeanUtil.copyList(menuEntityList, MenuVO.class);
         }
-        //非管理员 无角色 返回空菜单
+        //Normal account
         if (CollectionUtils.isEmpty(roleIdList)) {
             return new ArrayList<>();
         }
@@ -93,7 +88,7 @@ public class RoleMenuService {
 
 
     /**
-     * 获取角色关联菜单权限
+     * Acquire menu of role
      *
      * @param roleId
      * @return
@@ -101,10 +96,10 @@ public class RoleMenuService {
     public ResponseDTO<RoleMenuTreeVO> getRoleSelectedMenu(Long roleId) {
         RoleMenuTreeVO res = new RoleMenuTreeVO();
         res.setRoleId(roleId);
-        //查询角色ID选择的菜单权限
+        //Check selected menu
         List<Long> selectedMenuId = roleMenuDao.queryMenuIdByRoleId(roleId);
         res.setSelectedMenuId(selectedMenuId);
-        //查询菜单权限
+        //Check menu authorities
         List<MenuVO> menuVOList = menuDao.queryMenuList(Boolean.FALSE, Boolean.FALSE, null);
         Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
         List<MenuSimpleTreeVO> menuTreeList = this.buildMenuTree(parentMap, NumberUtils.LONG_ZERO);
@@ -113,15 +108,13 @@ public class RoleMenuService {
     }
 
     /**
-     * 构建菜单树
+     * Build menu tree
      *
      * @return
      */
     private List<MenuSimpleTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long parentId) {
-        // 获取本级菜单树List
         List<MenuSimpleTreeVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList()).stream()
                 .map(e -> SmartBeanUtil.copy(e, MenuSimpleTreeVO.class)).collect(Collectors.toList());
-        // 循环遍历下级菜单
         res.forEach(e -> {
             e.setChildren(this.buildMenuTree(parentMap, e.getMenuId()));
         });
