@@ -19,6 +19,8 @@ public class AdminSwaggerTagConst extends SwaggerTagConst {
         public static final String SW_DATAITEM = "SW_DATAITEM";
 
         public static final String SW_USER_RESPONSE = "SW_USER_RESPONSE";
+
+        public static final String SW_MULTIUSER = "SW_MULTIUSER";
     }
 
 

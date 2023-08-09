@@ -3,7 +3,7 @@ spring:
     user:
       url: jdbc:p6spy:mysql://localhost:3306/smart_admin_v2?autoReconnect=true&useServerPreparedStmts=false&rewriteBatchedStatements=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=Asia/Shanghai
       username: root
-      password: zyc992329
+      password: 123456
       driver-class-name: com.p6spy.engine.spy.P6SpyDriver
     ema:
       url: jdbc:sqlite:database/smart_admin_v2.db
@@ -50,7 +50,7 @@ spring:
         max-wait: 30000ms
     port: 6379
     timeout: 10000ms
-    password:
+    password: 123456
 
   # 上传文件大小配置
   servlet:
