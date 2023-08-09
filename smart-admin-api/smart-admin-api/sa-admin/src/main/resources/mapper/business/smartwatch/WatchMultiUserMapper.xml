@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.smartWatch.dao.multiuser.MultiUserMapper">
+    <update id="createNewTable" >
+        DROP TABLE IF EXISTS `dataitem`;
+        CREATE TABLE `dataitem`  (
+            `_id` int NOT NULL,
+            `datestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `timestamp` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `dataitem1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `dataitem2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `dataitem3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            PRIMARY KEY (`_id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+        DROP TABLE IF EXISTS `event`;
+        CREATE TABLE `event`  (
+            `_id` int NOT NULL,
+            `eventdate` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `eventtime` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `eventdesc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            PRIMARY KEY (`_id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+        DROP TABLE IF EXISTS `parameter`;
+        CREATE TABLE `parameter`  (
+            `_id` int NOT NULL,
+            `paramname` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `paramvalue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            PRIMARY KEY (`_id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+        DROP TABLE IF EXISTS `question`;
+        CREATE TABLE `question`  (
+            `_id` int NOT NULL,
+            `questionID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer1ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer1` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer2ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer2` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer3ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer3` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer4ID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answer4` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            PRIMARY KEY (`_id`) USING BTREE
+        ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+        -- ----------------------------
+        -- Table structure for response
+        -- ----------------------------
+        DROP TABLE IF EXISTS `response`;
+        CREATE TABLE `response`  (
+            `_id` int NOT NULL AUTO_INCREMENT,
+            `date` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `time` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `responseTime` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `questionID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `answerID` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
+            PRIMARY KEY (`_id`) USING BTREE
+        ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+    </update>
+
+    <update id="deleteById"  >
+        DELETE FROM t_multi_user
+        <where>
+            t_multi_user.id = #{userId}
+        </where>
+    </update>
+
+</mapper>
