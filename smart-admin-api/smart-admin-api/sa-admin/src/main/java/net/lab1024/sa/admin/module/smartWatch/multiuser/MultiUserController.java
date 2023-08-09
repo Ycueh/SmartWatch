@@ -7,10 +7,7 @@ import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
 import net.lab1024.sa.admin.module.smartWatch.multiuser.domain.MultiUserAddForm;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -27,5 +24,20 @@ public class MultiUserController {
     public ResponseDTO<String> add(@RequestBody @Valid MultiUserAddForm addForm) {
         return multiUserService.add(addForm);
     }
+
+    @ApiOperation("Delete user")
+    @PostMapping("/multiUser/delete/{userId}")
+    public ResponseDTO<String> delete(@PathVariable("userId") Long userId) {
+        return multiUserService.delete(userId);
+    }
+
+    @ApiOperation("Choose user")
+    @PostMapping("/multiUser/choose/{userId}")
+    public ResponseDTO<String> choose(@PathVariable("userId") Long userId) {
+        return multiUserService.choose(userId);
+    }
+
+
+
 
 }
