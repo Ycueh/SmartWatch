@@ -427,3 +427,13 @@ INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3',
 INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 1, 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+DROP TABLE IF EXISTS `t_user_db`;
+CREATE TABLE `t_user_db`  (
+`id` bigint NOT NULL AUTO_INCREMENT,
+`user_id` bigint NOT NULL COMMENT '用户id',
+`file` text NOT NULL COMMENT '文件名字',
+PRIMARY KEY (`id`) USING BTREE,
+UNIQUE INDEX `uni_user_table`(`user_id`, `file`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户表储存' ROW_FORMAT = DYNAMIC;
+
