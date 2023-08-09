@@ -15,17 +15,10 @@ import java.util.List;
 @Component
 public interface ResponseDao extends BaseMapper<ResponseEntity> {
 
-    /**
-     * 分页 查询商品
-     *
-     * @param page
-     * @param queryForm
-     * @return
-     */
+
     List<ResponseVO> queryPage(Page page, @Param("queryForm") ResponseQueryForm queryForm);
 
     void update(@Param("updateForm") ResponseUpdateForm updateForm);
 
     void deleteById(@Param("responseId") Long responseId);
-
 }

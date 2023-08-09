@@ -85,9 +85,8 @@ public class ResponseService {
         return ResponseDTO.ok();
     }
 
-
     /**
-     * 分页查询
+     * Query page
      *
      * @param queryForm
      * @return
