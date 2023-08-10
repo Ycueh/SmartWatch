@@ -231,3 +231,51 @@
 [2023-07-23 21:17:09,498][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
 [2023-07-23 21:17:09,498][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
 [2023-07-23 21:17:09,500][INFO ][http-nio-1024-exec-1] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-07-28 16:23:44,532][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-07-28 16:23:44,667][INFO ][main] Starting SmartAdminApplication using Java 17.0.2 on shizhiyudeMacBook-Pro.local with PID 29019 (/Users/shizhiyu/Desktop/MSC_project/SmartWatch/smart-admin-api/smart-admin-api/sa-admin/target/classes started by shizhiyu in /Users/shizhiyu/Desktop/MSC_project/SmartWatch) (StartupInfoLogger.java:55)
+[2023-07-28 16:23:44,682][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-07-28 16:23:46,951][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-07-28 16:23:46,954][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-07-28 16:23:47,031][INFO ][main] Finished Spring Data repository scanning in 46 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-07-28 16:23:47,307][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-07-28 16:23:48,230][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$371ee428] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:48,304][INFO ][main] Bean 'mybatisPlusConfig' of type [net.lab1024.sa.common.config.MybatisPlusConfig$$EnhancerBySpringCGLIB$$d893139e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:48,334][INFO ][main] Bean 'paginationInterceptor' of type [com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:48,339][INFO ][main] Bean 'dataSourceConfig' of type [net.lab1024.sa.common.config.DataSourceConfig$$EnhancerBySpringCGLIB$$1bf14f26] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:48,367][INFO ][main] Bean 'dataSource' of type [org.springframework.jdbc.datasource.DriverManagerDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,526][INFO ][main] Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,558][INFO ][main] Bean 'mybatis-plus-com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,576][INFO ][main] Bean 'com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration' of type [com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,589][INFO ][main] Bean 'sqlSessionTemplate' of type [org.mybatis.spring.SqlSessionTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,598][INFO ][main] Bean 'reloadItemDao' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,606][INFO ][main] Bean 'reloadItemDao' of type [jdk.proxy2.$Proxy108] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,613][INFO ][main] Bean 'reloadResultDao' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,615][INFO ][main] Bean 'reloadResultDao' of type [jdk.proxy2.$Proxy109] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,622][INFO ][main] Bean 'reloadCommand' of type [net.lab1024.sa.common.module.support.reload.ReloadCommand] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:49,625][INFO ][main] Bean 'reloadConfig' of type [net.lab1024.sa.common.config.ReloadConfig$$EnhancerBySpringCGLIB$$4f662bda] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-07-28 16:23:50,344][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-07-28 16:23:50,361][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-07-28 16:23:50,362][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-07-28 16:23:50,362][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-07-28 16:23:50,680][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-07-28 16:23:50,680][INFO ][main] Root WebApplicationContext: initialization completed in 5778 ms (ServletWebServerApplicationContext.java:292)
+[2023-07-28 16:23:51,130][INFO ][main] 不需要登录的URL：[/login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-07-28 16:23:52,116][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-07-28 16:23:53,113][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-07-28 16:23:54,274][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@53202b06, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@44ba9f25, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f65639e, org.springframework.security.web.header.HeaderWriterFilter@1e4bf55b, org.springframework.security.web.authentication.logout.LogoutFilter@6debf1b8, org.springframework.web.filter.CorsFilter@b2da3a5, net.lab1024.sa.common.common.security.SecurityTokenFilter@53570fff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ee76cf2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@487ee2a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e5df971, org.springframework.security.web.session.SessionManagementFilter@5d3a238, org.springframework.security.web.access.ExceptionTranslationFilter@cef23a8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4f9e9c21] (DefaultSecurityFilterChain.java:55)
+[2023-07-28 16:23:54,409][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-07-28 16:23:54,439][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-07-28 16:23:54,450][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://192.168.10.121:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-07-28 16:23:54,450][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-07-28 16:23:54,482][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-07-28 16:23:56,410][INFO ][main] Started SmartAdminApplication in 12.934 seconds (JVM running for 16.151) (StartupInfoLogger.java:61)
+[2023-07-28 16:23:56,427][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring 定时任务 @Schedule 已启动---------------
+ (AdminStartupRunner.java:36)
