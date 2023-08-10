@@ -1,7 +1,7 @@
-package net.lab1024.sa.admin.module.smartWatch.dao.multiuser;
+package net.lab1024.sa.admin.module.system.dao.multiuser;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import net.lab1024.sa.admin.module.smartWatch.multiuser.domain.MultiUserEntity;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

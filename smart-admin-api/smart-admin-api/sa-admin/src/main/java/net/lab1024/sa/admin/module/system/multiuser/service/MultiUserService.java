@@ -1,9 +1,9 @@
-package net.lab1024.sa.admin.module.smartWatch.multiuser.service;
+package net.lab1024.sa.admin.module.system.multiuser.service;
 
 import lombok.extern.slf4j.Slf4j;
-import net.lab1024.sa.admin.module.smartWatch.dao.multiuser.MultiUserMapper;
-import net.lab1024.sa.admin.module.smartWatch.multiuser.domain.MultiUserAddForm;
-import net.lab1024.sa.admin.module.smartWatch.multiuser.domain.MultiUserEntity;
+import net.lab1024.sa.admin.module.system.dao.multiuser.MultiUserMapper;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserEntity;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
@@ -14,9 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 @Service
 @Slf4j
@@ -26,8 +23,8 @@ public class MultiUserService {
     @Autowired
     private DataTracerService dataTracerService;
 
-    private static final String RELATIVEPATH = ".." + File.separator + "UserFiles" ;
-
+    private static final String RELATIVEPATH = "." + File.separator + "sa-admin" + File.separator +"src" + File.separator +"main"
+            + File.separator + "resources" + File.separator + "UserFiles";
     private static final String DBPATH = "smart-admin-api"+ File.separator +"smart-admin-api" + File.separator +"database";
 
     /**
@@ -39,20 +36,20 @@ public class MultiUserService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> add(MultiUserAddForm addForm) {
         MultiUserEntity multiUserEntity = SmartBeanUtil.copy(addForm, MultiUserEntity.class);
-        multiUserMapper.insert(multiUserEntity);
         CreateNewFile(multiUserEntity.getFileName());
         multiUserMapper.createNewTable();
+        multiUserMapper.insert(multiUserEntity);
         dataTracerService.insert(multiUserEntity.getId(), DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
     private void CreateNewFile(String fileName) {
         String userFileName = fileName.trim() + ".db";
-        File file = new File( RELATIVEPATH + File.separator + userFileName);
+        File file = new File( RELATIVEPATH + File.separator+ userFileName);
         try {
             // 如果文件不存在，则创建新文件
             if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
+                System.out.println("File created: " + file.getName() + " in " + file.getAbsolutePath());
             } else {
                 System.out.println("File already exists.");
             }

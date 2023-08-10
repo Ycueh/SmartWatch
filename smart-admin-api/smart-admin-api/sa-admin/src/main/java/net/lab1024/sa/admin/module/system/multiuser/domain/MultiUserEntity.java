@@ -1,4 +1,4 @@
-package net.lab1024.sa.admin.module.smartWatch.multiuser.domain;
+package net.lab1024.sa.admin.module.system.multiuser.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

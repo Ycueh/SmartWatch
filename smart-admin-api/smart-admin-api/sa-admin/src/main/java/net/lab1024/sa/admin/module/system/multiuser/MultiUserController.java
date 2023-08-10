@@ -1,10 +1,10 @@
-package net.lab1024.sa.admin.module.smartWatch.multiuser;
+package net.lab1024.sa.admin.module.system.multiuser;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
-import net.lab1024.sa.admin.module.smartWatch.event.domain.EventAddForm;
-import net.lab1024.sa.admin.module.smartWatch.multiuser.domain.MultiUserAddForm;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
+import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class MultiUserController {
 
     @Autowired
-    private net.lab1024.sa.admin.module.smartWatch.multiuser.service.MultiUserService multiUserService;
+    private MultiUserService multiUserService;
 
     @ApiOperation("Add new user")
     @PostMapping("/multiUser/add")
