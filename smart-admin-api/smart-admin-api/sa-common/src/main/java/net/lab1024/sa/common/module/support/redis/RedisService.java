@@ -20,21 +20,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * redis 一顿操作
+ * redis
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2020/8/25 21:57
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Component
 public class RedisService {
 
-    private static final Logger log = org.slf4j.LoggerFactory.getLogger(RedisService.class);
-
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
@@ -46,17 +37,11 @@ public class RedisService {
     private HashOperations<String, String, Object> redisHashOperations;
 
     @Autowired
-    private ListOperations<String, Object> redisListOperations;
-
-    @Autowired
-    private SetOperations<String, Object> redisSetOperations;
-
-    @Autowired
     private SystemEnvironment systemEnvironment;
 
 
     /**
-     * 生成redis key
+     * Generate redis key
      * @param prefix
      * @param key
      * @return
@@ -67,71 +52,7 @@ public class RedisService {
     }
 
     /**
-     * redis key 解析成真实的内容
-     * @param redisKey
-     * @return
-     */
-    public static String redisKeyParse(String redisKey) {
-        if(SmartStringUtil.isBlank(redisKey)){
-            return "";
-        }
-        int index = redisKey.lastIndexOf(RedisKeyConst.SEPARATOR);
-        if(index < 1){
-            return redisKey;
-        }
-        return redisKey.substring(index);
-    }
-
-    public boolean getLock(String key, long expire) {
-        return redisValueOperations.setIfAbsent(key, String.valueOf(System.currentTimeMillis()), expire, TimeUnit.MILLISECONDS);
-    }
-
-    public void unLock(String key) {
-        redisValueOperations.getOperations().delete(key);
-    }
-
-    /**
-     * 指定缓存失效时间
-     *
-     * @param key  键
-     * @param time 时间(秒)
-     * @return
-     */
-    public boolean expire(String key, long time) {
-        return redisTemplate.expire(key, time, TimeUnit.SECONDS);
-    }
-
-    /**
-     * 获取当天剩余的秒数
-     *
-     * @return
-     */
-    public static long currentDaySecond() {
-        return ChronoUnit.SECONDS.between(LocalDateTime.now(), LocalDateTime.of(LocalDate.now(), LocalTime.MAX));
-    }
-
-    /**
-     * 根据key 获取过期时间
-     *
-     * @param key 键 不能为null
-     * @return 时间(秒) 返回0代表为永久有效
-     */
-    public long getExpire(String key) {
-        return redisTemplate.getExpire(key, TimeUnit.SECONDS);
-    }
-
-    /**
-     * 判断key是否存在
-     *
-     * @param key 键
-     * @return true 存在 false不存在
-     */
-    public boolean hasKey(String key) {
-        return redisTemplate.hasKey(key);
-    }
-
-    /**
-     * 删除缓存
+     * Delete cache
      *
      * @param key 可以传一个值 或多个
      */
@@ -147,7 +68,7 @@ public class RedisService {
     }
 
     /**
-     * 删除缓存
+     * Delete cache
      *
      * @param keyList
      */
@@ -161,10 +82,10 @@ public class RedisService {
     //============================String=============================
 
     /**
-     * 普通缓存获取
+     * Get normal cache
      *
-     * @param key 键
-     * @return 值
+     * @param key
+     * @return value
      */
     public String get(String key) {
         return key == null ? null : redisValueOperations.get(key);
@@ -181,7 +102,7 @@ public class RedisService {
 
 
     /**
-     * 普通缓存放入
+     * Set normal cache
      */
     public void set(String key, String value) {
         redisValueOperations.set(key, value);
@@ -192,14 +113,14 @@ public class RedisService {
     }
 
     /**
-     * 普通缓存放入
+     * Set normal cache
      */
     public void set(String key, String value, long second) {
         redisValueOperations.set(key, value, second, TimeUnit.SECONDS);
     }
 
     /**
-     * 普通缓存放入并设置时间
+     * Set normal cache and time
      */
     public void set(Object key, Object value, long time) {
         String jsonString = JSON.toJSONString(value);

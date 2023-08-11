@@ -2,6 +2,8 @@ package net.lab1024.sa.admin.module.system.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.lab1024.sa.admin.module.system.dao.user.UserDao;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
+import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.domain.form.*;
 import net.lab1024.sa.admin.module.system.user.domain.vo.UserVO;
@@ -16,6 +18,7 @@ import net.lab1024.sa.common.module.support.token.TokenService;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,9 @@ public class UserService {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private MultiUserService multiUserService;
 
 
     public UserEntity getById(Long userId) {
@@ -69,7 +75,7 @@ public class UserService {
     }
 
     /**
-     * 新增员工
+     * Add user
      *
      * @param userAddForm
      * @return
@@ -99,6 +105,11 @@ public class UserService {
         // Save the data
         entity.setDeletedFlag(Boolean.FALSE);
         userManager.saveUser(entity);
+        //TODO Add a default database file
+        MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
+        multiUserAddForm.setUser_id(null);
+        multiUserAddForm.setFile(null);
+        multiUserService.add(multiUserAddForm);
 
         return ResponseDTO.ok(password);
     }

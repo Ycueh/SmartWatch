@@ -24,13 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 /**
- * 员工登录
+ * User login
  *
- * @Author 1024创新实验室-主任:卓大
- * @Date 2021-12-15 21:05:46
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
  */
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_LOGIN})
@@ -41,23 +36,23 @@ public class LoginController {
 
     @NoNeedLogin
     @PostMapping("/login")
-    @ApiOperation("登录 @author 卓大")
+    @ApiOperation("login")
     public ResponseDTO<LoginUserDetail> login(@Valid @RequestBody LoginForm loginForm) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
-        return loginService.login(loginForm, ip, userAgent);
+        return loginService.login(loginForm);
     }
 
     @GetMapping("/login/refresh")
-    @ApiOperation("刷新用户信息（包含用户基础信息、权限信息等等）  @author 卓大")
+    @ApiOperation("Refresh user info")
     public ResponseDTO<String> refresh() {
         loginService.removeLoginUserDetailCache(SmartRequestUtil.getRequestUserId());
         return ResponseDTO.ok();
     }
 
     @GetMapping("/login/getLoginInfo")
-    @ApiOperation("获取登录结果信息  @author 卓大")
+    @ApiOperation("Acquire login result")
     public ResponseDTO<LoginUserDetail> getLoginInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null) {
@@ -74,13 +69,13 @@ public class LoginController {
         return ResponseDTO.ok(loginUserDetail);
     }
 
-    @ApiOperation("退出登陆  @author 卓大")
+    @ApiOperation("Log out")
     @GetMapping("/login/logout")
     public ResponseDTO<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
         return loginService.logout(token, SmartRequestUtil.getRequestUser());
     }
 
-    @ApiOperation("获取验证码  @author 卓大")
+    @ApiOperation("Get captcha")
     @GetMapping("/login/getCaptcha")
     @NoNeedLogin
     public ResponseDTO<CaptchaVO> getCaptcha() {

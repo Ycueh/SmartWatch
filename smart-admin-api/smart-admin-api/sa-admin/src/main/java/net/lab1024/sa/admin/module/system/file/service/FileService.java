@@ -1,4 +1,4 @@
-package net.lab1024.sa.admin.module.smartWatch.file.service;
+package net.lab1024.sa.admin.module.system.file.service;
 
 
 import org.springframework.stereotype.Service;;

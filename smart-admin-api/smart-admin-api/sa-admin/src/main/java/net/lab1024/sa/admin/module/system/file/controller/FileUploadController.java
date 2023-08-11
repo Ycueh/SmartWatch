@@ -1,4 +1,4 @@
-package net.lab1024.sa.admin.module.smartWatch.file.controller;
+package net.lab1024.sa.admin.module.system.file.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

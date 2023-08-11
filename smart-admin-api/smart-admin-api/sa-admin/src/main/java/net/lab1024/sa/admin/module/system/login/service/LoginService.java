@@ -3,6 +3,7 @@ package net.lab1024.sa.admin.module.system.login.service;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 import lombok.extern.slf4j.Slf4j;
+import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.service.UserPermissionService;
 import net.lab1024.sa.admin.module.system.user.service.UserService;
@@ -22,17 +23,12 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * 员工 登录服务
- *
- * @Author 1024创新实验室: 开云
- * @Date 2021-12-01 22:56:34
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
+ * User Login service
  */
 @Slf4j
 @Service
@@ -50,13 +46,16 @@ public class LoginService {
     @Autowired
     private UserPermissionService userPermissionService;
 
+    @Autowired
+    private MultiUserService multiUserService;
+
     /**
-     * 登录信息二级缓存
+     * Login info cache
      */
     private ConcurrentMap<Long, LoginUserDetail> loginUserDetailCache = new ConcurrentLinkedHashMap.Builder<Long, LoginUserDetail>().maximumWeightedCapacity(1000).build();
 
     /**
-     * 获取验证码
+     * Get captcha
      *
      * @return
      */
@@ -65,12 +64,12 @@ public class LoginService {
     }
 
     /**
-     * 员工登陆
+     * User login
      *
      * @param loginForm
-     * @return 返回用户登录信息
+     * @return Login user detail
      */
-    public ResponseDTO<LoginUserDetail> login(LoginForm loginForm, String ip, String userAgent) {
+    public ResponseDTO<LoginUserDetail> login(LoginForm loginForm) {
         // 校验 图形验证码
 //        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
 //        if (!checkCaptcha.getOk()) {
@@ -78,33 +77,38 @@ public class LoginService {
 //        }
 
         /**
-         * 验证账号和账号状态
+         * Check account
          */
         UserEntity userEntity = userService.getByLoginName(loginForm.getLoginName());
         if (null == userEntity) {
-            return ResponseDTO.userErrorParam("Username does not exist");
+            return ResponseDTO.userErrorParam("Account does not exist");
         }
 
         if (userEntity.getDisabledFlag()) {
             return ResponseDTO.userErrorParam("You account is banned");
         }
         String requestPassword = UserService.getEncryptPwd(loginForm.getPassword());
-        // 生成 登录token，保存token
+        if (!userEntity.getLoginPwd().equals(requestPassword)) {
+            return ResponseDTO.userErrorParam("Account or password error！");
+        }
+        // Generate token
         String token = tokenService.generateToken(userEntity.getUserId(), userEntity.getActualName(), UserTypeEnum.ADMIN_USER);
 
-        //获取员工登录信息
+        //Acquire user detail
         LoginUserDetail loginUserDetail = loadLoginInfo(userEntity);
         loginUserDetail.setToken(token);
 
-        // 放入缓存
+        // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
+        //TODO Load the sqlite database file
+        multiUserService.choose(userEntity.getUserId());
 
         return ResponseDTO.ok(loginUserDetail);
     }
 
 
     /**
-     * 获取登录的用户信息
+     * Acquire user info
      *
      * @return
      */
@@ -114,14 +118,12 @@ public class LoginService {
 
 
         /**
-         * 获取前端菜单和后端权限
-         * 1、从数据库获取所有的权限
-         * 2、拼凑成菜单和后端权限
+         * Acquire front-end menu and back-end authorities
          */
         List<MenuVO> menuAndPointsList = userPermissionService.getUserMenuAndPointsList(userEntity.getUserId(), userEntity.getAdministratorFlag());
-        //前端菜单
+        //Front-end menu
         loginUserDetail.setMenuList(menuAndPointsList);
-        //后端权限
+        //Back-end authorities
         loginUserDetail.setAuthorities(userPermissionService.buildAuthorities(menuAndPointsList));
 
         return loginUserDetail;
@@ -129,7 +131,7 @@ public class LoginService {
 
 
     /**
-     * 移除用户信息缓存
+     * Remove cache
      *
      * @param requestUserId
      */
@@ -138,7 +140,7 @@ public class LoginService {
     }
 
     /**
-     * 根据登陆token 获取员请求工信息
+     * Acquire user detail based on token
      *
      * @param
      * @return
@@ -148,10 +150,10 @@ public class LoginService {
         if (requestUserId == null) {
             return null;
         }
-        // 查询用户信息
+        // Search user info
         LoginUserDetail loginUserDetail = loginUserDetailCache.get(requestUserId);
         if (loginUserDetail == null) {
-            // 员工基本信息
+            // user info
             UserEntity userEntity = userService.getById(requestUserId);
             if (userEntity == null) {
                 return null;
@@ -162,7 +164,7 @@ public class LoginService {
             loginUserDetailCache.put(requestUserId, loginUserDetail);
         }
 
-        //更新请求ip和user agent
+        //update ip and user agent
         loginUserDetail.setUserAgent(ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT));
         loginUserDetail.setIp(ServletUtil.getClientIP(request));
 
@@ -171,12 +173,13 @@ public class LoginService {
 
 
     /**
-     * 退出登陆，清除token缓存
+     * logout
      *
      * @return
      */
     public ResponseDTO<String> logout(String token, RequestUser requestUser) {
         loginUserDetailCache.remove(requestUser.getUserId());
+        multiUserService.update(requestUser.getUserId());
         tokenService.removeToken(token);
         return ResponseDTO.ok();
     }

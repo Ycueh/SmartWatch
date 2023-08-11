@@ -1,11 +1,10 @@
-package net.lab1024.sa.admin.module.smartWatch.file.controller;
+package net.lab1024.sa.admin.module.system.file.controller;
 
-import net.lab1024.sa.admin.module.smartWatch.file.service.FileService;
+import net.lab1024.sa.admin.module.system.file.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import io.swagger.annotations.Api;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
-import net.lab1024.sa.admin.module.smartWatch.response.service.ResponseService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -102,6 +102,14 @@ public class MultiUserService {
             e.printStackTrace();
         }
     }
+    //TODO Update the database file
+    public ResponseDTO<String> update(Long userId) {
+
+        return ResponseDTO.ok();
+    }
+
+
+
 
 
 }
