@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.smartWatch.dao.parameter.ParamDAO">
+    <select id="queryPage" resultType="net.lab1024.sa.admin.module.smartWatch.parameter.pojo.Parameter">
+        SELECT
+        *
+        FROM parameter
+        <where>
+            <if test="queryForm.paramId != null">
+                AND parameter._id= #{queryForm.paramId}
+            </if>
+            <if test="queryForm.keyword != null and queryForm.keyword != ''">
+                AND (INSTR(parameter.paramname,#{queryForm.keyword})
+                OR INSTR(parameter.paramvalue,#{queryForm.keyword})
+                )
+            </if>
+        </where>
+        order by parameter._id asc
+    </select>
+
+
+</mapper>

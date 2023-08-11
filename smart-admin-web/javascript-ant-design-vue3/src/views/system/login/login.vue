@@ -1,11 +1,6 @@
 <!--
-  * 登录
+  * Login
   * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 22:34:00 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
   *
 -->
 <template>
@@ -59,11 +54,7 @@ import { SmartLoading } from '/@/components/framework/smart-loading';
 import { LOGIN_DEVICE_ENUM } from '/@/constants/system/login-device-const';
 import { useUserStore } from '/@/store/modules/system/user';
 import { saveTokenToCookie } from '/@/utils/cookie-util';
-
-import gongzhonghao from '/@/assets/images/1024lab/1024lab-gzh.jpg';
-import zhuoda from '/@/assets/images/1024lab/zhuoda-wechat.jpg';
 import loginQR from '/@/assets/images/login/login-qr.png';
-import xiaozhen from '/@/assets/images/1024lab/xiaozhen-gzh.jpg';
 
 import aliLogin from '/@/assets/images/login/ali-icon.png';
 import googleLogin from '/@/assets/images/login/google-icon.png';
@@ -105,7 +96,7 @@ onUnmounted(() => {
   document.onkeyup = null;
 });
 
-//登录
+//Login
 async function onLogin() {
   formRef.value.validate().then(async () => {
     try {
@@ -131,7 +122,7 @@ async function onLogin() {
   });
 }
 
-//--------------------- 验证码 ---------------------------------
+//--------------------- Captcha ---------------------------------
 
 const captchaBase64Image = ref('');
 async function getCaptcha() {

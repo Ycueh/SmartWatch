@@ -11,39 +11,32 @@ export const useUserStore = defineStore({
   id: 'userStore',
   state: () => ({
     token: '',
-    //员工id
+    //user Id
     userId: '',
-    //登录名
+    //Account
     loginName: '',
-    //姓名
+    //Actual name
     actualName: '',
-    //手机号
+    //Phone number
     phone: '',
-    //部门id
-    departmentId: '',
-    //部门名词
-    departmentName: '',
-    //是否为超级管理员
+    //Admin flag
     administratorFlag: true,
-    //上次登录ip
+    //Last Login ip
     lastLoginIp: '',
-    //上次登录 设备
+    //Last Login user agent
     lastLoginUserAgent: '',
-    //上次登录时间
+    //Last login time
     lastLoginTime: '',
-    //左侧菜单树形结构
+    //Menu
     menuTree: [],
-    //存在页面路由的菜单集合
+    //Menu Router List
     menuRouterList: [],
-    //是否完成menuRouter初始化
+    //Menu router init
     menuRouterInitFlag: false,
-    //父类菜单集合
+    //Menu parentId
     menuParentIdListMap: new Map(),
-    // 功能点集合
     pointsList: [],
-    // 标签页
     tagNav: [],
-    // 缓存
     keepAliveIncludes: [],
   }),
   getters: {

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.smartWatch.dao.event.EventMapper">
+    <select id="queryPage" resultType="net.lab1024.sa.admin.module.smartWatch.event.domain.EventVO">
+        SELECT
+        *
+        FROM event
+        <where>
+            <if test="queryForm.eventdate != null">
+                AND event.eventdate= #{queryForm.eventdate}
+            </if>
+            <if test="queryForm.eventdesc != null and queryForm.eventdesc != ''">
+                AND event.eventdesc= #{queryForm.eventdesc}
+            </if>
+            <if test="queryForm.eventtime != null">
+                AND event.eventtime= #{queryForm.eventtime}
+            </if>
+            <if test="queryForm.id != null">
+                AND event._id= #{queryForm.id}
+            </if>
+        </where>
+        order by event._id asc
+    </select>
+
+    <select id="update"  >
+        UPDATE event SET
+        event.eventdate = #{updateForm.eventdate},
+        event.eventtime = #{updateForm.eventtime},
+        event.eventdesc = #{updateForm.eventdesc},
+        <where>
+            event._id = #{updateForm.id}
+        </where>
+    </select>
+
+    <select id="deleteById"  >
+        DELETE FROM event
+        <where>
+            event._id = #{eventId}
+        </where>
+    </select>
+</mapper>

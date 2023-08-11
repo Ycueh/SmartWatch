@@ -1,165 +1,370 @@
-<<<<<<< HEAD
-[2023-07-13 17:26:56,785][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [net.lab1024.sa.admin.SmartAdminApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eventController' for bean class [net.lab1024.sa.admin.module.business.smartWatch.event.eventController] conflicts with existing, non-compatible bean definition of same name and class [net.lab1024.sa.admin.module.business.smartWatch.event.controller.eventController] (AbstractApplicationContext.java:591)
-[2023-07-13 17:28:07,104][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [net.lab1024.sa.admin.SmartAdminApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eventController' for bean class [net.lab1024.sa.admin.module.business.smartWatch.event.eventController] conflicts with existing, non-compatible bean definition of same name and class [net.lab1024.sa.admin.module.business.smartWatch.event.controller.eventController] (AbstractApplicationContext.java:591)
-[2023-07-13 17:29:58,019][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [net.lab1024.sa.admin.SmartAdminApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eventController' for bean class [net.lab1024.sa.admin.module.business.smartWatch.event.eventController] conflicts with existing, non-compatible bean definition of same name and class [net.lab1024.sa.admin.module.business.smartWatch.event.controller.eventController] (AbstractApplicationContext.java:591)
-[2023-07-13 17:34:31,571][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [net.lab1024.sa.admin.SmartAdminApplication]; nested exception is org.springframework.context.annotation.ConflictingBeanDefinitionException: Annotation-specified bean name 'eventController' for bean class [net.lab1024.sa.admin.module.business.smartWatch.event.eventController] conflicts with existing, non-compatible bean definition of same name and class [net.lab1024.sa.admin.module.business.smartWatch.event.controller.eventController] (AbstractApplicationContext.java:591)
-[2023-07-13 17:41:37,112][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 17:41:37,468][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 17:41:37,486][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 17:41:37,486][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 17:41:37,504][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 17:41:37,504][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 17:41:37,514][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 17:42:39,030][WARN ][main] get connection timeout retry : 1 (DruidDataSource.java:1422)
-[2023-07-13 17:42:47,624][WARN ][smart-admin-reload] get connection timeout retry : 1 (DruidDataSource.java:1422)
-[2023-07-13 17:43:23,271][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 17:43:23,550][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 17:43:23,563][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 17:43:23,563][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 17:43:23,579][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 17:43:23,579][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 17:43:23,587][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 18:10:56,784][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 18:10:57,430][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 18:10:57,450][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 18:10:57,450][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 18:10:57,471][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 18:10:57,471][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 18:10:57,485][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 18:19:29,177][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 18:19:29,620][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 18:19:29,667][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 18:19:29,667][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 18:19:29,712][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 18:19:29,713][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 18:19:29,727][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:09:58,790][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:09:59,081][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:09:59,095][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:09:59,095][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:09:59,111][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:09:59,111][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:09:59,123][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:32:22,505][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:32:22,878][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:32:22,917][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:32:22,917][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:32:22,973][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:32:22,973][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:32:23,003][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:40:52,501][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:40:52,771][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:40:52,788][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:40:52,788][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:40:52,804][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:40:52,804][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:40:52,813][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:43:51,916][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:43:52,187][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:43:52,201][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:43:52,201][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:43:52,218][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:43:52,218][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:43:52,227][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:45:30,331][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:45:30,605][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:45:30,622][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:45:30,622][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:45:30,638][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:45:30,638][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:45:30,646][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 19:50:17,888][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 19:50:18,156][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 19:50:18,170][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:50:18,170][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:50:18,186][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 19:50:18,186][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 19:50:18,195][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 20:04:43,126][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 20:04:43,404][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 20:04:43,417][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:04:43,417][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:04:43,434][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:04:43,434][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:04:43,442][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 20:04:44,935][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'loginService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginService': Unsatisfied dependency expressed through field 'configService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'configService': Invocation of init method failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist
-### The error may exist in net/lab1024/sa/common/module/support/config/ConfigDao.java (best guess)
-### The error may involve defaultParameterMap
-### The error occurred while setting parameters
-### SQL: SELECT  config_id,config_key,config_value,config_name,remark,update_time,create_time  FROM t_config
-### Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist (AbstractApplicationContext.java:591)
-[2023-07-13 20:06:22,247][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 20:06:22,511][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 20:06:22,528][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:06:22,529][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:06:22,556][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:06:22,556][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:06:22,564][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 20:06:24,114][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through field 'loginService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginService': Unsatisfied dependency expressed through field 'configService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'configService': Invocation of init method failed; nested exception is org.springframework.jdbc.BadSqlGrammarException: 
-### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist
-### The error may exist in net/lab1024/sa/common/module/support/config/ConfigDao.java (best guess)
-### The error may involve defaultParameterMap
-### The error occurred while setting parameters
-### SQL: SELECT  config_id,config_key,config_value,config_name,remark,update_time,create_time  FROM t_config
-### Cause: java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist
-; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'smart_admin_v2.t_config' doesn't exist (AbstractApplicationContext.java:591)
-[2023-07-13 23:50:58,874][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 23:50:59,169][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 23:50:59,187][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 23:50:59,187][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 23:50:59,209][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 23:50:59,209][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 23:50:59,220][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-=======
-[2023-07-13 20:08:00,878][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 20:08:01,030][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 20:08:01,038][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:08:01,038][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:08:01,049][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:08:01,049][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:08:01,056][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 20:08:03,623][WARN ][main] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 1024 is already in use (AbstractApplicationContext.java:591)
-[2023-07-13 20:09:35,801][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 20:09:35,938][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 20:09:35,945][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:09:35,945][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:09:35,955][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 20:09:35,955][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 20:09:35,962][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 20:11:08,458][WARN ][http-nio-1024-exec-9] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
-[2023-07-13 20:11:08,458][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
-[2023-07-13 20:11:08,458][WARN ][http-nio-1024-exec-6] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
-[2023-07-13 20:11:08,458][WARN ][http-nio-1024-exec-7] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
-[2023-07-13 21:49:08,534][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 21:49:08,681][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 21:49:08,691][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 21:49:08,691][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 21:49:08,705][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 21:49:08,705][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 21:49:08,712][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 21:49:15,715][WARN ][http-nio-1024-exec-4] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
-[2023-07-13 22:03:16,757][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 22:03:16,909][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 22:03:16,919][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:03:16,919][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:03:16,933][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:03:16,933][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:03:16,940][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 22:05:15,041][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 22:05:15,180][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 22:05:15,187][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:05:15,187][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:05:15,197][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:05:15,197][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:05:15,204][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 22:06:38,786][WARN ][main] [net.lab1024.sa.admin.module.business.smartWatch.response.dao.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
-[2023-07-13 22:06:38,925][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
-[2023-07-13 22:06:38,933][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:06:38,933][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:06:38,943][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
-[2023-07-13 22:06:38,943][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
-[2023-07-13 22:06:38,948][WARN ][main] [net.lab1024.sa.common.module.support.table.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
-[2023-07-13 22:07:06,291][WARN ][http-nio-1024-exec-4] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
->>>>>>> f3bfdd5207d7320c9f7f28f876faac1701c08c52
+[2023-07-12 16:11:20,229][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 16:11:20,243][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:11:20,244][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:11:20,260][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:11:20,261][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:11:20,271][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 16:11:53,037][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 16:11:53,068][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:11:53,068][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:11:53,108][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:11:53,108][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:11:53,133][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 16:31:38,744][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 16:31:38,761][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:31:38,761][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:31:38,783][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:31:38,783][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:31:38,797][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 16:32:21,059][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 16:32:21,059][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 16:32:21,059][WARN ][http-nio-1024-exec-9] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 16:32:21,059][WARN ][http-nio-1024-exec-2] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 16:32:28,140][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 16:32:28,156][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:32:28,156][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:32:28,180][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 16:32:28,181][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 16:32:28,189][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 16:32:36,321][WARN ][http-nio-1024-exec-3] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:34:03,365][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:34:03,382][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:34:03,382][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:34:03,403][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:34:03,403][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:34:03,417][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:34:57,625][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:34:57,625][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:34:57,625][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:34:57,625][WARN ][http-nio-1024-exec-2] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:39:16,817][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:39:16,837][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:39:16,838][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:39:16,864][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:39:16,864][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:39:16,878][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:39:28,114][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:44:37,195][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:44:37,211][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:44:37,211][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:44:37,234][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:44:37,234][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:44:37,243][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:45:54,441][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:45:54,458][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:45:54,458][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:45:54,480][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:45:54,480][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:45:54,493][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:47:19,285][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:47:19,302][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:47:19,302][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:47:19,325][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:47:19,325][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:47:19,338][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:47:36,983][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:47:36,983][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:50:15,104][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:50:15,121][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:50:15,121][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:50:15,142][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:50:15,142][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:50:15,155][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:50:28,297][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:52:12,296][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:52:12,312][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:52:12,312][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:52:12,334][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:52:12,334][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:52:12,347][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:52:24,362][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:57:56,945][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 17:57:56,961][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:57:56,961][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:57:56,983][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 17:57:56,983][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 17:57:56,997][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 17:59:28,095][WARN ][http-nio-1024-exec-6] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 17:59:28,095][WARN ][http-nio-1024-exec-5] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:09:23,917][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:09:23,930][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:09:23,930][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:09:23,945][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:09:23,945][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:09:23,954][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:10:59,972][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:12:21,627][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:12:21,645][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:12:21,645][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:12:21,666][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:12:21,666][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:12:21,679][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:24:53,584][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:24:53,600][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:24:53,600][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:24:53,622][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:24:53,622][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:24:53,632][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:26:17,205][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:35:16,923][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:35:16,939][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:35:16,939][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:35:16,963][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:35:16,963][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:35:16,972][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:35:26,644][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:35:26,645][WARN ][http-nio-1024-exec-5] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:36:54,538][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:36:54,556][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:36:54,556][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:36:54,577][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:36:54,577][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:36:54,589][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:37:05,508][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:38:08,641][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:38:08,657][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:38:08,657][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:38:08,678][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:38:08,678][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:38:08,692][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:38:27,262][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:40:03,140][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:40:03,166][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:40:03,166][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:40:03,193][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:40:03,193][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:40:03,210][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:40:21,106][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:40:21,123][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:40:21,123][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:40:21,144][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:40:21,144][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:40:21,158][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:41:28,586][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:41:28,602][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:41:28,603][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:41:28,624][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:41:28,624][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:41:28,636][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:42:08,753][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:45:47,579][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:45:47,595][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:45:47,595][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:45:47,616][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:45:47,616][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:45:47,630][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:46:06,775][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:46:37,581][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:46:37,599][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:46:37,599][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:46:37,641][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:46:37,641][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:46:37,656][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:46:47,362][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:46:47,362][WARN ][http-nio-1024-exec-6] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:48:46,284][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 18:48:46,536][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:48:46,551][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:48:46,551][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:48:46,575][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:48:46,575][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:48:46,584][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:48:55,815][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:50:07,732][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 18:50:07,984][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:50:08,000][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:50:08,001][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:50:08,022][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:50:08,022][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:50:08,036][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:50:18,601][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 18:55:32,869][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 18:55:33,108][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 18:55:33,125][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:55:33,125][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:55:33,146][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 18:55:33,146][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 18:55:33,156][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 18:55:42,517][WARN ][http-nio-1024-exec-2] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:04:35,992][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 21:04:36,251][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 21:04:36,268][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:04:36,268][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:04:36,289][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:04:36,289][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:04:36,301][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 21:05:02,848][WARN ][http-nio-1024-exec-10] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:05:02,848][WARN ][http-nio-1024-exec-2] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:06:04,849][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 21:06:05,097][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 21:06:05,113][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:06:05,113][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:06:05,134][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:06:05,134][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:06:05,147][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 21:06:12,783][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:06:12,783][WARN ][http-nio-1024-exec-7] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:22:12,393][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-12 21:22:12,643][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-12 21:22:12,660][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:22:12,660][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:22:12,682][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-12 21:22:12,682][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-12 21:22:12,693][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-12 21:22:23,018][WARN ][http-nio-1024-exec-7] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:22:23,018][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-12 21:41:03,383][WARN ][http-nio-1024-exec-3] optimize this sql to a count sql has exception, sql:"select
+        tables.table_name,
+        tables.table_comment,
+        tables.create_time,
+        tables.update_time,
+        t_code_generator_config.update_time configTime
+        from information_schema.tables tables
+        left join t_code_generator_config on tables.table_name = t_code_generator_config.table_name
+        where tables.table_schema = (select database())", exception:
+net.sf.jsqlparser.parser.ParseException: Encountered unexpected token: "tables" "TABLES"
+    at line 7, column 40.
+
+Was expecting one of:
+
+    ";"
+    "ACTION"
+    "ACTIVE"
+    "ALGORITHM"
+    "ARCHIVE"
+    "ARRAY"
+    "AS"
+    "AT"
+    "BYTE"
+    "CASCADE"
+    "CASE"
+    "CAST"
+    "CHANGE"
+    "CHAR"
+    "CHARACTER"
+    "CHECKPOINT"
+    "COLUMN"
+    "COLUMNS"
+    "COMMENT"
+    "COMMIT"
+    "CONNECT"
+    "COSTS"
+    "CYCLE"
+    "DBA_RECYCLEBIN"
+    "DEFAULT"
+    "DESC"
+    "DESCRIBE"
+    "DISABLE"
+    "DISCONNECT"
+    "DIV"
+    "DO"
+    "DUMP"
+    "DUPLICATE"
+    "EMIT"
+    "ENABLE"
+    "END"
+    "EXCLUDE"
+    "EXTRACT"
+    "FALSE"
+    "FILTER"
+    "FIRST"
+    "FLUSH"
+    "FN"
+    "FOLLOWING"
+    "FORMAT"
+    "FULLTEXT"
+    "GROUP"
+    "HAVING"
+    "HISTORY"
+    "INDEX"
+    "INSERT"
+    "INTERVAL"
+    "ISNULL"
+    "JSON"
+    "KEY"
+    "LAST"
+    "LEADING"
+    "LINK"
+    "LOCAL"
+    "LOG"
+    "MATERIALIZED"
+    "NO"
+    "NOLOCK"
+    "NULLS"
+    "OF"
+    "OPEN"
+    "OVER"
+    "PARALLEL"
+    "PARTITION"
+    "PATH"
+    "PERCENT"
+    "PIVOT"
+    "PRECISION"
+    "PRIMARY"
+    "PRIOR"
+    "QUERY"
+    "QUIESCE"
+    "RANGE"
+    "READ"
+    "RECYCLEBIN"
+    "REGISTER"
+    "REPLACE"
+    "RESTRICTED"
+    "RESUME"
+    "ROW"
+    "ROWS"
+    "SCHEMA"
+    "SEPARATOR"
+    "SEQUENCE"
+    "SESSION"
+    "SHUTDOWN"
+    "SIBLINGS"
+    "SIGNED"
+    "SIZE"
+    "SKIP"
+    "START"
+    "SUSPEND"
+    "SWITCH"
+    "SYNONYM"
+    "SYSTEM"
+    "TABLE"
+    "TABLESPACE"
+    "TEMP"
+    "TEMPORARY"
+    "TIMEOUT"
+    "TO"
+    "TOP"
+    "TRUE"
+    "TRUNCATE"
+    "TRY_CAST"
+    "TYPE"
+    "UNQIESCE"
+    "UNSIGNED"
+    "USER"
+    "VALIDATE"
+    "VALUE"
+    "VALUES"
+    "VIEW"
+    "WINDOW"
+    "XML"
+    "ZONE"
+    <EOF>
+    <K_DATETIMELITERAL>
+    <K_DATE_LITERAL>
+    <K_NEXTVAL>
+    <K_STRING_FUNCTION_NAME>
+    <S_CHAR_LITERAL>
+    <S_IDENTIFIER>
+    <S_QUOTED_IDENTIFIER>
+ (PaginationInnerInterceptor.java:360)
+[2023-07-13 18:13:46,327][WARN ][main] [dao.response.net.lab1024.sa.admin.module.smartWatch.responseDAO.update] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Update] (AbstractMethod.java:414)
+[2023-07-13 18:13:46,609][WARN ][main] [net.lab1024.sa.common.module.support.operatelog.OperateLogDao.deleteById] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.DeleteById] (AbstractMethod.java:414)
+[2023-07-13 18:13:46,626][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity". (TableInfoHelper.java:342)
+[2023-07-13 18:13:46,626][WARN ][main] class net.lab1024.sa.common.module.support.reload.domain.ReloadResultEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-13 18:13:46,652][WARN ][main] Can not find table primary key in Class: "net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity". (TableInfoHelper.java:342)
+[2023-07-13 18:13:46,652][WARN ][main] class net.lab1024.sa.common.module.support.serialnumber.domain.SerialNumberRecordEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method. (DefaultSqlInjector.java:56)
+[2023-07-13 18:13:46,663][WARN ][main] [net.lab1024.sa.common.module.dao.TableColumnDao.delete] Has been loaded by XML or SqlProvider or Mybatis's Annotation, so ignoring this injection for [class com.baomidou.mybatisplus.core.injector.methods.Delete] (AbstractMethod.java:414)
+[2023-07-13 18:14:38,873][WARN ][http-nio-1024-exec-1] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-13 18:14:38,873][WARN ][http-nio-1024-exec-8] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-13 18:14:38,873][WARN ][http-nio-1024-exec-2] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
+[2023-07-13 18:14:38,873][WARN ][http-nio-1024-exec-5] javax.persistence.spi::No valid providers found. (PersistenceProviderResolverHolder.java:170)
