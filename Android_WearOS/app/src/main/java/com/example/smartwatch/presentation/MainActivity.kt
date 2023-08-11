@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val baseUrl = "http://localhost:1024/"
+            val baseUrl = "http://10.0.2.2:1024/"
             val networkManager = NetworkManager(baseUrl)
 
             WearApp("Android", networkManager)

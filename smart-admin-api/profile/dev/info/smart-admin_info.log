@@ -849,3 +849,6 @@
  ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
  ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
  (AdminStartupRunner.java:30)
+[2023-08-11 21:31:23,603][INFO ][http-nio-1024-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-11 21:31:23,603][INFO ][http-nio-1024-exec-2] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-11 21:31:23,606][INFO ][http-nio-1024-exec-2] Completed initialization in 3 ms (FrameworkServlet.java:547)
