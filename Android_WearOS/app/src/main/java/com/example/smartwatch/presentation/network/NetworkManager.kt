@@ -20,12 +20,12 @@ class NetworkManager(private val baseUrl: String) {
 
     private val fileService: FileService = retrofit.create(FileService::class.java)
 
-    fun uploadDbFile(filePath: String, successCallback: () -> Unit, errorCallback: (Throwable) -> Unit) {
+    fun uploadDbFile(filePath: String, token: String, successCallback: () -> Unit, errorCallback: (Throwable) -> Unit) {
         val file = File(filePath)
         val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
 
-        fileService.uploadFile(body).enqueue(object : Callback<Void> {
+        fileService.uploadFile(token, body).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     successCallback.invoke()
@@ -43,10 +43,11 @@ class NetworkManager(private val baseUrl: String) {
 
     fun downloadDbFile(
         targetFilePath: String,
+        token: String,
         successCallback: (Boolean) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
-        fileService.downloadFile().enqueue(object : Callback<ResponseBody> {
+        fileService.downloadFile(token).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()

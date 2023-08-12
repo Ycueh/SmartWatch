@@ -51,15 +51,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val baseUrl = "http://10.0.2.2:1024/"
+            val token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidHlwZSI6MSwiaWF0IjoxNjkxODQ5MjczLCJleHAiOjE2OTI0NTQwNzN9.jnBX_dq2vraEGd328MY1RsUse1uAXw4GZABnrQu5z_UzFRXOlt2yKaZHLlWiPtZctRoFshmLx0Ew8ZsQaM3G_w"
             val networkManager = NetworkManager(baseUrl)
 
-            WearApp("Android", networkManager)
+            WearApp("Android", networkManager, token)
         }
     }
 }
 
 @Composable
-fun WearApp(greetingName: String, networkManager: NetworkManager) {
+fun WearApp(greetingName: String, networkManager: NetworkManager, token: String) {
     val scaffoldState = rememberScaffoldState() // 记录 Scaffold 状态
     val uploadState = remember { mutableStateOf<UploadState?>(null) } // 记录上传状态
     val downloadState = remember { mutableStateOf<DownloadState?>(null) } // 记录下载状态
@@ -85,7 +86,7 @@ fun WearApp(greetingName: String, networkManager: NetworkManager) {
         ) {
             Button(
                 onClick = {
-                    bindUploadFile(networkManager) { state ->
+                    bindUploadFile(networkManager, token) { state ->
                         uploadState.value = state // 更新上传状态
                         Log.d("testUpload", "$state")
                     }
@@ -100,7 +101,7 @@ fun WearApp(greetingName: String, networkManager: NetworkManager) {
 
             Button(
                 onClick = {
-                    bindDownloadFile(networkManager) { state ->
+                    bindDownloadFile(networkManager, token) { state ->
                         downloadState.value = state // 更新下载状态
                     }
                 },
@@ -153,12 +154,12 @@ sealed class DownloadState {
     data class Failure(val error: Throwable) : DownloadState()
 }
 
-private fun bindUploadFile(networkManager: NetworkManager, onUploadStateChange: (UploadState) -> Unit) {
+private fun bindUploadFile(networkManager: NetworkManager, token: String, onUploadStateChange: (UploadState) -> Unit) {
 //    val dbFilePath = "android.resource://${context.packageName}/raw/your_db_file_name"
 
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
     val dbFilePath = "$sdCardPath/testema.db"
-    networkManager.uploadDbFile(dbFilePath,
+    networkManager.uploadDbFile(dbFilePath, token,
         successCallback = {
             onUploadStateChange(UploadState.Success)
         },
@@ -168,10 +169,10 @@ private fun bindUploadFile(networkManager: NetworkManager, onUploadStateChange: 
     )
 }
 
-private fun bindDownloadFile(networkManager: NetworkManager, onDownloadStateChange: (DownloadState) -> Unit) {
+private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDownloadStateChange: (DownloadState) -> Unit) {
 //    val targetFilePath = applicationContext.filesDir.absolutePath + File.separator + "downloaded_database.db"
     val targetFilePath = Environment.getExternalStorageDirectory().absolutePath
-    networkManager.downloadDbFile(targetFilePath,
+    networkManager.downloadDbFile(targetFilePath, token,
         successCallback = { success ->
             if (success) {
                 onDownloadStateChange(DownloadState.Success)
