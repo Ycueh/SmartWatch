@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val baseUrl = "http://10.0.2.2:1024/"
-            val token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwibmFtZSI6IkFkbWluIiwidHlwZSI6MSwiaWF0IjoxNjkxODQ5MjczLCJleHAiOjE2OTI0NTQwNzN9.jnBX_dq2vraEGd328MY1RsUse1uAXw4GZABnrQu5z_UzFRXOlt2yKaZHLlWiPtZctRoFshmLx0Ew8ZsQaM3G_w"
+            val token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MSwibmFtZSI6IueuoeeQhuWRmCIsInR5cGUiOjEsImlhdCI6MTY5MTg2NzAyMiwiZXhwIjoxNjkyNDcxODIyfQ.MLxDQDfUy6NVORZ5IvwU0UNKJpDOFJ4TUxXaizYmrVozcydhuIXXsTYNh3kSaMu3hD5IdRZqIl4jVrpyb0YACA"
             val networkManager = NetworkManager(baseUrl)
 
             WearApp("Android", networkManager, token)
