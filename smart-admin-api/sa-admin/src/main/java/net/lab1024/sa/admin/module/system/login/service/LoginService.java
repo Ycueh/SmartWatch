@@ -101,7 +101,7 @@ public class LoginService {
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
         //TODO Load the sqlite database file
-        multiUserService.choose(userEntity.getUserId());
+//        multiUserService.choose(userEntity.getUserId());
 
         return ResponseDTO.ok(loginUserDetail);
     }
