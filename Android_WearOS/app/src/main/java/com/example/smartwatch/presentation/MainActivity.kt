@@ -6,36 +6,32 @@
 
 package com.example.smartwatch.presentation
 
-import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.rememberLauncherForActivityResult
+import android.provider.Settings
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
@@ -59,8 +55,13 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+fun requestFileAccessPermission(context: Context) {
+    val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+    context.startActivity(intent)
+}
 @Composable
 fun WearApp(greetingName: String, networkManager: NetworkManager, token: String) {
+    val context = LocalContext.current
     val scaffoldState = rememberScaffoldState() // 记录 Scaffold 状态
     val uploadState = remember { mutableStateOf<UploadState?>(null) } // 记录上传状态
     val downloadState = remember { mutableStateOf<DownloadState?>(null) } // 记录下载状态
@@ -76,6 +77,7 @@ fun WearApp(greetingName: String, networkManager: NetworkManager, token: String)
 //        }
 
 
+
     SmartWatchTheme {
         Column(
             modifier = Modifier
@@ -86,11 +88,16 @@ fun WearApp(greetingName: String, networkManager: NetworkManager, token: String)
         ) {
             Button(
                 onClick = {
-                    bindUploadFile(networkManager, token) { state ->
-                        uploadState.value = state // 更新上传状态
-                        Log.d("testUpload", "$state")
+                    if (Environment.isExternalStorageManager()) {
+                        // 应用具有“所有文件访问权限”
+                        bindUploadFile(networkManager, token) { state ->
+                            uploadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else {
+                        // 应用没有“所有文件访问权限”
+                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
                     }
-//                    requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -101,8 +108,16 @@ fun WearApp(greetingName: String, networkManager: NetworkManager, token: String)
 
             Button(
                 onClick = {
-                    bindDownloadFile(networkManager, token) { state ->
-                        downloadState.value = state // 更新下载状态
+                    if (Environment.isExternalStorageManager()) {
+                        // 应用具有“所有文件访问权限”
+                        Log.e("Permission","Have permissions")
+                        bindDownloadFile(networkManager, token) { state ->
+                            downloadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else {
+                        // 应用没有“所有文件访问权限”
+                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
                     }
                 },
                 modifier = Modifier
