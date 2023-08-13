@@ -16,23 +16,23 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum UserErrorCode implements ErrorCode {
 
-    PARAM_ERROR(30001, "参数错误"),
+    PARAM_ERROR(30001, "Parameter Error"),
 
-    DATA_NOT_EXIST(30002, "左翻右翻，数据竟然找不到了~"),
+    DATA_NOT_EXIST(30002, "Data does not exist"),
 
-    ALREADY_EXIST(30003, "数据已存在了呀~"),
+    ALREADY_EXIST(30003, "Data exists"),
 
-    REPEAT_SUBMIT(30004, "亲~您操作的太快了，请稍等下再操作~"),
+    REPEAT_SUBMIT(30004, "Do not submit form repeatedly! "),
 
-    NO_PERMISSION(30005, "对不起，您无法访问此资源哦~"),
+    NO_PERMISSION(30005, "No permission"),
 
-    DEVELOPING(30006, "系統正在紧急开发中，敬请期待~"),
+    DEVELOPING(30006, "Developing"),
 
-    LOGIN_STATE_INVALID(30007, "您还未登录或登录失效，请重新登录！"),
+    LOGIN_STATE_INVALID(30007, "You are not logged in or your login has expired. Please log in again!"),
 
-    USER_STATUS_ERROR(30008, "用户状态异常"),
+    USER_STATUS_ERROR(30008, "User status error"),
 
-    FORM_REPEAT_SUBMIT(30009, "请勿重复提交");
+    FORM_REPEAT_SUBMIT(30009, "Do not submit form repeatedly!");
 
     private final int code;
 

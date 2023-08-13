@@ -14,27 +14,6 @@ import java.io.IOException;
 public class FileUploadController {
 
     // Existing folder path
-    private static final String UPLOAD_FOLDER = "../../../../../../../../../database/";
-    @PostMapping("/api/upload")
-    public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 
-        if (file.isEmpty()) {
-            return ResponseEntity.badRequest().body("The uploaded file is empty");
-        }
 
-        // get file name
-        String fileName = file.getOriginalFilename();
-
-        // build file object
-        File destFile = new File(UPLOAD_FOLDER + "smart_admin_v2.db");
-
-        try {
-            // Save the file to the destination folder
-            file.transferTo(destFile);
-            return ResponseEntity.ok("File uploaded successfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("File upload failed");
-        }
-    }
 }

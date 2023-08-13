@@ -13,12 +13,12 @@ interface FileService {
     @Multipart
     @POST("/api/upload")
     fun uploadFile(
-        @Header("Authorization") token: String,
+        @Header("x-access-token") token: String,
         @Part filePart: MultipartBody.Part
     ): Call<Void>
 
     @GET("/file/download")
     fun downloadFile(
-        @Header("Authorization") token: String
+        @Header("x-access-token") token: String
     ): Call<ResponseBody>
 }
