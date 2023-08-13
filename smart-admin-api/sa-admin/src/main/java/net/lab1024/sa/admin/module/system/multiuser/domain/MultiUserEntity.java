@@ -22,6 +22,9 @@ public class MultiUserEntity {
     @Column(name = "file")
     String file;
 
+    @Column(name = "file_data")
+    byte[] file_data;
+
     public String getFileName() {
         return file;
     }

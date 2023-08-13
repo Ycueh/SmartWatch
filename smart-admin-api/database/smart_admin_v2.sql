@@ -1543,6 +1543,7 @@ CREATE TABLE `t_user_db` (
 	`id` BIGINT NOT NULL AUTO_INCREMENT,
 	`user_id` BIGINT NOT NULL COMMENT '用户id',
 	`file` VARCHAR(255) NOT NULL COMMENT '文件名字',
+	`file_data` LONGBLOB NOT NULL COMMENT '文件数据',
 	PRIMARY KEY ( `id` ) USING BTREE,
 	UNIQUE INDEX `uni_user_table` ( `user_id`, `file` ) USING BTREE 
 ) ENGINE = INNODB CHARACTER 
