@@ -145,83 +145,93 @@ fun WearApp(greetingName: String, networkManager: NetworkManager, token: String)
 
 
 
-    SmartWatchTheme {
-        Column(
+SmartWatchTheme {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.background),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Button(
+            onClick = {
+                if (Environment.isExternalStorageManager()) {
+                    // 应用具有“所有文件访问权限”
+                    bindUploadFile(networkManager, token) { state ->
+                        uploadState.value = state // 更新上传状态
+                        Log.d("testUpload", "$state")
+                    }
+                } else {
+                    // 应用没有“所有文件访问权限”
+                    requestFileAccessPermission(context)  // 这里调用请求权限的函数
+                }
+            },
             modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colors.background),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+                .fillMaxWidth()
+                .padding(8.dp)
         ) {
-            Button(
-                onClick = {
-                    if (Environment.isExternalStorageManager()) {
-                        // 应用具有“所有文件访问权限”
-                        bindUploadFile(networkManager, token) { state ->
-                            uploadState.value = state // 更新上传状态
-                            Log.d("testUpload", "$state")
-                        }
-                    } else {
-                        // 应用没有“所有文件访问权限”
-                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
-                    }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(text = "Upload")
-            }
+            Text(text = "Upload")
+        }
 
-            Button(
-                onClick = {
-                    if (Environment.isExternalStorageManager()) {
-                        // 应用具有“所有文件访问权限”
-                        Log.e("Permission","Have permissions")
-                        bindDownloadFile(networkManager, token) { state ->
-                            downloadState.value = state // 更新上传状态
-                            Log.d("testUpload", "$state")
-                        }
-                    } else {
-                        // 应用没有“所有文件访问权限”
-                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
+        Button(
+            onClick = {
+                if (Environment.isExternalStorageManager()) {
+                    // 应用具有“所有文件访问权限”
+                    Log.e("Permission","Have permissions")
+                    bindDownloadFile(networkManager, token) { state ->
+                        downloadState.value = state // 更新上传状态
+                        Log.d("testUpload", "$state")
                     }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp)
-            ) {
-                Text(text = "Download")
-            }
+                } else {
+                    // 应用没有“所有文件访问权限”
+                    requestFileAccessPermission(context)  // 这里调用请求权限的函数
+                }
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            Text(text = "Download")
+        }
+        Button(
+            onClick = {
+                logout(networkManager,token,context)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            Text(text = "Logout")
+        }
 
-            // 监听上传和下载状态变化，并显示对应的 Snackbar
-            LaunchedEffect(uploadState.value) {
-                uploadState.value?.let { state ->
-                    when (state) {
-                        is UploadState.Success -> {
-                            scaffoldState.snackbarHostState.showSnackbar("Upload successful")
-                        }
-                        is UploadState.Failure -> {
-                            scaffoldState.snackbarHostState.showSnackbar("Upload failed: ${state.error.message}")
-                        }
+        // 监听上传和下载状态变化，并显示对应的 Snackbar
+        LaunchedEffect(uploadState.value) {
+            uploadState.value?.let { state ->
+                when (state) {
+                    is UploadState.Success -> {
+                        scaffoldState.snackbarHostState.showSnackbar("Upload successful")
+                    }
+                    is UploadState.Failure -> {
+                        scaffoldState.snackbarHostState.showSnackbar("Upload failed: ${state.error.message}")
                     }
                 }
             }
+        }
 
-            LaunchedEffect(downloadState.value) {
-                downloadState.value?.let { state ->
-                    when (state) {
-                        is DownloadState.Success -> {
-                            scaffoldState.snackbarHostState.showSnackbar("Download successful")
-                        }
-                        is DownloadState.Failure -> {
-                            scaffoldState.snackbarHostState.showSnackbar("Download failed: ${state.error.message}")
-                        }
+        LaunchedEffect(downloadState.value) {
+            downloadState.value?.let { state ->
+                when (state) {
+                    is DownloadState.Success -> {
+                        scaffoldState.snackbarHostState.showSnackbar("Download successful")
+                    }
+                    is DownloadState.Failure -> {
+                        scaffoldState.snackbarHostState.showSnackbar("Download failed: ${state.error.message}")
                     }
                 }
             }
         }
     }
+}
 }
 
 // 定义上传状态
@@ -266,6 +276,22 @@ private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDo
             onDownloadStateChange(DownloadState.Failure(error))
         }
     )
+}
+
+private fun logout(networkManager: NetworkManager, token: String,context:Context){
+    networkManager.logOut(token,
+        successCallback = { success ->
+            // 跳转到 MainActivity
+            Toast.makeText(context, "Log out Successfully", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
+        },
+        errorCallback = { error ->
+            // 显示错误信息
+            Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+        } )
+    // 结束当前Activity并启动LoginActivity
 }
 
 @Composable

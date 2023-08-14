@@ -93,8 +93,25 @@ class NetworkManager(private val baseUrl: String) {
         loginApi.loginUser(loginForm).enqueue(object : Callback<ResponseDTO<String>> {
             override fun onResponse(call: Call<ResponseDTO<String>>, loginResponse: Response<ResponseDTO<String>>) {
                 if (loginResponse.isSuccessful) {
-                    loginResponse.body()?.data?.let(successCallback)
-                        ?: errorCallback(Throwable("${loginResponse.code()}:${loginResponse.message()}"))
+                    when (loginResponse.body()?.ok) {
+                        true -> {
+                            // Handle the case where ok is true
+                            loginResponse.body()?.msg?.let { message ->
+                                successCallback(message)
+                            } ?: run {
+                                errorCallback(Throwable("Message is null"))
+                            }
+                        }
+                        false -> {
+                            // Handle the case where ok is false
+                            val errorMessage = loginResponse.body()?.msg ?: "Error"
+                            errorCallback(Throwable(errorMessage))
+                        }
+                        else -> {
+                            // Handle the case where ok or the body is null
+                            errorCallback(Throwable("Login response body or ok flag is null"))
+                        }
+                    }
                 } else {
                     errorCallback(Throwable("Login failed: ${loginResponse.code()}"))
                 }
@@ -106,7 +123,43 @@ class NetworkManager(private val baseUrl: String) {
         })
     }
 
+    fun logOut(
+        token:String,
+        successCallback: (String) -> Unit,
+        errorCallback: (Throwable) -> Unit
+    ){
+        loginApi.logOut(token).enqueue(object : Callback<ResponseDTO<String>> {
+            override fun onResponse(call: Call<ResponseDTO<String>>, logoutResponse: Response<ResponseDTO<String>>) {
+                if (logoutResponse.isSuccessful) {
+                    when (logoutResponse.body()?.ok) {
+                        true -> {
+                            // Handle the case where ok is true
+                            logoutResponse.body()?.msg?.let { message ->
+                                successCallback(message)
+                            } ?: run {
+                                errorCallback(Throwable("Message is null"))
+                            }
+                        }
+                        false -> {
+                            // Handle the case where ok is false
+                            val errorMessage = logoutResponse.body()?.msg ?: "Error"
+                            errorCallback(Throwable(errorMessage))
+                        }
+                        else -> {
+                            // Handle the case where ok or the body is null
+                            errorCallback(Throwable("Login response body or ok flag is null"))
+                        }
+                    }
+                } else {
+                    errorCallback(Throwable("Login failed: ${logoutResponse.code()}"))
+                }
+            }
 
+            override fun onFailure(call: Call<ResponseDTO<String>>, t: Throwable) {
+                errorCallback(t)
+            }
+        })
+    }
 
     fun uploadDbFile(filePath: String, token: String, successCallback: () -> Unit, errorCallback: (Throwable) -> Unit) {
         val file = File(filePath)

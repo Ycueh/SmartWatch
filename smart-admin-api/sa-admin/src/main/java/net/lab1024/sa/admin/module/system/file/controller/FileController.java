@@ -17,8 +17,8 @@ import java.io.*;
 @CrossOrigin
 @Api(tags = {AdminSwaggerTagConst.Business.SW_FILE})
 public class FileController {
-    String filePath = "database\\smart_admin_v2.db";
-    private static final String UPLOAD_FOLDER = "../../../../../../../../../database/";
+    String filePath = "database"+File.separator+"smart_admin_v2.db";
+    private static final String UPLOAD_FOLDER = "../../../../../../../../../database/test";
     @Autowired
     FileService fileService;
     @GetMapping("/file/download")
@@ -57,15 +57,12 @@ public class FileController {
             return ResponseEntity.badRequest().body("The uploaded file is empty");
         }
 
-        // get file name
-        String fileName = file.getOriginalFilename();
-
         // build file object
-        File destFile = new File(UPLOAD_FOLDER + "smart_admin_v2.db");
+        File destFile = new File(UPLOAD_FOLDER +File.separator+ "smart_admin_v2.db");
 
         try {
             // Save the file to the destination folder
-            file. transferTo(destFile);
+            file.transferTo(destFile);
             return ResponseEntity.ok("File uploaded successfully");
         } catch (IOException e) {
             e.printStackTrace();

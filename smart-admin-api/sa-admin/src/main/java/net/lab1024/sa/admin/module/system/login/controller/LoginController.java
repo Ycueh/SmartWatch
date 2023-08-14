@@ -79,7 +79,8 @@ public class LoginController {
     @ApiOperation("Log out")
     @GetMapping("/login/logout")
     public ResponseDTO<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
-        return loginService.logout(token, SmartRequestUtil.getRequestUser());
+        ResponseDTO<String> abc = loginService.logout(token, SmartRequestUtil.getRequestUser());
+        return abc;
     }
 
     @ApiOperation("Get captcha")
