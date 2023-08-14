@@ -102,9 +102,43 @@ public class LoginService {
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
         //TODO Load the sqlite database file
 //        multiUserService.choose(userEntity.getUserId());
-
         return ResponseDTO.ok(loginUserDetail);
     }
+
+    public ResponseDTO<String> watchLogin(LoginForm loginForm) {
+        // 校验 图形验证码
+//        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
+//        if (!checkCaptcha.getOk()) {
+//            return ResponseDTO.error(checkCaptcha);
+//        }
+
+        /**
+         * Check account
+         */
+        UserEntity userEntity = userService.getByLoginName(loginForm.getLoginName());
+        if (null == userEntity) {
+            return ResponseDTO.userErrorParam("Account does not exist");
+        }
+
+        if (userEntity.getDisabledFlag()) {
+            return ResponseDTO.userErrorParam("You account is banned");
+        }
+        String requestPassword = UserService.getEncryptPwd(loginForm.getPassword());
+        if (!userEntity.getLoginPwd().equals(requestPassword)) {
+            return ResponseDTO.userErrorParam("Account or password error！");
+        }
+        // Generate token
+        String token = tokenService.generateToken(userEntity.getUserId(), userEntity.getActualName(), UserTypeEnum.ADMIN_USER);
+
+        //Acquire user detail
+        LoginUserDetail loginUserDetail = loadLoginInfo(userEntity);
+        loginUserDetail.setToken(token);
+
+        // Save into cache
+        loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
+        return ResponseDTO.ok(token);
+    }
+
 
 
     /**

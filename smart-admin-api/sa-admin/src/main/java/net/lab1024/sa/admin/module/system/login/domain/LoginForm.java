@@ -13,25 +13,19 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 /**
- * 员工登录
- *
- * @Author 1024创新实验室: 开云
- * @Date 2021-12-19 11:49:45
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
+*  user login
  */
 @Data
 public class LoginForm extends CaptchaForm {
 
-    @ApiModelProperty("登录名")
-    @NotBlank(message = "登录名不能为空")
-    @Length(max = 30, message = "登录账号最多30字符")
+    @ApiModelProperty("Account")
+    @NotBlank(message = "Account")
+    @Length(max = 30, message = "30 characters in maximum")
     private String loginName;
 
-    @ApiModelProperty("密码")
-    @NotBlank(message = "密码不能为空")
-    @Pattern(regexp = SmartVerificationUtil.PWD_REGEXP, message = "请输入6-15位密码(数字|大小写字母|小数点)")
+    @ApiModelProperty("password")
+    @NotBlank(message = "password can not be null")
+    @Pattern(regexp = SmartVerificationUtil.PWD_REGEXP, message = "Please enter a 6-15 digit password (numbers | upper and lower case letters | decimal points)")
     private String password;
 
 }

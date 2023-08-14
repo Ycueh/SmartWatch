@@ -93,21 +93,20 @@ public class CaptchaService {
      */
     public ResponseDTO<String> checkCaptcha(CaptchaForm captchaForm) {
         if (StringUtils.isBlank(captchaForm.getCaptchaUuid()) || StringUtils.isBlank(captchaForm.getCaptchaCode())) {
-            return ResponseDTO.userErrorParam("请输入正确验证码");
+            return ResponseDTO.userErrorParam("Please input correct captcha");
         }
         /**
-         * 1、校验redis里的验证码
-         * 2、校验成功后，删除redis
+         * 1、Check the captcha in redis
+         * 2、Delete redis
          */
         String redisCaptchaKey = redisService.generateRedisKey(RedisKeyConst.Support.CAPTCHA, captchaForm.getCaptchaUuid());
         String redisCaptchaCode = redisService.get(redisCaptchaKey);
         if (StringUtils.isBlank(redisCaptchaCode)) {
-            return ResponseDTO.userErrorParam("验证码已过期，请刷新重试");
+            return ResponseDTO.userErrorParam("Captcha has expired, please refresh and try again.");
         }
         if (!Objects.equals(redisCaptchaCode, captchaForm.getCaptchaCode())) {
-            return ResponseDTO.userErrorParam("验证码错误，请输入正确的验证码");
+            return ResponseDTO.userErrorParam("The captcha is wrong, please enter the correct code.");
         }
-        // 删除已使用的验证码
         redisService.delete(redisCaptchaKey);
         return ResponseDTO.ok();
     }

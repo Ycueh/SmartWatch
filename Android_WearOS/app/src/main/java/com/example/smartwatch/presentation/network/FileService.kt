@@ -11,7 +11,7 @@ import retrofit2.http.Part
 
 interface FileService {
     @Multipart
-    @POST("/api/upload")
+    @POST("/file/upload")
     fun uploadFile(
         @Header("x-access-token") token: String,
         @Part filePart: MultipartBody.Part

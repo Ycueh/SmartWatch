@@ -50,7 +50,7 @@ public class FileController {
         return ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/api/upload")
+    @PostMapping("/file/upload")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
 
         if (file.isEmpty()) {
@@ -65,7 +65,7 @@ public class FileController {
 
         try {
             // Save the file to the destination folder
-            file.transferTo(destFile);
+            file. transferTo(destFile);
             return ResponseEntity.ok("File uploaded successfully");
         } catch (IOException e) {
             e.printStackTrace();

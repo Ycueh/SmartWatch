@@ -38,10 +38,17 @@ public class LoginController {
     @PostMapping("/login")
     @ApiOperation("login")
     public ResponseDTO<LoginUserDetail> login(@Valid @RequestBody LoginForm loginForm) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
         return loginService.login(loginForm);
+    }
+
+    @NoNeedLogin
+    @PostMapping("/login/Watch")
+    @ApiOperation("watchLogin")
+    public ResponseDTO<String> loginToken(@Valid @RequestBody LoginForm loginForm){
+        return loginService.watchLogin(loginForm);
     }
 
     @GetMapping("/login/refresh")
