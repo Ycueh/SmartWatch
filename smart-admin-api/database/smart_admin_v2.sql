@@ -1545,6 +1545,6 @@ CREATE TABLE `t_user_db` (
 	`file` VARCHAR(255) NOT NULL COMMENT '文件名字',
 	`file_data` LONGBLOB NOT NULL COMMENT '文件数据',
 	PRIMARY KEY ( `id` ) USING BTREE,
-	UNIQUE INDEX `uni_user_table` ( `user_id`, `file` ) USING BTREE 
+	UNIQUE INDEX `uni_user_table` ( `user_id`) USING BTREE 
 ) ENGINE = INNODB CHARACTER 
 SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户数据库储存' ROW_FORMAT = DYNAMIC;

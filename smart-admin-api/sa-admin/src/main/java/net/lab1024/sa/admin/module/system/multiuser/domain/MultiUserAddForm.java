@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Data
 public class MultiUserAddForm {
@@ -15,4 +18,6 @@ public class MultiUserAddForm {
     @ApiModelProperty("filename")
     @NotNull(message = "filename could not be null")
     private String file;
+
+
 }

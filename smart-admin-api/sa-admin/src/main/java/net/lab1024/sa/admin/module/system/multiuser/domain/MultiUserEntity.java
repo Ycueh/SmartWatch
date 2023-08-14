@@ -7,6 +7,9 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Data
 @TableName("t_user_db")
@@ -24,6 +27,16 @@ public class MultiUserEntity {
 
     @Column(name = "file_data")
     byte[] file_data;
+
+    public void setFileData(){
+        try {
+            String filePath = "." + File.separator + "database" + File.separator + "resetDatabase" + File.separator + "EMADATA.db";
+            file_data = Files.readAllBytes(Paths.get(filePath));
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Error in reading file");
+        }
+    }
 
     public String getFileName() {
         return file;
