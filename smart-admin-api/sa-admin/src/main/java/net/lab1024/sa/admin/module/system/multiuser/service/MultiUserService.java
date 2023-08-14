@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Service
 @Slf4j
@@ -76,8 +78,16 @@ public class MultiUserService {
     }
 
     //TODO Update the database file
-    public ResponseDTO<String> update(Long userId) {
-
+    public ResponseDTO<String> updateFile(Long user_id) {
+        try{
+            String filePath = "." + File.separator + "database" + File.separator + "smart_admin_v2.db";
+            byte[] localData = Files.readAllBytes(Paths.get(filePath));
+            multiUserMapper.updateFile(user_id, localData);
+            dataTracerService.insert(multiUserMapper.getIdByUserId(user_id), DataTracerTypeEnum.RESPONSE);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Error in reading file");
+        }
         return ResponseDTO.ok();
     }
 

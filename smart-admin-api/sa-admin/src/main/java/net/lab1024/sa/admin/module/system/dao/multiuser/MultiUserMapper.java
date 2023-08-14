@@ -15,4 +15,11 @@ public interface MultiUserMapper extends BaseMapper<MultiUserEntity> {
     void deleteById(@Param("userId") Long userId);
 
     MultiUserVO getFileByUserId(@Param("userId") Long userId);
+
+    Long getIdByUserId(@Param("userId") Long userId);
+
+    @Select("select file from t_user_db where t_user_db.user_id = #{userId}")
+    String getFileNameByUserId(@Param("userId") Long userId);
+
+    void updateFile(@Param("userId") Long userId, @Param("file_data") byte[] file_data);
 }

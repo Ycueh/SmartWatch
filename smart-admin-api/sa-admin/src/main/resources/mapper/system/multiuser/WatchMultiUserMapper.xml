@@ -20,4 +20,18 @@
         </where>
     </select>
 
+    <update id = "updateFile" >
+        UPDATE t_user_db
+        <set>
+            <if test="file_data != null">
+                t_user_db.file_data = #{file_data},
+            </if>
+        </set>
+        <where>
+            t_user_db.user_id = #{userId}
+        </where>
+    </update>
+
+
+
 </mapper>

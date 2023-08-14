@@ -38,6 +38,14 @@ public class MultiUserEntity {
         }
     }
 
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
+
     public String getFileName() {
         return file;
     }

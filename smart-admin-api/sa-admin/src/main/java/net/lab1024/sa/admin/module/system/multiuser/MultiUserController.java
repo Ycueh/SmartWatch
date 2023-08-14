@@ -37,10 +37,10 @@ public class MultiUserController {
         return multiUserService.choose(userId);
     }
 
-    @ApiOperation("Update database")
-    @PostMapping("/multiUser/update")
-    public ResponseDTO<String> update(@PathVariable("userId") Long userId) {
-        return multiUserService.update(userId);
+    @ApiOperation("Update databaseFile")
+    @PostMapping("/multiUser/updateFile/{userId}")
+    public ResponseDTO<String> updateFile(@PathVariable("userId") Long userId) {
+        return multiUserService.updateFile(userId);
     }
 
 
