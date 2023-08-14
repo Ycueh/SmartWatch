@@ -95,12 +95,7 @@ class NetworkManager(private val baseUrl: String) {
                 if (loginResponse.isSuccessful) {
                     when (loginResponse.body()?.ok) {
                         true -> {
-                            // Handle the case where ok is true
-                            loginResponse.body()?.msg?.let { message ->
-                                successCallback(message)
-                            } ?: run {
-                                errorCallback(Throwable("Message is null"))
-                            }
+                            loginResponse.body()?.data?.let(successCallback)
                         }
                         false -> {
                             // Handle the case where ok is false
