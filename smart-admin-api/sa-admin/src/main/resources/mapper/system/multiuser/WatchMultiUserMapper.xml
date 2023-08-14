@@ -13,4 +13,11 @@
 
     </select>
 
+    <select id="deleteById"  >
+        DELETE FROM t_user_db
+        <where>
+            t_user_db.user_id = #{userId}
+        </where>
+    </select>
+
 </mapper>
