@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.lab1024.sa.admin.module.system.dao.multiuser.MultiUserMapper">
+    <resultMap id="MultiUserVOMap" type="net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserVO">
+        <result column="file" property="file"/>
+        <result column="file_data" property="file_data" jdbcType="BLOB"/>
+    </resultMap>
+
+    <select id="getFileByUserId" resultMap="MultiUserVOMap">
+        SELECT t_user_db.file, t_user_db.file_data
+        FROM t_user_db
+        WHERE user_id = #{userId}
+
+    </select>
+
+</mapper>

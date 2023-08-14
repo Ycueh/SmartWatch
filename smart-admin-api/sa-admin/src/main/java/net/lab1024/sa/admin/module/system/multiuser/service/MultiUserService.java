@@ -4,16 +4,21 @@ import lombok.extern.slf4j.Slf4j;
 import net.lab1024.sa.admin.module.system.dao.multiuser.MultiUserMapper;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserEntity;
+import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserVO;
+import net.lab1024.sa.common.common.code.SystemErrorCode;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService;
+import org.apache.poi.hssf.record.FilePassRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Service
 @Slf4j
@@ -22,10 +27,7 @@ public class MultiUserService {
     private MultiUserMapper multiUserMapper;
     @Autowired
     private DataTracerService dataTracerService;
-
-    private static final String RELATIVEPATH = "." + File.separator + "sa-admin" + File.separator +"src" + File.separator +"main"
-            + File.separator + "resources" + File.separator + "UserFiles";
-    private static final String DBPATH = "smart-admin-api"+ File.separator +"smart-admin-api" + File.separator +"database";
+    private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
 
     /**
      * Add new user
@@ -36,72 +38,43 @@ public class MultiUserService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> add(MultiUserAddForm addForm) {
         MultiUserEntity multiUserEntity = SmartBeanUtil.copy(addForm, MultiUserEntity.class);
-        CreateNewFile(multiUserEntity.getFileName());
-        multiUserMapper.createNewTable();
+        multiUserEntity.setFileData();
         multiUserMapper.insert(multiUserEntity);
         dataTracerService.insert(multiUserEntity.getId(), DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
-    }
-
-    private void CreateNewFile(String fileName) {
-        String userFileName = fileName.trim() + ".db";
-        File file = new File( RELATIVEPATH + File.separator+ userFileName);
-        try {
-            // 如果文件不存在，则创建新文件
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName() + " in " + file.getAbsolutePath());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
-
     }
 
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> delete(Long id) {
         multiUserMapper.deleteById(id);
         dataTracerService.delete(id, DataTracerTypeEnum.RESPONSE);
-        DeleteFile(multiUserMapper.getFileNameByUserId(id));
         return ResponseDTO.ok();
-    }
-
-    private void DeleteFile(String fileName) {
-        String userFileName = fileName.trim() + ".db";
-        File file = new File(RELATIVEPATH + File.separator + userFileName);
-        try {
-            if (file.delete()) {
-                System.out.println(file.getName() + " is deleted!");
-            } else {
-                System.out.println("Delete operation is failed.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> choose(Long userid) {
-        ChooseFile(multiUserMapper.getFileNameByUserId(userid));
+        MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
+        //System.out.println(multiUserVO.getFile_name());
+        File targetFile = new File(DBPATH);
+        try {
+            if (!targetFile.exists()){
+                targetFile.createNewFile();
+            }
+            try(FileOutputStream output = new FileOutputStream(DBPATH)){
+                byte[] fileData = multiUserVO.getFile_data();
+                if(fileData == null){
+                    return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR,"File data is null");
+                }
+                output.write(fileData);
+            }
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
-    private void ChooseFile(String fileName) {
-        String userFileName = fileName.trim() + ".db";
-        File file = new File(RELATIVEPATH + File.separator + userFileName);
-        try {
-            if (file.delete()) {
-                System.out.println(file.getName() + " is deleted!");
-            } else {
-                System.out.println("Delete operation is failed.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     //TODO Update the database file
     public ResponseDTO<String> update(Long userId) {
 
