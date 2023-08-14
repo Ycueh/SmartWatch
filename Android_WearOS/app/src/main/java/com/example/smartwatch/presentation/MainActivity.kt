@@ -263,7 +263,8 @@ private fun bindUploadFile(networkManager: NetworkManager, token: String, onUplo
 
 private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDownloadStateChange: (DownloadState) -> Unit) {
 //    val targetFilePath = applicationContext.filesDir.absolutePath + File.separator + "downloaded_database.db"
-    val targetFilePath = Environment.getExternalStorageDirectory().absolutePath
+    val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
+    val targetFilePath = "$sdCardPath/downloadfile.db"
     networkManager.downloadDbFile(targetFilePath, token,
         successCallback = { success ->
             if (success) {
