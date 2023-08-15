@@ -56,6 +56,7 @@ import androidx.wear.compose.material.Text
 import com.example.smartwatch.R
 import com.example.smartwatch.presentation.network.NetworkManager
 import com.example.smartwatch.presentation.theme.SmartWatchTheme
+import java.io.File
 
 
 //import kotlinx.coroutines.flow.internal.NoOpContinuation.context
@@ -66,8 +67,8 @@ class LoginActivity : Activity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
-//    var ip = "localhost"
-    var ip = "10.0.2.2"
+    var ip = "10.52.136.67"
+//    var ip = "10.0.2.2"
 
     private val baseUrl = "http://$ip:1024/"
     private val networkManager = NetworkManager(baseUrl)
@@ -110,7 +111,9 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var ip = "10.0.2.2"
+//            var ip = "10.0.2.2"
+            //ipv4 address
+            var ip = "10.52.136.67"
             val baseUrl = "http://$ip:1024/"
             val networkManager = NetworkManager(baseUrl)
             val token = intent.getStringExtra("TOKEN")
@@ -164,7 +167,13 @@ SmartWatchTheme {
     ) {
         Button(
             onClick = {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
+                    // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
+                    bindUploadFile(networkManager, token) { state ->
+                        uploadState.value = state // 更新上传状态
+                        Log.d("testUpload", "$state")
+                    }
+                } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
                     ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                     bindUploadFile(networkManager, token) { state ->
@@ -185,7 +194,13 @@ SmartWatchTheme {
 
         Button(
             onClick = {
-                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
+                    // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
+                    bindDownloadFile(networkManager, token) { state ->
+                        downloadState.value = state // 更新上传状态
+                        Log.d("testUpload", "$state")
+                    }
+                } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
                     ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                     bindDownloadFile(networkManager, token) { state ->
@@ -260,7 +275,7 @@ private fun bindUploadFile(networkManager: NetworkManager, token: String, onUplo
 //    val dbFilePath = "android.resource://${context.packageName}/raw/your_db_file_name"
 
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
-    val dbFilePath = "$sdCardPath/testema.db"
+    val dbFilePath = "$sdCardPath/EMADATA.db"
     networkManager.uploadDbFile(dbFilePath, token,
         successCallback = {
             onUploadStateChange(UploadState.Success)
@@ -274,7 +289,18 @@ private fun bindUploadFile(networkManager: NetworkManager, token: String, onUplo
 private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDownloadStateChange: (DownloadState) -> Unit) {
 //    val targetFilePath = applicationContext.filesDir.absolutePath + File.separator + "downloaded_database.db"
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
-    val targetFilePath = "$sdCardPath/downloadfile.db"
+    // List of files to delete
+    val filesToDelete = listOf("EMADATA.db", "EMADATA.db-shm", "EMADATA.db-wal")
+
+    // Delete files if they exist
+    for (filename in filesToDelete) {
+        val file = File("$sdCardPath/$filename")
+        if (file.exists()) {
+            file.delete()
+        }
+    }
+
+    val targetFilePath = "$sdCardPath/EMADATA.db"
     networkManager.downloadDbFile(targetFilePath, token,
         successCallback = { success ->
             if (success) {
