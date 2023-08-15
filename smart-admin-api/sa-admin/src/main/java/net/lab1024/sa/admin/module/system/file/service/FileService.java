@@ -9,8 +9,8 @@ import java.io.IOException;
 
 @Service
 public class FileService {
-    String sourceFilePath = "database\\resetDatabase\\EMADATA.db";
-    String targetFilePath = "database\\smart_admin_v2.db";
+    String sourceFilePath = "database"+File.separator+"resetDatabase"+File.separator+"EMADATA.db";
+    String targetFilePath = "database"+File.separator+"smart_admin_v2.db";
     public void resetDatabase() throws IOException{
         File sourceFile = new File(sourceFilePath);
         File targetFile = new File(targetFilePath);

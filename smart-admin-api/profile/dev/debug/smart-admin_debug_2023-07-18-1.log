@@ -1,1 +1,0 @@
-[2023-07-18 22:49:02,081][DEBUG][java-sdk-http-connection-reaper] Closing connections idle longer than 60000 MILLISECONDS (PoolingHttpClientConnectionManager.java:441)

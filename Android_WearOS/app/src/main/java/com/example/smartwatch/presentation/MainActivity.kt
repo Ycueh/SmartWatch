@@ -20,7 +20,12 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+
+import androidx.core.content.ContextCompat
+
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -61,9 +66,11 @@ class LoginActivity : Activity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
+//    var ip = "localhost"
+    var ip = "10.0.2.2"
 
-    val baseUrl = "http://10.0.2.2:1024/"
-    val networkManager = NetworkManager(baseUrl)
+    private val baseUrl = "http://$ip:1024/"
+    private val networkManager = NetworkManager(baseUrl)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,7 +110,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val baseUrl = "http://10.0.2.2:1024/"
+            var ip = "10.0.2.2"
+            val baseUrl = "http://$ip:1024/"
             val networkManager = NetworkManager(baseUrl)
             val token = intent.getStringExtra("TOKEN")
             if (token != null) {
@@ -156,14 +164,15 @@ SmartWatchTheme {
     ) {
         Button(
             onClick = {
-                if (Environment.isExternalStorageManager()) {
-                    // 应用具有“所有文件访问权限”
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                     bindUploadFile(networkManager, token) { state ->
                         uploadState.value = state // 更新上传状态
                         Log.d("testUpload", "$state")
                     }
                 } else {
-                    // 应用没有“所有文件访问权限”
+                    // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
                     requestFileAccessPermission(context)  // 这里调用请求权限的函数
                 }
             },
@@ -176,15 +185,15 @@ SmartWatchTheme {
 
         Button(
             onClick = {
-                if (Environment.isExternalStorageManager()) {
-                    // 应用具有“所有文件访问权限”
-                    Log.e("Permission","Have permissions")
+                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                    ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                     bindDownloadFile(networkManager, token) { state ->
                         downloadState.value = state // 更新上传状态
                         Log.d("testUpload", "$state")
                     }
                 } else {
-                    // 应用没有“所有文件访问权限”
+                    // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
                     requestFileAccessPermission(context)  // 这里调用请求权限的函数
                 }
             },
