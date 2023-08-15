@@ -107,6 +107,7 @@ class MainActivity : ComponentActivity() {
             val networkManager = NetworkManager(baseUrl)
             val token = intent.getStringExtra("TOKEN")
             if (token != null) {
+                //Upload Download function
                 WearApp("Android", networkManager, token)
             }else{
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()

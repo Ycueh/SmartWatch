@@ -28,26 +28,6 @@ class NetworkManager(private val baseUrl: String) {
 
     private val fileService: FileService = retrofit.create(FileService::class.java)
     private val loginApi:LoginApi = retrofit.create(LoginApi::class.java)
-    fun testConn(){
-        val response = loginApi.getCaptcha()
-        response.enqueue(object : Callback<ResponseDTO<CaptchaVO>> {
-            override fun onResponse(call: Call<ResponseDTO<CaptchaVO>>, response: Response<ResponseDTO<CaptchaVO>>) {
-                if (response.isSuccessful) {
-                    // 处理成功的响应
-                    Log.d("Success","Successs")
-                } else {
-                    // 处理错误的响应
-                    Log.d("Fail","Fial masss")
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseDTO<CaptchaVO>>, t: Throwable) {
-                // 处理请求失败，例如网络问题
-                    Log.d("Failure","Faileuee")
-            }
-        })
-
-    }
 
     fun login(
         loginName: String,
@@ -64,11 +44,14 @@ class NetworkManager(private val baseUrl: String) {
         successCallback: (String) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
+        //Send restful request to back end
         loginApi.getCaptcha().enqueue(object : Callback<ResponseDTO<CaptchaVO>> {
             override fun onResponse(call: Call<ResponseDTO<CaptchaVO>>, response: Response<ResponseDTO<CaptchaVO>>) {
+                //Get the response from back end
                 if (response.isSuccessful) {
                     Log.d("Success Log",response.message())
                     response.body()?.data?.let {
+                        //Login function
                         sendLoginRequest(loginName, password, it, successCallback, errorCallback)
                     } ?: errorCallback(Throwable("No captcha data received"))
                 } else {
@@ -89,6 +72,7 @@ class NetworkManager(private val baseUrl: String) {
         successCallback: (String) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
+        //Generate the form
         val loginForm = LoginForm(loginName, password, captchaVO.captchaUuid, captchaVO.captchaText)
         loginApi.loginUser(loginForm).enqueue(object : Callback<ResponseDTO<String>> {
             override fun onResponse(call: Call<ResponseDTO<String>>, loginResponse: Response<ResponseDTO<String>>) {
