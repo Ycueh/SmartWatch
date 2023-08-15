@@ -283,7 +283,7 @@ public class DataTracerChangeContentService {
         Object fieldValue = "";
         Class clazz = object.getClass();
         try {
-            PropertyDescriptor pd = new PropertyDescriptor(field.getName(), clazz);
+            PropertyDescriptor pd = new PropertyDescriptor((String)field.getName(), clazz);
             Method get = pd.getReadMethod();
             fieldValue = get.invoke(object);
         } catch (Exception e) {

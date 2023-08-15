@@ -19,15 +19,7 @@ import java.io.IOException;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-/**
- * 注意此处不能 加入@Component，否则对应ignoreUrl的相关请求 将会进入此Filter，并会覆盖CorsFilter
- *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022/5/12 21:50
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
+
 @Slf4j
 public class SecurityTokenFilter extends OncePerRequestFilter {
 

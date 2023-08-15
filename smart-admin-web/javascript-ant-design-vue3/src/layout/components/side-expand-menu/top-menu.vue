@@ -27,7 +27,6 @@
   import _ from 'lodash';
   import { computed, ref, watch } from 'vue';
   import { useRoute } from 'vue-router';
-  import logoImg from '/@/assets/images/logo/smart-admin-logo.png';
   import { HOME_PAGE_NAME } from '/@/constants/system/home-const';
   import { MENU_TYPE_ENUM } from '/@/constants/system/menu-const';
   import { router } from '/@/router';

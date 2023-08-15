@@ -11,8 +11,6 @@ spring:
       url: jdbc:sqlite:database/smart_admin_v2.db
       driver-class-name: org.sqlite.JDBC
   #    password: 3@!23A7k
-  #    password: haizhenqi.0349
-  #    password: 123456
   #    password: Qq.3208261999t
     initial-size: 2
     min-idle: 2
@@ -52,7 +50,7 @@ spring:
         max-wait: 30000ms
     port: 6379
     timeout: 10000ms
-    password: 123456
+#    password: 123456
 
   # 上传文件大小配置
   servlet:
