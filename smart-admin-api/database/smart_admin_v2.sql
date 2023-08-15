@@ -241,7 +241,7 @@ CREATE TABLE `t_menu`  (
 INSERT INTO `t_menu` VALUES (26, '菜单管理', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 0, 0, 0, 2, '2021-08-09 15:04:35', 1, '2023-08-07 16:32:51');
 INSERT INTO `t_menu` VALUES (40, '批量删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:batch:delete', NULL, 26, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 09:45:56', 1, '2023-08-07 16:32:53');
 INSERT INTO `t_menu` VALUES (45, 'User management', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:13:27', 44, '2023-08-08 14:52:09');
-INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/department', '/system/user/department/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-08 14:52:04');
+INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/user', '/system/user/user/user-list.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-08 14:52:04');
 INSERT INTO `t_menu` VALUES (76, 'Role', 2, 45, 2, '/user/role', '/system/user/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2023-08-08 12:36:05');
 INSERT INTO `t_menu` VALUES (91, 'Add user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:11:38', NULL, '2023-08-08 14:52:32');
 INSERT INTO `t_menu` VALUES (92, 'Edit user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:10', NULL, '2023-08-08 14:52:37');
