@@ -126,10 +126,6 @@ const columns = ref([
     dataIndex: 'createTime',
   },
   {
-    title: 'roleIdList',
-    dataIndex: 'roleIdList',
-  },
-  {
     title: 'roleNameList',
     dataIndex: 'roleNameList',
   },
