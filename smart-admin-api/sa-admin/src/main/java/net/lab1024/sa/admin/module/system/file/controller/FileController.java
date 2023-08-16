@@ -18,7 +18,7 @@ import java.io.*;
 @Api(tags = {AdminSwaggerTagConst.Business.SW_FILE})
 public class FileController {
     String filePath = "database"+File.separator+"smart_admin_v2.db";
-    private static final String UPLOAD_FOLDER = "../../../../../../../../../database/test";
+    private static final String UPLOAD_FOLDER = "../../../../../../../../../database";
     @Autowired
     FileService fileService;
     @GetMapping("/file/download")

@@ -43,7 +43,7 @@ public class RoleUserController extends AdminBaseController {
 
     @ApiOperation(value = "Remove user")
     @GetMapping("/role/user/removeUser")
-//    @PreAuthorize("@saAuth.checkPermission('system:role:user:delete')")
+    @PreAuthorize("@saAuth.checkPermission('system:role:user:delete')")
     public ResponseDTO<String> removeUser(Long userId, Long roleId) {
         return roleUserService.removeRoleUser(userId, roleId);
     }

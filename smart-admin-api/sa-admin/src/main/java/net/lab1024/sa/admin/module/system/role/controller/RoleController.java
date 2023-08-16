@@ -29,14 +29,14 @@ public class RoleController extends AdminBaseController {
 
     @ApiOperation("Add role")
     @PostMapping("/role/add")
-//    @PreAuthorize("@saAuth.checkPermission('system:role:add')")
+    @PreAuthorize("@saAuth.checkPermission('system:role:add')")
     public ResponseDTO addRole(@Valid @RequestBody RoleAddForm roleAddForm) {
         return roleService.addRole(roleAddForm);
     }
 
     @ApiOperation("Delete role")
     @GetMapping("/role/delete/{roleId}")
-//    @PreAuthorize("@saAuth.checkPermission('system:role:delete')")
+    @PreAuthorize("@saAuth.checkPermission('system:role:delete')")
     public ResponseDTO<String> deleteRole(@PathVariable Long roleId) {
         return roleService.deleteRole(roleId);
     }

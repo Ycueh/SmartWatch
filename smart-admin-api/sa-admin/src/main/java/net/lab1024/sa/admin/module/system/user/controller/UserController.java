@@ -11,6 +11,7 @@ import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartRequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,28 +36,28 @@ public class UserController extends AdminBaseController {
 
     @ApiOperation(value = "Add User")
     @PostMapping("/user/add")
-//    @PreAuthorize("@saAuth.checkPermission('system:User:add')")
+    @PreAuthorize("@saAuth.checkPermission('system:User:add')")
     public ResponseDTO<String> addUser(@Valid @RequestBody UserAddForm userAddForm) {
         return userService.addUser(userAddForm);
     }
 
     @ApiOperation(value = "Update User")
     @PostMapping("/user/update")
-//    @PreAuthorize("@saAuth.checkPermission('system:user:update')")
+    @PreAuthorize("@saAuth.checkPermission('system:user:update')")
     public ResponseDTO<String> updateUser(@Valid @RequestBody UserUpdateForm userUpdateForm) {
         return userService.updateUser(userUpdateForm);
     }
 
     @ApiOperation(value = "Disable user")
     @GetMapping("/user/update/disabled/{userId}")
-//    @PreAuthorize("@saAuth.checkPermission('system:user:disabled')")
+    @PreAuthorize("@saAuth.checkPermission('system:user:disabled')")
     public ResponseDTO<String> updateDisableFlag(@PathVariable Long userId) {
         return userService.updateDisableFlag(userId);
     }
 
     @ApiOperation(value = "BatchDelete user")
     @PostMapping("/user/update/batch/delete")
-//    @PreAuthorize("@saAuth.checkPermission('system:user:delete')")
+    @PreAuthorize("@saAuth.checkPermission('system:user:delete')")
     public ResponseDTO<String> batchUpdateDeleteFlag(@RequestBody List<Long> userIdList) {
         return userService.batchUpdateDeleteFlag(userIdList);
     }
@@ -70,7 +71,7 @@ public class UserController extends AdminBaseController {
 
     @ApiOperation(value = "Reset password")
     @GetMapping("/user/update/password/reset/{userId}")
-//    @PreAuthorize("@saAuth.checkPermission('system:user:password:reset')")
+    @PreAuthorize("@saAuth.checkPermission('system:user:password:reset')")
     public ResponseDTO<String> resetPassword(@PathVariable Integer userId) {
         return userService.resetPassword(userId);
     }
