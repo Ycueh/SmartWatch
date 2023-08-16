@@ -25,10 +25,10 @@ public interface UserDao extends BaseMapper<UserEntity> {
      * @param queryForm
      * @return
      */
-    List<UserVO> queryUser(Page page, @Param("queryForm") UserQueryForm queryForm, @Param("departmentIdList") List<Long> departmentIdList);
+    List<UserVO> queryUser(Page page, @Param("queryForm") UserQueryForm queryForm);
 
     /**
-     * Quey User
+     * Query User by disabled and deleted flag
      */
     List<UserVO> selectUserByDisabledAndDeleted(@Param("disabledFlag") Boolean disabledFlag, @Param("deletedFlag") Boolean deletedFlag);
 

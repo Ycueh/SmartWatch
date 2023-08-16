@@ -62,9 +62,8 @@ public class UserService {
         userQueryForm.setDeletedFlag(false);
         Page pageParam = SmartPageUtil.convert2PageQuery(userQueryForm);
 
-        List<Long> departmentIdList = new ArrayList<>();
 
-        List<UserVO> userList = userDao.queryUser(pageParam, userQueryForm, departmentIdList);
+        List<UserVO> userList = userDao.queryUser(pageParam, userQueryForm);
         if (CollectionUtils.isEmpty(userList)) {
             PageResult<UserVO> PageResult = SmartPageUtil.convert2PageResult(pageParam, userList);
             return ResponseDTO.ok(PageResult);

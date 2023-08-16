@@ -76,7 +76,7 @@ public class UserController extends AdminBaseController {
         return userService.resetPassword(userId);
     }
 
-    @ApiOperation("Query all the users")
+    @ApiOperation("Query all the users by disabled flag")
     @GetMapping("/user/queryAll")
     public ResponseDTO<List<UserVO>> queryAllUser(@RequestParam(value = "disabledFlag", required = false) Boolean disabledFlag) {
         return userService.queryAllUser(disabledFlag);

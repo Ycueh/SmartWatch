@@ -131,3 +131,7 @@
 [16/Aug/2023:18:55:28 +0100] - 0:0:0:0:0:0:0:1 "GET /swagger-resources HTTP/1.1" 200 5 (5 ms)
 [16/Aug/2023:18:55:28 +0100] - 0:0:0:0:0:0:0:1 "GET /v2/api-docs?group=Business HTTP/1.1" 200 90 (90 ms)
 [16/Aug/2023:18:55:28 +0100] - 0:0:0:0:0:0:0:1 "GET /swagger-resources/configuration/security HTTP/1.1" 200 5 (5 ms)
+[16/Aug/2023:22:07:30 +0100] - 0:0:0:0:0:0:0:1 "POST /login HTTP/1.1" 200 770 (770 ms)
+[16/Aug/2023:22:07:59 +0100] - 0:0:0:0:0:0:0:1 "POST /user/query HTTP/1.1" 200 33 (33 ms)
+[16/Aug/2023:22:08:35 +0100] - 0:0:0:0:0:0:0:1 "POST /user/query HTTP/1.1" 200 33 (33 ms)
+[16/Aug/2023:22:11:01 +0100] - 0:0:0:0:0:0:0:1 "POST /user/query HTTP/1.1" 200 56 (56 ms)
