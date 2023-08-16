@@ -76,8 +76,8 @@ class LoginActivity : Activity() {
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
 //    var ip = "10.52.136.67"
-    var ip = "10.0.2.2"
-
+//    var ip = "10.0.2.2"
+    var ip = "47.110.226.70"
     private val baseUrl = "http://$ip:1024/"
     private val networkManager = NetworkManager(baseUrl)
 
@@ -119,7 +119,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var ip = "10.0.2.2"
+            var ip = "47.110.226.70"
+//            var ip = "10.0.2.2"
             //ipv4 address
 //            var ip = "10.52.136.67"
             val baseUrl = "http://$ip:1024/"
@@ -207,7 +208,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                         downloadState.value = null
                         bindDownloadFile(networkManager, token) { state ->
                             downloadState.value = state // 更新上传状态
-                            Log.d("testUpload", "$state")
+                            Log.d("testDownload", "$state")
                         }
                     } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -215,7 +216,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                         downloadState.value = null
                         bindDownloadFile(networkManager, token) { state ->
                             downloadState.value = state // 更新上传状态
-                            Log.d("testUpload", "$state")
+                            Log.d("testDownload", "$state")
                         }
                     } else {
                         // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
@@ -347,72 +348,3 @@ private fun logout(networkManager: NetworkManager, token: String,context:Context
         } )
     // 结束当前Activity并启动LoginActivity
 }
-
-
-//@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
-//@Composable
-//fun DefaultPreview() {
-//    WearApp("Preview Android")
-//}
-//@Composable
-//fun LoginScreen(
-//    networkManager: NetworkManager,
-//    onLoginSuccess: (token: String) -> Unit,  // 修改这里
-//    onLoginError: (error: Throwable) -> Unit
-//) {
-//    val loginName = remember { mutableStateOf("") }
-//    val password = remember { mutableStateOf("") }
-//    val context = LocalContext.current
-//
-//    // 添加这部分代码
-//    val focusRequester = remember { FocusRequester() }
-//
-//    Column(
-//        verticalArrangement = Arrangement.Center,
-//        horizontalAlignment = Alignment.CenterHorizontally,
-//        modifier = Modifier
-//            .fillMaxSize()  // 填充整个屏幕
-//            .clickable { focusRequester.freeFocus() }  // 当在Column外部点击时，释放焦点
-//    ) {
-//        Spacer(modifier = Modifier.height(15.dp))  // 在这里增加额外的空间
-//
-//        Box(modifier = Modifier.width(150.dp)) { // 设置宽度以匹配你的 TextField
-//            TextField(
-//                value = loginName.value,
-//                onValueChange = { loginName.value = it },
-//                label = { }, // 留空的 label
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .focusRequester(focusRequester)
-//            )
-//            Text(
-//                text = "Account",
-//                modifier = Modifier.padding(start = 30.dp)  // 根据需要调整此值来右移标签
-//            )
-//        }
-//        TextField(
-//            value = password.value,
-//            onValueChange = { password.value = it },
-//            label = { Text("Password") },
-//            visualTransformation = PasswordVisualTransformation(),
-//            modifier = Modifier.focusRequester(focusRequester)  // 为另一个TextField添加同一个focusRequester
-//        )
-//        Spacer(modifier = Modifier.height(10.dp))
-//        Button(onClick = {
-//            // 在点击登录按钮时释放焦点
-//            focusRequester.freeFocus()
-//
-//            networkManager.login(loginName.value, password.value,
-//                successCallback = { token ->
-//                    onLoginSuccess(token)  // 在这里处理token
-//                },
-//                errorCallback = { error ->
-//                    Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
-//                    onLoginError(error)
-//                }
-//            )
-//        }) {
-//            Text("Login")
-//        }
-//    }
-//}

@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.*;
 
 @RestController
-@CrossOrigin
 @Api(tags = {AdminSwaggerTagConst.Business.SW_FILE})
 public class FileController {
     String filePath = "database"+File.separator+"smart_admin_v2.db";
