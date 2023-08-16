@@ -24,7 +24,11 @@
       </a-form-item>
 
       <a-form-item label="gender" name="gender">
-        <a-input v-model:value="form.gender" placeholder="Please enter gender" />
+        <a-select v-model:value="form.gender" placeholder="Please enter gender">
+          <a-select-option :value="0">male</a-select-option>
+          <a-select-option :value="1">female</a-select-option>
+        </a-select>
+        <!-- <a-input v-model:value="form.gender" placeholder="Please enter gender" /> -->
       </a-form-item>
       <a-form-item label="disabledFlag" name="disabledFlag">
         <a-input v-model:value="form.disabledFlag" placeholder="Please enter disabledFlag" />
@@ -35,9 +39,7 @@
       <a-form-item label="createTime" name="createTime">
         <a-input v-model:value="form.createTime" placeholder="Please enter createTime" />
       </a-form-item>
-      <a-form-item label="roleIdList" name="roleIdList">
-        <a-input v-model:value="form.roleIdList" placeholder="Please enter roleIdList" />
-      </a-form-item>
+      
       <a-form-item label="roleNameList" name="roleNameList">
         <a-input v-model:value="form.roleNameList" placeholder="Please enter roleNameList" />
       </a-form-item>
