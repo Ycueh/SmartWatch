@@ -35,8 +35,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.SnackbarDefaults
 import androidx.compose.material.TextField
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.Scaffold
+import androidx.compose.material.ScaffoldState
+import androidx.compose.material.SnackbarHost
+import androidx.compose.material.SnackbarResult
+
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -45,6 +52,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -67,9 +75,8 @@ class LoginActivity : Activity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
-    //var ip = "10.52.136.67"
-//    var ip = "10.0.2.2"
-    var ip ="47.110.226.70"
+//    var ip = "10.52.136.67"
+    var ip = "10.0.2.2"
 
     private val baseUrl = "http://$ip:1024/"
     private val networkManager = NetworkManager(baseUrl)
@@ -112,16 +119,15 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-//            var ip = "10.0.2.2"
+            var ip = "10.0.2.2"
             //ipv4 address
-            var ip ="47.110.226.70"
 //            var ip = "10.52.136.67"
             val baseUrl = "http://$ip:1024/"
             val networkManager = NetworkManager(baseUrl)
             val token = intent.getStringExtra("TOKEN")
             if (token != null) {
                 //Upload Download function
-                WearApp("Android", networkManager, token)
+                WearApp(networkManager, token)
             }else{
                 Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginActivity::class.java)
@@ -141,11 +147,11 @@ fun requestFileAccessPermission(context: Context) {
 }
 //
 @Composable
-fun WearApp(greetingName: String, networkManager: NetworkManager, token: String) {
+fun WearApp(networkManager: NetworkManager, token: String) {
     val context = LocalContext.current
-    val scaffoldState = rememberScaffoldState() // 记录 Scaffold 状态
     val uploadState = remember { mutableStateOf<UploadState?>(null) } // 记录上传状态
     val downloadState = remember { mutableStateOf<DownloadState?>(null) } // 记录下载状态
+
 //    val requestPermissionLauncher =
 //        rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
 //            if (isGranted) {
@@ -157,109 +163,118 @@ fun WearApp(greetingName: String, networkManager: NetworkManager, token: String)
 //            }
 //        }
 
-
-
-SmartWatchTheme {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colors.background),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Button(
-            onClick = {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
-                    // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
-                    bindUploadFile(networkManager, token) { state ->
-                        uploadState.value = state // 更新上传状态
-                        Log.d("testUpload", "$state")
+    SmartWatchTheme {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colors.background),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
+                        // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
+                        uploadState.value = null
+                        bindUploadFile(networkManager, token) { state ->
+                            uploadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                        ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
+                        uploadState.value = null
+                        bindUploadFile(networkManager, token) { state ->
+                            uploadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else {
+                        // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
+                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
                     }
-                } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
-                    ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
-                    bindUploadFile(networkManager, token) { state ->
-                        uploadState.value = state // 更新上传状态
-                        Log.d("testUpload", "$state")
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(text = "Upload")
+            }
+
+            Button(
+                onClick = {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
+                        // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
+                        downloadState.value = null
+                        bindDownloadFile(networkManager, token) { state ->
+                            downloadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
+                        ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
+                        downloadState.value = null
+                        bindDownloadFile(networkManager, token) { state ->
+                            downloadState.value = state // 更新上传状态
+                            Log.d("testUpload", "$state")
+                        }
+                    } else {
+                        // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
+                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
                     }
-                } else {
-                    // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
-                    requestFileAccessPermission(context)  // 这里调用请求权限的函数
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(text = "Download")
+            }
+            Button(
+                onClick = {
+                    logout(networkManager,token,context)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp)
+            ) {
+                Text(text = "Logout")
+            }
+
+        }
+    }
+
+    // 监听上传和下载状态变化，并显示对应的 Snackbar
+    LaunchedEffect(uploadState.value) {
+        uploadState.value?.let { state ->
+            when (state) {
+                is UploadState.Success -> {
+                    Toast.makeText(context, "Upload successfully", Toast.LENGTH_SHORT).show()
                 }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        ) {
-            Text(text = "Upload")
-        }
 
-        Button(
-            onClick = {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
-                    // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
-                    bindDownloadFile(networkManager, token) { state ->
-                        downloadState.value = state // 更新上传状态
-                        Log.d("testUpload", "$state")
-                    }
-                } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
-                    ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                    // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
-                    bindDownloadFile(networkManager, token) { state ->
-                        downloadState.value = state // 更新上传状态
-                        Log.d("testUpload", "$state")
-                    }
-                } else {
-                    // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
-                    requestFileAccessPermission(context)  // 这里调用请求权限的函数
-                }
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        ) {
-            Text(text = "Download")
-        }
-        Button(
-            onClick = {
-                logout(networkManager,token,context)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(8.dp)
-        ) {
-            Text(text = "Logout")
-        }
-
-        // 监听上传和下载状态变化，并显示对应的 Snackbar
-        LaunchedEffect(uploadState.value) {
-            uploadState.value?.let { state ->
-                when (state) {
-                    is UploadState.Success -> {
-                        scaffoldState.snackbarHostState.showSnackbar("Upload successful")
-                    }
-                    is UploadState.Failure -> {
-                        scaffoldState.snackbarHostState.showSnackbar("Upload failed: ${state.error.message}")
-                    }
+                is UploadState.Failure -> {
+                    Toast.makeText(context, "Upload failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
-        LaunchedEffect(downloadState.value) {
-            downloadState.value?.let { state ->
-                when (state) {
-                    is DownloadState.Success -> {
-                        scaffoldState.snackbarHostState.showSnackbar("Download successful")
-                    }
-                    is DownloadState.Failure -> {
-                        scaffoldState.snackbarHostState.showSnackbar("Download failed: ${state.error.message}")
-                    }
+    }
+
+    LaunchedEffect(downloadState.value) {
+        downloadState.value?.let { state ->
+            when (state) {
+                is DownloadState.Success -> {
+                    Toast.makeText(context, "Download successfully", Toast.LENGTH_SHORT).show()
+                }
+
+                is DownloadState.Failure -> {
+                    Toast.makeText(context, "Download failed", Toast.LENGTH_SHORT).show()
                 }
             }
         }
     }
 }
-}
+
+
+
 
 // 定义上传状态
 sealed class UploadState {
@@ -333,15 +348,6 @@ private fun logout(networkManager: NetworkManager, token: String,context:Context
     // 结束当前Activity并启动LoginActivity
 }
 
-@Composable
-fun Greeting(greetingName: String) {
-    Text(
-        modifier = Modifier.fillMaxWidth(),
-        textAlign = TextAlign.Center,
-        color = MaterialTheme.colors.primary,
-        text = stringResource(R.string.hello_world, greetingName)
-    )
-}
 
 //@Preview(device = Devices.WEAR_OS_SMALL_ROUND, showSystemUi = true)
 //@Composable
