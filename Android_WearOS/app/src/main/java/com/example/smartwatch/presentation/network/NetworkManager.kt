@@ -167,7 +167,7 @@ class NetworkManager(private val baseUrl: String) {
         successCallback: (Boolean) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
-        fileService.downloadFile(token).enqueue(object : Callback<ResponseBody> {
+         fileService.downloadFile(token).enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if (response.isSuccessful) {
                     val responseBody = response.body()

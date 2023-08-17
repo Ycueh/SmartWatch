@@ -79,19 +79,6 @@
     </select>
 
 
-    <select id="selectByDepartmentId"
-            resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
-        SELECT *
-        FROM t_user
-        <where>
-            department_id = #{departmentId}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
-            </if>
-        </where>
-        ORDER BY create_time DESC
-    </select>
-
     <select id="selectByActualName"
             resultType="net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity">
         SELECT * FROM t_user
@@ -105,21 +92,6 @@
                 AND disabled_flag = #{disabledFlag}
             </if>
         </where>
-    </select>
-
-    <select id="getUserIdByDepartmentIdList" resultType="java.lang.Long">
-        SELECT user_id
-        FROM t_user
-        <where>
-            department_id IN
-            <foreach collection="departmentIds" item="item" open="(" close=")" separator=",">
-                #{item}
-            </foreach>
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
-            </if>
-        </where>
-        ORDER BY create_time DESC
     </select>
 
 

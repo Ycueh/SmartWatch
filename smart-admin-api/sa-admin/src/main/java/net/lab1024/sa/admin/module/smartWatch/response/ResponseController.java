@@ -30,7 +30,7 @@ public class ResponseController {
 
     @ApiOperation("Add response")
     @PostMapping("/response/add")
-   // @PreAuthorize("@saAuth.checkPermis//sion('goods:add')")
+   // @PreAuthorize("@saAuth.checkPermission('goods:add')")
     public ResponseDTO<String> add(@RequestBody @Valid ResponseAddForm addForm) {
         return resService.add(addForm);
     }

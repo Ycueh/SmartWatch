@@ -11,13 +11,13 @@ import retrofit2.http.Part
 
 interface FileService {
     @Multipart
-    @POST("/file/upload")
+    @POST("/smart-admin-api/file/upload")
     fun uploadFile(
         @Header("x-access-token") token: String,
         @Part filePart: MultipartBody.Part
     ): Call<Void>
 
-    @GET("/file/download")
+    @GET("/smart-admin-api/file/download")
     fun downloadFile(
         @Header("x-access-token") token: String
     ): Call<ResponseBody>
