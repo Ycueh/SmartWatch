@@ -32,11 +32,11 @@ public class FileController {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            try {
-                fileService.resetDatabase();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                fileService.resetDatabase();
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
             return ResponseEntity.ok()
                     // Content-Disposition
                     .header("Content-Disposition", "attachment;filename=" + filename)

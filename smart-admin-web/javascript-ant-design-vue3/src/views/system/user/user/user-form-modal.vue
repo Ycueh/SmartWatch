@@ -6,19 +6,9 @@
       <a-form-item label="login_name" name="login_name">
         <a-input v-model:value="form.login_name" placeholder="Please enter login_name" />
       </a-form-item>
-<!--      <a-form-item label="login_pwdID" name="login_pwdId">-->
-<!--        <a-input v-model:value="form.login_pwdId" placeholder="Please enter login_pwdID" />-->
-<!--      </a-form-item>-->
-  
-<!--      <a-form-item label="actual_nameID" name="actual_nameId">-->
-<!--        <a-input v-model:value="form.actual_nameId" placeholder="Please enter actual_nameID" />-->
-<!--      </a-form-item>-->
       <a-form-item label="actual_name" name="actual_name">
         <a-input v-model:value="form.actual_name" placeholder="Please enter actual_name" />
       </a-form-item>
-<!--      <a-form-item label="phoneID" name="phoneId">-->
-<!--        <a-input v-model:value="form.phoneId" placeholder="Please enter phoneID" />-->
-<!--      </a-form-item>-->
       <a-form-item label="phone" name="phone">
         <a-input v-model:value="form.phone" placeholder="Please enter phone" />
       </a-form-item>

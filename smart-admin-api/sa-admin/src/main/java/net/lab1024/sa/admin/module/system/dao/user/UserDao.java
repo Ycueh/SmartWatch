@@ -74,35 +74,7 @@ public interface UserDao extends BaseMapper<UserEntity> {
     UserEntity getByPhone(@Param("phone") String phone, @Param("disabledFlag") Boolean disabledFlag);
 
     /**
-     * Query all the users
-     *
-     * @return
-     */
-    List<UserVO> listAll();
-
-    List<UserVO> getUserByIds(@Param("userIds") Collection<Long> userIds);
-
-
-    /**
-     * Query one user info
-     *
-     * @param userId
-     * @return
-     */
-    UserVO getUserById(@Param("userId") Long userId);
-
-
-    /**
-     * 获取所有
-     *
-     * @param leaveFlag
-     * @param disabledFlag
-     * @return
-     */
-    List<Long> getUserId(@Param("leaveFlag") Boolean leaveFlag, @Param("disabledFlag") Boolean disabledFlag);
-
-    /**
-     * 员工重置密码
+     * Reset password
      *
      * @param userId
      * @param password
