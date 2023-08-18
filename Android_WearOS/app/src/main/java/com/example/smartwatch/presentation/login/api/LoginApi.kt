@@ -13,13 +13,14 @@ import retrofit2.http.POST
 
 
 interface LoginApi {
-    @POST("/smart-admin-api/login/Watch")
+    @POST("/login/Watch")
     fun loginUser(@Body loginForm: LoginForm?): Call<ResponseDTO<String>>
 
-    @GET("/smart-admin-api/login/getCaptcha")
+    @GET("/login/getCaptcha")
     fun getCaptcha(): Call<ResponseDTO<CaptchaVO>>
 
-    @GET("/smart-admin-api/login/logout")
+//    @GET("/smart-admin-api/login/logout")
+@GET("/login/logout")
     fun logOut(
         @Header("x-access-token") token: String
     ):  Call<ResponseDTO<String>>

@@ -11,9 +11,8 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 15/08/2023 12:32:24
+ Date: 18/08/2023 12:42:59
 */
-
 DROP DATABASE IF EXISTS `smart_admin_v2`;
 CREATE DATABASE IF NOT EXISTS `smart_admin_v2`;
 USE `smart_admin_v2`;
@@ -139,7 +138,7 @@ CREATE TABLE `response`  (
   `question` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   `response` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL,
   PRIMARY KEY (`_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of response
@@ -176,7 +175,7 @@ CREATE TABLE `t_data_tracer`  (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`data_tracer_id`) USING BTREE,
   INDEX `order_id_order_type`(`data_id`, `type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_data_tracer
@@ -241,7 +240,7 @@ CREATE TABLE `t_menu`  (
 INSERT INTO `t_menu` VALUES (26, '菜单管理', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 0, 0, 0, 2, '2021-08-09 15:04:35', 1, '2023-08-07 16:32:51');
 INSERT INTO `t_menu` VALUES (40, '批量删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:batch:delete', NULL, 26, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 09:45:56', 1, '2023-08-07 16:32:53');
 INSERT INTO `t_menu` VALUES (45, 'User management', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:13:27', 44, '2023-08-08 14:52:09');
-INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/user', '/system/user/user/user-list.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-08 14:52:04');
+INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/user/user-list', '/system/user/user/user-list/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-17 21:10:13');
 INSERT INTO `t_menu` VALUES (76, 'Role', 2, 45, 2, '/user/role', '/system/user/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2023-08-08 12:36:05');
 INSERT INTO `t_menu` VALUES (91, 'Add user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:11:38', NULL, '2023-08-08 14:52:32');
 INSERT INTO `t_menu` VALUES (92, 'Edit user', 3, 46, NULL, NULL, NULL, 1, NULL, 'system:user:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:12:10', NULL, '2023-08-08 14:52:37');
@@ -289,12 +288,11 @@ CREATE TABLE `t_role`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 37 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES (1, '技术总监', '', '2022-10-19 20:24:09', '2019-06-21 12:09:34');
 INSERT INTO `t_role` VALUES (34, '销售总监', '', '2022-10-19 20:24:28', '2019-08-30 09:30:50');
 INSERT INTO `t_role` VALUES (35, '总经理', '', '2019-08-30 09:31:05', '2019-08-30 09:31:05');
 INSERT INTO `t_role` VALUES (36, '董事长', '', '2019-08-30 09:31:11', '2019-08-30 09:31:11');
@@ -318,40 +316,6 @@ CREATE TABLE `t_role_menu`  (
 -- ----------------------------
 -- Records of t_role_menu
 -- ----------------------------
-INSERT INTO `t_role_menu` VALUES (1, 1, 45, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (2, 1, 46, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (3, 1, 86, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (4, 1, 87, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (5, 1, 88, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (6, 1, 91, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (7, 1, 92, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (8, 1, 93, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (9, 1, 94, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (10, 1, 95, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (11, 1, 96, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (12, 1, 76, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (13, 1, 97, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (14, 1, 98, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (15, 1, 99, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (16, 1, 100, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (17, 1, 101, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (18, 1, 102, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (19, 1, 103, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (20, 1, 104, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (21, 1, 26, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (22, 1, 40, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (23, 1, 105, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (24, 1, 106, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (25, 1, 108, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (26, 1, 50, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (27, 1, 130, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (28, 1, 157, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (29, 1, 158, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (30, 1, 193, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (31, 1, 200, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (32, 1, 122, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (33, 1, 111, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
-INSERT INTO `t_role_menu` VALUES (34, 1, 143, '2022-10-22 10:54:27', '2022-10-22 10:54:27');
 
 -- ----------------------------
 -- Table structure for t_role_user
@@ -371,7 +335,6 @@ CREATE TABLE `t_role_user`  (
 -- Records of t_role_user
 -- ----------------------------
 INSERT INTO `t_role_user` VALUES (325, 36, 63, '2022-10-19 20:25:26', '2022-10-19 20:25:26');
-INSERT INTO `t_role_user` VALUES (326, 1, 44, '2022-10-22 10:54:35', '2022-10-22 10:54:35');
 
 -- ----------------------------
 -- Table structure for t_table_column
@@ -424,22 +387,27 @@ INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '
 INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
 INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
 INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
-INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 1, 0, 0, 0, NULL, '2022-09-15 16:51:09', '2022-06-16 17:24:18');
-INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, 0, NULL, '2022-09-15 16:51:19', '2022-06-16 17:24:56');
-INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 1, 0, 0, 0, NULL, '2022-09-17 15:42:42', '2022-06-16 17:28:32');
-INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 1, 0, 0, 0, NULL, '2022-09-15 16:51:43', '2022-06-16 17:30:17');
+INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 1, 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:18');
+INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:56');
+INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 1, 0, 1, 0, NULL, '2023-08-18 00:53:14', '2022-06-16 17:28:32');
+INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 1, 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:30:17');
 INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 1, 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
 
-SET FOREIGN_KEY_CHECKS = 1;
--- -----------------------------
+-- ----------------------------
 -- Table structure for t_user_db
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user_db`;
 CREATE TABLE `t_user_db`  (
-`id` bigint NOT NULL AUTO_INCREMENT,
-`user_id` bigint NOT NULL COMMENT '用户id',
-`file` varchar(255) NOT NULL  COMMENT '用户文件名',
-`file_data` longblob NOT NULL  COMMENT '用户数据库数据',
-PRIMARY KEY (`id`) USING BTREE,
-UNIQUE INDEX `user_id`( `user_id`) USING BTREE
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `user_id` bigint NOT NULL COMMENT '用户id',
+  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户文件名',
+  `file_data` longblob NOT NULL COMMENT '用户数据库数据',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `user_id`(`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '多用户数据库' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_user_db
+-- ----------------------------
+
+SET FOREIGN_KEY_CHECKS = 1;

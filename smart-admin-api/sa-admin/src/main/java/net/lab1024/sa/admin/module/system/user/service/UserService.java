@@ -103,7 +103,7 @@ public class UserService {
 
         // Save the data
         entity.setDeletedFlag(Boolean.FALSE);
-        userManager.saveUser(entity);
+        userManager.saveUser(entity,userAddForm.getRoleIdList());
         //TODO Add a default database file
         MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
         multiUserAddForm.setUser_id(null);
@@ -145,7 +145,7 @@ public class UserService {
         UserEntity entity = SmartBeanUtil.copy(userUpdateForm, UserEntity.class);
         entity.setLoginPwd(null);
 
-        userManager.updateUser(entity);
+        userManager.updateUser(entity,userUpdateForm.getRoleIdList());
 
         return ResponseDTO.ok();
     }

@@ -200,7 +200,4 @@ class NetworkManager(private val baseUrl: String) {
             false
         }
     }
-
-
-
 }
