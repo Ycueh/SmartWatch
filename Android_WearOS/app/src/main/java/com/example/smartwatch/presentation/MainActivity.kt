@@ -75,7 +75,7 @@ class LoginActivity : Activity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
-//   var ip = "172.31.27.128"
+    //   var ip = "172.31.27.128"
     var ip = "10.0.2.2"
     //var ip = "47.110.226.70"
     private val baseUrl = "http://$ip:1024/"
@@ -119,7 +119,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-       //     var ip = "47.110.226.70"
+            //     var ip = "47.110.226.70"
             var ip = "10.0.2.2"
             //ipv4 address
 //            var ip = "172.31.27.128"
@@ -177,7 +177,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
                         // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
                         uploadState.value = null
-                        bindUploadFile(networkManager, token) { state ->
+                        bindUploadFile(networkManager, token,context) { state ->
                             uploadState.value = state // 更新上传状态
                             Log.d("testUpload", "$state")
                         }
@@ -185,7 +185,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                         // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                         uploadState.value = null
-                        bindUploadFile(networkManager, token) { state ->
+                        bindUploadFile(networkManager, token,context) { state ->
                             uploadState.value = state // 更新上传状态
                             Log.d("testUpload", "$state")
                         }
@@ -206,7 +206,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
                         // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
                         downloadState.value = null
-                        bindDownloadFile(networkManager, token) { state ->
+                        bindDownloadFile(networkManager, token,context) { state ->
                             downloadState.value = state // 更新上传状态
                             Log.d("testDownload", "$state")
                         }
@@ -214,7 +214,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                         // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                         downloadState.value = null
-                        bindDownloadFile(networkManager, token) { state ->
+                        bindDownloadFile(networkManager, token, context) { state ->
                             downloadState.value = state // 更新上传状态
                             Log.d("testDownload", "$state")
                         }
@@ -289,7 +289,7 @@ sealed class DownloadState {
     data class Failure(val error: Throwable) : DownloadState()
 }
 
-private fun bindUploadFile(networkManager: NetworkManager, token: String, onUploadStateChange: (UploadState) -> Unit) {
+private fun bindUploadFile(networkManager: NetworkManager, token: String, context: Context, onUploadStateChange: (UploadState) -> Unit) {
 //    val dbFilePath = "android.resource://${context.packageName}/raw/your_db_file_name"
 
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
@@ -298,13 +298,17 @@ private fun bindUploadFile(networkManager: NetworkManager, token: String, onUplo
         successCallback = {
             onUploadStateChange(UploadState.Success)
         },
-        errorCallback = { error ->
+        errorCallback = { error,errorCode->
+            if (errorCode == 30007) {
+                Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+                navigateToLogin(context)
+            }
             onUploadStateChange(UploadState.Failure(error))
         }
     )
 }
 
-private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDownloadStateChange: (DownloadState) -> Unit) {
+private fun bindDownloadFile(networkManager: NetworkManager, token: String,context: Context, onDownloadStateChange: (DownloadState) -> Unit) {
 //    val targetFilePath = applicationContext.filesDir.absolutePath + File.separator + "downloaded_database.db"
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
     // List of files to delete
@@ -327,10 +331,24 @@ private fun bindDownloadFile(networkManager: NetworkManager, token: String, onDo
                 onDownloadStateChange(DownloadState.Failure(Throwable("Download failed")))
             }
         },
-        errorCallback = { error ->
+        errorCallback = { error, errorCode ->
+            if (errorCode == 30007) {
+                Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+                navigateToLogin(context)
+            }
             onDownloadStateChange(DownloadState.Failure(error))
         }
     )
+}
+
+private fun navigateToLogin(context: Context) {
+    val intent = Intent(context, LoginActivity::class.java)
+    context.startActivity(intent)
+
+    // Optionally, if the context is an Activity and you want to finish it:
+    if (context is Activity) {
+        context.finish()
+    }
 }
 
 private fun logout(networkManager: NetworkManager, token: String,context:Context){
@@ -345,6 +363,9 @@ private fun logout(networkManager: NetworkManager, token: String,context:Context
         errorCallback = { error ->
             // 显示错误信息
             Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
+            val intent = Intent(context, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            context.startActivity(intent)
         } )
     // 结束当前Activity并启动LoginActivity
 }

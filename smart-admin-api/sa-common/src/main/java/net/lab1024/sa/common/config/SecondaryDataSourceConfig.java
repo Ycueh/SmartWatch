@@ -115,7 +115,7 @@ public class SecondaryDataSourceConfig {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
         factoryBean.setDataSource(secondaryDataSource());
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        Resource[] resources = resolver.getResources("classpath*:/mapper/**/*.xml");
+        Resource[] resources = resolver.getResources("classpath*:/mapper/business/smartwatch/*.xml");
         factoryBean.setMapperLocations(resources);
 
         // 设置 MyBatis-Plus 分页插件 注意此处myBatisPlugin一定要放在后面

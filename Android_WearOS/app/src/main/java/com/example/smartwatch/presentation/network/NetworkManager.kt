@@ -140,22 +140,46 @@ class NetworkManager(private val baseUrl: String) {
         })
     }
 
-    fun uploadDbFile(filePath: String, token: String, successCallback: () -> Unit, errorCallback: (Throwable) -> Unit) {
+    fun uploadDbFile(filePath: String,
+                     token: String,
+                     successCallback: (String) -> Unit,
+                     errorCallback: (Throwable,Int?) -> Unit) {
         val file = File(filePath)
         val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
 
-        fileService.uploadFile(token, body).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+        fileService.uploadFile(token, body).enqueue(object : Callback<ResponseDTO<String>> {
+            override fun onResponse(call: Call<ResponseDTO<String>>, response: Response<ResponseDTO<String>>) {
                 if (response.isSuccessful) {
-                    successCallback.invoke()
+                    val code = response.body()?.code
+                    when (response.body()?.ok) {
+                        true -> {
+                            // Handle the case where ok is true
+                            response.body()?.msg?.let { message ->
+                                successCallback(message)
+                            } ?: run {
+                                errorCallback(Throwable("Message is null"),code)
+                            }
+                        }
+                        false -> {
+                            val errorMessage = response.body()?.msg ?: "Upload failed"
+                            val errorCode = response.body()?.code
+                            errorCallback.invoke(Throwable(errorMessage), errorCode)
+                        }
+                        else -> {
+                            // Handle the case where ok or the body is null
+                            errorCallback(Throwable("Upload failed"),code)
+                        }
+                    }
                 } else {
-                    errorCallback.invoke(Throwable("Upload failed"))
+                    val code = response.body()?.code
+                    val msg = response.body()?.msg
+                    errorCallback(Throwable(msg),code)
                 }
             }
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                errorCallback.invoke(t)
+            override fun onFailure(call: Call<ResponseDTO<String>>, t: Throwable) {
+                errorCallback.invoke(t,null)
             }
         })
     }
@@ -165,29 +189,34 @@ class NetworkManager(private val baseUrl: String) {
         targetFilePath: String,
         token: String,
         successCallback: (Boolean) -> Unit,
-        errorCallback: (Throwable) -> Unit
+        errorCallback: (Throwable, Int?) -> Unit
     ) {
-        fileService.downloadFile(token).enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+        fileService.downloadFile(token).enqueue(object : Callback<ResponseDTO<ResponseBody>> {
+            override fun onResponse(call: Call<ResponseDTO<ResponseBody>>, response: Response<ResponseDTO<ResponseBody>>) {
                 if (response.isSuccessful) {
-                    val responseBody = response.body()
-                    if (responseBody != null) {
-                        val dbByteArray = responseBody.bytes()
+                    val responseBodyDTO = response.body()
+                    if (responseBodyDTO?.ok == true && responseBodyDTO.data != null) {
+                        val dbByteArray = responseBodyDTO.data.bytes()
                         val success = saveDbToFile(dbByteArray, targetFilePath)
                         successCallback.invoke(success)
                     } else {
-                        errorCallback.invoke(Throwable("Download failed"))
+                        // Extract the message and code from the ResponseDTO
+                        val errorMessage = responseBodyDTO?.msg ?: "Download failed"
+                        val errorCode = responseBodyDTO?.code
+                        errorCallback.invoke(Throwable(errorMessage), errorCode)
                     }
                 } else {
-                    errorCallback.invoke(Throwable("Download failed"))
+                    errorCallback.invoke(Throwable(response.body()?.msg), response.body()?.code)
                 }
             }
 
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                errorCallback.invoke(t)
+            override fun onFailure(call: Call<ResponseDTO<ResponseBody>>, t: Throwable) {
+                errorCallback.invoke(t, null)
             }
         })
     }
+
+
 
     private fun saveDbToFile(dbByteArray: ByteArray, targetFilePath: String): Boolean {
         return try {
