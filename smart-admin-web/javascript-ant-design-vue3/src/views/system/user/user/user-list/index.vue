@@ -78,7 +78,7 @@
               @click="resetPassword(record.userId, record.loginName)"
               >Reset password</a-button
             >
-            <a-button v-privilege="'system:user:disabled'" type="link" @click="updateDisabled(record.employeeId, record.disabledFlag)">{{
+            <a-button v-privilege="'system:user:disabled'" type="link" @click="updateDisabled(record.userId, record.disabledFlag)">{{
               record.disabledFlag ? 'Able' : 'Disable'
             }}</a-button>
           </div>
@@ -102,7 +102,7 @@
       />
 
     </div>
-    <userFormModal ref="formModal" @reloadList="queryData" />
+    <UserFormModal ref="formModal" @reloadList="queryData" />
     <UserPasswordDialog ref="userPasswordDialog" />
   </a-card>
 </template>
@@ -117,7 +117,7 @@ import {message, Modal} from "ant-design-vue";
 import UserPasswordDialog from '../user-password-dialog/index.vue';
 import {SmartLoading} from "/@/components/framework/smart-loading";
 import {PAGE_SIZE_OPTIONS} from "/@/constants/common-const";
-import userFormModal from "../user-form-modal.vue";
+import UserFormModal from "../user-form-modal/index.vue";
  // ----------------------- 以下是字段定义 emits props ---------------------
 
 
@@ -228,6 +228,12 @@ function adduser(userData) {
   formModal.value.showDrawer(userData);
 }
 
+
+
+function showDrawer(userData) {
+  adduser(userData);
+}
+
 function deleteuser(userData) {
   Modal.confirm({
     title: 'Notice',
@@ -295,5 +301,46 @@ async function singleDelete(userData) {
     SmartLoading.hide();
   }
 }
+
+
+
+
+function resetPassword(id, name) {
+    Modal.confirm({
+      title: '提醒',
+      icon: createVNode(ExclamationCircleOutlined),
+      content: '确定要重置密码吗?',
+      okText: '确定',
+      okType: 'danger',
+      async onOk() {
+        SmartLoading.show();
+        try {
+          let { data: passWord } = await userApi.resetPassword(id);
+          message.success('重置成功');
+          userPasswordDialog.value.showModal(name, passWord);
+          userApi.queryUser();
+        } catch (error) {
+          smartSentry.captureError(error);
+        } finally {
+          SmartLoading.hide();
+        }
+      },
+      cancelText: '取消',
+      onCancel() {},
+    });
+  }
+
+  // const userFormModal = ref();
+
+  // function showDrawer(rowData) {
+  //   let params = {};
+  //   if (rowData) {
+  //     params = _.cloneDeep(rowData);
+  //     params.disabledFlag = params.disabledFlag ? 1 : 0;
+  //   } 
+  //   console.log('before');
+  //   userFormModal.value.showDrawer(params);
+    
+  // }
 
 </script>

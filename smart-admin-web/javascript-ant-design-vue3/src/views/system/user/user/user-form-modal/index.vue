@@ -82,7 +82,7 @@
 
   const visible = ref(false);
 
-  function showDrawer(rowData){
+  async function showDrawer(rowData){
     Object.assign(form, formDefault);
     if (rowData && !_.isEmpty(rowData)) {
       Object.assign(form, rowData);
