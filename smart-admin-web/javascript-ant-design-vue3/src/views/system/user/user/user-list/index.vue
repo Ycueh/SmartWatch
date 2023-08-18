@@ -54,20 +54,33 @@
 
     <a-table
     :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
-        size="small"
-        :dataSource="tableData"
-        :columns="columns"
-        row-key="userId"
-        :pagination="false"
-        :loading="tableLoading"
-        bordered
+      size="small"
+      :columns="columns"
+      :data-source="tableData"
+      :pagination="false"
+      :loading="tableLoading"
+      :scroll="{ x: 1200 }"
+      row-key="userId"
+      bordered
         
     >
-      <template #bodyCell="{ record, column}">
-        <template v-if="column.dataIndex === 'action'">
+      <template #bodyCell="{ text, record, column}">
+        <template v-if="column.dataIndex === 'disabledFlag'">
+          <a-tag :color="text ? 'error' : 'processing'">{{ text ? 'Disabled' : 'Abled' }}</a-tag>
+        </template>
+        <template v-else-if="column.dataIndex === 'operate'">
           <div class="smart-table-operate">
-            <a-button @click="adduser(record)" type="link" v-privilege="'user:update'">Edit</a-button>
-            <a-button @click="deleteuser(record)" danger type="link" v-privilege="'user:delete'">Delete</a-button>
+            <a-button v-privilege="'system:user:update'" type="link" size="small" @click="showDrawer(record)">Edit</a-button>
+            <a-button
+              v-privilege="'system:user:password:reset'"
+              type="link"
+              size="small"
+              @click="resetPassword(record.userId, record.loginName)"
+              >Reset password</a-button
+            >
+            <a-button v-privilege="'system:user:disabled'" type="link" @click="updateDisabled(record.employeeId, record.disabledFlag)">{{
+              record.disabledFlag ? 'Able' : 'Disable'
+            }}</a-button>
           </div>
         </template>
       </template>
@@ -141,10 +154,6 @@ const columns = ref([
     dataIndex: 'disabledFlag',
   },
   {
-    title: 'administratorFlag',
-    dataIndex: 'administratorFlag',
-  },
-  {
     title: 'createTime',
     dataIndex: 'createTime',
   },
@@ -154,9 +163,8 @@ const columns = ref([
   },
   {
     title: 'Action',
-    dataIndex: 'action',
+    dataIndex: 'operate',
     fixed: 'right',
-    width: 100,
   },
 ]);
 
@@ -183,6 +191,9 @@ async function queryData() {
   try {
     let queryResult = await userApi.queryUser(queryForm);
     console.log(queryResult);
+    for (const item of queryResult.data.list) {
+        item.roleNameList = _.join(item.roleNameList,',');
+      }
     tableData.value = queryResult.data.list;
     total.value = queryResult.data.total;
   } catch (e) {
