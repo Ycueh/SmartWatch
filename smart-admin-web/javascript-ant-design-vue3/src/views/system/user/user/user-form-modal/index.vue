@@ -2,12 +2,12 @@
   <a-drawer :title="form.userId ? 'Update' : 'Add'" :width="500" :visible="visible" :body-style="{ paddingBottom: '80px' }" @close="onClose">
     <a-form ref="formRef" :model="form" :rules="rules" :label-col="{ span: 5 }">
 
-
-      <a-form-item label="login_name" name="login_name">
-        <a-input v-model:value="form.login_name" placeholder="Please enter login_name" />
+     
+      <a-form-item label="login_name" name="loginName">
+        <a-input v-model:value="form.loginName" placeholder="Please enter login_name" />
       </a-form-item>
-      <a-form-item label="actual_name" name="actual_name">
-        <a-input v-model:value="form.actual_name" placeholder="Please enter actual_name" />
+      <a-form-item label="actual_name" name="actualName">
+        <a-input v-model:value="form.actualName" placeholder="Please enter actual_name" />
       </a-form-item>
       <a-form-item label="phone" name="phone">
         <a-input v-model:value="form.phone" placeholder="Please enter phone" />
@@ -67,8 +67,8 @@
   const formRef = ref();
   const formDefault = {
     userId:0,
-    login_name: undefined,
-    actual_name: undefined,
+    loginName: undefined,
+    actualName: undefined,
     phone: undefined,
     gender:undefined,
     disabledFlag:undefined,
@@ -82,7 +82,7 @@
 
   const visible = ref(false);
 
-  async function showDrawer(rowData){
+  function showDrawer(rowData){
     Object.assign(form, formDefault);
     if (rowData && !_.isEmpty(rowData)) {
       Object.assign(form, rowData);
@@ -101,11 +101,13 @@
   async function  onSubmit(){
     formRef.value.validate().then(async () =>{
       SmartLoading.show();
+      
       try {
         let params = _.cloneDeep(form);
         if(form.userId) {
           await userApi.updateUser(params);
         }else {
+          console.log(params);
           await userApi.addUser(params);
         }
         message.success(`${form.userId ? 'edit' : 'add'}success`);

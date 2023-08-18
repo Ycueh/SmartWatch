@@ -1,13 +1,17 @@
 <template>
   <a-form class="smart-query-form" v-privilege="'user:query'">
     <a-row class="smart-query-form-row">
-
-<!--      <a-form-item label="userId" class="smart-query-form-item">-->
-<!--        <a-input style="width: 200px" v-model:value="queryForm.searchuserId" placeholder="userID" />-->
-<!--      </a-form-item>-->
+      <!--      <a-form-item label="userId" class="smart-query-form-item">-->
+      <!--        <a-input style="width: 200px" v-model:value="queryForm.searchuserId" placeholder="userID" />-->
+      <!--      </a-form-item>-->
+      
 
       <a-form-item label="keyword" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="user" />
+        <a-input
+          style="width: 200px"
+          v-model:value="queryForm.keyword"
+          placeholder="user"
+        />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
@@ -22,7 +26,6 @@
           </template>
           Reset
         </a-button>
-        
       </a-form-item>
     </a-row>
   </a-form>
@@ -36,24 +39,32 @@
           </template>
           Add user
         </a-button>
-        <a-button @click="batchDelete" type="primary" size="small" v-privilege="'user:add'">
-          <template #icon>
-          </template>
+        <a-button
+          @click="batchDelete"
+          type="primary"
+          size="small"
+          v-privilege="'user:add'"
+        >
+          <template #icon> </template>
           Batch Delete
         </a-button>
-        <a-radio-group v-model:value="queryForm.disabledFlag" style="margin: 8px; flex-shrink: 0" @change="queryUserByKeyword(false)">
+        <a-radio-group
+          v-model:value="queryForm.disabledFlag"
+          style="margin: 8px; flex-shrink: 0"
+          @change="queryUserByKeyword(false)"
+        >
           <a-radio-button :value="undefined">All</a-radio-button>
           <a-radio-button :value="false">Abled</a-radio-button>
           <a-radio-button :value="true">Disabled</a-radio-button>
         </a-radio-group>
       </div>
-<!--      <div class="smart-table-setting-block">-->
-<!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
-<!--      </div>-->
+      <!--      <div class="smart-table-setting-block">-->
+      <!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
+      <!--      </div>-->
     </a-row>
 
     <a-table
-    :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
+      :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
       size="small"
       :columns="columns"
       :data-source="tableData"
@@ -62,15 +73,22 @@
       :scroll="{ x: 1200 }"
       row-key="userId"
       bordered
-        
     >
-      <template #bodyCell="{ text, record, column}">
+      <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'disabledFlag'">
-          <a-tag :color="text ? 'error' : 'processing'">{{ text ? 'Disabled' : 'Abled' }}</a-tag>
+          <a-tag :color="text ? 'error' : 'processing'">{{
+            text ? "Disabled" : "Abled"
+          }}</a-tag>
         </template>
         <template v-else-if="column.dataIndex === 'operate'">
           <div class="smart-table-operate">
-            <a-button v-privilege="'system:user:update'" type="link" size="small" @click="showDrawer(record)">Edit</a-button>
+            <a-button
+              v-privilege="'system:user:update'"
+              type="link"
+              size="small"
+              @click="showDrawer(record)"
+              >Edit</a-button
+            >
             <a-button
               v-privilege="'system:user:password:reset'"
               type="link"
@@ -78,9 +96,12 @@
               @click="resetPassword(record.userId, record.loginName)"
               >Reset password</a-button
             >
-            <a-button v-privilege="'system:user:disabled'" type="link" @click="updateDisabled(record.userId, record.disabledFlag)">{{
-              record.disabledFlag ? 'Able' : 'Disable'
-            }}</a-button>
+            <a-button
+              v-privilege="'system:user:disabled'"
+              type="link"
+              @click="updateDisabled(record.userId, record.disabledFlag)"
+              >{{ record.disabledFlag ? "Able" : "Disable" }}</a-button
+            >
           </div>
         </template>
       </template>
@@ -88,19 +109,18 @@
 
     <div class="smart-query-table-page">
       <a-pagination
-          show-size-changer
-          show-quick-jumper
-          show-less-items
-          :page-size-options="PAGE_SIZE_OPTIONS"
-          :default-page-size="queryForm.pageSize"
-          v-model:current="queryForm.pageNum"
-          v-model:pageSize="queryForm.pageSize"
-          :total="total"
-          @change="queryData"
-          @show-size-change="queryData"
-          :show-total="(total) => `${total} items in total`"
+        show-size-changer
+        show-quick-jumper
+        show-less-items
+        :page-size-options="PAGE_SIZE_OPTIONS"
+        :default-page-size="queryForm.pageSize"
+        v-model:current="queryForm.pageNum"
+        v-model:pageSize="queryForm.pageSize"
+        :total="total"
+        @change="queryData"
+        @show-size-change="queryData"
+        :show-total="(total) => `${total} items in total`"
       />
-
     </div>
     <UserFormModal ref="formModal" @reloadList="queryData" />
     <UserPasswordDialog ref="userPasswordDialog" />
@@ -108,63 +128,62 @@
 </template>
 
 <script setup>
-import {onMounted, reactive, ref,watch,computed, createVNode,} from "vue";
-import _ from 'lodash';
-import { ExclamationCircleOutlined } from '@ant-design/icons-vue';
-import {userApi} from "/@/api/system/user/user-api";
-import {smartSentry} from "/@/lib/smart-sentry";
-import {message, Modal} from "ant-design-vue";
-import UserPasswordDialog from '../user-password-dialog/index.vue';
-import {SmartLoading} from "/@/components/framework/smart-loading";
-import {PAGE_SIZE_OPTIONS} from "/@/constants/common-const";
+import { onMounted, reactive, ref, watch, computed, createVNode } from "vue";
+import _ from "lodash";
+import { ExclamationCircleOutlined } from "@ant-design/icons-vue";
+import { userApi } from "/@/api/system/user/user-api";
+import { smartSentry } from "/@/lib/smart-sentry";
+import { message, Modal } from "ant-design-vue";
+import UserPasswordDialog from "../user-password-dialog/index.vue";
+import { SmartLoading } from "/@/components/framework/smart-loading";
+import { PAGE_SIZE_OPTIONS } from "/@/constants/common-const";
 import UserFormModal from "../user-form-modal/index.vue";
- // ----------------------- 以下是字段定义 emits props ---------------------
-
+// ----------------------- 以下是字段定义 emits props ---------------------
 
 //-------------Acccount info---------
 let userPasswordDialog = ref();
-  function showAccount(accountName, passWord) {
-    userPasswordDialog.value.showModal(accountName, passWord);
-  }
+function showAccount(accountName, passWord) {
+  userPasswordDialog.value.showModal(accountName, passWord);
+}
 
 //-------------Form----------
 const columns = ref([
   {
-    title: 'userID',
-    dataIndex: 'userId',
+    title: "userID",
+    dataIndex: "userId",
   },
   {
-    title: 'loginName',
-    dataIndex: 'loginName',
+    title: "loginName",
+    dataIndex: "loginName",
   },
   {
-    title: 'gender',
-    dataIndex: 'gender',
+    title: "gender",
+    dataIndex: "gender",
   },
   {
-    title: 'actualName',
-    dataIndex: 'actualName',
+    title: "actualName",
+    dataIndex: "actualName",
   },
   {
-    title: 'phone',
-    dataIndex: 'phone',
+    title: "phone",
+    dataIndex: "phone",
   },
   {
-    title: 'disabledFlag',
-    dataIndex: 'disabledFlag',
+    title: "disabledFlag",
+    dataIndex: "disabledFlag",
   },
   {
-    title: 'createTime',
-    dataIndex: 'createTime',
+    title: "createTime",
+    dataIndex: "createTime",
   },
   {
-    title: 'roleNameList',
-    dataIndex: 'roleNameList',
+    title: "roleNameList",
+    dataIndex: "roleNameList",
   },
   {
-    title: 'Action',
-    dataIndex: 'operate',
-    fixed: 'right',
+    title: "Action",
+    dataIndex: "operate",
+    fixed: "right",
   },
 ]);
 
@@ -192,8 +211,8 @@ async function queryData() {
     let queryResult = await userApi.queryUser(queryForm);
     console.log(queryResult);
     for (const item of queryResult.data.list) {
-        item.roleNameList = _.join(item.roleNameList,',');
-      }
+      item.roleNameList = _.join(item.roleNameList, ",");
+    }
     tableData.value = queryResult.data.list;
     total.value = queryResult.data.total;
   } catch (e) {
@@ -202,23 +221,23 @@ async function queryData() {
     tableLoading.value = false;
   }
 }
- // Query by keyword
- async function queryUserByKeyword() {
-    tableLoading.value = true;
-    try {
-      queryForm.pageNum = 1;
-      let res = await userApi.queryUser(queryForm);
-      tableData.value = res.data.list;
-      total.value = res.data.total;
-      // Clear selected
-      selectedRowKeys.value = [];
-      selectedRows.value = [];
-    } catch (error) {
-      smartSentry.captureError(error);
-    } finally {
-      tableLoading.value = false;
-    }
+// Query by keyword
+async function queryUserByKeyword() {
+  tableLoading.value = true;
+  try {
+    queryForm.pageNum = 1;
+    let res = await userApi.queryUser(queryForm);
+    tableData.value = res.data.list;
+    total.value = res.data.total;
+    // Clear selected
+    selectedRowKeys.value = [];
+    selectedRows.value = [];
+  } catch (error) {
+    smartSentry.captureError(error);
+  } finally {
+    tableLoading.value = false;
   }
+}
 
 onMounted(queryData);
 
@@ -228,72 +247,70 @@ function adduser(userData) {
   formModal.value.showDrawer(userData);
 }
 
-
-
 function showDrawer(userData) {
   adduser(userData);
 }
 
 function deleteuser(userData) {
   Modal.confirm({
-    title: 'Notice',
-    content: 'Are you sure you want to delete [' + userData.userId + ']?',
-    okText: 'Delete',
-    okType: 'danger',
+    title: "Notice",
+    content: "Are you sure you want to delete [" + userData.userId + "]?",
+    okText: "Delete",
+    okType: "danger",
     onOk() {
       singleDelete(userData);
     },
-    cancelText: 'Cancel',
+    cancelText: "Cancel",
     onCancel() {},
   });
 }
 // ------------------Multi choices function--------------------
 let selectedRowKeys = ref([]);
-  let selectedRows = ref([]);
-  // Selected rows
-  const hasSelected = computed(() => selectedRowKeys.value.length > 0);
-  function onSelectChange(keyArray, selectRows) {
-    selectedRowKeys.value = keyArray;
-    selectedRows.value = selectRows;
+let selectedRows = ref([]);
+// Selected rows
+const hasSelected = computed(() => selectedRowKeys.value.length > 0);
+function onSelectChange(keyArray, selectRows) {
+  selectedRowKeys.value = keyArray;
+  selectedRows.value = selectRows;
+}
+// Batch Delte User
+function batchDelete() {
+  if (!hasSelected.value) {
+    message.warning("Please choose the users you want to delete");
+    return;
   }
-  // Batch Delte User
-  function batchDelete() {
-    if (!hasSelected.value) {
-      message.warning('Please choose the users you want to delete');
-      return;
-    }
-    const actualNameArray = selectedRows.value.map((e) => e.actualName);
-    const userIdArray = selectedRows.value.map((e) => e.userId);
-    Modal.confirm({
-      title: 'Are you sure to remove these users',
-      icon: createVNode(ExclamationCircleOutlined),
-      content: _.join(actualNameArray, ','),
-      okText: 'Delete',
-      okType: 'danger',
-      async onOk() {
-        SmartLoading.show();
-        try {
-          await userApi.batchDeleteUser(userIdArray);
-          message.success('Delete Successfully');
-          queryData();
-          selectedRowKeys.value = [];
-          selectedRows.value = [];
-        } catch (error) {
-          smartSentry.captureError(error);
-        } finally {
-          SmartLoading.hide();
-        }
-      },
-      cancelText: 'Cancel',
-      onCancel() {},
-    });
-  }
+  const actualNameArray = selectedRows.value.map((e) => e.actualName);
+  const userIdArray = selectedRows.value.map((e) => e.userId);
+  Modal.confirm({
+    title: "Are you sure to remove these users",
+    icon: createVNode(ExclamationCircleOutlined),
+    content: _.join(actualNameArray, ","),
+    okText: "Delete",
+    okType: "danger",
+    async onOk() {
+      SmartLoading.show();
+      try {
+        await userApi.batchDeleteUser(userIdArray);
+        message.success("Delete Successfully");
+        queryData();
+        selectedRowKeys.value = [];
+        selectedRows.value = [];
+      } catch (error) {
+        smartSentry.captureError(error);
+      } finally {
+        SmartLoading.hide();
+      }
+    },
+    cancelText: "Cancel",
+    onCancel() {},
+  });
+}
 
 async function singleDelete(userData) {
   try {
     SmartLoading.show();
     await userApi.delete(userData.userId);
-    message.success('Deleted successfully');
+    message.success("Deleted successfully");
     queryData();
   } catch (e) {
     smartSentry.captureError(e);
@@ -302,45 +319,41 @@ async function singleDelete(userData) {
   }
 }
 
-
-
-
 function resetPassword(id, name) {
-    Modal.confirm({
-      title: '提醒',
-      icon: createVNode(ExclamationCircleOutlined),
-      content: '确定要重置密码吗?',
-      okText: '确定',
-      okType: 'danger',
-      async onOk() {
-        SmartLoading.show();
-        try {
-          let { data: passWord } = await userApi.resetPassword(id);
-          message.success('重置成功');
-          userPasswordDialog.value.showModal(name, passWord);
-          userApi.queryUser();
-        } catch (error) {
-          smartSentry.captureError(error);
-        } finally {
-          SmartLoading.hide();
-        }
-      },
-      cancelText: '取消',
-      onCancel() {},
-    });
-  }
+  Modal.confirm({
+    title: "提醒",
+    icon: createVNode(ExclamationCircleOutlined),
+    content: "确定要重置密码吗?",
+    okText: "确定",
+    okType: "danger",
+    async onOk() {
+      SmartLoading.show();
+      try {
+        let { data: passWord } = await userApi.resetPassword(id);
+        message.success("重置成功");
+        userPasswordDialog.value.showModal(name, passWord);
+        userApi.queryUser();
+      } catch (error) {
+        smartSentry.captureError(error);
+      } finally {
+        SmartLoading.hide();
+      }
+    },
+    cancelText: "取消",
+    onCancel() {},
+  });
+}
 
-  // const userFormModal = ref();
+// const userFormModal = ref();
 
-  // function showDrawer(rowData) {
-  //   let params = {};
-  //   if (rowData) {
-  //     params = _.cloneDeep(rowData);
-  //     params.disabledFlag = params.disabledFlag ? 1 : 0;
-  //   } 
-  //   console.log('before');
-  //   userFormModal.value.showDrawer(params);
-    
-  // }
+// function showDrawer(rowData) {
+//   let params = {};
+//   if (rowData) {
+//     params = _.cloneDeep(rowData);
+//     params.disabledFlag = params.disabledFlag ? 1 : 0;
+//   }
+//   console.log('before');
+//   userFormModal.value.showDrawer(params);
 
+// }
 </script>
