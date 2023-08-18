@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 18/08/2023 12:42:59
+ Date: 18/08/2023 21:49:09
 */
 DROP DATABASE IF EXISTS `smart_admin_v2`;
 CREATE DATABASE IF NOT EXISTS `smart_admin_v2`;
@@ -335,6 +335,9 @@ CREATE TABLE `t_role_user`  (
 -- Records of t_role_user
 -- ----------------------------
 INSERT INTO `t_role_user` VALUES (325, 36, 63, '2022-10-19 20:25:26', '2022-10-19 20:25:26');
+INSERT INTO `t_role_user` VALUES (327, 0, 73, '2023-08-18 21:42:12', '2023-08-18 21:42:12');
+INSERT INTO `t_role_user` VALUES (328, 0, 74, '2023-08-18 21:46:01', '2023-08-18 21:46:01');
+INSERT INTO `t_role_user` VALUES (329, 0, 75, '2023-08-18 21:47:50', '2023-08-18 21:47:50');
 
 -- ----------------------------
 -- Table structure for t_table_column
@@ -350,7 +353,7 @@ CREATE TABLE `t_table_column`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`table_column_id`) USING BTREE,
   UNIQUE INDEX `uni_employee_table`(`user_id`, `table_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_table_column
@@ -361,16 +364,15 @@ CREATE TABLE `t_table_column`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user`  (
-  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `login_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '登录帐号',
-  `login_pwd` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '登录密码',
-  `actual_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '员工名称',
-  `gender` tinyint(1) NOT NULL DEFAULT 0 COMMENT '性别',
-  `phone` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '手机号码',
-  `department_id` int NOT NULL COMMENT '部门id',
-  `disabled_flag` tinyint UNSIGNED NOT NULL COMMENT '是否被禁用 0否1是',
-  `deleted_flag` tinyint UNSIGNED NOT NULL COMMENT '是否删除0否 1是',
-  `administrator_flag` tinyint NOT NULL DEFAULT 0 COMMENT '是否为超级管理员: 0 不是，1是',
+  `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'Primary key',
+  `login_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'Account',
+  `login_pwd` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'Password',
+  `actual_name` varchar(30) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'ActualName',
+  `gender` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Gender',
+  `phone` varchar(15) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT 'Phone Number',
+  `disabled_flag` tinyint UNSIGNED NOT NULL COMMENT 'Disabled or not: 0:N  1:Y',
+  `deleted_flag` tinyint UNSIGNED NOT NULL COMMENT 'Deleted or not: 0:N  1:Y',
+  `administrator_flag` tinyint NOT NULL DEFAULT 0 COMMENT 'Admin:0:N  1:Y',
   `remark` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '备注',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -380,18 +382,19 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', '管理员', 0, '13500000000', 1, 0, 0, 1, NULL, '2022-10-22 19:33:02', '2018-05-11 09:38:54');
-INSERT INTO `t_user` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 1, 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
-INSERT INTO `t_user` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 1, 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
-INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 1, 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
-INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
-INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
-INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 2, 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
-INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 1, 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:18');
-INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:56');
-INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 1, 0, 1, 0, NULL, '2023-08-18 00:53:14', '2022-06-16 17:28:32');
-INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 1, 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:30:17');
-INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 1, 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
+INSERT INTO `t_user` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', '管理员', 0, '13500000000', 0, 0, 1, NULL, '2022-10-22 19:33:02', '2018-05-11 09:38:54');
+INSERT INTO `t_user` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
+INSERT INTO `t_user` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
+INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
+INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
+INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
+INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
+INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:18');
+INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:56');
+INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 0, 1, 0, NULL, '2023-08-18 00:53:14', '2022-06-16 17:28:32');
+INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:30:17');
+INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
+INSERT INTO `t_user` VALUES (75, 'delta', '510b169900edc201485b862b8c3363d8', 'delta', 0, '18862135900', 0, 0, 0, NULL, '2023-08-18 21:47:50', '2023-08-18 21:47:50');
 
 -- ----------------------------
 -- Table structure for t_user_db
