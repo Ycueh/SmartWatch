@@ -22,7 +22,6 @@ import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -105,8 +104,11 @@ public class UserService {
         // Save the data
         entity.setDeletedFlag(Boolean.FALSE);
         userManager.saveUser(entity,userAddForm.getRoleIdList());
-        //Acquire the user id
         //TODO Add a default database file
+//        MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
+//        multiUserAddForm.setUser_id(null);
+//        multiUserAddForm.setFile(null);
+//        multiUserService.add(multiUserAddForm);
 
         return ResponseDTO.ok(password);
     }
