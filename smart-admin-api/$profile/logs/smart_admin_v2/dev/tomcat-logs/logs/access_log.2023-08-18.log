@@ -118,3 +118,7 @@
 [18/Aug/2023:01:06:23 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 200 6 (6 ms)
 [18/Aug/2023:01:06:23 +0100] - 127.0.0.1 "OPTIONS /user/query HTTP/1.1" 200 1 (1 ms)
 [18/Aug/2023:01:06:23 +0100] - 127.0.0.1 "POST /user/query HTTP/1.1" 200 10 (10 ms)
+[18/Aug/2023:01:09:52 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 44 (44 ms)
+[18/Aug/2023:01:09:52 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 200 595 (595 ms)
+[18/Aug/2023:01:09:53 +0100] - 127.0.0.1 "OPTIONS /user/query HTTP/1.1" 200 1 (1 ms)
+[18/Aug/2023:01:09:53 +0100] - 127.0.0.1 "POST /user/query HTTP/1.1" 200 138 (138 ms)
