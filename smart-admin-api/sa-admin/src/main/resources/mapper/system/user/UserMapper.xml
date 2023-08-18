@@ -72,11 +72,6 @@
         ORDER BY create_time DESC
     </select>
 
-    <select id="countByDepartmentId" resultType="integer">
-        SELECT count(1) FROM t_user
-        WHERE
-        department_id = #{departmentId}
-    </select>
 
 
     <select id="selectByActualName"
@@ -84,10 +79,6 @@
         SELECT * FROM t_user
         <where>
             actual_name = #{actualName}
-            AND department_id in
-            <foreach collection="departmentIdList" item="item" open="(" close=")" separator=",">
-                #{item}
-            </foreach>
             <if test="disabledFlag != null">
                 AND disabled_flag = #{disabledFlag}
             </if>
@@ -105,17 +96,6 @@
         </where>
     </select>
 
-    <select id="getUserIdByDepartmentId" resultType="java.lang.Long">
-        SELECT user_id
-        FROM t_user
-        <where>
-            department_id = #{departmentId}
-            <if test="disabledFlag != null">
-                AND disabled_flag = #{disabledFlag}
-            </if>
-        </where>
-        ORDER BY create_time DESC
-    </select>
 
     <select id="getUserByIds" resultType="net.lab1024.sa.admin.module.system.user.domain.vo.UserVO">
         SELECT * FROM t_user
