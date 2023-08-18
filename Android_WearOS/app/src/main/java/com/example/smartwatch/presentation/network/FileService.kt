@@ -1,5 +1,6 @@
 package com.example.smartwatch.presentation.network
 
+import com.example.smartwatch.presentation.common.domain.ResponseDTO
 import okhttp3.MultipartBody
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -15,12 +16,12 @@ interface FileService {
     fun uploadFile(
         @Header("x-access-token") token: String,
         @Part filePart: MultipartBody.Part
-    ): Call<Void>
+    ): Call<ResponseDTO<String>>
 
     @GET("/file/download")
     fun downloadFile(
         @Header("x-access-token") token: String
-    ): Call<ResponseBody>
+    ): Call<ResponseDTO<ResponseBody>>
 
 
 }

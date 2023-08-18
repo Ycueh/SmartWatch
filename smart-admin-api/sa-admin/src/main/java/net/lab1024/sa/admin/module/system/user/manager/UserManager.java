@@ -37,8 +37,8 @@ public class UserManager extends ServiceImpl<UserDao, UserEntity> {
         // Save user
         userDao.insert(user);
         if (CollectionUtils.isNotEmpty(roleIdList)) {
-            List<RoleUserEntity> roleEmployeeList = roleIdList.stream().map(e -> new RoleUserEntity(e, user.getUserId())).collect(Collectors.toList());
-            roleUserManager.saveBatch(roleEmployeeList);
+            List<RoleUserEntity> roleUserList = roleIdList.stream().map(e -> new RoleUserEntity(e, user.getUserId())).collect(Collectors.toList());
+            roleUserManager.saveBatch(roleUserList);
         }
     }
 
