@@ -153,7 +153,7 @@ const columns = ref([
     dataIndex: "userId",
   },
   {
-    title: "loginName",
+    title: "login_name",
     dataIndex: "loginName",
   },
   {
@@ -161,7 +161,7 @@ const columns = ref([
     dataIndex: "gender",
   },
   {
-    title: "actualName",
+    title: "actual_name",
     dataIndex: "actualName",
   },
   {
@@ -172,12 +172,12 @@ const columns = ref([
     title: "disabledFlag",
     dataIndex: "disabledFlag",
   },
+  // {
+  //   title: "createTime",
+  //   dataIndex: "createTime",
+  // },
   {
-    title: "createTime",
-    dataIndex: "createTime",
-  },
-  {
-    title: "roleNameList",
+    title: "role",
     dataIndex: "roleNameList",
   },
   {
@@ -243,12 +243,16 @@ onMounted(queryData);
 
 const formModal = ref();
 
-function adduser(userData) {
-  formModal.value.showDrawer(userData);
-}
+
 
 function showDrawer(userData) {
-  adduser(userData);
+  formModal.value.showDrawer(userData);
+  
+}
+
+function adduser(userData) {
+  showDrawer(userData);
+
 }
 
 function deleteuser(userData) {
@@ -321,16 +325,16 @@ async function singleDelete(userData) {
 
 function resetPassword(id, name) {
   Modal.confirm({
-    title: "提醒",
+    title: "remind",
     icon: createVNode(ExclamationCircleOutlined),
-    content: "确定要重置密码吗?",
-    okText: "确定",
+    content: "Are you sure to reset the password?",
+    okText: "yes",
     okType: "danger",
     async onOk() {
       SmartLoading.show();
       try {
         let { data: passWord } = await userApi.resetPassword(id);
-        message.success("重置成功");
+        message.success("reset successfully");
         userPasswordDialog.value.showModal(name, passWord);
         userApi.queryUser();
       } catch (error) {
@@ -339,7 +343,7 @@ function resetPassword(id, name) {
         SmartLoading.hide();
       }
     },
-    cancelText: "取消",
+    cancelText: "cancel",
     onCancel() {},
   });
 }

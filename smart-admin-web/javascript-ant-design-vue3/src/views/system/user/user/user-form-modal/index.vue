@@ -14,24 +14,32 @@
       </a-form-item>
 
       <a-form-item label="gender" name="gender">
-        <a-select v-model:value="form.gender" placeholder="Please enter gender">
+        <a-select v-model:value="form.gender" placeholder="Please choose gender">
           <a-select-option :value="0">male</a-select-option>
           <a-select-option :value="1">female</a-select-option>
         </a-select>
         <!-- <a-input v-model:value="form.gender" placeholder="Please enter gender" /> -->
       </a-form-item>
       <a-form-item label="disabledFlag" name="disabledFlag">
-        <a-input v-model:value="form.disabledFlag" placeholder="Please enter disabledFlag" />
+        <a-select v-model:value="form.disabledFlag" placeholder="Please choose disabledFlag">
+          <a-select-option :value="0">false</a-select-option>
+          <a-select-option :value="1">true</a-select-option>
+        </a-select>
       </a-form-item>
-      <a-form-item label="administratorFlag" name="administratorFlag">
-        <a-input v-model:value="form.administratorFlag" placeholder="Please enter administratorFlag" />
-      </a-form-item>
-      <a-form-item label="createTime" name="createTime">
+      <!-- <a-form-item label="administratorFlag" name="administratorFlag">
+        <a-select v-model:value="form.administratorFlag" placeholder="Please choose administratorFlag">
+          <a-select-option :value="0">false</a-select-option>
+          <a-select-option :value="1">true</a-select-option>
+        </a-select>
+      </a-form-item> -->
+      <!-- <a-form-item label="createTime" name="createTime">
         <a-input v-model:value="form.createTime" placeholder="Please enter createTime" />
-      </a-form-item>
+      </a-form-item> -->
       
-      <a-form-item label="roleNameList" name="roleNameList">
-        <a-input v-model:value="form.roleNameList" placeholder="Please enter roleNameList" />
+      <a-form-item label="role" name="roleIdList">
+        <a-select mode="multiple" v-model:value="form.roleIdList" optionFilterProp="title" placeholder="Please choose a role">
+          <a-select-option v-for="item in roleList" :key="item.roleId" :title="item.roleName">{{ item.roleName }}</a-select-option>
+        </a-select>
       </a-form-item>
 
     </a-form>
@@ -61,8 +69,18 @@
   import {smartSentry} from "/@/lib/smart-sentry";
   import {SmartLoading} from "/@/components/framework/smart-loading";
   import {userApi} from "/@/api/system/user/user-api";
+  import { roleApi } from '/@/api/system/role/role-api';
+  
 
   const emit = defineEmits('reloadList');
+
+
+  //show the role list
+  const roleList = ref([]); 
+  async function queryAllRole() {
+    let res = await roleApi.queryAll();
+    roleList.value = res.data;
+  }
 
   const formRef = ref();
   const formDefault = {
@@ -71,7 +89,7 @@
     actualName: undefined,
     phone: undefined,
     gender:undefined,
-    disabledFlag:undefined,
+    disabledFlag:0,
     administratorFlag:undefined,
     createTime:undefined,
     roleIdList:undefined,
@@ -89,7 +107,7 @@
     }
     visible.value = true;
     nextTick(() => {
-      formRef.value.clearValidate();
+      queryAllRole();
     });
   }
 
@@ -97,6 +115,7 @@
     Object.assign(form, formDefault);
     visible.value = false;
   }
+
 
   async function  onSubmit(){
     formRef.value.validate().then(async () =>{
@@ -107,7 +126,6 @@
         if(form.userId) {
           await userApi.updateUser(params);
         }else {
-          console.log(params);
           await userApi.addUser(params);
         }
         message.success(`${form.userId ? 'edit' : 'add'}success`);
