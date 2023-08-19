@@ -1,0 +1,799 @@
+[2023-08-18 00:40:14,386][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:40:14,390][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 00:40:14,505][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:40:14,509][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 00:40:22,025][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 00:40:22,059][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 7932 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 00:40:22,061][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 00:40:22,747][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 00:40:22,749][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 00:40:22,774][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 00:40:22,895][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 00:40:23,246][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$c53acb22] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 00:40:23,471][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 00:40:23,478][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:40:23,478][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 00:40:23,478][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 00:40:23,613][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 00:40:23,614][INFO ][main] Root WebApplicationContext: initialization completed in 1518 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 00:40:23,833][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 00:40:24,043][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 00:40:24,939][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 00:40:25,140][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 00:40:25,637][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 00:40:26,150][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7937f96e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5599f22f, org.springframework.security.web.context.SecurityContextPersistenceFilter@75f67fe5, org.springframework.security.web.header.HeaderWriterFilter@27ca8a5a, org.springframework.security.web.authentication.logout.LogoutFilter@5d87c8af, org.springframework.web.filter.CorsFilter@397a10df, net.lab1024.sa.common.common.security.SecurityTokenFilter@ece769a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@783a35d8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@254a9f65, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7baf7a9d, org.springframework.security.web.session.SessionManagementFilter@435848de, org.springframework.security.web.access.ExceptionTranslationFilter@37e9d191, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@402fcf14] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 00:40:26,203][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:40:26,218][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 00:40:26,236][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 00:40:26,236][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 00:40:26,248][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 00:40:26,843][INFO ][main] Started SmartAdminApplication in 5.212 seconds (JVM running for 5.989) (StartupInfoLogger.java:61)
+[2023-08-18 00:40:26,849][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 00:40:31,062][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 00:40:31,063][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 00:40:31,063][INFO ][http-nio-1024-exec-1] Completed initialization in 0 ms (FrameworkServlet.java:547)
+[2023-08-18 00:42:36,828][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:42:36,830][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 00:42:36,949][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:42:36,953][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 00:42:42,663][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 00:42:42,696][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 17736 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 00:42:42,699][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 00:42:43,371][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 00:42:43,373][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 00:42:43,398][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 00:42:43,516][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 00:42:43,859][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$5375ace2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 00:42:44,087][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 00:42:44,093][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:42:44,093][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 00:42:44,094][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 00:42:44,223][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 00:42:44,223][INFO ][main] Root WebApplicationContext: initialization completed in 1489 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 00:42:44,444][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 00:42:44,647][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 00:42:45,494][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 00:42:45,749][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 00:42:46,239][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 00:42:46,741][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28f5a003, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3220ffb, org.springframework.security.web.context.SecurityContextPersistenceFilter@1da40ae8, org.springframework.security.web.header.HeaderWriterFilter@644eed73, org.springframework.security.web.authentication.logout.LogoutFilter@6e157f48, org.springframework.web.filter.CorsFilter@45b8bbbf, net.lab1024.sa.common.common.security.SecurityTokenFilter@53791a39, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57596d71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@86abdbd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57629340, org.springframework.security.web.session.SessionManagementFilter@4c1c134, org.springframework.security.web.access.ExceptionTranslationFilter@35d31e1c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@70b67841] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 00:42:46,799][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:42:46,814][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 00:42:46,832][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 00:42:46,832][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 00:42:46,845][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 00:42:47,437][INFO ][main] Started SmartAdminApplication in 5.152 seconds (JVM running for 5.901) (StartupInfoLogger.java:61)
+[2023-08-18 00:42:47,442][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 00:42:50,377][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 00:42:50,377][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 00:42:50,380][INFO ][http-nio-1024-exec-1] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 00:43:05,690][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:43:05,693][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 00:43:05,820][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:43:05,823][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 00:43:10,128][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 00:43:10,160][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 19104 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 00:43:10,162][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 00:43:10,838][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 00:43:10,839][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 00:43:10,865][INFO ][main] Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 00:43:10,982][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 00:43:11,321][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$5375ace2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 00:43:11,552][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 00:43:11,558][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:43:11,558][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 00:43:11,558][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 00:43:11,687][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 00:43:11,687][INFO ][main] Root WebApplicationContext: initialization completed in 1494 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 00:43:11,907][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 00:43:12,120][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 00:43:12,958][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 00:43:13,192][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 00:43:13,674][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 00:43:14,179][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1a920154, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@e870ac9, org.springframework.security.web.context.SecurityContextPersistenceFilter@14f8fdae, org.springframework.security.web.header.HeaderWriterFilter@4194a77f, org.springframework.security.web.authentication.logout.LogoutFilter@3687f6b6, org.springframework.web.filter.CorsFilter@45b8bbbf, net.lab1024.sa.common.common.security.SecurityTokenFilter@6b78cbee, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7be95197, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63f609a4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@70b67841, org.springframework.security.web.session.SessionManagementFilter@5c519da4, org.springframework.security.web.access.ExceptionTranslationFilter@6c4f48e2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@254a9f65] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 00:43:14,235][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:43:14,251][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 00:43:14,268][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 00:43:14,268][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 00:43:14,281][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 00:43:14,876][INFO ][main] Started SmartAdminApplication in 5.136 seconds (JVM running for 5.885) (StartupInfoLogger.java:61)
+[2023-08-18 00:43:14,882][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 00:43:16,340][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 00:43:16,341][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 00:43:16,342][INFO ][http-nio-1024-exec-1] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 00:52:56,304][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:52:56,306][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 00:52:56,433][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 00:52:56,437][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 00:53:02,168][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 00:53:02,202][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 1800 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 00:53:02,204][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 00:53:02,910][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 00:53:02,912][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 00:53:02,938][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 00:53:03,051][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 00:53:03,404][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$e7a7b6f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 00:53:03,647][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 00:53:03,654][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:53:03,654][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 00:53:03,654][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 00:53:03,789][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 00:53:03,789][INFO ][main] Root WebApplicationContext: initialization completed in 1553 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 00:53:04,005][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 00:53:04,215][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 00:53:05,059][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 00:53:05,268][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 00:53:05,801][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 00:53:06,326][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7d29fc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10c11e36, org.springframework.security.web.context.SecurityContextPersistenceFilter@149e457, org.springframework.security.web.header.HeaderWriterFilter@39153b05, org.springframework.security.web.authentication.logout.LogoutFilter@4c43c37d, org.springframework.web.filter.CorsFilter@7791ff50, net.lab1024.sa.common.common.security.SecurityTokenFilter@1da53092, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3c1f2651, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41dcfd0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10f64bc3, org.springframework.security.web.session.SessionManagementFilter@49c74506, org.springframework.security.web.access.ExceptionTranslationFilter@755c29b0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3a4e6da6] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 00:53:06,382][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 00:53:06,397][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 00:53:06,414][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 00:53:06,416][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 00:53:06,428][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 00:53:07,027][INFO ][main] Started SmartAdminApplication in 5.256 seconds (JVM running for 6.045) (StartupInfoLogger.java:61)
+[2023-08-18 00:53:07,033][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 00:53:13,631][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 00:53:13,631][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 00:53:13,633][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 01:07:32,093][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 01:07:32,095][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 01:07:32,214][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 01:07:32,219][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 01:09:36,898][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 01:09:36,933][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 5584 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 01:09:36,935][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 01:09:37,640][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 01:09:37,642][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 01:09:37,667][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 01:09:37,789][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 01:09:38,145][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$887a66b7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 01:09:38,405][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 01:09:38,413][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 01:09:38,413][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 01:09:38,414][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 01:09:38,549][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 01:09:38,550][INFO ][main] Root WebApplicationContext: initialization completed in 1584 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 01:09:38,779][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 01:09:38,995][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 01:09:39,877][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 01:09:40,145][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 01:09:40,654][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 01:09:41,181][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@63513c1c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b256ab5, org.springframework.security.web.context.SecurityContextPersistenceFilter@608f79a8, org.springframework.security.web.header.HeaderWriterFilter@3747877, org.springframework.security.web.authentication.logout.LogoutFilter@38821ada, org.springframework.web.filter.CorsFilter@3bf01a01, net.lab1024.sa.common.common.security.SecurityTokenFilter@2a2cdba0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e157f48, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1bfc6e50, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31d327b6, org.springframework.security.web.session.SessionManagementFilter@76ac3ad0, org.springframework.security.web.access.ExceptionTranslationFilter@149bdb4e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45c270f9] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 01:09:41,238][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 01:09:41,255][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 01:09:41,272][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 01:09:41,273][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 01:09:41,285][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 01:09:41,921][INFO ][main] Started SmartAdminApplication in 5.417 seconds (JVM running for 6.363) (StartupInfoLogger.java:61)
+[2023-08-18 01:09:41,926][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 01:09:52,201][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 01:09:52,201][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 01:09:52,203][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 11:42:11,125][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 11:42:11,162][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 21940 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 11:42:11,164][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 11:42:11,985][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 11:42:11,987][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 11:42:12,017][INFO ][main] Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 11:42:12,155][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 11:42:12,557][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$4059aa08] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 11:42:12,794][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 11:42:12,802][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 11:42:12,802][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 11:42:12,802][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 11:42:12,935][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 11:42:12,935][INFO ][main] Root WebApplicationContext: initialization completed in 1737 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 11:42:13,232][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 11:42:13,460][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 11:42:14,413][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 11:42:14,663][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 11:42:15,205][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 11:42:15,786][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5da20b76, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e7ee3b7, org.springframework.security.web.context.SecurityContextPersistenceFilter@11fb4f69, org.springframework.security.web.header.HeaderWriterFilter@3533b614, org.springframework.security.web.authentication.logout.LogoutFilter@5ce9c9e8, org.springframework.web.filter.CorsFilter@4182a651, net.lab1024.sa.common.common.security.SecurityTokenFilter@5d87c8af, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2806fe58, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32fb4a87, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66d9c846, org.springframework.security.web.session.SessionManagementFilter@681302ad, org.springframework.security.web.access.ExceptionTranslationFilter@14f8fdae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@53791a39] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 11:42:15,844][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 11:42:15,860][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 11:42:15,878][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.76.6.187:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 11:42:15,878][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 11:42:15,892][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 11:42:16,553][INFO ][main] Started SmartAdminApplication in 5.873 seconds (JVM running for 6.762) (StartupInfoLogger.java:61)
+[2023-08-18 11:42:16,560][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 13:05:36,040][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 13:05:36,083][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 10052 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 13:05:36,085][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 13:05:37,053][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 13:05:37,055][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 13:05:37,091][INFO ][main] Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 13:05:37,227][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 13:05:37,684][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$f5a4e87d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 13:05:37,970][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 13:05:37,981][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 13:05:37,982][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 13:05:37,982][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 13:05:38,109][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 13:05:38,109][INFO ][main] Root WebApplicationContext: initialization completed in 1985 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 13:05:38,421][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 13:05:42,717][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 13:05:44,149][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 13:05:44,425][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 13:05:45,050][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 13:05:45,773][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6829b897, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@519e0814, org.springframework.security.web.context.SecurityContextPersistenceFilter@4a3e1b5d, org.springframework.security.web.header.HeaderWriterFilter@558fa64a, org.springframework.security.web.authentication.logout.LogoutFilter@51c7d472, org.springframework.web.filter.CorsFilter@49fe0bcd, net.lab1024.sa.common.common.security.SecurityTokenFilter@d1b9dd7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@119de68f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@55448710, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7701b695, org.springframework.security.web.session.SessionManagementFilter@c53c04e, org.springframework.security.web.access.ExceptionTranslationFilter@2a5917f6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10770c1] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 13:05:45,847][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 13:05:45,864][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 13:05:45,885][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 13:05:45,885][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 13:05:45,904][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 13:05:46,689][INFO ][main] Started SmartAdminApplication in 11.232 seconds (JVM running for 12.638) (StartupInfoLogger.java:61)
+[2023-08-18 13:05:46,697][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 13:05:50,774][INFO ][Druid-ConnectionPool-Create-474654465] {dataSource-1} failContinuous is true (DruidAbstractDataSource.java:1865)
+[2023-08-18 13:06:06,380][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 13:06:06,382][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 13:06:06,398][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 13:06:06,399][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 13:06:09,655][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 13:06:09,702][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 1276 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 13:06:09,705][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 13:06:10,735][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 13:06:10,737][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 13:06:10,768][INFO ][main] Finished Spring Data repository scanning in 21 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 13:06:10,905][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 13:06:11,358][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$cb321f6d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 13:06:11,642][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 13:06:11,650][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 13:06:11,650][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 13:06:11,650][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 13:06:11,763][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 13:06:11,763][INFO ][main] Root WebApplicationContext: initialization completed in 2015 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 13:06:12,065][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 13:06:12,323][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 13:06:13,564][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 13:06:13,936][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 13:06:14,645][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 13:06:15,376][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e7ee3b7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5d87c8af, org.springframework.security.web.context.SecurityContextPersistenceFilter@1766b009, org.springframework.security.web.header.HeaderWriterFilter@253a8bdb, org.springframework.security.web.authentication.logout.LogoutFilter@37e9d191, org.springframework.web.filter.CorsFilter@4ffa078d, net.lab1024.sa.common.common.security.SecurityTokenFilter@66d9c846, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c12f0f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42e14655, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b6d9650, org.springframework.security.web.session.SessionManagementFilter@486480e2, org.springframework.security.web.access.ExceptionTranslationFilter@f8b6743, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7aa44fa2] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 13:06:15,448][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 13:06:15,463][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 13:06:15,482][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 13:06:15,482][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 13:06:15,497][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 13:06:16,565][INFO ][main] Started SmartAdminApplication in 7.332 seconds (JVM running for 8.425) (StartupInfoLogger.java:61)
+[2023-08-18 13:06:16,578][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 13:06:18,424][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 13:06:18,425][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 13:06:18,426][INFO ][http-nio-1024-exec-1] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 14:22:52,682][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 14:22:52,684][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 14:22:52,821][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 14:22:52,825][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 14:22:56,275][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 14:22:56,327][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 8840 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 14:22:56,331][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 14:22:57,244][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 14:22:57,246][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 14:22:57,277][INFO ][main] Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 14:22:57,408][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 14:22:57,870][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$ac5608b5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 14:22:58,150][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 14:22:58,158][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 14:22:58,159][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 14:22:58,160][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 14:22:58,288][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 14:22:58,288][INFO ][main] Root WebApplicationContext: initialization completed in 1910 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 14:22:58,695][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 14:22:58,982][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 14:23:00,136][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 14:23:00,417][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 14:23:01,274][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 14:23:02,384][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@53791a39, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57629340, org.springframework.security.web.context.SecurityContextPersistenceFilter@63bdf82d, org.springframework.security.web.header.HeaderWriterFilter@f8b6743, org.springframework.security.web.authentication.logout.LogoutFilter@20305c45, org.springframework.web.filter.CorsFilter@56f72909, net.lab1024.sa.common.common.security.SecurityTokenFilter@5292d417, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4b1ef6a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3747877, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@415c5469, org.springframework.security.web.session.SessionManagementFilter@2cea41ab, org.springframework.security.web.access.ExceptionTranslationFilter@344eaf7e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c43c37d] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 14:23:02,450][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 14:23:02,465][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 14:23:02,484][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 14:23:02,484][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 14:23:02,498][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 14:23:03,218][INFO ][main] Started SmartAdminApplication in 7.451 seconds (JVM running for 8.59) (StartupInfoLogger.java:61)
+[2023-08-18 14:23:03,226][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 14:23:17,541][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 14:23:17,541][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 14:23:17,543][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 14:54:59,107][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 14:54:59,110][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 14:54:59,256][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 14:54:59,267][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 16:02:39,444][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 16:02:39,547][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 20588 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 16:02:39,553][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 16:02:41,319][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 16:02:41,323][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 16:02:41,371][INFO ][main] Finished Spring Data repository scanning in 26 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 16:02:41,598][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 16:02:42,292][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$9b7ea34] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 16:02:42,700][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 16:02:42,713][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 16:02:42,713][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 16:02:42,714][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 16:02:42,876][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 16:02:42,877][INFO ][main] Root WebApplicationContext: initialization completed in 3209 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 16:02:43,285][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 16:02:43,711][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 16:02:45,321][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 16:02:45,672][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 16:02:46,484][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 16:02:47,300][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2746bc43, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16d31c48, org.springframework.security.web.context.SecurityContextPersistenceFilter@2acbbee4, org.springframework.security.web.header.HeaderWriterFilter@768d8a25, org.springframework.security.web.authentication.logout.LogoutFilter@2806fe58, org.springframework.web.filter.CorsFilter@7791ff50, net.lab1024.sa.common.common.security.SecurityTokenFilter@783a35d8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4f67d628, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1caa1866, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38821ada, org.springframework.security.web.session.SessionManagementFilter@5988e36e, org.springframework.security.web.access.ExceptionTranslationFilter@306f439c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1fcb01f8] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 16:02:47,394][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 16:02:47,413][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 16:02:47,442][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 16:02:47,442][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 16:02:47,462][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 16:02:48,445][INFO ][main] Started SmartAdminApplication in 9.831 seconds (JVM running for 12.011) (StartupInfoLogger.java:61)
+[2023-08-18 16:02:48,460][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 16:03:26,485][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 16:03:26,485][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 16:03:26,487][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 16:56:19,509][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 16:56:19,512][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 16:56:19,648][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 16:56:19,656][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 18:57:14,907][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 18:57:14,954][INFO ][main] Starting SmartAdminApplication using Java 17.0.1 on Traveller-yhz with PID 23544 (D:\桌面重要文件\布里斯托大学\summer project\design\SmartWatch\smart-admin-api\sa-admin\target\classes started by 27332 in D:\桌面重要文件\布里斯托大学\summer project\design\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 18:57:14,958][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 18:57:16,805][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 18:57:16,807][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 18:57:16,849][INFO ][main] Finished Spring Data repository scanning in 27 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 18:57:16,989][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 18:57:17,431][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$9e2dd67] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 18:57:17,699][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 18:57:17,707][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 18:57:17,708][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 18:57:17,708][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 18:57:17,819][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 18:57:17,819][INFO ][main] Root WebApplicationContext: initialization completed in 2823 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 18:57:18,079][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 18:57:22,358][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 18:57:23,850][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 18:57:24,071][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 18:57:24,629][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 18:57:25,169][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2591477f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@761d3c20, org.springframework.security.web.context.SecurityContextPersistenceFilter@1676e501, org.springframework.security.web.header.HeaderWriterFilter@66d62c59, org.springframework.security.web.authentication.logout.LogoutFilter@4bf2c697, org.springframework.web.filter.CorsFilter@32dbca45, net.lab1024.sa.common.common.security.SecurityTokenFilter@172f2717, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e8359da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6f999cf4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@bda4cbe, org.springframework.security.web.session.SessionManagementFilter@13c36d48, org.springframework.security.web.access.ExceptionTranslationFilter@68596992, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7a7698f4] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 18:57:25,224][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 18:57:25,241][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 18:57:25,258][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.23.167.54:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 18:57:25,259][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 18:57:25,273][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 18:57:25,929][INFO ][main] Started SmartAdminApplication in 11.43 seconds (JVM running for 12.694) (StartupInfoLogger.java:61)
+[2023-08-18 18:57:25,936][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 18:57:30,398][INFO ][Druid-ConnectionPool-Create-1912282531] {dataSource-1} failContinuous is true (DruidAbstractDataSource.java:1865)
+[2023-08-18 18:58:18,404][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 18:58:18,406][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 18:58:18,418][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 18:58:18,419][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 18:58:23,288][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 18:58:23,324][INFO ][main] Starting SmartAdminApplication using Java 17.0.1 on Traveller-yhz with PID 8232 (D:\桌面重要文件\布里斯托大学\summer project\design\SmartWatch\smart-admin-api\sa-admin\target\classes started by 27332 in D:\桌面重要文件\布里斯托大学\summer project\design\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 18:58:23,327][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 18:58:24,090][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 18:58:24,092][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 18:58:24,122][INFO ][main] Finished Spring Data repository scanning in 20 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 18:58:24,247][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 18:58:24,621][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$9264f683] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 18:58:24,859][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 18:58:24,866][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 18:58:24,866][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 18:58:24,866][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 18:58:24,965][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 18:58:24,965][INFO ][main] Root WebApplicationContext: initialization completed in 1601 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 18:58:25,182][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 18:58:25,410][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 18:58:26,546][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 18:58:26,765][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 18:58:27,285][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 18:58:27,785][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e0d6270, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@314b0d53, org.springframework.security.web.context.SecurityContextPersistenceFilter@86abdbd, org.springframework.security.web.header.HeaderWriterFilter@1766b009, org.springframework.security.web.authentication.logout.LogoutFilter@48971262, org.springframework.web.filter.CorsFilter@4f7ba0af, net.lab1024.sa.common.common.security.SecurityTokenFilter@4676fcd9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76ac3ad0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3687f6b6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2975715, org.springframework.security.web.session.SessionManagementFilter@149bdb4e, org.springframework.security.web.access.ExceptionTranslationFilter@63bdf82d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d87c8af] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 18:58:27,844][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 18:58:27,861][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 18:58:27,878][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.23.167.54:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 18:58:27,878][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 18:58:27,892][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 18:58:28,495][INFO ][main] Started SmartAdminApplication in 5.582 seconds (JVM running for 6.4) (StartupInfoLogger.java:61)
+[2023-08-18 18:58:28,501][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 19:03:36,111][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 19:03:36,111][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 19:03:36,126][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 19:03:36,126][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:30:05,761][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:30:05,794][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 15624 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:30:05,796][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:30:06,484][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:30:06,485][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:30:06,510][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:30:06,629][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:30:06,974][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$e7a7b6f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:30:07,230][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:30:07,236][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:30:07,236][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:30:07,237][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:30:07,374][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:30:07,374][INFO ][main] Root WebApplicationContext: initialization completed in 1547 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:30:07,595][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:30:07,809][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:30:08,661][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:30:08,962][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:30:09,579][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:30:10,087][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b7704ec, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@39d6504b, org.springframework.security.web.context.SecurityContextPersistenceFilter@37ecc472, org.springframework.security.web.header.HeaderWriterFilter@4b1ef6a, org.springframework.security.web.authentication.logout.LogoutFilter@4ee41c66, org.springframework.web.filter.CorsFilter@7791ff50, net.lab1024.sa.common.common.security.SecurityTokenFilter@4dbeae45, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2252dc5d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e157f48, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1bad5ab3, org.springframework.security.web.session.SessionManagementFilter@39153b05, org.springframework.security.web.access.ExceptionTranslationFilter@11fb4f69, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2975715] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:30:10,142][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:30:10,157][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:30:10,176][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.52.136.67:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:30:10,176][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:30:10,188][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:30:10,795][INFO ][main] Started SmartAdminApplication in 5.424 seconds (JVM running for 6.193) (StartupInfoLogger.java:61)
+[2023-08-18 21:30:10,801][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:30:29,155][INFO ][http-nio-1024-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:30:29,156][INFO ][http-nio-1024-exec-2] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:30:29,157][INFO ][http-nio-1024-exec-2] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 21:35:58,325][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:35:58,327][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:35:58,442][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:35:58,446][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:36:02,957][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:36:02,982][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 7688 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:36:02,985][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:36:03,660][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:36:03,661][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:36:03,686][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:36:03,802][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:36:04,151][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$709a3706] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:36:04,380][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:36:04,387][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:36:04,387][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:36:04,387][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:36:04,518][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:36:04,518][INFO ][main] Root WebApplicationContext: initialization completed in 1501 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:36:04,740][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:36:04,944][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:36:05,786][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:36:06,064][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:36:06,545][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:36:07,057][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7d29fc6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@10c11e36, org.springframework.security.web.context.SecurityContextPersistenceFilter@62604ed4, org.springframework.security.web.header.HeaderWriterFilter@608f79a8, org.springframework.security.web.authentication.logout.LogoutFilter@4c43c37d, org.springframework.web.filter.CorsFilter@6be8ce1b, net.lab1024.sa.common.common.security.SecurityTokenFilter@1da53092, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@435848de, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@41dcfd0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@10f64bc3, org.springframework.security.web.session.SessionManagementFilter@37e9d191, org.springframework.security.web.access.ExceptionTranslationFilter@1e6be9f0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3a4e6da6] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:36:07,116][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:36:07,132][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:36:07,152][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.52.136.67:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:36:07,153][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:36:07,164][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:36:07,761][INFO ][main] Started SmartAdminApplication in 5.196 seconds (JVM running for 5.985) (StartupInfoLogger.java:61)
+[2023-08-18 21:36:07,766][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:36:09,889][INFO ][http-nio-1024-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:36:09,889][INFO ][http-nio-1024-exec-2] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:36:09,891][INFO ][http-nio-1024-exec-2] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 21:41:50,842][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:41:50,844][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:41:50,974][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:41:50,978][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:41:55,410][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:41:55,446][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 13676 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:41:55,448][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:41:56,141][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:41:56,143][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:41:56,169][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:41:56,298][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:41:56,648][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$887a66b7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:41:56,879][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:41:56,886][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:41:56,886][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:41:56,886][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:41:57,019][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:41:57,019][INFO ][main] Root WebApplicationContext: initialization completed in 1540 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:41:57,240][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:41:57,446][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:41:58,291][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:41:58,424][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:41:58,898][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:41:59,413][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3220ffb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@53791a39, org.springframework.security.web.context.SecurityContextPersistenceFilter@1766b009, org.springframework.security.web.header.HeaderWriterFilter@253a8bdb, org.springframework.security.web.authentication.logout.LogoutFilter@37e9d191, org.springframework.web.filter.CorsFilter@3bf01a01, net.lab1024.sa.common.common.security.SecurityTokenFilter@57629340, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c12f0f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@42e14655, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5292d417, org.springframework.security.web.session.SessionManagementFilter@486480e2, org.springframework.security.web.access.ExceptionTranslationFilter@f8b6743, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7aa44fa2] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:41:59,469][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:41:59,484][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:41:59,502][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.52.136.67:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:41:59,503][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:41:59,515][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:42:00,117][INFO ][main] Started SmartAdminApplication in 5.105 seconds (JVM running for 5.879) (StartupInfoLogger.java:61)
+[2023-08-18 21:42:00,123][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:42:03,089][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:42:03,089][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:42:03,091][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 21:45:14,595][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:45:14,600][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:45:14,728][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:45:14,731][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:45:19,400][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:45:19,431][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 4500 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:45:19,433][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:45:20,119][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:45:20,121][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:45:20,146][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:45:20,264][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:45:20,610][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$dad2cf6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:45:20,841][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:45:20,847][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:45:20,848][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:45:20,848][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:45:20,978][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:45:20,978][INFO ][main] Root WebApplicationContext: initialization completed in 1514 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:45:21,198][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:45:21,414][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:45:22,262][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:45:22,426][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:45:22,948][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:45:23,483][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38821ada, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2ab40d2d, org.springframework.security.web.context.SecurityContextPersistenceFilter@43851574, org.springframework.security.web.header.HeaderWriterFilter@70c68e4e, org.springframework.security.web.authentication.logout.LogoutFilter@39153b05, org.springframework.web.filter.CorsFilter@46de118b, net.lab1024.sa.common.common.security.SecurityTokenFilter@240b656f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4414ee28, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4c1c134, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@db610c3, org.springframework.security.web.session.SessionManagementFilter@2acbbee4, org.springframework.security.web.access.ExceptionTranslationFilter@52e2e426, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@9670873] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:45:23,539][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:45:23,557][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:45:23,578][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.52.136.67:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:45:23,578][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:45:23,593][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:45:24,299][INFO ][main] Started SmartAdminApplication in 5.287 seconds (JVM running for 6.071) (StartupInfoLogger.java:61)
+[2023-08-18 21:45:24,305][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:45:25,822][INFO ][http-nio-1024-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:45:25,822][INFO ][http-nio-1024-exec-2] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:45:25,823][INFO ][http-nio-1024-exec-2] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 21:47:22,816][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:47:22,817][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:47:22,940][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:47:22,943][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:47:27,525][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:47:27,561][INFO ][main] Starting SmartAdminApplication using Java 17.0.6 on LAPTOP-KM18GTPB with PID 7576 (D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api\sa-admin\target\classes started by Z in D:\Android Wear\SmartWatch\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:47:27,563][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:47:28,245][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:47:28,247][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:47:28,272][INFO ][main] Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:47:28,395][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:47:28,749][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$e7a7b6f8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:47:28,981][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:47:28,987][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:47:28,988][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:47:28,988][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:47:29,118][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:47:29,118][INFO ][main] Root WebApplicationContext: initialization completed in 1523 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:47:29,337][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:47:29,549][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:47:30,393][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:47:30,553][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:47:31,055][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:47:31,601][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28f5a003, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3220ffb, org.springframework.security.web.context.SecurityContextPersistenceFilter@4c1c134, org.springframework.security.web.header.HeaderWriterFilter@344eaf7e, org.springframework.security.web.authentication.logout.LogoutFilter@72557e0d, org.springframework.web.filter.CorsFilter@7791ff50, net.lab1024.sa.common.common.security.SecurityTokenFilter@53791a39, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@11fb4f69, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@149bdb4e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57629340, org.springframework.security.web.session.SessionManagementFilter@1caa1866, org.springframework.security.web.access.ExceptionTranslationFilter@500d4de8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@70b67841] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:47:31,669][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:47:31,704][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:47:31,726][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://10.52.136.67:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:47:31,727][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:47:31,742][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:47:32,420][INFO ][main] Started SmartAdminApplication in 5.282 seconds (JVM running for 6.056) (StartupInfoLogger.java:61)
+[2023-08-18 21:47:32,425][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:47:49,824][INFO ][http-nio-1024-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:47:49,824][INFO ][http-nio-1024-exec-4] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:47:49,825][INFO ][http-nio-1024-exec-4] Completed initialization in 1 ms (FrameworkServlet.java:547)
+[2023-08-18 21:53:06,020][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:53:06,080][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 11192 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:53:06,087][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:53:07,535][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:53:07,540][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:53:07,617][INFO ][main] Finished Spring Data repository scanning in 49 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:53:07,997][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:53:09,157][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$9d707e89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:53:09,878][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:53:09,896][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:53:09,897][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:53:09,898][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:53:10,094][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:53:10,094][INFO ][main] Root WebApplicationContext: initialization completed in 3939 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:53:10,533][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:53:10,988][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:53:13,011][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:53:13,363][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:53:14,275][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:53:15,237][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@42626e86, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7be2f512, org.springframework.security.web.context.SecurityContextPersistenceFilter@521032a6, org.springframework.security.web.header.HeaderWriterFilter@24df4805, org.springframework.security.web.authentication.logout.LogoutFilter@681302ad, org.springframework.web.filter.CorsFilter@63eea8c4, net.lab1024.sa.common.common.security.SecurityTokenFilter@435848de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5988e36e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@500d4de8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48971262, org.springframework.security.web.session.SessionManagementFilter@306f439c, org.springframework.security.web.access.ExceptionTranslationFilter@172f2717, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3c1f2651] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:53:15,321][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:53:15,346][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:53:15,379][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:53:15,379][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:53:15,404][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:53:16,960][INFO ][main] Started SmartAdminApplication in 11.522 seconds (JVM running for 12.893) (StartupInfoLogger.java:61)
+[2023-08-18 21:53:16,983][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:53:17,071][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:53:17,071][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:53:17,075][INFO ][http-nio-1024-exec-1] Completed initialization in 4 ms (FrameworkServlet.java:547)
+[2023-08-18 21:55:52,243][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:55:52,247][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:55:52,416][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:55:52,462][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
+[2023-08-18 21:56:13,029][INFO ][background-preinit] HV000001: Hibernate Validator 6.2.5.Final (Version.java:21)
+[2023-08-18 21:56:13,090][INFO ][main] Starting SmartAdminApplication using Java 19 on DESKTOP-JON2EGU with PID 20124 (D:\SmartWatch\smart-admin-api\sa-admin\target\classes started by DoDo in D:\SmartWatch\smart-admin-api) (StartupInfoLogger.java:55)
+[2023-08-18 21:56:13,095][INFO ][main] The following 1 profile is active: "dev" (SpringApplication.java:640)
+[2023-08-18 21:56:14,332][INFO ][main] Multiple Spring Data modules found, entering strict repository configuration mode (RepositoryConfigurationDelegate.java:262)
+[2023-08-18 21:56:14,334][INFO ][main] Bootstrapping Spring Data Redis repositories in DEFAULT mode. (RepositoryConfigurationDelegate.java:132)
+[2023-08-18 21:56:14,371][INFO ][main] Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces. (RepositoryConfigurationDelegate.java:201)
+[2023-08-18 21:56:14,585][INFO ][main] Cannot enhance @Configuration bean definition 'swaggerConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'. (ConfigurationClassPostProcessor.java:426)
+[2023-08-18 21:56:15,158][INFO ][main] Bean 'securityMethodConfig' of type [net.lab1024.sa.admin.config.SecurityMethodConfig$$EnhancerBySpringCGLIB$$9d707e89] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) (PostProcessorRegistrationDelegate.java:376)
+[2023-08-18 21:56:15,600][INFO ][main] Tomcat initialized with port(s): 1024 (http) (TomcatWebServer.java:108)
+[2023-08-18 21:56:15,612][INFO ][main] Initializing ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:56:15,612][INFO ][main] Starting service [Tomcat] (DirectJDKLog.java:173)
+[2023-08-18 21:56:15,613][INFO ][main] Starting Servlet engine: [Apache Tomcat/9.0.68] (DirectJDKLog.java:173)
+[2023-08-18 21:56:15,822][INFO ][main] Initializing Spring embedded WebApplicationContext (DirectJDKLog.java:173)
+[2023-08-18 21:56:15,823][INFO ][main] Root WebApplicationContext: initialization completed in 2665 ms (ServletWebServerApplicationContext.java:292)
+[2023-08-18 21:56:16,160][INFO ][main] 不需要登录的URL：[/login/Watch, /login, /login/getCaptcha] (UrlConfig.java:130)
+[2023-08-18 21:56:16,475][INFO ][main] {dataSource-1} inited (DruidDataSource.java:975)
+[2023-08-18 21:56:17,799][INFO ][main] {dataSource-2} inited (DruidDataSource.java:975)
+[2023-08-18 21:56:18,024][INFO ][main] 需要权限校验的URL：[] (UrlConfig.java:82)
+[2023-08-18 21:56:18,697][INFO ][main] Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)] (PropertySourcedRequestMappingHandlerMapping.java:69)
+[2023-08-18 21:56:19,469][INFO ][main] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2be9add0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2252dc5d, org.springframework.security.web.context.SecurityContextPersistenceFilter@2591477f, org.springframework.security.web.header.HeaderWriterFilter@2292e793, org.springframework.security.web.authentication.logout.LogoutFilter@253a8bdb, org.springframework.web.filter.CorsFilter@63eea8c4, net.lab1024.sa.common.common.security.SecurityTokenFilter@149e457, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64a74723, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@306f439c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@72557e0d, org.springframework.security.web.session.SessionManagementFilter@3d9dc84d, org.springframework.security.web.access.ExceptionTranslationFilter@524945e2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4ff5711b] (DefaultSecurityFilterChain.java:55)
+[2023-08-18 21:56:19,562][INFO ][main] Starting ProtocolHandler ["http-nio-1024"] (DirectJDKLog.java:173)
+[2023-08-18 21:56:19,583][INFO ][main] Tomcat started on port(s): 1024 (http) with context path '' (TomcatWebServer.java:220)
+[2023-08-18 21:56:19,607][INFO ][main] 
+-------------【sa-admin】 service is running！current profile is 【dev】-------------
+	Local:		http://localhost:1024/
+	External:	http://172.28.52.24:1024/
+	Swagger:	http://localhost:1024/swagger-ui.html
+-------------------------------------------------------------------------------------
+ (SmartApplicationListener.java:47)
+[2023-08-18 21:56:19,608][INFO ][main] Context refreshed (DocumentationPluginsBootstrapper.java:147)
+[2023-08-18 21:56:19,626][INFO ][main] Found 3 custom documentation plugin(s) (DocumentationPluginsBootstrapper.java:150)
+[2023-08-18 21:56:20,682][INFO ][main] Started SmartAdminApplication in 8.24 seconds (JVM running for 9.556) (StartupInfoLogger.java:61)
+[2023-08-18 21:56:20,696][INFO ][main] 
+ ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： 12个！---------------
+ ---------------【1024创新实验室 温馨提示：】 Spring  @Schedule running---------------
+ (AdminStartupRunner.java:30)
+[2023-08-18 21:56:24,569][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
+[2023-08-18 21:56:24,570][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
+[2023-08-18 21:56:24,572][INFO ][http-nio-1024-exec-1] Completed initialization in 2 ms (FrameworkServlet.java:547)
+[2023-08-18 21:59:19,972][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:59:19,976][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-18 21:59:20,121][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-18 21:59:20,131][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
