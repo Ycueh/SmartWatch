@@ -1,9 +1,12 @@
 package net.lab1024.sa.admin.module.system.user.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.collect.Lists;
+import net.lab1024.sa.admin.module.system.dao.role.RoleUserDao;
 import net.lab1024.sa.admin.module.system.dao.user.UserDao;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
 import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
+import net.lab1024.sa.admin.module.system.role.domain.vo.RoleUserVO;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.domain.form.*;
 import net.lab1024.sa.admin.module.system.user.domain.vo.UserVO;
@@ -45,7 +48,8 @@ public class UserService {
 
     @Autowired
     private MultiUserService multiUserService;
-
+    @Autowired
+    private RoleUserDao roleUserDao;
 
     public UserEntity getById(Long userId) {
         return userDao.selectById(userId);
@@ -53,7 +57,7 @@ public class UserService {
 
 
     /**
-     * 查询员工列表
+     * queryUser Form
      *
      * @param userQueryForm
      * @return
@@ -68,6 +72,18 @@ public class UserService {
             PageResult<UserVO> PageResult = SmartPageUtil.convert2PageResult(pageParam, userList);
             return ResponseDTO.ok(PageResult);
         }
+        List<Long> userIdList = userList.stream().map(UserVO::getUserId).collect(Collectors.toList());
+        // Check user role
+        List<RoleUserVO> roleEmployeeEntityList = roleUserDao.selectRoleByUserIdList(userIdList);
+        Map<Long, List<Long>> userRoleIdListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
+                Collectors.mapping(RoleUserVO::getRoleId, Collectors.toList())));
+        Map<Long, List<String>> userRoleNameListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
+                Collectors.mapping(RoleUserVO::getRoleName, Collectors.toList())));
+
+        userList.forEach(e -> {
+            e.setRoleIdList(userRoleIdListMap.getOrDefault(e.getUserId(), Lists.newArrayList()));
+            e.setRoleNameList(userRoleNameListMap.getOrDefault(e.getUserId(), Lists.newArrayList()));
+        });
 
          PageResult<UserVO> PageResult = SmartPageUtil.convert2PageResult(pageParam, userList);
         return ResponseDTO.ok(PageResult);
