@@ -2,6 +2,7 @@ package net.lab1024.sa.admin.module.system.dao.user;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import net.lab1024.sa.admin.module.system.role.domain.vo.RoleUserVO;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.domain.form.UserQueryForm;
 import net.lab1024.sa.admin.module.system.user.domain.vo.UserVO;
@@ -26,6 +27,7 @@ public interface UserDao extends BaseMapper<UserEntity> {
      * @return
      */
     List<UserVO> queryUser(Page page, @Param("queryForm") UserQueryForm queryForm);
+
 
     /**
      * Query User by disabled and deleted flag

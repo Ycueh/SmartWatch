@@ -293,10 +293,9 @@ CREATE TABLE `t_role`  (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES (34, '销售总监', '', '2022-10-19 20:24:28', '2019-08-30 09:30:50');
-INSERT INTO `t_role` VALUES (35, '总经理', '', '2019-08-30 09:31:05', '2019-08-30 09:31:05');
-INSERT INTO `t_role` VALUES (36, '董事长', '', '2019-08-30 09:31:11', '2019-08-30 09:31:11');
-INSERT INTO `t_role` VALUES (37, '财务', '', '2019-08-30 09:31:16', '2019-08-30 09:31:16');
+INSERT INTO `t_role` VALUES (34, 'administrator', '', '2022-10-19 20:24:28', '2019-08-30 09:30:50');
+INSERT INTO `t_role` VALUES (35, 'normal user', '', '2019-08-30 09:31:05', '2019-08-30 09:31:05');
+
 
 -- ----------------------------
 -- Table structure for t_role_menu

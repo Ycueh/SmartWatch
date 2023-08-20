@@ -3,6 +3,7 @@ package net.lab1024.sa.admin.module.system.dao.role;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import net.lab1024.sa.admin.module.system.role.domain.form.RoleUserQueryForm;
+import net.lab1024.sa.admin.module.system.role.domain.vo.RoleUserVO;
 import net.lab1024.sa.admin.module.system.user.domain.vo.UserVO;
 import net.lab1024.sa.admin.module.system.role.domain.entity.RoleUserEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,7 +18,7 @@ import java.util.List;
 public interface RoleUserDao extends BaseMapper<RoleUserEntity> {
 
     /**
-     * 根据员工id 查询所有的角色
+     * Acquire user id according to role id
      * @param userId
      * @return
      */
@@ -37,28 +38,36 @@ public interface RoleUserDao extends BaseMapper<RoleUserEntity> {
      */
     List<UserVO> selectUserByRoleId(@Param("roleId") Long roleId);
     /**
-     * 根据员工信息删除
+     * Delete by user id
      * @param userId
      */
     void deleteByUserId(@Param("userId") Long userId);
 
     /**
-     * 删除某个角色的所有关系
+     * Delete by role id
      * @param roleId
      */
     void deleteByRoleId(@Param("roleId")Long roleId);
 
     /**
-     * 根据员工和 角色删除关系
+     *
      * @param userId
      * @param roleId
      */
     void deleteByUserIdRoleId(@Param("userId") Long userId,@Param("roleId")Long roleId);
 
     /**
-     * 批量删除某个角色下的某批用户的关联关系
+     * Batch delete user under one role
      * @param roleId
      * @param userIds
      */
     void batchDeleteUserRole(@Param("roleId") Long roleId,@Param("userIds")List<Long> userIds);
+
+    /**
+     * Query all users according to role id
+     * @param userIdList
+     * @return
+     */
+    List<RoleUserVO> selectRoleByUserIdList(@Param("userIdList") List<Long> userIdList);
+
 }

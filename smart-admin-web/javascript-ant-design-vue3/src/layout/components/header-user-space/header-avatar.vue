@@ -10,8 +10,7 @@
         U
       </a-avatar>
 
-<!--      <span class="name">{{ actualName }}</span>-->
-      <span class="name">User</span>
+     <span class="name">{{ actualName }}</span>
     </div>
     <template #overlay>
       <a-menu :class="['avatar-menu']">
@@ -75,7 +74,7 @@
   // ------------------------ avatar, name ------------------------
 
   const avatarName = ref('');
-  const actualName = computed(() => useUserStore().actualName);
+  const actualName = computed(() => useUserStore().loginName);
   // update avatar
   function updateAvatar() {
     if (useUserStore().actualName) {
