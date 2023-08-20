@@ -99,9 +99,16 @@
             <a-button
               v-privilege="'system:user:disabled'"
               type="link"
-              @click="updateDisabled(record.userId, record.disabledFlag)"
+              @click="updateDisabled(record.userId)"
               >{{ record.disabledFlag ? "Able" : "Disable" }}</a-button
             >
+            <!-- <a-button
+              v-privilege="'system:user:password:show'"
+              type="link"
+              size="small"
+              @click="showPassword(record.passWord)"
+              >Show password</a-button
+            > -->
           </div>
         </template>
       </template>
@@ -138,6 +145,7 @@ import UserPasswordDialog from "../user-password-dialog/index.vue";
 import { SmartLoading } from "/@/components/framework/smart-loading";
 import { PAGE_SIZE_OPTIONS } from "/@/constants/common-const";
 import UserFormModal from "../user-form-modal/index.vue";
+import { status } from "nprogress";
 // ----------------------- 以下是字段定义 emits props ---------------------
 
 //-------------Acccount info---------
@@ -319,6 +327,19 @@ async function singleDelete(userData) {
   } catch (e) {
     smartSentry.captureError(e);
   } finally {
+    SmartLoading.hide();
+  }
+}
+
+async function updateDisabled(userId){
+  try{
+    SmartLoading.show();
+  await userApi.updateDisabled(userId);
+  message.success("Change disabled flag successfully");
+  queryData();
+  }catch(e){
+    smartSentry.captureError(e);
+  }finally{
     SmartLoading.hide();
   }
 }
