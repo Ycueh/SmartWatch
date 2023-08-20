@@ -13,6 +13,7 @@ import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,24 +26,28 @@ public class eventController {
 
     @ApiOperation("Add event")
     @PostMapping("/event/add")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:event:add')")
     public ResponseDTO<String> add(@RequestBody @Valid EventAddForm addForm) {
         return eventService.add(addForm);
     }
 
     @ApiOperation("Update event")
     @PostMapping("/event/update")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:event:edit')")
     public ResponseDTO<String> update(@RequestBody @Valid EventUpdateForm updateForm) {
         return eventService.update(updateForm);
     }
 
     @ApiOperation("Delete event")
     @GetMapping("/event/delete/{eventId}")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:event:delete')")
     public ResponseDTO<String> delete(@PathVariable("eventId") Long eventId) {
         return eventService.delete(eventId);
     }
 
     @ApiOperation("Group delete")
     @PostMapping("/event/batchDelete")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:event:batchDelete')")
     public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
         return eventService.batchDelete(idList);
     }
