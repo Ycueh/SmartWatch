@@ -30,7 +30,6 @@ public class UserVO {
     @ApiModelProperty("phone")
     private String phone;
 
-
     @ApiModelProperty("disabledFlag")
     private Boolean disabledFlag;
 
@@ -45,4 +44,7 @@ public class UserVO {
 
     @ApiModelProperty("Role name list")
     private List<String> roleNameList;
+
+    @ApiModelProperty("password")
+    private String password;
 }

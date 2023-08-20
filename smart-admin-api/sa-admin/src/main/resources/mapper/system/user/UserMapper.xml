@@ -39,6 +39,7 @@
             <if test="disabledFlag != null">
                 AND disabled_flag = #{disabledFlag}
             </if>
+            AND deleted_flag = false
         </where>
     </select>
 
@@ -50,6 +51,7 @@
             <if test="disabledFlag != null">
                 AND disabled_flag = #{disabledFlag}
             </if>
+            AND deleted_flag = false
         </where>
     </select>
 
@@ -62,6 +64,7 @@
             <if test="disabledFlag != null">
                 AND disabled_flag = #{disabledFlag}
             </if>
+            AND deleted_flag = false
         </where>
     </select>
 

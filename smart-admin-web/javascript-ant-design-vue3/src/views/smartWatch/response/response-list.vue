@@ -9,20 +9,8 @@
   <!---------- 查询表单form begin ----------->
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="Date" class="smart-query-form-item">
-        <SmartEnumSelect width="200px" v-model:value="queryForm.date"  placeholder="date" />
-      </a-form-item>
       <a-form-item label="Keyword" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="Keyword" />
-      </a-form-item>
-      <a-form-item label="Time" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.time" placeholder="time" />
-      </a-form-item>
-      <a-form-item label="questionID" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.questionid" placeholder="questionid" />
-      </a-form-item>
-      <a-form-item label="responseID" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.responseid" placeholder="responseid" />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
