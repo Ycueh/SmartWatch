@@ -357,7 +357,8 @@ function resetPassword(id, name) {
         let { data: passWord } = await userApi.resetPassword(id);
         message.success("reset successfully");
         userPasswordDialog.value.showModal(name, passWord);
-        userApi.queryUser();
+        // userApi.queryUser();
+        resetQuery();
       } catch (error) {
         smartSentry.captureError(error);
       } finally {
