@@ -109,16 +109,12 @@ public class SecondaryDataSourceConfig {
 
     @Bean(name = "secondarySqlSessionFactory")
     public SqlSessionFactory secondarySqlSessionFactory(@Qualifier("secondaryDataSource") DataSource dataSource) throws Exception {
-//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-//        bean.setDataSource(dataSource);
-//        return bean.getObject();
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
         factoryBean.setDataSource(secondaryDataSource());
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         Resource[] resources = resolver.getResources("classpath*:/mapper/business/smartwatch/*.xml");
         factoryBean.setMapperLocations(resources);
 
-        // 设置 MyBatis-Plus 分页插件 注意此处myBatisPlugin一定要放在后面
         List<Interceptor> pluginsList = new ArrayList<>();
         pluginsList.add(paginationInterceptor);
         if (dataScopePlugin != null) {

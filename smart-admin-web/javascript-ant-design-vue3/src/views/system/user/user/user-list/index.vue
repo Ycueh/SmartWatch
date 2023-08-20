@@ -1,5 +1,5 @@
 <template>
-  <a-form class="smart-query-form" v-privilege="'user:query'">
+  <a-form class="smart-query-form" >
     <a-row class="smart-query-form-row">
       <!--      <a-form-item label="userId" class="smart-query-form-item">-->
       <!--        <a-input style="width: 200px" v-model:value="queryForm.searchuserId" placeholder="userID" />-->
@@ -33,7 +33,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="adduser" type="primary" size="small" v-privilege="'user:add'">
+        <a-button @click="adduser" type="primary" size="small" v-privilege="'system:user:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -43,7 +43,7 @@
           @click="batchDelete"
           type="primary"
           size="small"
-          v-privilege="'user:add'"
+          v-privilege="'system:user:delete'"
         >
           <template #icon> </template>
           Batch Delete
