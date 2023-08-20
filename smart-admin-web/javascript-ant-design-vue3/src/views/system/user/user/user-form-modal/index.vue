@@ -59,6 +59,7 @@
       <a-button style="margin-right: 8px" @click="onClose">Cancel</a-button>
       <a-button type="primary" @click="onSubmit">Submit</a-button>
     </div>
+    <UserPasswordDialog ref="userPasswordDialog" />
   </a-drawer>
 </template>
 
@@ -70,10 +71,10 @@
   import {SmartLoading} from "/@/components/framework/smart-loading";
   import {userApi} from "/@/api/system/user/user-api";
   import { roleApi } from '/@/api/system/role/role-api';
-  
+  import UserPasswordDialog from "/@/views/system/user/user/user-password-dialog/index.vue";
 
   const emit = defineEmits('reloadList');
-
+  let userPasswordDialog = ref();
 
   //show the role list
   const roleList = ref([]); 
@@ -125,10 +126,12 @@
         let params = _.cloneDeep(form);
         if(form.userId) {
           await userApi.updateUser(params);
+          message.success("edit successfully");
         }else {
-          await userApi.addUser(params);
+          let { data: passWord } = await userApi.addUser(params);
+          message.success("add successfully")
+          userPasswordDialog.value.showModal(form.loginName, passWord);
         }
-        message.success(`${form.userId ? 'edit' : 'add'}success`);
         onClose();
         emit('reloadList');
       } catch (error) {

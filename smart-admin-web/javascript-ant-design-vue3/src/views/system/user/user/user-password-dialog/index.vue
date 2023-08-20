@@ -4,6 +4,7 @@
 <template>
   <a-modal v-model:visible="visible" :zIndex="9999" :width="500" title="Hint" :closable="false" :maskClosable="false">
     <!--  -->
+    <p>Please record your account and password, otherwise you need to contact super user to view your account information.</p>
     <ul>
       <li>Account: {{ showLoginName }}</li>
       <li>Password: {{ showLoginPassword }}</li>
@@ -16,7 +17,7 @@
 Password：${showLoginPassword}`"
         size="middle"
         @click="copy"
-        >Copy the password and close</a-button
+        >Copy the account information and close</a-button
       >
     </template>
   </a-modal>
