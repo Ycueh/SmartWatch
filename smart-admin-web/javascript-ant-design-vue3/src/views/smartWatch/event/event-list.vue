@@ -1,19 +1,19 @@
 <template>
   <a-form class="smart-query-form">
-    <a-row class="smart-query-form-row" v-privilege="'event:query'">
+    <a-row class="smart-query-form-row">
 
       <a-form-item label="event" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.searchEvent" placeholder="event" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item">
-        <a-button type="primary" @click="queryData" v-privilege="'event:query'">
+        <a-button type="primary" @click="queryData">
           <template #icon>
             <ReloadOutlined />
           </template>
           Search
         </a-button>
-        <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'event:query'">
+        <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
             <SearchOutlined />
           </template>
@@ -26,7 +26,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="addevent" type="primary" size="small" v-privilege="'event:add'">
+        <a-button @click="addevent" type="primary" size="small" v-privilege="'smartWatch:event:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -47,8 +47,8 @@
       <template #bodyCell="{ record, column}">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addevent(record)" type="link" v-privilege="'event:update'">Edit</a-button>
-            <a-button @click="deleteevent(record)" danger type="link" v-privilege="'event:delete'">Delete</a-button>
+            <a-button @click="addevent(record)" type="link" v-privilege="'smartWatch:event:edit'">Edit</a-button>
+            <a-button @click="deleteevent(record)" danger type="link" v-privilege="'smartWatch:event:delete'">Delete</a-button>
           </div>
         </template>
       </template>

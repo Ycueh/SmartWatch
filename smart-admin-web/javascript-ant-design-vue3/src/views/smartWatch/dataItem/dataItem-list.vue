@@ -1,18 +1,18 @@
 <template>
-  <a-form class="smart-query-form" v-privilege="'dataItem:query'">
-    <a-row class="smart-query-form-row" v-privilege="'dataItem:query'">
+  <a-form class="smart-query-form">
+    <a-row class="smart-query-form-row">
         <a-form-item label="dataItem" class="smart-query-form-item">
           <a-input style="width: 200px" v-model:value="queryForm.searchDataItem" placeholder="dataItem" />
         </a-form-item>
   
         <a-form-item class="smart-query-form-item">
-          <a-button type="primary" @click="queryData" v-privilege="'dataItem:query'">
+          <a-button type="primary" @click="queryData">
             <template #icon>
               <ReloadOutlined />
             </template>
             Search
           </a-button>
-          <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'dataItem:query'">
+          <a-button @click="resetQuery" class="smart-margin-left10">
             <template #icon>
               <SearchOutlined />
             </template>
@@ -25,7 +25,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="addDataItem" type="primary" size="small" v-privilege="'dataItem:add'">
+        <a-button @click="addDataItem" type="primary" size="small" v-privilege="'smartWatch:dataItem:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -46,8 +46,8 @@
         <template #bodyCell="{ record, column}">
           <template v-if="column.dataIndex === 'action'">
             <div class="smart-table-operate">
-              <a-button @click="addDataItem(record)" type="link" v-privilege="'dataItem:update'">Edit</a-button>
-              <a-button @click="deleteDataItem(record)" danger type="link" v-privilege="'dataItem:delete'">Delete</a-button>
+              <a-button @click="addDataItem(record)" type="link" v-privilege="'smartWatch:dataItem:edit'">Edit</a-button>
+              <a-button @click="deleteDataItem(record)" danger type="link" v-privilege="'smartWatch:dataItem:delete'">Delete</a-button>
             </div>
           </template>
         </template>
