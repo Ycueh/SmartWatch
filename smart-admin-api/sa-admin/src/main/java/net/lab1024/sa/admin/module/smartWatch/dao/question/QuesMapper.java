@@ -18,7 +18,7 @@ public interface QuesMapper {
     void changeId(Long id);
 
 //    update the auto-increment number
-    @Update("ALTER TABLE question AUTO_INCREMENT = #{count}")
+    @Update("UPDATE sqlite_sequence SET seq = #{count} - 1 WHERE name='question';")
     void resetAutoIncrement(Long count);
 
 //    add new question

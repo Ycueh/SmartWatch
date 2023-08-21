@@ -39,7 +39,7 @@ public class QuesController {
      */
     @ApiOperation("Delete question")
     @GetMapping("/question/delete/{questionId}")
-      @PreAuthorize("@saAuth.checkPermission('smartWatch:response:delete')")
+      @PreAuthorize("@saAuth.checkPermission('smartWatch:question:delete')")
     public ResponseDTO<String> delete(@PathVariable("questionId") Long questionId) {
         return quesService.deleteById(questionId);
     }
@@ -50,6 +50,7 @@ public class QuesController {
      */
     @ApiOperation("Add question")
     @PostMapping("/question/add")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:question:add')")
     public ResponseDTO<String> add(@RequestBody @Valid Question question) {
         return quesService.add(question);
     }
@@ -74,7 +75,7 @@ public class QuesController {
      */
     @ApiOperation("Update question")
     @PostMapping("/question/update")
-    @PreAuthorize("@saAuth.checkPermission('smartWatch:response:edit')")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:question:edit')")
     public ResponseDTO<String> update(@RequestBody @Valid Question question) {
         return quesService.updateQuestion(question);
     }
