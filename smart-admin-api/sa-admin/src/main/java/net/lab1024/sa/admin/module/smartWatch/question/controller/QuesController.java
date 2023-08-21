@@ -13,6 +13,7 @@ import net.lab1024.sa.admin.module.smartWatch.question.service.QuesService;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,21 +37,23 @@ public class QuesController {
      * @param
      * @return Result response
      */
-//    @ApiOperation("Delete question")
-//    @GetMapping("/question/delete/{questionId}")
-//    public ResponseDTO<String> delete(@PathVariable("questionId") Long questionId) {
-//        return quesService.deleteById(questionId);
-//    }
+    @ApiOperation("Delete question")
+    @GetMapping("/question/delete/{questionId}")
+      @PreAuthorize("@saAuth.checkPermission('smartWatch:question:delete')")
+    public ResponseDTO<String> delete(@PathVariable("questionId") Long questionId) {
+        return quesService.deleteById(questionId);
+    }
 
     /**
      * add new question
      * @return
      */
-//    @ApiOperation("Add question")
-//    @PostMapping("/question/add")
-//    public ResponseDTO<String> add(@RequestBody @Valid Question question) {
-//        return quesService.add(question);
-//    }
+    @ApiOperation("Add question")
+    @PostMapping("/question/add")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:question:add')")
+    public ResponseDTO<String> add(@RequestBody @Valid Question question) {
+        return quesService.add(question);
+    }
 
 
     /**
@@ -72,6 +75,7 @@ public class QuesController {
      */
     @ApiOperation("Update question")
     @PostMapping("/question/update")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:question:edit')")
     public ResponseDTO<String> update(@RequestBody @Valid Question question) {
         return quesService.updateQuestion(question);
     }

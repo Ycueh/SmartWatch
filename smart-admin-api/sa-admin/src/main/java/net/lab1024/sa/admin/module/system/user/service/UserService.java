@@ -74,10 +74,10 @@ public class UserService {
         }
         List<Long> userIdList = userList.stream().map(UserVO::getUserId).collect(Collectors.toList());
         // Check user role
-        List<RoleUserVO> roleEmployeeEntityList = roleUserDao.selectRoleByUserIdList(userIdList);
-        Map<Long, List<Long>> userRoleIdListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
+        List<RoleUserVO> roleUserEntityList = roleUserDao.selectRoleByUserIdList(userIdList);
+        Map<Long, List<Long>> userRoleIdListMap = roleUserEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
                 Collectors.mapping(RoleUserVO::getRoleId, Collectors.toList())));
-        Map<Long, List<String>> userRoleNameListMap = roleEmployeeEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
+        Map<Long, List<String>> userRoleNameListMap = roleUserEntityList.stream().collect(Collectors.groupingBy(RoleUserVO::getUserId,
                 Collectors.mapping(RoleUserVO::getRoleName, Collectors.toList())));
 
         userList.forEach(e -> {
@@ -195,7 +195,7 @@ public class UserService {
     /**
      * batchdelte user
      *
-     * @param userIdList 员工ID列表
+     * @param userIdList
      * @return
      */
     public ResponseDTO<String> batchUpdateDeleteFlag(List<Long> userIdList) {
@@ -206,7 +206,7 @@ public class UserService {
         if (CollectionUtils.isEmpty(userEntityList)) {
             return ResponseDTO.ok();
         }
-        // 更新删除
+        // update deleted flag
         List<UserEntity> deleteList = userIdList.stream().map(e -> {
             UserEntity updateUser = new UserEntity();
             updateUser.setUserId(e);

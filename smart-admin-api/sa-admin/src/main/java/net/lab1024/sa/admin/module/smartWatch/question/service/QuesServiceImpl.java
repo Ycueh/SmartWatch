@@ -23,37 +23,37 @@ public class QuesServiceImpl implements QuesService{
     @Autowired
     private QuestionDAO quesDAO;
 
-//    @Transactional
-//    @Override
-//    public ResponseDTO<String> deleteById(Long id) {
-//        quesMapper.deleteById(id);
-//        quesMapper.changeId(id);
-//        long count = quesMapper.count();
-//        quesMapper.resetAutoIncrement(count+1);
-//        for(long i = id; i < count+1; i++){
-//            Question question = quesMapper.selectById(i);
-//            question.setQuestionId(String.format("%05d", question.getId()*1000));
-//            question.setAnswer1Id(String.format("%05d", question.getId()*1000+10));
-//            question.setAnswer2Id(String.format("%05d", question.getId()*1000+20));
-//            question.setAnswer3Id(String.format("%05d", question.getId()*1000+30));
-//            question.setAnswer4Id(String.format("%05d", question.getId()*1000+40));
-//            quesMapper.updateAnswerId(question);
-//        }
-//        return ResponseDTO.ok();
-//    }
+    @Transactional
+    @Override
+    public ResponseDTO<String> deleteById(Long id) {
+        quesMapper.deleteById(id);
+        quesMapper.changeId(id);
+        long count = quesMapper.count();
+        quesMapper.resetAutoIncrement(count+1);
+        for(long i = id; i < count+1; i++){
+            Question question = quesMapper.selectById(i);
+            question.setQuestionId(String.format("%05d", question.getId()*1000));
+            question.setAnswer1Id(String.format("%05d", question.getId()*1000+10));
+            question.setAnswer2Id(String.format("%05d", question.getId()*1000+20));
+            question.setAnswer3Id(String.format("%05d", question.getId()*1000+30));
+            question.setAnswer4Id(String.format("%05d", question.getId()*1000+40));
+            quesMapper.updateAnswerId(question);
+        }
+        return ResponseDTO.ok();
+    }
 
-//    @Transactional
-//    @Override
-//    public ResponseDTO<String> add(Question question) {
-//        long count = quesMapper.count()+1;
-//        question.setQuestionId(String.format("%05d", count*1000));
-//        question.setAnswer1Id(String.format("%05d", count*1000+10));
-//        question.setAnswer2Id(String.format("%05d", count*1000+20));
-//        question.setAnswer3Id(String.format("%05d", count*1000+30));
-//        question.setAnswer4Id(String.format("%05d", count*1000+40));
-//        quesMapper.add(question);
-//        return ResponseDTO.ok();
-//    }
+    @Transactional
+    @Override
+    public ResponseDTO<String> add(Question question) {
+        long count = quesMapper.count()+1;
+        question.setQuestionId(String.format("%05d", count*1000));
+        question.setAnswer1Id(String.format("%05d", count*1000+10));
+        question.setAnswer2Id(String.format("%05d", count*1000+20));
+        question.setAnswer3Id(String.format("%05d", count*1000+30));
+        question.setAnswer4Id(String.format("%05d", count*1000+40));
+        quesMapper.add(question);
+        return ResponseDTO.ok();
+    }
 
     @Override
     public Question selectById(Long id) {

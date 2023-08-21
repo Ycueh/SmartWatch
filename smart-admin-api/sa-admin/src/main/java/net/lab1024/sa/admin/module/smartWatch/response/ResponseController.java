@@ -12,6 +12,7 @@ import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,28 +31,26 @@ public class ResponseController {
 
     @ApiOperation("Add response")
     @PostMapping("/response/add")
-   // @PreAuthorize("@saAuth.checkPermission('goods:add')")
     public ResponseDTO<String> add(@RequestBody @Valid ResponseAddForm addForm) {
         return resService.add(addForm);
     }
 
     @ApiOperation("Update response")
     @PostMapping("/response/update")
-   // @PreAuthorize("@saAuth.checkPermission('goods:update')")
     public ResponseDTO<String> update(@RequestBody @Valid ResponseUpdateForm updateForm) {
         return resService.update(updateForm);
     }
 
     @ApiOperation("Delete response")
     @GetMapping("/response/delete/{responseId}")
-   // @PreAuthorize("@saAuth.checkPermission('goods:delete')")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:response:delete')")
     public ResponseDTO<String> delete(@PathVariable("responseId") Long responseId) {
         return resService.delete(responseId);
     }
 
-    @ApiOperation("Group delete")
+    @ApiOperation("Batch delete")
     @PostMapping("/response/batchDelete")
-  //  @PreAuthorize("@saAuth.checkPermission('goods:batchDelete')")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:response:batchDelete')")
     public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
         return resService.batchDelete(idList);
     }

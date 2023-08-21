@@ -6,22 +6,10 @@
         *
         FROM response
         <where>
-            <if test="queryForm.questionId != null">
-                AND response.date= #{queryForm.date}
-            </if>
             <if test="queryForm.keyword != null and queryForm.keyword != ''">
                 AND ( INSTR(response.question,#{queryForm.keyword})
                 OR INSTR(response.response,#{queryForm.keyword})
                 )
-            </if>
-            <if test="queryForm.time != null">
-                AND response.time= #{queryForm.time}
-            </if>
-            <if test="queryForm.questionid != null">
-                AND response.questionID= #{queryForm.questionid}
-            </if>
-            <if test="queryForm.answerid != null">
-                AND response.answerID= #{queryForm.answerid}
             </if>
         </where>
         order by response._id asc

@@ -10,24 +10,24 @@ public interface QuesMapper {
     public Long count();
 
     //delete question by id
-//    @Delete("delete from question where _id = #{id}")
-//    void deleteById(Long id);
+    @Delete("delete from question where _id = #{id}")
+    void deleteById(Long id);
 
-    //update the id to be continued
-//    @Update("UPDATE question SET _id = _id - 1 WHERE _id > #{id}")
-//    void changeId(Long id);
+//    update the id to be continued
+    @Update("UPDATE question SET _id = _id - 1 WHERE _id > #{id}")
+    void changeId(Long id);
 
-    //update the auto-increment number
-//    @Update("ALTER TABLE question AUTO_INCREMENT = #{count}")
-//    void resetAutoIncrement(Long count);
+//    update the auto-increment number
+    @Update("UPDATE sqlite_sequence SET seq = #{count} - 1 WHERE name='question';")
+    void resetAutoIncrement(Long count);
 
-    //add new question
-//    @Insert("insert into " +
-//            "question" +
-//            "(questionID, question, answer1ID, answer1, answer2ID, answer2, answer3ID, answer3, answer4ID, answer4) " +
-//            "values " +
-//            "(#{questionId}, #{question}, #{answer1Id}, #{answer1}, #{answer2Id}, #{answer2}, #{answer3Id}, #{answer3}, #{answer4Id}, #{answer4})")
-//    void add(Question question);
+//    add new question
+    @Insert("insert into " +
+            "question" +
+            "(questionID, question, answer1ID, answer1, answer2ID, answer2, answer3ID, answer3, answer4ID, answer4) " +
+            "values " +
+            "(#{questionId}, #{question}, #{answer1Id}, #{answer1}, #{answer2Id}, #{answer2}, #{answer3Id}, #{answer3}, #{answer4Id}, #{answer4})")
+    void add(Question question);
 
     //select question by id
     @Select("select * from question where _id = #{id}")

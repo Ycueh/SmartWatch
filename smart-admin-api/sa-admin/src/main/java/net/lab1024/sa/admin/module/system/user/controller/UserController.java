@@ -36,7 +36,7 @@ public class UserController extends AdminBaseController {
 
     @ApiOperation(value = "Add User")
     @PostMapping("/user/add")
-    @PreAuthorize("@saAuth.checkPermission('system:User:add')")
+    @PreAuthorize("@saAuth.checkPermission('system:user:add')")
     public ResponseDTO<String> addUser(@Valid @RequestBody UserAddForm userAddForm) {
         return userService.addUser(userAddForm);
     }

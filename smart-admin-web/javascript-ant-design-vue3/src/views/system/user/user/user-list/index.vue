@@ -1,5 +1,5 @@
 <template>
-  <a-form class="smart-query-form" v-privilege="'user:query'">
+  <a-form class="smart-query-form" >
     <a-row class="smart-query-form-row">
       <!--      <a-form-item label="userId" class="smart-query-form-item">-->
       <!--        <a-input style="width: 200px" v-model:value="queryForm.searchuserId" placeholder="userID" />-->
@@ -33,7 +33,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="adduser" type="primary" size="small" v-privilege="'user:add'">
+        <a-button @click="adduser" type="primary" size="small" v-privilege="'system:user:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -43,7 +43,7 @@
           @click="batchDelete"
           type="primary"
           size="small"
-          v-privilege="'user:add'"
+          v-privilege="'system:user:delete'"
         >
           <template #icon> </template>
           Batch Delete
@@ -99,9 +99,16 @@
             <a-button
               v-privilege="'system:user:disabled'"
               type="link"
-              @click="updateDisabled(record.userId, record.disabledFlag)"
+              @click="updateDisabled(record.userId)"
               >{{ record.disabledFlag ? "Able" : "Disable" }}</a-button
             >
+            <!-- <a-button
+              v-privilege="'system:user:password:show'"
+              type="link"
+              size="small"
+              @click="showPassword(record.passWord)"
+              >Show password</a-button
+            > -->
           </div>
         </template>
       </template>
@@ -138,6 +145,7 @@ import UserPasswordDialog from "../user-password-dialog/index.vue";
 import { SmartLoading } from "/@/components/framework/smart-loading";
 import { PAGE_SIZE_OPTIONS } from "/@/constants/common-const";
 import UserFormModal from "../user-form-modal/index.vue";
+import { status } from "nprogress";
 // ----------------------- 以下是字段定义 emits props ---------------------
 
 //-------------Acccount info---------
@@ -155,10 +163,6 @@ const columns = ref([
   {
     title: "login_name",
     dataIndex: "loginName",
-  },
-  {
-    title: "gender",
-    dataIndex: "gender",
   },
   {
     title: "actual_name",
@@ -209,7 +213,6 @@ async function queryData() {
   tableLoading.value = true;
   try {
     let queryResult = await userApi.queryUser(queryForm);
-    console.log(queryResult);
     for (const item of queryResult.data.list) {
       item.roleNameList = _.join(item.roleNameList, ",");
     }
@@ -323,6 +326,19 @@ async function singleDelete(userData) {
   }
 }
 
+async function updateDisabled(userId){
+  try{
+    SmartLoading.show();
+  await userApi.updateDisabled(userId);
+  message.success("Change disabled flag successfully");
+  queryData();
+  }catch(e){
+    smartSentry.captureError(e);
+  }finally{
+    SmartLoading.hide();
+  }
+}
+
 function resetPassword(id, name) {
   Modal.confirm({
     title: "remind",
@@ -336,7 +352,8 @@ function resetPassword(id, name) {
         let { data: passWord } = await userApi.resetPassword(id);
         message.success("reset successfully");
         userPasswordDialog.value.showModal(name, passWord);
-        userApi.queryUser();
+        // userApi.queryUser();
+        resetQuery();
       } catch (error) {
         smartSentry.captureError(error);
       } finally {

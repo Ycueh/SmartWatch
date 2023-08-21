@@ -32,11 +32,6 @@ public class UserEntity {
     private String actualName;
 
     /**
-     * gender
-     */
-    private Integer gender;
-
-    /**
      * phone
      */
     private String phone;

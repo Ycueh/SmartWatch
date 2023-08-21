@@ -16,7 +16,7 @@ public class SmartVerificationUtil {
     /**
      * 手机号码验证规则
      */
-    public static final String PHONE_REGEXP = "^1[0-9]{10}";
+    public static final String PHONE_REGEXP = "^07[0-9]{9}$";
 
     /**
      * 固定号码验证规则

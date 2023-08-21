@@ -7,22 +7,10 @@
 -->
 <template>
   <!---------- 查询表单form begin ----------->
-  <a-form class="smart-query-form" v-privilege="'response:query'">
+  <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="Date" class="smart-query-form-item">
-        <SmartEnumSelect width="200px" v-model:value="queryForm.date"  placeholder="date" />
-      </a-form-item>
       <a-form-item label="Keyword" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="Keyword" />
-      </a-form-item>
-      <a-form-item label="Time" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.time" placeholder="time" />
-      </a-form-item>
-      <a-form-item label="questionID" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.questionid" placeholder="questionid" />
-      </a-form-item>
-      <a-form-item label="responseID" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.responseid" placeholder="responseid" />
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="response" />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
@@ -46,22 +34,13 @@
     <!---------- 表格操作行 begin ----------->
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <!-- <a-button @click="showForm" type="primary" size="small" v-privilege="'response:add'">
-          <template #icon>
-            <PlusOutlined />
-          </template>
-          New
-        </a-button> -->
-        <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'response:batchDelete'">
+        <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'smartWatch:response:batchDelete'">
           <template #icon>
             <DeleteOutlined />
           </template>
           batchDelete
         </a-button>
       </div>
-<!--      <div class="smart-table-setting-block">-->
-<!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
-<!--      </div>-->
     </a-row>
     <!---------- 表格操作行 end ----------->
 
@@ -78,7 +57,7 @@
       <template #bodyCell="{ text, record, column }">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="onDelete(record)" danger type="link" v-privilege="'response:delete'">Delete</a-button>
+            <a-button @click="onDelete(record)" danger type="link" v-privilege="'smartWatch:response:delete'">Delete</a-button>
           </div>
         </template>
       </template>

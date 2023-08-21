@@ -2,7 +2,6 @@ package net.lab1024.sa.admin.module.system.user.domain.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import net.lab1024.sa.common.common.enumeration.GenderEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 
 
@@ -21,15 +20,12 @@ public class UserVO {
     @ApiModelProperty("loginName")
     private String loginName;
 
-    @ApiModelPropertyEnum(GenderEnum.class)
-    private Integer gender;
 
     @ApiModelProperty("actualName")
     private String actualName;
 
     @ApiModelProperty("phone")
     private String phone;
-
 
     @ApiModelProperty("disabledFlag")
     private Boolean disabledFlag;
@@ -45,4 +41,7 @@ public class UserVO {
 
     @ApiModelProperty("Role name list")
     private List<String> roleNameList;
+
+    @ApiModelProperty("password")
+    private String password;
 }

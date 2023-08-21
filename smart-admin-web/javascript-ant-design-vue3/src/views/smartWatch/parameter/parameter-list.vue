@@ -1,19 +1,19 @@
 <template>
   <a-form class="smart-query-form">
-    <a-row class="smart-query-form-row" v-privilege="'parameter:query'">
+    <a-row class="smart-query-form-row">
 
-      <a-form-item label="keyword" class="smart-query-form-item">
+      <a-form-item label="Keyword" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="parameter" />
       </a-form-item>
 
       <a-form-item class="smart-query-form-item">
-        <a-button type="primary" @click="queryData" v-privilege="'parameter:query'">
+        <a-button type="primary" @click="queryData">
           <template #icon>
             <SearchOutlined />
           </template>
           Search
         </a-button>
-        <a-button @click="resetQuery" class="smart-margin-left10" v-privilege="'parameter:query'">
+        <a-button @click="resetQuery" class="smart-margin-left10">
           <template #icon>
             <ReloadOutlined />
           </template>
@@ -24,19 +24,19 @@
   </a-form>
 
   <a-card size="small" :bordered="false" :hoverable="true">
-    <a-row class="smart-table-btn-block">
-      <div class="smart-table-operate-block">
-        <a-button @click="addParameter" type="primary" size="small" v-privilege="'parameter:add'">
-          <template #icon>
-            <PlusOutlined />
-          </template>
-          Add parameter
-        </a-button>
-      </div>
+<!--    <a-row class="smart-table-btn-block">-->
+<!--      <div class="smart-table-operate-block">-->
+<!--        <a-button @click="addParameter" type="primary" size="small" v-privilege="'smartWatch:parameter:add'">-->
+<!--          <template #icon>-->
+<!--            <PlusOutlined />-->
+<!--          </template>-->
+<!--          Add parameter-->
+<!--        </a-button>-->
+<!--      </div>-->
 <!--      <div class="smart-table-setting-block">-->
 <!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
 <!--      </div>-->
-    </a-row>
+<!--    </a-row>-->
 
     <a-table
         size="small"
@@ -49,8 +49,8 @@
       <template #bodyCell="{ record, column}">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addParameter(record)" type="link" v-privilege="'parameter:update'">Edit</a-button>
-            <a-button @click="deleteParameter(record)" danger type="link" v-privilege="'parameter:delete'">Delete</a-button>
+            <a-button @click="addParameter(record)" type="link" v-privilege="'smartWatch:parameter:edit'">Edit</a-button>
+<!--            <a-button @click="deleteParameter(record)" danger type="link" v-privilege="'smartWatch:parameter:delete'">Delete</a-button>-->
           </div>
         </template>
       </template>

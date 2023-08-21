@@ -2,7 +2,6 @@ package net.lab1024.sa.admin.module.system.user.domain.form;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import net.lab1024.sa.common.common.enumeration.GenderEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import net.lab1024.sa.common.common.validator.enumeration.CheckEnum;
 import org.hibernate.validator.constraints.Length;
@@ -28,10 +27,6 @@ public class UserAddForm {
     @NotNull(message = "Account can not be null")
     @Length(max = 30, message = "Maximum 30 chars")
     private String loginName;
-
-    @ApiModelPropertyEnum(GenderEnum.class)
-    @CheckEnum(value = GenderEnum.class, message = "Gender error")
-    private Integer gender;
 
     @ApiModelProperty("Disabled or not")
     @NotNull(message = "disabledFlag can not be null")

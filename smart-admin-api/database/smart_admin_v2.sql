@@ -11,12 +11,11 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 18/08/2023 21:49:09
+ Date: 20/08/2023 18:40:22
 */
 DROP DATABASE IF EXISTS `smart_admin_v2`;
 CREATE DATABASE IF NOT EXISTS `smart_admin_v2`;
 USE `smart_admin_v2`;
-
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -237,8 +236,6 @@ CREATE TABLE `t_menu`  (
 -- ----------------------------
 -- Records of t_menu
 -- ----------------------------
-INSERT INTO `t_menu` VALUES (26, '菜单管理', 2, 50, 0, '/menu/list', '/system/menu/menu-list.vue', NULL, NULL, NULL, 'CopyOutlined', NULL, 0, NULL, 1, 0, 0, 0, 2, '2021-08-09 15:04:35', 1, '2023-08-07 16:32:51');
-INSERT INTO `t_menu` VALUES (40, '批量删除', 3, 26, NULL, NULL, NULL, 1, NULL, 'system:menu:batch:delete', NULL, 26, 0, NULL, 0, 0, 0, 0, 1, '2021-08-12 09:45:56', 1, '2023-08-07 16:32:53');
 INSERT INTO `t_menu` VALUES (45, 'User management', 1, 0, 100, '/organization', NULL, NULL, NULL, NULL, 'UserSwitchOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:13:27', 44, '2023-08-08 14:52:09');
 INSERT INTO `t_menu` VALUES (46, 'User', 2, 45, 1, '/user/user/user-list', '/system/user/user/user-list/index.vue', NULL, NULL, NULL, 'AuditOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-12 16:21:50', 1, '2023-08-17 21:10:13');
 INSERT INTO `t_menu` VALUES (76, 'Role', 2, 45, 2, '/user/role', '/system/user/role/index.vue', NULL, NULL, NULL, 'SlidersOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2021-08-26 10:31:00', 1, '2023-08-08 12:36:05');
@@ -254,11 +251,19 @@ INSERT INTO `t_menu` VALUES (101, 'Batch delete role', 3, 76, NULL, NULL, NULL, 
 INSERT INTO `t_menu` VALUES (102, 'Delete user', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:user:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:21', NULL, '2023-08-08 14:53:52');
 INSERT INTO `t_menu` VALUES (103, 'Add user', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:user:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:39:38', NULL, '2023-08-08 14:53:48');
 INSERT INTO `t_menu` VALUES (104, 'Change authority', 3, 76, NULL, NULL, NULL, 1, NULL, 'system:role:menu:update', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2022-05-27 00:41:55', NULL, '2023-08-08 14:53:57');
-INSERT INTO `t_menu` VALUES (208, 'Response', 2, 0, 1, '/response', 'smartWatch/response/response-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-07-01 13:08:07', NULL, '2023-07-01 13:08:07');
-INSERT INTO `t_menu` VALUES (209, 'Question', 2, 0, 1, '/question', 'smartWatch/question/question-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:06', NULL, '2023-08-07 20:11:06');
-INSERT INTO `t_menu` VALUES (210, 'DataItem', 2, 0, 1, '/dataItem', 'smartWatch/dataItem/dataItem-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:43', NULL, '2023-08-07 20:11:43');
-INSERT INTO `t_menu` VALUES (211, 'Parameter', 2, 0, 1, '/parameter', 'smartWatch/parameter/parameter-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:12:25', NULL, '2023-08-07 20:12:25');
-INSERT INTO `t_menu` VALUES (212, 'Event', 2, 0, 1, '/event', 'smartWatch/event/event-list.vue', 1, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:16:41', NULL, '2023-08-07 20:16:41');
+INSERT INTO `t_menu` VALUES (208, 'Response', 2, 0, 5, '/response', 'smartWatch/response/response-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-07-01 13:08:07', NULL, '2023-08-19 00:42:02');
+INSERT INTO `t_menu` VALUES (209, 'Question', 2, 0, 4, '/question', 'smartWatch/question/question-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:06', NULL, '2023-08-19 00:42:05');
+INSERT INTO `t_menu` VALUES (210, 'DataItem', 2, 0, 1, '/dataItem', 'smartWatch/dataItem/dataItem-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:11:43', NULL, '2023-08-19 00:42:07');
+INSERT INTO `t_menu` VALUES (211, 'Parameter', 2, 0, 3, '/parameter', 'smartWatch/parameter/parameter-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:12:25', NULL, '2023-08-19 00:42:09');
+INSERT INTO `t_menu` VALUES (212, 'Event', 2, 0, 2, '/event', 'smartWatch/event/event-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:16:41', NULL, '2023-08-19 00:42:10');
+INSERT INTO `t_menu` VALUES (215, 'Batch Delete', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 17:45:18');
+INSERT INTO `t_menu` VALUES (216, 'Delete question', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 18:25:14');
+INSERT INTO `t_menu` VALUES (220, 'Edit question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:56:36', NULL, '2023-08-20 17:56:36');
+INSERT INTO `t_menu` VALUES (225, 'Delete dataItem', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:09:08', NULL, '2023-08-20 18:09:08');
+INSERT INTO `t_menu` VALUES (226, 'Batch Delete', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:10:36', NULL, '2023-08-20 18:10:36');
+INSERT INTO `t_menu` VALUES (228, 'Edit parameter', 3, 211, NULL, NULL, NULL, 1, NULL, 'smartWatch:parameter:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:14:48', NULL, '2023-08-20 18:14:52');
+INSERT INTO `t_menu` VALUES (230, 'Delete event', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:15', NULL, '2023-08-20 18:16:15');
+INSERT INTO `t_menu` VALUES (231, 'Batch Delete', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:41', NULL, '2023-08-20 18:16:41');
 
 -- ----------------------------
 -- Table structure for t_reload_result
@@ -293,9 +298,8 @@ CREATE TABLE `t_role`  (
 -- ----------------------------
 -- Records of t_role
 -- ----------------------------
-INSERT INTO `t_role` VALUES (34, 'administrator', '', '2022-10-19 20:24:28', '2019-08-30 09:30:50');
-INSERT INTO `t_role` VALUES (35, 'normal user', '', '2019-08-30 09:31:05', '2019-08-30 09:31:05');
-
+INSERT INTO `t_role` VALUES (34, 'Super user', '', '2023-08-19 00:11:37', '2019-08-30 09:30:50');
+INSERT INTO `t_role` VALUES (35, 'Normal User', '', '2023-08-19 00:11:45', '2019-08-30 09:31:05');
 
 -- ----------------------------
 -- Table structure for t_role_menu
@@ -310,11 +314,65 @@ CREATE TABLE `t_role_menu`  (
   PRIMARY KEY (`role_menu_id`) USING BTREE,
   INDEX `idx_role_id`(`role_id`) USING BTREE,
   INDEX `idx_menu_id`(`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 143 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_menu
 -- ----------------------------
+INSERT INTO `t_role_menu` VALUES (236, 34, 208, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (237, 34, 209, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (238, 34, 210, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (239, 34, 211, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (240, 34, 212, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (241, 34, 45, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (242, 34, 46, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (243, 34, 91, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (244, 34, 92, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (245, 34, 93, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (246, 34, 95, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (247, 34, 96, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (248, 34, 76, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (249, 34, 97, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (250, 34, 98, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (251, 34, 99, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (252, 34, 101, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (253, 34, 102, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (254, 34, 103, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (255, 34, 104, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (256, 34, 214, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (257, 34, 215, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (258, 34, 216, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (259, 34, 218, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (260, 34, 220, '2023-08-20 18:38:50', '2023-08-20 18:38:50');
+INSERT INTO `t_role_menu` VALUES (309, 35, 208, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (310, 35, 45, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (311, 35, 46, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (312, 35, 91, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (313, 35, 92, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (314, 35, 93, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (315, 35, 95, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (316, 35, 96, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (317, 35, 76, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (318, 35, 97, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (319, 35, 98, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (320, 35, 99, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (321, 35, 101, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (322, 35, 102, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (323, 35, 103, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (324, 35, 104, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (325, 35, 209, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (326, 35, 210, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (327, 35, 211, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (328, 35, 212, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (329, 35, 214, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (330, 35, 215, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (331, 35, 216, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (332, 35, 220, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (333, 35, 225, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (334, 35, 226, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (335, 35, 228, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (336, 35, 230, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
+INSERT INTO `t_role_menu` VALUES (337, 35, 231, '2023-08-20 18:40:01', '2023-08-20 18:40:01');
 
 -- ----------------------------
 -- Table structure for t_role_user
@@ -328,15 +386,16 @@ CREATE TABLE `t_role_user`  (
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_role_employee`(`role_id`, `user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 327 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 332 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_user
 -- ----------------------------
-INSERT INTO `t_role_user` VALUES (325, 36, 63, '2022-10-19 20:25:26', '2022-10-19 20:25:26');
 INSERT INTO `t_role_user` VALUES (327, 0, 73, '2023-08-18 21:42:12', '2023-08-18 21:42:12');
 INSERT INTO `t_role_user` VALUES (328, 0, 74, '2023-08-18 21:46:01', '2023-08-18 21:46:01');
 INSERT INTO `t_role_user` VALUES (329, 0, 75, '2023-08-18 21:47:50', '2023-08-18 21:47:50');
+INSERT INTO `t_role_user` VALUES (330, 35, 2, '2023-08-19 00:12:05', '2023-08-19 00:12:05');
+INSERT INTO `t_role_user` VALUES (331, 35, 47, '2023-08-19 00:12:05', '2023-08-19 00:12:05');
 
 -- ----------------------------
 -- Table structure for t_table_column
@@ -376,7 +435,7 @@ CREATE TABLE `t_user`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 72 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user

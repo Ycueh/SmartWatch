@@ -1,11 +1,8 @@
 <template>
-  <a-form class="smart-query-form" v-privilege="'question:query'">
+  <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
 
-<!--      <a-form-item label="questionId" class="smart-query-form-item">-->
-<!--        <a-input style="width: 200px" v-model:value="queryForm.searchQuestionId" placeholder="questionID" />-->
-<!--      </a-form-item>-->
-      <a-form-item label="keyword" class="smart-query-form-item">
+      <a-form-item label="Keyword" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="question" />
       </a-form-item>
 
@@ -29,7 +26,7 @@
   <a-card size="small" :bordered="false" :hoverable="true">
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
-        <a-button @click="addQuestion" type="primary" size="small" v-privilege="'question:add'">
+        <a-button @click="addQuestion" type="primary" size="small" v-privilege="'smartWatch:question:add'">
           <template #icon>
             <PlusOutlined />
           </template>
@@ -52,8 +49,8 @@
       <template #bodyCell="{ record, column}">
         <template v-if="column.dataIndex === 'action'">
           <div class="smart-table-operate">
-            <a-button @click="addQuestion(record)" type="link" v-privilege="'question:update'">Edit</a-button>
-            <a-button @click="deleteQuestion(record)" danger type="link" v-privilege="'question:delete'">Delete</a-button>
+            <a-button @click="addQuestion(record)" type="link" v-privilege="'smartWatch:question:edit'">Edit</a-button>
+            <a-button @click="deleteQuestion(record)" danger type="link" v-privilege="'smartWatch:question:delete'">Delete</a-button>
           </div>
         </template>
       </template>
