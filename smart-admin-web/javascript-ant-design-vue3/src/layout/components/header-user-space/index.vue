@@ -3,12 +3,12 @@
 -->
 <template>
   <a-space :size="10">
-    <div class="download">
-      <!---download-->
-      <a-button type="text" @click="download" >
-        Download
-      </a-button>
-    </div>
+<!--    <div class="download">-->
+<!--      &lt;!&ndash;-download&ndash;&gt;-->
+<!--      <a-button type="text" @click="download" >-->
+<!--        Download-->
+<!--      </a-button>-->
+<!--    </div>-->
 
     <div class="setting">
       <!---setting-->
@@ -27,7 +27,7 @@
 <script setup>
   import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
-  import { fileApi } from '/@/api/smartWatch/file/file-api';
+
   import { ref } from 'vue';
 
   // setting

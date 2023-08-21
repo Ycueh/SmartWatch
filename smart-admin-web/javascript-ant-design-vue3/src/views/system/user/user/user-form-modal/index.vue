@@ -13,13 +13,13 @@
         <a-input v-model:value="form.phone" placeholder="Please enter phone" />
       </a-form-item>
 
-      <a-form-item label="gender" name="gender">
-        <a-select v-model:value="form.gender" placeholder="Please choose gender">
-          <a-select-option :value="0">male</a-select-option>
-          <a-select-option :value="1">female</a-select-option>
-        </a-select>
+<!--      <a-form-item label="gender" name="gender">-->
+<!--        <a-select v-model:value="form.gender" placeholder="Please choose gender">-->
+<!--          <a-select-option :value="0">male</a-select-option>-->
+<!--          <a-select-option :value="1">female</a-select-option>-->
+<!--        </a-select>-->
         <!-- <a-input v-model:value="form.gender" placeholder="Please enter gender" /> -->
-      </a-form-item>
+<!--      </a-form-item>-->
       <a-form-item label="disabledFlag" name="disabledFlag">
         <a-select v-model:value="form.disabledFlag" placeholder="Please choose disabledFlag">
           <a-select-option :value="0">false</a-select-option>

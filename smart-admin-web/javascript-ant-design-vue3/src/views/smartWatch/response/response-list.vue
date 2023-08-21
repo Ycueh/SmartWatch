@@ -10,7 +10,7 @@
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
       <a-form-item label="Keyword" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="Keyword" />
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="response" />
       </a-form-item>
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
