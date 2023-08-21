@@ -37,22 +37,22 @@ public class QuesController {
      * @param
      * @return Result response
      */
-//    @ApiOperation("Delete question")
-//    @GetMapping("/question/delete/{questionId}")
-      //@PreAuthorize("@saAuth.checkPermission('smartWatch:response:delete')")
-//    public ResponseDTO<String> delete(@PathVariable("questionId") Long questionId) {
-//        return quesService.deleteById(questionId);
-//    }
+    @ApiOperation("Delete question")
+    @GetMapping("/question/delete/{questionId}")
+      @PreAuthorize("@saAuth.checkPermission('smartWatch:response:delete')")
+    public ResponseDTO<String> delete(@PathVariable("questionId") Long questionId) {
+        return quesService.deleteById(questionId);
+    }
 
     /**
      * add new question
      * @return
      */
-//    @ApiOperation("Add question")
-//    @PostMapping("/question/add")
-//    public ResponseDTO<String> add(@RequestBody @Valid Question question) {
-//        return quesService.add(question);
-//    }
+    @ApiOperation("Add question")
+    @PostMapping("/question/add")
+    public ResponseDTO<String> add(@RequestBody @Valid Question question) {
+        return quesService.add(question);
+    }
 
 
     /**

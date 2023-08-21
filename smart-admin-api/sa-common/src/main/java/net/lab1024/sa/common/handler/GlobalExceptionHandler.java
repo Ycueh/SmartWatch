@@ -40,15 +40,15 @@ public class GlobalExceptionHandler {
     private SystemEnvironment systemEnvironment;
 
     /**
-     * json 格式错误 缺少请求体
+     * json format error, not request body
      */
     @ResponseBody
     @ExceptionHandler({HttpMessageNotReadableException.class})
     public ResponseDTO<?> jsonFormatExceptionHandler(Exception e) {
         if (!systemEnvironment.isProd()) {
-            log.error("全局JSON格式错误异常,URL:{}", getCurrentRequestUrl(), e);
+            log.error("Global JSON format error exception, URL:{}", getCurrentRequestUrl(), e);
         }
-        return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "参数JSON格式错误");
+        return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "Parameter JSON format error");
     }
 
     /**
@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({TypeMismatchException.class, BindException.class})
     public ResponseDTO<?> paramExceptionHandler(Exception e) {
         if (!systemEnvironment.isProd()) {
-            log.error("全局参数异常,URL:{}", getCurrentRequestUrl(), e);
+            log.error("Global JSON format error exception, URL:{}", getCurrentRequestUrl(), e);
         }
 
         if (e instanceof BindException) {
