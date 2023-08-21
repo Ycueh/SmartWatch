@@ -165,10 +165,6 @@ const columns = ref([
     dataIndex: "loginName",
   },
   {
-    title: "gender",
-    dataIndex: "gender",
-  },
-  {
     title: "actual_name",
     dataIndex: "actualName",
   },
