@@ -217,7 +217,6 @@ async function queryData() {
   tableLoading.value = true;
   try {
     let queryResult = await userApi.queryUser(queryForm);
-    console.log(queryResult);
     for (const item of queryResult.data.list) {
       item.roleNameList = _.join(item.roleNameList, ",");
     }
