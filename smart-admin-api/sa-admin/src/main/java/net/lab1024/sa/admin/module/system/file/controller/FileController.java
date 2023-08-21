@@ -42,7 +42,6 @@ public class FileController {
                 return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
-
             //            try {
 //                fileService.resetDatabase();
 //            } catch (IOException e) {
@@ -64,30 +63,6 @@ public class FileController {
         }
     }
 
-
-//@GetMapping("/file/download")
-//    public ResponseEntity<InputStreamResource> downloadFile() {
-//        File file = new File(filePath);
-//        String filename = file.getName();
-//        InputStreamResource resource = null;
-//
-//        if (file.exists()) {
-//            try {
-//                resource = new InputStreamResource(new FileInputStream(file));
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//            return ResponseEntity.ok()
-//                    // Content-Disposition
-//                    .header("Content-Disposition", "attachment;filename=" + filename)
-//                    // Content-Type
-//                    .contentType(MediaType.parseMediaType("application/octet-stream"))
-//                    // Content-Length
-//                    .contentLength(file.length())
-//                    .body(resource);
-//        }
-//        return ResponseEntity.notFound().build();
-//    }
 
     @PostMapping("/file/upload")
     public ResponseDTO<String> handleFileUpload(@RequestParam("file") MultipartFile file) {

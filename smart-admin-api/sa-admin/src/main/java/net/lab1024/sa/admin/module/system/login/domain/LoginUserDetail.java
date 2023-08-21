@@ -5,7 +5,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuVO;
 import net.lab1024.sa.common.common.domain.RequestUser;
-import net.lab1024.sa.common.common.enumeration.GenderEnum;
 import net.lab1024.sa.common.common.enumeration.UserTypeEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,9 +35,6 @@ public class LoginUserDetail implements UserDetails, RequestUser {
 
     @ApiModelProperty("User name")
     private String actualName;
-
-    @ApiModelPropertyEnum(GenderEnum.class)
-    private Integer gender;
 
     @ApiModelProperty("Phone number")
     private String phone;
