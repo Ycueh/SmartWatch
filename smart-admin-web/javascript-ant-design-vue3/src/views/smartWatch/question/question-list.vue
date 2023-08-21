@@ -2,7 +2,7 @@
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
 
-      <a-form-item label="keyword" class="smart-query-form-item">
+      <a-form-item label="Keyword" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="question" />
       </a-form-item>
 

@@ -9,16 +9,15 @@
   *
 -->
 <template>
-  <div>
-    <input type="file" ref="fileInput" @change="onFileChange" />
-    <button @click="uploadFile">upload</button>
-  </div>
+<!--  <div>-->
+<!--    <input type="file" ref="fileInput" @change="onFileChange" />-->
+<!--    <button @click="uploadFile">upload</button>-->
+<!--  </div>-->
 </template>
 
 <script>
 
 
-import {fileuploadApi} from "/@/api/smartWatch/file/fileupload-api";
 
 export default {
   data() {

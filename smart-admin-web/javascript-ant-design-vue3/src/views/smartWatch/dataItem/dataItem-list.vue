@@ -2,24 +2,24 @@
   <!---------- 查询表单form begin ----------->
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
-      <a-form-item label="datestamp" class="smart-query-form-item">
-        <SmartEnumSelect width="200px" v-model:value="queryForm.datestamp"  placeholder="date" />
-      </a-form-item>
+<!--      <a-form-item label="datestamp" class="smart-query-form-item">-->
+<!--        <SmartEnumSelect width="200px" v-model:value="queryForm.datestamp"  placeholder="date" />-->
+<!--      </a-form-item>-->
       <a-form-item label="Keyword" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="Keyword" />
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="dataitem" />
       </a-form-item>
-      <a-form-item label="timestamp" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.timestamp" placeholder="timestamp" />
-      </a-form-item>
-      <a-form-item label="dataItem1" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.dataItem1" placeholder="dataItem1" />
-      </a-form-item>
-      <a-form-item label="dataItem2" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.dataItem2" placeholder="dataItem2" />
-      </a-form-item>
-      <a-form-item label="dataItem3" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.dataItem3" placeholder="dataItem3" />
-      </a-form-item>
+<!--      <a-form-item label="timestamp" class="smart-query-form-item">-->
+<!--        <a-input style="width: 200px" v-model:value="queryForm.timestamp" placeholder="timestamp" />-->
+<!--      </a-form-item>-->
+<!--      <a-form-item label="dataItem1" class="smart-query-form-item">-->
+<!--        <a-input style="width: 200px" v-model:value="queryForm.dataItem1" placeholder="dataItem1" />-->
+<!--      </a-form-item>-->
+<!--      <a-form-item label="dataItem2" class="smart-query-form-item">-->
+<!--        <a-input style="width: 200px" v-model:value="queryForm.dataItem2" placeholder="dataItem2" />-->
+<!--      </a-form-item>-->
+<!--      <a-form-item label="dataItem3" class="smart-query-form-item">-->
+<!--        <a-input style="width: 200px" v-model:value="queryForm.dataItem3" placeholder="dataItem3" />-->
+<!--      </a-form-item>-->
       <a-form-item class="smart-query-form-item">
         <a-button type="primary" @click="queryData">
           <template #icon>
