@@ -9,7 +9,7 @@
       <a-form-item label="actual_name" name="actualName">
         <a-input v-model:value="form.actualName" placeholder="Please enter actual_name" />
       </a-form-item>
-      <a-form-item label="phone" name="phone">
+      <a-form-item label="phone" name="phone" :help="tips">
         <a-input v-model:value="form.phone" placeholder="Please enter phone" />
       </a-form-item>
 
@@ -73,6 +73,7 @@
   import { roleApi } from '/@/api/system/role/role-api';
   import UserPasswordDialog from "/@/views/system/user/user/user-password-dialog/index.vue";
 
+  const tips = 'Phone number format: 07xxxxxxxxx'
   const emit = defineEmits('reloadList');
   let userPasswordDialog = ref();
 
