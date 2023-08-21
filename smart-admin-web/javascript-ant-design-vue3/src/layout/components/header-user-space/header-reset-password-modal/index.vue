@@ -25,12 +25,12 @@
 
   const visible = ref(false);
   const formRef = ref();
-  const tips = 'Combination of letters (not limited to uppercase and lowercase) + numbers, 6-15 digits'; //Validation rules
+  const tips = 'Combination of letters (not limited to uppercase and lowercase) and numbers, 6-15 digits'; //Validation rules
   const reg = /(^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$)/; //Validation regularity
 
   const rules = {
     oldPassword: [{ required: true, message: 'Please enter the old password' }],
-    newPassword: [{ type: 'string',  pattern: reg, message: 'wrong password format' }],
+    newPassword: [{ type: 'string',  pattern: reg, message: 'Invalid password format' }],
     confirmPwd: [{ type: 'string',  pattern: reg, message: 'Please enter the password to confirm' }],
   };
 

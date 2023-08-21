@@ -6,8 +6,8 @@
   <a-dropdown class="header-trigger">
     <div class="wrapper">
       <a-avatar style="margin: 0 5px" :size="24" id="smartAdminAvatar">
-<!--        {{ avatarName }}-->
-        U
+        {{ avatarName }}
+<!--        U-->
       </a-avatar>
 
      <span class="name">{{ actualName }}</span>
@@ -18,7 +18,7 @@
           <span>Refresh permissions</span>
         </a-menu-item>
         <a-menu-item @click="showUpdatePwdModal">
-          <span>update password</span>
+          <span>Update password</span>
         </a-menu-item>
         <a-menu-item @click="onLogout">
           <span>Log out</span>
