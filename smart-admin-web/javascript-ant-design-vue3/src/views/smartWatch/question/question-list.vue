@@ -91,7 +91,6 @@ import {message, Modal} from "ant-design-vue";
 import {SmartLoading} from "/@/components/framework/smart-loading";
 import {PAGE_SIZE_OPTIONS} from "/@/constants/common-const";
 import QuestionFormModal from "./question-form-modal.vue";
-import {responseApi} from "/@/api/smartWatch/response/response-api";
 
 const columns = ref([
   {
