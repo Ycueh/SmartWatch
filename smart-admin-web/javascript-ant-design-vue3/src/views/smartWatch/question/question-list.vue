@@ -32,6 +32,12 @@
           </template>
           Add question
         </a-button>
+        <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'smartWatch:question:batchDelete'">
+          <template #icon>
+            <DeleteOutlined />
+          </template>
+          Batch Delete
+        </a-button>
       </div>
 <!--      <div class="smart-table-setting-block">-->
 <!--        <TableOperator v-model="columns" :tableId="null" :refresh="queryData" />-->
@@ -45,6 +51,7 @@
         row-key="id"
         bordered
         :pagination="false"
+        :row-selection="{ selectedRowKeys: selectedRowKeyList, onChange: onSelectChange }"
     >
       <template #bodyCell="{ record, column}">
         <template v-if="column.dataIndex === 'action'">
@@ -84,6 +91,7 @@ import {message, Modal} from "ant-design-vue";
 import {SmartLoading} from "/@/components/framework/smart-loading";
 import {PAGE_SIZE_OPTIONS} from "/@/constants/common-const";
 import QuestionFormModal from "./question-form-modal.vue";
+import {responseApi} from "/@/api/smartWatch/response/response-api";
 
 const columns = ref([
   {
@@ -197,6 +205,38 @@ async function singleDelete(questionData) {
     SmartLoading.show();
     await questionApi.delete(questionData.id);
     message.success('Deleted successfully');
+    queryData();
+  } catch (e) {
+    smartSentry.captureError(e);
+  } finally {
+    SmartLoading.hide();
+  }
+}
+
+// batch delete
+const selectedRowKeyList = ref([]);
+
+function onSelectChange(selectedRowKeys) {
+  selectedRowKeyList.value = selectedRowKeys;
+}
+function confirmBatchDelete() {
+  Modal.confirm({
+    title: 'Hint',
+    content: 'Are you sure to delete these data',
+    okText: 'Delete',
+    okType: 'danger',
+    onOk() {
+      requestBatchDelete();
+    },
+    cancelText: 'Cancel',
+    onCancel() {},
+  });
+}
+async function requestBatchDelete() {
+  try {
+    SmartLoading.show();
+    await questionApi.batchDelete(selectedRowKeyList.value);
+    message.success('Delete successfully');
     queryData();
   } catch (e) {
     smartSentry.captureError(e);

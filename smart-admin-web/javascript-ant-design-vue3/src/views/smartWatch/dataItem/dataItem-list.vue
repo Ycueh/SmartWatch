@@ -46,7 +46,7 @@
           <template #icon>
             <DeleteOutlined />
           </template>
-          batchDelete
+          Batch Delete
         </a-button>
       </div>
     </a-row>

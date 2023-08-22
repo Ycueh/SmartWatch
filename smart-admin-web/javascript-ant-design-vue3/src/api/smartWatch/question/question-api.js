@@ -16,4 +16,8 @@ export const questionApi = {
     // questionQuery: (itemId) => {
     //     return getRequest(`question/${itemId}`);
     // },
+    // batch delete
+    batchDelete: (idList) => {
+        return postRequest('/question/batchDelete', idList);
+    },
 };
