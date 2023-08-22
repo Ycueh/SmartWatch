@@ -12,6 +12,7 @@ import net.lab1024.sa.admin.module.smartWatch.question.pojo.QuestionQueryForm;
 import net.lab1024.sa.admin.module.smartWatch.question.service.QuesService;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.common.domain.ValidateList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -78,5 +79,12 @@ public class QuesController {
     @PreAuthorize("@saAuth.checkPermission('smartWatch:question:edit')")
     public ResponseDTO<String> update(@RequestBody @Valid Question question) {
         return quesService.updateQuestion(question);
+    }
+
+    @ApiOperation("Batch delete")
+    @PostMapping("/question/batchDelete")
+    @PreAuthorize("@saAuth.checkPermission('smartWatch:question:batchDelete')")
+    public ResponseDTO<String> batchDelete(@RequestBody @Valid ValidateList<Long> idList) {
+        return quesService.batchDelete(idList);
     }
 }
