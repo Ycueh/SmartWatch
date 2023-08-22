@@ -32,9 +32,9 @@
         <where>
             <if test="queryForm.keywords != null and queryForm.keywords!= ''">
                 AND (
-                INSTR(t_useractual_name,#{queryForm.keywords})
-                OR INSTR(t_userphone,#{queryForm.keywords})
-                OR INSTR(t_userlogin_name,#{queryForm.keywords})
+                INSTR(t_user.actual_name,#{queryForm.keywords})
+                OR INSTR(t_user.phone,#{queryForm.keywords})
+                OR INSTR(t_user.login_name,#{queryForm.keywords})
                 )
             </if>
             <if test="queryForm.roleId != null">
@@ -69,17 +69,14 @@
             #{item}
         </foreach>
     </select>
-    <select id="selectRoleIdByUserIdList"
-            resultType="net.lab1024.sa.admin.module.system.role.domain.entity.RoleUserEntity">
+    <select id="selectUserIdByRoleId"
+            resultType="java.lang.Long">
         SELECT
-        *
+        user_id
         FROM
         t_role_user
         WHERE
-        user_id in
-        <foreach collection="userIdList" item="item" open="(" close=")" separator=",">
-            #{item}
-        </foreach>
+        t_role_user.role_id = #{roleId}
     </select>
 
     <select id="selectRoleByUserIdList"

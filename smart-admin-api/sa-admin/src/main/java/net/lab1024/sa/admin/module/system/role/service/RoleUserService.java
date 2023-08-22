@@ -99,6 +99,10 @@ public class RoleUserService {
                     .map(userId -> new RoleUserEntity(roleId, userId))
                     .collect(Collectors.toList());
         }
+        List<Long> userIds = roleUserDao.selectUserIdByRoleId(roleId);
+        if (roleUserList != null) {
+            roleUserList.removeIf(roleUserEntity -> userIds.contains(roleUserEntity.getUserId()));
+        }
         // Save data
         roleUserManager.saveRoleUser(roleId, roleUserList);
         return ResponseDTO.ok();
