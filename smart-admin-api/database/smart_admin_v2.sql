@@ -257,13 +257,16 @@ INSERT INTO `t_menu` VALUES (210, 'DataItem', 2, 0, 1, '/dataItem', 'smartWatch/
 INSERT INTO `t_menu` VALUES (211, 'Parameter', 2, 0, 3, '/parameter', 'smartWatch/parameter/parameter-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:12:25', NULL, '2023-08-19 00:42:09');
 INSERT INTO `t_menu` VALUES (212, 'Event', 2, 0, 2, '/event', 'smartWatch/event/event-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:16:41', NULL, '2023-08-19 00:42:10');
 INSERT INTO `t_menu` VALUES (215, 'Batch Delete', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 17:45:18');
-INSERT INTO `t_menu` VALUES (216, 'Delete question', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 18:25:14');
+INSERT INTO `t_menu` VALUES (216, 'Delete response', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 18:25:14');
 INSERT INTO `t_menu` VALUES (220, 'Edit question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:56:36', NULL, '2023-08-20 17:56:36');
 INSERT INTO `t_menu` VALUES (225, 'Delete dataItem', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:09:08', NULL, '2023-08-20 18:09:08');
 INSERT INTO `t_menu` VALUES (226, 'Batch Delete', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:10:36', NULL, '2023-08-20 18:10:36');
 INSERT INTO `t_menu` VALUES (228, 'Edit parameter', 3, 211, NULL, NULL, NULL, 1, NULL, 'smartWatch:parameter:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:14:48', NULL, '2023-08-20 18:14:52');
 INSERT INTO `t_menu` VALUES (230, 'Delete event', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:15', NULL, '2023-08-20 18:16:15');
 INSERT INTO `t_menu` VALUES (231, 'Batch Delete', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:41', NULL, '2023-08-20 18:16:41');
+INSERT INTO `t_menu` VALUES (232, 'Add question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:16:41', NULL, '2023-08-22 18:16:41');
+INSERT INTO `t_menu` VALUES (233, 'Delete question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:18:41', NULL, '2023-08-22 18:18:41');
+INSERT INTO `t_menu` VALUES (234, 'Batch Delete', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:20:35', NULL, '2023-08-22 18:20:35');
 
 -- ----------------------------
 -- Table structure for t_reload_result
