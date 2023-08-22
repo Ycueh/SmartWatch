@@ -7,7 +7,6 @@
     <div class="wrapper">
       <a-avatar style="margin: 0 5px" :size="24" id="smartAdminAvatar">
         {{ avatarName }}
-<!--        U-->
       </a-avatar>
 
      <span class="name">{{ actualName }}</span>
@@ -15,7 +14,7 @@
     <template #overlay>
       <a-menu :class="['avatar-menu']">
         <a-menu-item @click="onRefresh">
-          <span>Refresh permissions</span>
+          <span>Refresh authorities</span>
         </a-menu-item>
         <a-menu-item @click="showUpdatePwdModal">
           <span>Update password</span>
