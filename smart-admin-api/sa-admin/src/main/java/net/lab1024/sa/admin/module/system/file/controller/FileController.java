@@ -115,9 +115,6 @@ public class FileController {
                 output.write(fileData);
             }
             return ResponseDTO.ok("File uploaded successfully");
-            // Save the file to the destination folder
-//            file.transferTo(destFile);
-//            return ResponseDTO.ok("File uploaded successfully");
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "File upload failed"); // You can use a different ErrorCode if desired
