@@ -2,14 +2,18 @@ package net.lab1024.sa.admin.module.system.multiuser.service;
 
 import lombok.extern.slf4j.Slf4j;
 import net.lab1024.sa.admin.module.system.dao.multiuser.MultiUserMapper;
+import net.lab1024.sa.admin.module.system.dao.user.UserDao;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserEntity;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserVO;
+import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
+import net.lab1024.sa.admin.module.system.user.service.UserService;
 import net.lab1024.sa.common.common.code.SystemErrorCode;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartBeanUtil;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService;
+import org.apache.catalina.User;
 import org.apache.poi.hssf.record.FilePassRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +33,9 @@ public class MultiUserService {
     private MultiUserMapper multiUserMapper;
     @Autowired
     private DataTracerService dataTracerService;
+
+    @Autowired
+    private UserDao userDao;
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
 
     /**
@@ -55,8 +62,16 @@ public class MultiUserService {
 
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> choose(Long userid) {
+        UserEntity user =  userDao.selectById(userid);
+        if(multiUserMapper.getFileByUserId(userid) == null){
+            MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
+            multiUserAddForm.setUser_id(user.getUserId());
+            multiUserAddForm.setFile(user.getLoginName());
+            MultiUserEntity multiUserEntity = SmartBeanUtil.copy(multiUserAddForm, MultiUserEntity.class);
+            multiUserEntity.setFileData();
+            multiUserMapper.insert(multiUserEntity);
+        }
         MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
-        //System.out.println(multiUserVO.getFile_name());
         File targetFile = new File(DBPATH);
         try {
             if (!targetFile.exists()){
@@ -73,7 +88,7 @@ public class MultiUserService {
         }catch (IOException e){
             e.printStackTrace();
         }
-        dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
+        //dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
