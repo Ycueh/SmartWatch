@@ -63,9 +63,6 @@ public class MultiUserService {
     @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> choose(Long userid) {
         UserEntity user =  userDao.selectById(userid);
-        if(user == null){
-            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR,"User not found");
-        }
         if(multiUserMapper.getFileByUserId(userid) == null){
             MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
             multiUserAddForm.setUser_id(user.getUserId());
