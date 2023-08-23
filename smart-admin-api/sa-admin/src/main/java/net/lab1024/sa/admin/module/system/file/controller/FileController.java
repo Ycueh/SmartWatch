@@ -42,11 +42,11 @@ public class FileController {
                 return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
             }
 
-            try {
-                fileService.resetDatabase();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                fileService.resetDatabase();
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
 
             ResponseDTO<InputStreamResource> successResponse = ResponseDTO.ok(resource);
 
