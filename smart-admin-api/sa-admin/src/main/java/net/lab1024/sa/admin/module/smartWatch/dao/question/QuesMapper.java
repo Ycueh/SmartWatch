@@ -27,7 +27,24 @@ public interface QuesMapper {
             "(questionID, question, answer1ID, answer1, answer2ID, answer2, answer3ID, answer3, answer4ID, answer4) " +
             "values " +
             "(#{questionId}, #{question}, #{answer1Id}, #{answer1}, #{answer2Id}, #{answer2}, #{answer3Id}, #{answer3}, #{answer4Id}, #{answer4})")
-    void add(Question question);
+    void add1(Question question);
+
+    @Select("SELECT " +
+            "max(_id) " +
+            "FROM " +
+            "question")
+    Long findLatestId();
+
+    @Update("update " +
+            "question " +
+            "set " +
+            "questionID = #{questionId}, " +
+            "answer1ID = #{answer1Id}, " +
+            "answer2ID = #{answer2Id}, " +
+            "answer3ID = #{answer3Id}, " +
+            "answer4ID = #{answer4Id} " +
+            "where _id = #{id}")
+    void add2(Question question);
 
     //select question by id
     @Select("select * from question where _id = #{id}")
