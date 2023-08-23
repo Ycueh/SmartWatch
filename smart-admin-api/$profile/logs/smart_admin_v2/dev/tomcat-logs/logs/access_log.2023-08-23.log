@@ -1,0 +1,6 @@
+[23/Aug/2023:10:37:57 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 52 (52 ms)
+[23/Aug/2023:10:37:57 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 200 376 (376 ms)
+[23/Aug/2023:10:37:57 +0100] - 127.0.0.1 "GET /login/getCaptcha HTTP/1.1" 200 204 (204 ms)
+[23/Aug/2023:10:37:58 +0100] - 127.0.0.1 "GET /login/getCaptcha HTTP/1.1" 200 149 (149 ms)
+[23/Aug/2023:10:38:02 +0100] - 127.0.0.1 "OPTIONS /login HTTP/1.1" 200 1 (1 ms)
+[23/Aug/2023:10:38:03 +0100] - 127.0.0.1 "POST /login HTTP/1.1" 200 358 (358 ms)
