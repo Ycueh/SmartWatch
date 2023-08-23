@@ -121,10 +121,10 @@ public class UserService {
         entity.setDeletedFlag(Boolean.FALSE);
         userManager.saveUser(entity,userAddForm.getRoleIdList());
         //TODO Add a default database file
-//        MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
-//        multiUserAddForm.setUser_id(null);
-//        multiUserAddForm.setFile(null);
-//        multiUserService.add(multiUserAddForm);
+        MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
+        multiUserAddForm.setUser_id(entity.getUserId());
+        multiUserAddForm.setFile(entity.getLoginName());
+        multiUserService.add(multiUserAddForm);
 
         return ResponseDTO.ok(password);
     }

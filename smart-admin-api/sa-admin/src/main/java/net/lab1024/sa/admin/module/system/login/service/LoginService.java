@@ -101,7 +101,7 @@ public class LoginService {
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
         //TODO Load the sqlite database file
-//        multiUserService.choose(userEntity.getUserId());
+        multiUserService.choose(userEntity.getUserId());
         return ResponseDTO.ok(loginUserDetail);
     }
 
@@ -214,7 +214,7 @@ public class LoginService {
     public ResponseDTO<String> logout(String token, RequestUser requestUser) {
         loginUserDetailCache.remove(requestUser.getUserId());
         //TODO logout update
-//        multiUserService.updateFile(requestUser.getUserId());
+        multiUserService.updateFile(requestUser.getUserId());
         tokenService.removeToken(token);
         return ResponseDTO.ok();
     }
