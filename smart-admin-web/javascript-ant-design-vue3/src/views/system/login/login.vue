@@ -21,27 +21,28 @@
           <a-input class="captcha-input" v-model:value.trim="loginForm.captchaCode" placeholder="Enter the code" />
           <img class="captcha-img" :src="captchaBase64Image" @click="getCaptcha" />
         </a-form-item>
+<!--        <a-form-item>-->
+<!--          <a-checkbox v-model:checked="rememberPwd">Remember the password</a-checkbox>-->
+<!--          <span> ( Account：admin, password：123456)</span>-->
+<!--        </a-form-item>-->
         <a-form-item>
-          <a-checkbox v-model:checked="rememberPwd">Remember the password</a-checkbox>
-          <span> ( Account：admin, password：123456)</span>
-        </a-form-item>
-        <a-form-item>
+          <div class="blank"></div>
           <div class="btn" @click="onLogin">Log in</div>
         </a-form-item>
       </a-form>
-      <div class="more">
-        <div class="title-box">
-          <p class="line"></p>
-          <p class="title">Other way</p>
-          <p class="line"></p>
-        </div>
-        <div class="login-type">
-          <img :src="aliLogin" />
-          <img :src="qqLogin" />
-          <img :src="googleLogin" />
-          <img :src="weiboLogin" />
-        </div>
-      </div>
+<!--      <div class="more">-->
+<!--        <div class="title-box">-->
+<!--          <p class="line"></p>-->
+<!--          <p class="title">Other way</p>-->
+<!--          <p class="line"></p>-->
+<!--        </div>-->
+<!--        <div class="login-type">-->
+<!--          <img :src="aliLogin" />-->
+<!--          <img :src="qqLogin" />-->
+<!--          <img :src="googleLogin" />-->
+<!--          <img :src="weiboLogin" />-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
 </div>
 </template>

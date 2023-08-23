@@ -32,6 +32,20 @@ public interface RoleUserDao extends BaseMapper<RoleUserEntity> {
     List<UserVO> selectRoleUserByName(Page page, @Param("queryForm") RoleUserQueryForm roleUserQueryForm);
 
     /**
+     * Check userId of a role
+     * @param roleIdList
+     * @return
+     */
+    List<Long> selectUserIdByRoleIdList(@Param("roleIdList") List<Long> roleIdList);
+
+    /**
+     * Check userId of a role
+     * @param roleId
+     * @return
+     */
+    List<Long> selectUserIdByRoleId(@Param("roleId") Long roleId);
+
+    /**
      *
      * @param roleId
      * @return

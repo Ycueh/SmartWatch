@@ -257,13 +257,16 @@ INSERT INTO `t_menu` VALUES (210, 'DataItem', 2, 0, 1, '/dataItem', 'smartWatch/
 INSERT INTO `t_menu` VALUES (211, 'Parameter', 2, 0, 3, '/parameter', 'smartWatch/parameter/parameter-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:12:25', NULL, '2023-08-19 00:42:09');
 INSERT INTO `t_menu` VALUES (212, 'Event', 2, 0, 2, '/event', 'smartWatch/event/event-list.vue', NULL, NULL, NULL, 'AlignCenterOutlined', NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-07 20:16:41', NULL, '2023-08-19 00:42:10');
 INSERT INTO `t_menu` VALUES (215, 'Batch Delete', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 17:45:18');
-INSERT INTO `t_menu` VALUES (216, 'Delete question', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 18:25:14');
+INSERT INTO `t_menu` VALUES (216, 'Delete response', 3, 208, NULL, NULL, NULL, 1, NULL, 'smartWatch:response:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:42:47', NULL, '2023-08-20 18:25:14');
 INSERT INTO `t_menu` VALUES (220, 'Edit question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 17:56:36', NULL, '2023-08-20 17:56:36');
 INSERT INTO `t_menu` VALUES (225, 'Delete dataItem', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:09:08', NULL, '2023-08-20 18:09:08');
 INSERT INTO `t_menu` VALUES (226, 'Batch Delete', 3, 210, NULL, NULL, NULL, 1, NULL, 'smartWatch:dataItem:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:10:36', NULL, '2023-08-20 18:10:36');
 INSERT INTO `t_menu` VALUES (228, 'Edit parameter', 3, 211, NULL, NULL, NULL, 1, NULL, 'smartWatch:parameter:edit', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:14:48', NULL, '2023-08-20 18:14:52');
 INSERT INTO `t_menu` VALUES (230, 'Delete event', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:15', NULL, '2023-08-20 18:16:15');
 INSERT INTO `t_menu` VALUES (231, 'Batch Delete', 3, 212, NULL, NULL, NULL, 1, NULL, 'smartWatch:event:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-20 18:16:41', NULL, '2023-08-20 18:16:41');
+INSERT INTO `t_menu` VALUES (232, 'Add question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:add', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:16:41', NULL, '2023-08-22 18:16:41');
+INSERT INTO `t_menu` VALUES (233, 'Delete question', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:delete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:18:41', NULL, '2023-08-22 18:18:41');
+INSERT INTO `t_menu` VALUES (234, 'Batch Delete', 3, 209, NULL, NULL, NULL, 1, NULL, 'smartWatch:question:batchDelete', NULL, NULL, 0, NULL, 0, 1, 0, 0, 1, '2023-08-22 18:20:35', NULL, '2023-08-22 18:20:35');
 
 -- ----------------------------
 -- Table structure for t_reload_result
@@ -440,19 +443,19 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', '管理员', 0, '13500000000', 0, 0, 1, NULL, '2022-10-22 19:33:02', '2018-05-11 09:38:54');
-INSERT INTO `t_user` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
-INSERT INTO `t_user` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
-INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
-INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
-INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
-INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
-INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:18');
-INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:56');
-INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 0, 1, 0, NULL, '2023-08-18 00:53:14', '2022-06-16 17:28:32');
-INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:30:17');
-INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
-INSERT INTO `t_user` VALUES (75, 'delta', '510b169900edc201485b862b8c3363d8', 'delta', 0, '18862135900', 0, 0, 0, NULL, '2023-08-18 21:47:50', '2023-08-18 21:47:50');
+INSERT INTO `t_user` VALUES (1, 'admin', '40cc20b8891cd3fd1f008ea7f4ac17c3', 'Administrator', 0, '071111222222', 0, 0, 1, NULL, '2023-08-22 19:33:02', '2023-08-10 09:38:54');
+-- INSERT INTO `t_user` VALUES (2, 'huke', '40cc20b8891cd3fd1f008ea7f4ac17c3', '胡克', 0, '13123123121', 0, 0, 0, NULL, '2022-10-19 20:17:30', '2021-07-29 11:24:55');
+-- INSERT INTO `t_user` VALUES (44, 'zhuoda', '40cc20b8891cd3fd1f008ea7f4ac17c3', '卓大', 1, '18637925892', 0, 0, 1, NULL, '2022-10-22 14:29:04', '2021-08-11 10:04:53');
+-- INSERT INTO `t_user` VALUES (47, 'shanyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '善逸', 1, '13123111123', 0, 0, 0, NULL, '2022-10-19 20:19:50', '2021-08-16 17:14:55');
+-- INSERT INTO `t_user` VALUES (48, 'qinjiu', '40cc20b8891cd3fd1f008ea7f4ac17c3', '琴酒', 2, '14112343212', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2021-08-17 10:29:41');
+-- INSERT INTO `t_user` VALUES (63, 'kaiyun', '40cc20b8891cd3fd1f008ea7f4ac17c3', '开云', 0, '13112312346', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-03 22:41:55');
+-- INSERT INTO `t_user` VALUES (64, 'qingye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '清野', 1, '13123123111', 0, 0, 0, NULL, '2022-10-19 20:23:40', '2022-06-16 17:19:08');
+-- INSERT INTO `t_user` VALUES (65, 'feiye', '40cc20b8891cd3fd1f008ea7f4ac17c3', '飞叶', 1, '13123123112', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:18');
+-- INSERT INTO `t_user` VALUES (66, 'luoyi', '40cc20b8891cd3fd1f008ea7f4ac17c3', '罗伊', 1, '13123123142', 1, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:24:56');
+-- INSERT INTO `t_user` VALUES (67, 'chuxiao', '7287168489ed5598741362cbec2b0741', '初晓', 1, '13123123123', 0, 1, 0, NULL, '2023-08-18 00:53:14', '2022-06-16 17:28:32');
+-- INSERT INTO `t_user` VALUES (68, 'xuanpeng', '40cc20b8891cd3fd1f008ea7f4ac17c3', '玄朋', 1, '13123123124', 0, 1, 0, NULL, '2023-08-18 00:53:22', '2022-06-16 17:30:17');
+-- INSERT INTO `t_user` VALUES (69, 'peixian', '40cc20b8891cd3fd1f008ea7f4ac17c3', '佩弦', 1, '18377482773', 0, 0, 0, NULL, '2022-10-19 20:17:35', '2022-06-25 16:42:52');
+-- INSERT INTO `t_user` VALUES (75, 'delta', '510b169900edc201485b862b8c3363d8', 'delta', 0, '18862135900', 0, 0, 0, NULL, '2023-08-18 21:47:50', '2023-08-18 21:47:50');
 
 -- ----------------------------
 -- Table structure for t_user_db

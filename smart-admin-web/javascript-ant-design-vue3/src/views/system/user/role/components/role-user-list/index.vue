@@ -37,9 +37,9 @@
         <template v-if="column.dataIndex === 'disabledFlag'">
           <a-tag :color="text ? 'error' : 'processing'">{{ text ? 'Disable' : 'Able' }}</a-tag>
         </template>
-        <template v-else-if="column.dataIndex === 'gender'">
-          <span>{{ $smartEnumPlugin.getDescByValue('GENDER_ENUM', text) }}</span>
-        </template>
+<!--        <template v-else-if="column.dataIndex === 'gender'">-->
+<!--          <span>{{ $smartEnumPlugin.getDescByValue('GENDER_ENUM', text) }}</span>-->
+<!--        </template>-->
         <template v-if="column.dataIndex === 'operate'">
           <a @click="deleteUserRole(record.userId)" v-privilege="'system:role:user:delete'">Delete</a>
         </template>
@@ -136,7 +136,7 @@
       dataIndex: 'disabledFlag',
     },
     {
-      title: 'Operate',
+      title: 'Action',
       dataIndex: 'operate',
       width: 60,
     },

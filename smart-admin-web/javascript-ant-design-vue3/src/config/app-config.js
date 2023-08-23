@@ -7,7 +7,7 @@ export const appDefaultConfig = {
   // layout: side or side-expand
   layout: 'side',
   // side menu width, default: 200px
-  sideMenuWidth: 200,
+  sideMenuWidth: 205,
   // side menu theme
   sideMenuTheme: 'dark',
   // page tag flag

@@ -6,6 +6,8 @@ import net.lab1024.sa.admin.module.smartWatch.question.pojo.QuestionQueryForm;
 import net.lab1024.sa.common.common.domain.PageResult;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 
+import java.util.List;
+
 public interface QuesService {
     //delete question by id
     ResponseDTO<String> deleteById(Long id);
@@ -20,4 +22,6 @@ public interface QuesService {
     ResponseDTO<String> updateQuestion(Question question);
 
     PageResult<Question> queryPage(QuestionQueryForm queryForm);
+
+    ResponseDTO<String> batchDelete(List<Long> idList);
 }

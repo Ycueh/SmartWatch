@@ -12,7 +12,7 @@ import net.lab1024.sa.common.common.util.SmartPageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.apache.commons.collections4.CollectionUtils;
 import java.util.List;
 
 @Service
@@ -74,6 +74,16 @@ public class QuesServiceImpl implements QuesService{
         List<Question> list = quesDAO.queryPage(page, queryForm);
         PageResult<Question> pageResult = SmartPageUtil.convert2PageResult(page, list);
         return pageResult;
+    }
+
+    public synchronized ResponseDTO<String> batchDelete(List<Long> idList) {
+        if (CollectionUtils.isEmpty(idList)) {
+            return ResponseDTO.ok();
+        }
+        for(Long id:idList){
+            quesMapper.deleteById(id);
+        }
+        return ResponseDTO.ok();
     }
 
 }
