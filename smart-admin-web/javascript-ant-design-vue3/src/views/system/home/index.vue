@@ -33,7 +33,7 @@
     <div>
       <input type="file" ref="fileInput" @change="handleFileChange" />
       <button @click="uploadFile">Upload File</button>
-      <button @click="downloadFile">Download File</button>
+      <button @click="download">Download File</button>
     </div>
     <p>contact</p>
 
@@ -75,22 +75,13 @@ export default {
             console.error(error);
           });
     },
-    downloadFile() {
-      // Use the download API method from your API file
-      fileTransferApi.download()
-          .then(response => {
-            const blob = new Blob([response.data], { type: response.headers['content-type'] });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'downloaded_file.db'); // Set desired filename
-            document.body.appendChild(link);
-            link.click();
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }
+    download() {
+      try {
+        fileTransferApi.downloadFile();
+      } catch (e) {
+        console.log(e);
+      }
+  }
   }
 };
 
