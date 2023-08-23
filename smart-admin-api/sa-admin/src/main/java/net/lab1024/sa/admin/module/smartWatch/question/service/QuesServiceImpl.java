@@ -45,13 +45,16 @@ public class QuesServiceImpl implements QuesService{
     @Transactional
     @Override
     public ResponseDTO<String> add(Question question) {
-        long count = quesMapper.count()+1;
-        question.setQuestionId(String.format("%05d", count*1000));
-        question.setAnswer1Id(String.format("%05d", count*1000+10));
-        question.setAnswer2Id(String.format("%05d", count*1000+20));
-        question.setAnswer3Id(String.format("%05d", count*1000+30));
-        question.setAnswer4Id(String.format("%05d", count*1000+40));
-        quesMapper.add(question);
+//        long count = quesMapper.count()+1;
+        quesMapper.add1(question);
+        long id = quesMapper.findLatestId();
+        question.setId(id);
+        question.setQuestionId(String.format("%05d", id*1000));
+        question.setAnswer1Id(String.format("%05d", id*1000+10));
+        question.setAnswer2Id(String.format("%05d", id*1000+20));
+        question.setAnswer3Id(String.format("%05d", id*1000+30));
+        question.setAnswer4Id(String.format("%05d", id*1000+40));
+        quesMapper.add2(question);
         return ResponseDTO.ok();
     }
 
