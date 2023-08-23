@@ -88,7 +88,6 @@ public class MultiUserService {
         }catch (IOException e){
             e.printStackTrace();
         }
-        //dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
