@@ -66,10 +66,14 @@ public class MultiUserService {
         if(user == null){
             return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR,"User not found");
         }
-        MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
-        multiUserAddForm.setUser_id(user.getUserId());
-        multiUserAddForm.setFile(user.getLoginName());
-        add(multiUserAddForm);
+        if(multiUserMapper.getFileByUserId(userid) == null){
+            MultiUserAddForm multiUserAddForm = new MultiUserAddForm();
+            multiUserAddForm.setUser_id(user.getUserId());
+            multiUserAddForm.setFile(user.getLoginName());
+            MultiUserEntity multiUserEntity = SmartBeanUtil.copy(multiUserAddForm, MultiUserEntity.class);
+            multiUserEntity.setFileData();
+            multiUserMapper.insert(multiUserEntity);
+        }
         MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
         File targetFile = new File(DBPATH);
         try {
@@ -87,7 +91,7 @@ public class MultiUserService {
         }catch (IOException e){
             e.printStackTrace();
         }
-        dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
+        //dataTracerService.insert(userid, DataTracerTypeEnum.RESPONSE);
         return ResponseDTO.ok();
     }
 
