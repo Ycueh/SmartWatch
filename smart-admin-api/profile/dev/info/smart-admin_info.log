@@ -37,3 +37,7 @@
 [2023-08-23 00:56:47,638][INFO ][http-nio-1024-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet' (DirectJDKLog.java:173)
 [2023-08-23 00:56:47,638][INFO ][http-nio-1024-exec-1] Initializing Servlet 'dispatcherServlet' (FrameworkServlet.java:525)
 [2023-08-23 00:56:47,638][INFO ][http-nio-1024-exec-1] Completed initialization in 0 ms (FrameworkServlet.java:547)
+[2023-08-23 02:26:37,826][INFO ][SpringApplicationShutdownHook] {dataSource-2} closing ... (DruidDataSource.java:2063)
+[2023-08-23 02:26:37,827][INFO ][SpringApplicationShutdownHook] {dataSource-2} closed (DruidDataSource.java:2136)
+[2023-08-23 02:26:37,948][INFO ][SpringApplicationShutdownHook] {dataSource-1} closing ... (DruidDataSource.java:2063)
+[2023-08-23 02:26:37,952][INFO ][SpringApplicationShutdownHook] {dataSource-1} closed (DruidDataSource.java:2136)
