@@ -52,7 +52,7 @@ public class FileController {
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-Disposition", "attachment;filename=" + filename);
-            headers.setContentType(MediaType.parseMediaType("application/octet-stream"));
+            headers.setContentType(MediaType.parseMediaType("application/json"));
             headers.setContentLength(file.length());
 
             return new ResponseEntity<>(successResponse, headers, HttpStatus.OK);
@@ -72,7 +72,7 @@ public class FileController {
         }
 
         // build file object
-        File destFile = new File(UPLOAD_FOLDER + File.separator + "smart_admin_v2.db");
+        File destFile = new File(UPLOAD_FOLDER+ File.separator + "smart_admin_v2.db");
 
         try {
             // Save the file to the destination folder
