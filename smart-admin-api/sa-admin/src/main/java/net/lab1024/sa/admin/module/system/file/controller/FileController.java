@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.util.Base64;
 
 import static net.lab1024.sa.common.common.code.ErrorCode.LEVEL_SYSTEM;
 import static net.lab1024.sa.common.common.domain.ResponseDTO.OK_CODE;
@@ -29,6 +31,25 @@ public class FileController {
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
     @Autowired
     FileService fileService;
+    @GetMapping("/file/watch/download")
+    public ResponseEntity<ResponseDTO<String>> watchDownloadFile() {
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            byte[] fileContent;
+            try {
+                fileContent = Files.readAllBytes(file.toPath());
+                fileService.resetDatabase();  // Not sure what this does, so just keeping it
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST));
+            }
+            String encodedContent = Base64.getEncoder().encodeToString(fileContent);
+            return ResponseEntity.ok(ResponseDTO.ok(encodedContent));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseDTO.userErrorParam("File not found"));
+        }
+    }
     @GetMapping("/file/download")
     public ResponseEntity<InputStreamResource> downloadFile() {
         File file = new File(filePath);
@@ -75,9 +96,6 @@ public class FileController {
             }
             try(FileOutputStream output = new FileOutputStream(DBPATH)){
                 byte[] fileData = file.getBytes();
-                if(fileData == null){
-                    return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR,"File data is null");
-                }
                 output.write(fileData);
             }
             return ResponseDTO.ok("File uploaded successfully");

@@ -1,12 +1,13 @@
 import {getRequest, postRequest} from "/@/lib/axios";
+import { download } from "/@/lib/axios";
 
 export const fileTransferApi = {
 
     upload: (param) => {
         return postRequest('/file/upload', param);
     },
-    download: () => {
-        return getRequest('/file/download');
+    downloadFile: () => {
+        return download('/file/download');
     },
 
 

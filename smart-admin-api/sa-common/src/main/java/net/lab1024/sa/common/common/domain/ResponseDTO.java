@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  * Request return object
  */
 @Data
-public class    ResponseDTO<T> {
+public class ResponseDTO<T> {
 
     public static final int OK_CODE = 0;
 
