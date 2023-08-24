@@ -78,4 +78,8 @@ export const userApi = {
     return getRequest(`/user/update/disabled/${userId}`);
   },
 
+  updateDatabase: (userId) => {
+    return postRequest(`/multiUser/updateFile/${userId}`);
+  },
+
 };
