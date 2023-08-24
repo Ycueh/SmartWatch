@@ -32,6 +32,12 @@
         </where>
     </update>
 
+    <select id="getIdByUserId" resultType="long" >
+        SELECT t_user_db.id
+        FROM t_user_db
+        WHERE user_id = #{userId}
+    </select>
+
 
 
 </mapper>
