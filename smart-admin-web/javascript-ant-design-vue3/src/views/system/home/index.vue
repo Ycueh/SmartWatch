@@ -16,7 +16,7 @@
       <button @click="uploadFile">Upload File</button>
     </div>
     <div class="download-file">
-      <button @click="downloadFile">Download File</button>
+      <button @click="download">Download File</button>
     </div>
     <p>If you have any questions, you can contact us through the email below.</p>
     <p>
