@@ -13,10 +13,10 @@
       If you want to upload and download the database, you can click the buttons below. (Note: The uploaded database format needs to be consistent with EMADATA.db)</p>
     <div>
       <input type="file" ref="fileInput" @change="handleFileChange" />
-      <button @click="uploadFile">Upload File</button>
+      <button @click="uploadFile">Upload Database</button>
     </div>
     <div class="download-file">
-      <button @click="download">Download File</button>
+      <button @click="download">Download Database</button>
     </div>
     <p>If you have any questions, you can contact us through the email below.</p>
     <p>
