@@ -29,10 +29,11 @@ public enum UserErrorCode implements ErrorCode {
     DEVELOPING(30006, "Developing"),
 
     LOGIN_STATE_INVALID(30007, "You are not logged in or your login has expired. Please log in again!"),
-
+    UNKNOWN_ERROR(30010, "Unknown error"),
     USER_STATUS_ERROR(30008, "User status error"),
 
     FORM_REPEAT_SUBMIT(30009, "Do not submit form repeatedly!");
+
 
     private final int code;
 

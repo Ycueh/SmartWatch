@@ -1,5 +1,6 @@
 package com.example.smartwatch.presentation.network
 
+import android.util.Base64
 import android.util.Log
 import com.example.smartwatch.presentation.common.domain.ResponseDTO
 import com.example.smartwatch.presentation.login.api.LoginApi
@@ -191,12 +192,12 @@ class NetworkManager(private val baseUrl: String) {
         successCallback: (Boolean) -> Unit,
         errorCallback: (Throwable, Int?) -> Unit
     ) {
-        fileService.downloadFile(token).enqueue(object : Callback<ResponseDTO<ResponseBody>> {
-            override fun onResponse(call: Call<ResponseDTO<ResponseBody>>, response: Response<ResponseDTO<ResponseBody>>) {
+        fileService.downloadFile(token).enqueue(object : Callback<ResponseDTO<String>> {
+            override fun onResponse(call: Call<ResponseDTO<String>>, response: Response<ResponseDTO<String>>) {
                 if (response.isSuccessful) {
                     val responseBodyDTO = response.body()
                     if (responseBodyDTO?.ok == true && responseBodyDTO.data != null) {
-                        val dbByteArray = responseBodyDTO.data.bytes()
+                        val dbByteArray = Base64.decode(responseBodyDTO.data, Base64.DEFAULT)
                         val success = saveDbToFile(dbByteArray, targetFilePath)
                         successCallback.invoke(success)
                     } else {
@@ -210,7 +211,7 @@ class NetworkManager(private val baseUrl: String) {
                 }
             }
 
-            override fun onFailure(call: Call<ResponseDTO<ResponseBody>>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseDTO<String>>, t: Throwable) {
                 errorCallback.invoke(t, null)
             }
         })

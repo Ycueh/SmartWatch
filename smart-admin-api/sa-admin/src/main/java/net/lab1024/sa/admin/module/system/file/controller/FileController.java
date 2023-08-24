@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.util.Base64;
 
 import static net.lab1024.sa.common.common.code.ErrorCode.LEVEL_SYSTEM;
 import static net.lab1024.sa.common.common.domain.ResponseDTO.OK_CODE;
@@ -24,46 +26,30 @@ import static net.lab1024.sa.common.common.domain.ResponseDTO.OK_CODE;
 @RestController
 @Api(tags = {AdminSwaggerTagConst.Business.SW_FILE})
 public class FileController {
-    String filePath = "database"+File.separator+"smart_admin_v2.db";
+    String filePath ="."+File.separator+ "database"+File.separator+"smart_admin_v2.db";
     private static final String UPLOAD_FOLDER = "../../../../../../../../../database";
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
     @Autowired
     FileService fileService;
-//    @GetMapping("/file/download")
-//    public ResponseEntity<ResponseDTO<InputStreamResource>> downloadFile() {
-//        File file = new File(filePath);
-//        String filename = file.getName();
-//        InputStreamResource resource = null;
-//
-//        if (file.exists()) {
-//            try {
-//                resource = new InputStreamResource(new FileInputStream(file));
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//                ResponseDTO<InputStreamResource> errorResponse = ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST);
-//                return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//
-////            try {
-////                fileService.resetDatabase();
-////            } catch (IOException e) {
-////                throw new RuntimeException(e);
-////            }
-//
-//            ResponseDTO<InputStreamResource> successResponse = ResponseDTO.ok(resource);
-//
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.add("Content-Disposition", "attachment;filename=" + filename);
-//            headers.setContentType(MediaType.parseMediaType("application/json"));
-//            headers.setContentLength(file.length());
-//
-//            return new ResponseEntity<>(successResponse, headers, HttpStatus.OK);
-//
-//        } else {
-//            ResponseDTO<InputStreamResource> errorResponse = ResponseDTO.error(UserErrorCode.PARAM_ERROR);
-//            return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-//        }
-//    }
+    @GetMapping("/file/watch/download")
+    public ResponseEntity<ResponseDTO<String>> watchDownloadFile() {
+        File file = new File(filePath);
+
+        if (file.exists()) {
+            byte[] fileContent;
+            try {
+                fileContent = Files.readAllBytes(file.toPath());
+                fileService.resetDatabase();  // Not sure what this does, so just keeping it
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST));
+            }
+            String encodedContent = Base64.getEncoder().encodeToString(fileContent);
+            return ResponseEntity.ok(ResponseDTO.ok(encodedContent));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ResponseDTO.userErrorParam("File not found"));
+        }
+    }
     @GetMapping("/file/download")
     public ResponseEntity<InputStreamResource> downloadFile() {
         File file = new File(filePath);
@@ -76,11 +62,6 @@ public class FileController {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            try {
-                fileService.resetDatabase();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
             return ResponseEntity.ok()
                     // Content-Disposition
                     .header("Content-Disposition", "attachment;filename=" + filename)
@@ -92,6 +73,7 @@ public class FileController {
         }
         return ResponseEntity.notFound().build();
     }
+
 
     @PostMapping("/file/upload")
     public ResponseDTO<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
@@ -109,15 +91,22 @@ public class FileController {
             }
             try(FileOutputStream output = new FileOutputStream(DBPATH)){
                 byte[] fileData = file.getBytes();
-                if(fileData == null){
-                    return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR,"File data is null");
-                }
                 output.write(fileData);
             }
             return ResponseDTO.ok("File uploaded successfully");
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "File upload failed"); // You can use a different ErrorCode if desired
+        }
+    }
+
+    @PostMapping("/file/reset")
+    public ResponseDTO<String> resetDatabase() {
+        try {
+            fileService.resetDatabase();
+            return ResponseDTO.ok();
+        } catch (IOException e) {
+            return ResponseDTO.error(UserErrorCode.UNKNOWN_ERROR,e.getMessage());
         }
     }
 }

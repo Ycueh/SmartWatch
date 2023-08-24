@@ -16,7 +16,7 @@
       <button @click="uploadFile">Upload File</button>
     </div>
     <div class="download-file">
-      <button @click="downloadFile">Download File</button>
+      <button @click="download">Download File</button>
     </div>
     <p>If you have any questions, you can contact us through the email below.</p>
     <p>
@@ -41,43 +41,34 @@ export default {
     };
   },
   methods: {
-    handleFileChange(event) {
-      console.log("File input change event fired");
-      this.selectedFile = event.target.files[0];
-    },
-    uploadFile() {
-      if (!this.selectedFile) {
-        alert("Please select a file to upload.");
-        return;
+      handleFileChange(event) {
+          console.log("File input change event fired");
+          this.selectedFile = event.target.files[0];
+      },
+      uploadFile() {
+          if (!this.selectedFile) {
+              alert("Please select a file to upload.");
+              return;
+          }
+
+          const formData = new FormData();
+          formData.append("file", this.selectedFile);
+
+          fileTransferApi.upload(formData)
+              .then(response => {
+                  alert(response.data);
+              })
+              .catch(error => {
+                  alert(error)
+              });
+      },
+      download() {
+          try {
+              fileTransferApi.downloadFile();
+          } catch (e) {
+              console.log(e);
+          }
       }
-
-      const formData = new FormData();
-      formData.append("file", this.selectedFile);
-
-      fileTransferApi.upload(formData)
-          .then(response => {
-            alert(response.data);
-          })
-          .catch(error => {
-            alert(error)
-          });
-    },
-    downloadFile() {
-      // Use the download API method from your API file
-      fileTransferApi.download()
-          .then(response => {
-            const blob = new Blob([response.data], { type: response.headers['content-type'] });
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'downloaded_file.db'); // Set desired filename
-            document.body.appendChild(link);
-            link.click();
-          })
-          .catch(error => {
-            console.error(error);
-          });
-    }
   }
 };
 

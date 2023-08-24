@@ -18,10 +18,10 @@ interface FileService {
         @Part filePart: MultipartBody.Part
     ): Call<ResponseDTO<String>>
 
-    @GET("/file/download")
+    @GET("/file/watch/download")
     fun downloadFile(
         @Header("x-access-token") token: String
-    ): Call<ResponseDTO<ResponseBody>>
+    ): Call<ResponseDTO<String>>
 
 
 }
