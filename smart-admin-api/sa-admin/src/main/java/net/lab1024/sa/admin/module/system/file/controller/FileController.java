@@ -62,11 +62,6 @@ public class FileController {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-//            try {
-//                fileService.resetDatabase();
-//            } catch (IOException e) {
-//                throw new RuntimeException(e);
-//            }
             return ResponseEntity.ok()
                     // Content-Disposition
                     .header("Content-Disposition", "attachment;filename=" + filename)
@@ -102,6 +97,16 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "File upload failed"); // You can use a different ErrorCode if desired
+        }
+    }
+
+    @PostMapping("/file/reset")
+    public ResponseDTO<String> resetDatabase() {
+        try {
+            fileService.resetDatabase();
+            return ResponseDTO.ok();
+        } catch (IOException e) {
+            return ResponseDTO.error(UserErrorCode.UNKNOWN_ERROR,e.getMessage());
         }
     }
 }
