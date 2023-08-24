@@ -9,6 +9,9 @@ export const fileTransferApi = {
     downloadFile: () => {
         return download('/file/download');
     },
+    resetDatabase: () => {
+        return postRequest('/file/reset');
+    },
 
 
 }
