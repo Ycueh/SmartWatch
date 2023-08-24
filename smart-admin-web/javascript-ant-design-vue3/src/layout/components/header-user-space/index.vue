@@ -12,6 +12,9 @@
 
     <div class="setting">
       <!---setting-->
+      <a-button type="text" @click="updateDatabase" class="operate-icon">
+        update database
+      </a-button>
       <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><setting-outlined /></template>
       </a-button>
@@ -25,10 +28,26 @@
 </template>
 
 <script setup>
-  import HeaderAvatar from './header-avatar.vue';
+  import { message } from 'ant-design-vue';
+import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
+  import { userApi } from "/@/api/system/user/user-api";
+  import { computed,ref } from 'vue';
+  import { useUserStore } from '/@/store/modules/system/user';
 
-  import { ref } from 'vue';
+  
+  async function updateDatabase(){
+    const userId=computed(() => useUserStore().userId);
+    try{
+      console.log(userId.value);
+      await userApi.updateDatabase(userId.value);
+      message.success("Update database successfully");
+    }catch(e){
+      console.log(e);
+    }
+    
+    
+  }
 
   // setting
   const headerSetting = ref();
