@@ -22,6 +22,10 @@
     <p>
       <ul style="list-style: none">
         <li><a href="mailto:lc22175@bristol.ac.uk">lc22175@bristol.ac.uk</a></li>
+        <li><a href="mailto:vg22038@bristol.ac.uk">vg22038@bristol.ac.uk</a></li>
+        <li><a href="mailto:gc22972@bristol.ac.uk">gc22972@bristol.ac.uk</a></li>
+        <li><a href="mailto:nh22282@bristol.ac.uk">nh22282@bristol.ac.uk</a></li>
+        <li><a href="mailto:lf22369@bristol.ac.uk">lf22369@bristol.ac.uk</a></li>
       </ul>
     </p>
 

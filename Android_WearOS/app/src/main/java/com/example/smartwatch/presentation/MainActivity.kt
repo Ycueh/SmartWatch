@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.SnackbarDefaults
 import androidx.compose.material.TextField
@@ -195,8 +196,9 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     }
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
+//                    .fillMaxWidth()
                     .padding(8.dp)
+                    .size(width = 120.dp, height = 45.dp)
             ) {
                 Text(text = "Upload")
             }
@@ -224,8 +226,9 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     }
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
+//                    .fillMaxWidth()
                     .padding(8.dp)
+                    .size(width = 120.dp, height = 45.dp)
             ) {
                 Text(text = "Download")
             }
@@ -234,8 +237,9 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     logout(networkManager,token,context)
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
+//                    .fillMaxWidth()
                     .padding(8.dp)
+                    .size(width = 120.dp, height = 45.dp)
             ) {
                 Text(text = "Logout")
             }
