@@ -19,18 +19,18 @@ export const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
 });
 
-// ----------------------- 路由加载前 -----------------------
+// ----------------------- Before Route Load -----------------------
 router.beforeEach(async (to, from, next) => {
-  // 进度条开启
+  // Start progress bar
   nProgress.start();
 
-  // 公共页面，任何时候都可以跳转
+  // Public pages, can be accessed anytime
   if (to.path === PAGE_PATH_404 || to.path === PAGE_PATH_LOGIN) {
     next();
     return;
   }
 
-  // 验证登录
+  // Validate login
   const token = getTokenFromCookie();
   if (!token) {
     clearAllCoolies();
@@ -39,32 +39,33 @@ router.beforeEach(async (to, from, next) => {
     return;
   }
 
-  // 首页（ 需要登录 ，但不需要验证权限）
+  // Home page (requires login, no permission check)
   if (to.path == HOME_PAGE_NAME) {
     next();
     return;
   }
 
-  // 下载路由对应的 页面组件，并修改组件的Name，如果修改过，则不需要修改
+  // Load the page component corresponding to the route and modify its Name if not modified already
   let toRouterInfo = routerMap.get(to.name);
   if (toRouterInfo && lodash.isFunction(toRouterInfo.component) && toRouterInfo.meta.renameComponentFlag === false) {
-    // 因为组件component 为 lazy load是个方法，所以可以直接执行 component()方法
+    // Since the component is lazy-loaded and is a function, we can directly execute the component() function
     toRouterInfo.component().then((val) => {
-      // 修改组件的name
+      // Modify the component's name
       val.default.name = to.meta.componentName;
-      // 记录已经修改过 组件的name
+      // Record that the component's name has been modified
       toRouterInfo.meta.renameComponentFlag = true;
     });
   }
 
-  // 是否刷新缓存
-  // 当前路由是否在tag中 存在tag中且没有传递keepAlive则刷新缓存
+  // Check if cache should be refreshed
+  // Refresh cache if the current route exists in the tagNav and keepAlive is not passed
   let findTag = (useUserStore().tagNav || []).find((e) => e.menuName == to.name);
   let reloadKeepAlive = findTag && !to.params.keepAlive;
 
-  // 设置tagNav
+  // Set tagNav
   useUserStore().setTagNav(to, from);
-  // 设置keepAlive 或 删除KeepAlive
+
+  // Set keepAlive or remove KeepAlive
   if (to.meta.keepAlive) {
     if (reloadKeepAlive) {
       useUserStore().deleteKeepAliveIncludes(to.meta.componentName);
@@ -76,26 +77,30 @@ router.beforeEach(async (to, from, next) => {
   next();
 });
 
-// ----------------------- 路由加载后 -----------------------
+// ----------------------- After Route Load -----------------------
 router.afterEach(() => {
   nProgress.done();
 });
 
-// ----------------------- 构建router对象 -----------------------
+// ----------------------- Build Router Object -----------------------
 const routerMap = new Map();
 
 export function buildRoutes(menuRouterList) {
   let menuList = menuRouterList ? menuRouterList : useUserStore().getMenuRouterList || [];
+  
   /**
-   * 1、构建整个路由信息
-   * 2、添加到路由里
+   * 1. Build the entire route information
+   * 2. Add it to the router
    */
   const routerList = [];
-  // 获取所有vue组件引用地址 用于构建路由
+  
+  // Get all vue component import paths for building routes
   const modules = import.meta.glob('../views/**/**.vue');
-  // 获取所有vue组件 用于注入name属性 name属性用于keep-alive
+  
+  // Get all vue components for injecting the 'name' property, which is used for keep-alive
+  // ...
 
-  //1、构建整个路由信息
+  // 1. Build the entire route information
   for (const e of menuList) {
     if (!e.menuId) {
       continue;
@@ -116,26 +121,26 @@ export function buildRoutes(menuRouterList) {
 
     let route = {
       path: e.path.startsWith('/') ? e.path : `/${e.path}`,
-      // 使用【组件文件名+menuId】作为name唯一标识
+      // Use the combination of 'component filename + menuId' as the unique identifier for 'name'
       name: e.menuId.toString(),
       meta: {
-        // 数据库菜单(页面)id
+        // Database menu (page) id
         id: e.menuId.toString(),
-        // 组件名称
+        // Component name
         componentName: componentName,
-        // 菜单展示
+        // Menu display
         title: e.menuName,
-        // 菜单图标展示
+        // Menu icon display
         icon: e.icon,
-        // 是否在菜单隐藏
+        // Whether hidden in menu
         hideInMenu: !e.visibleFlag,
-        // 页面是否keep-alive缓存
+        // Page keep-alive caching
         keepAlive: e.cacheFlag,
-        // 是否为外链
+        // Whether it's an external link
         frameFlag: e.frameFlag,
-        // 外链地址
+        // External link URL
         frameUrl: e.frameUrl,
-        // 是否 rename了组件的名字
+        // Whether the component name has been renamed
         renameComponentFlag: false,
       },
     };
@@ -146,14 +151,13 @@ export function buildRoutes(menuRouterList) {
     } else {
       let componentPath = e.component && e.component.startsWith('/') ? e.component : '/' + e.component;
       let relativePath = `../views${componentPath}`;
-      // // eslint-disable-next-line no-prototype-builtins
       route.component = modules[relativePath];
     }
     routerList.push(route);
     routerMap.set(e.menuId.toString(), route);
   }
 
-  //2、添加到路由里
+  // 2. Add it to the router
   router.addRoute({
     path: '/',
     meta: {},
@@ -161,3 +165,4 @@ export function buildRoutes(menuRouterList) {
     children: routerList,
   });
 }
+

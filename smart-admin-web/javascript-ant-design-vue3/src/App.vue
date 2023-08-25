@@ -1,20 +1,10 @@
-<!--
-  * 主应用页面
-  * 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 23:46:47 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
--->
-
 <template>
   <div class="topbar">
     <!-- container -->
     <div class="container clearfix">
       <!-- welcome area -->
       <div class="welcome leftfix">
-        <span>Populating a database to be loaded to smartwatches for behavioural testing</span>
+        <span>Populating a database to be loaded to smartwatches for behavioral testing</span>
       </div>
       <!-- login area -->
 <!--      <div class="top-nav rightfix">-->
@@ -43,13 +33,14 @@
   </div>
 
   <a-config-provider :locale="antdLocale">
-    <!---全局loading--->
-    <a-spin :spinning="spinning"  tip="稍等片刻，我在拼命加载中..." size="large">
-      <!--- 路由 -->
+    <!--- Global Loading --->
+    <a-spin :spinning="spinning"  tip="Please wait a moment, I'm loading..." size="large">
+      <!--- Routes --->
       <RouterView />
     </a-spin>
   </a-config-provider>
 </template>
+
 
 <script setup>
   import dayjs from 'dayjs';

@@ -46,23 +46,23 @@ export const useUserStore = defineStore({
       }
       return getTokenFromCookie();
     },
-    //是否初始化了 路由
+    // Whether the menu router has been initialized
     getMenuRouterInitFlag(state) {
       return state.menuRouterInitFlag;
     },
-    //菜单树
+    // Menu tree
     getMenuTree(state) {
       return state.menuTree;
     },
-    //菜单的路由
+    // Menu routers
     getMenuRouterList(state) {
       return state.menuRouterList;
     },
-    //菜单的父级id
+    // Menu parent IDs
     getMenuParentIdListMap(state) {
       return state.menuParentIdListMap;
     },
-    //功能点
+    // Permission points
     getPointList(state) {
       if (_.isEmpty(state.pointsList)) {
         let localUserPoints = localRead(localKey.USER_POINTS) || '';
@@ -70,7 +70,7 @@ export const useUserStore = defineStore({
       }
       return state.pointsList;
     },
-    //标签页
+    // Tag navigation
     getTagNav(state) {
       if (_.isEmpty(state.tagNav)) {
         let localTagNav = localRead(localKey.USER_TAG_NAV) || '';
@@ -93,9 +93,9 @@ export const useUserStore = defineStore({
       this.userInfo = {};
       localClear();
     },
-    //设置登录信息
+    // Set user login information
     setUserLoginInfo(data) {
-      // 用户基本信息
+      // User basic information
       this.token = data.token;
       this.userId = data.userId;
       this.loginName = data.loginName;
@@ -108,25 +108,25 @@ export const useUserStore = defineStore({
       this.lastLoginUserAgent = data.lastLoginUserAgent;
       this.lastLoginTime = data.lastLoginTime;
 
-      //菜单权限
+      // Menu permissions
       this.menuTree = buildMenuTree(data.menuList);
 
-      //拥有路由的菜单
+      // Routers with menus
       this.menuRouterList = data.menuList.filter((e) => e.path || e.frameUrl);
 
-      //父级菜单集合
+      // Parent menu collection
       this.menuParentIdListMap = buildMenuParentIdListMap(this.menuTree);
 
-      //功能点
+      // Permission points
       this.pointsList = data.menuList.filter((menu) => menu.menuType === MENU_TYPE_ENUM.POINTS.value && menu.visibleFlag && !menu.disabledFlag);
     },
     setToken(token) {
       this.token = token;
     },
-    //设置标签页
+    // Set tag navigation
     setTagNav(route, from) {
       if (_.isEmpty(this.getTagNav)) this.tagNav = [];
-      // name唯一标识
+      // Unique identifier 'name'
       let name = route.name;
       if (!name || name == HOME_PAGE_NAME) {
         return;
@@ -151,7 +151,7 @@ export const useUserStore = defineStore({
       }
       localSave(localKey.USER_TAG_NAV, JSON.stringify(this.tagNav));
     },
-    //关闭标签页
+    // Close tag navigation
     closeTagNav(menuName, closeAll) {
       if (_.isEmpty(this.getTagNav)) return;
       if (closeAll && !menuName) {
@@ -175,13 +175,13 @@ export const useUserStore = defineStore({
       }
       localSave(localKey.USER_TAG_NAV, JSON.stringify(this.tagNav));
     },
-    //关闭页面
+    // Close page
     closePage(route, router, path) {
       if (!this.getTagNav || _.isEmpty(this.getTagNav)) return;
       if (path) {
         router.push({ path });
       } else {
-        // 寻找tagNav
+        // Find tagNav
         let index = this.getTagNav.findIndex((e) => e.menuName == route.name);
         if (index == -1) {
           router.push({ name: HOME_PAGE_NAME });
@@ -190,7 +190,7 @@ export const useUserStore = defineStore({
           if (tagNav.fromMenuName && this.getTagNav.some((e) => e.menuName == tagNav.fromMenuName)) {
             router.push({ name: tagNav.fromMenuName, query: tagNav.fromMenuQuery });
           } else {
-            // 查询左侧tag
+            // Query left tag
             let leftTagNav = this.getTagNav[index - 1];
             router.push({ name: leftTagNav.menuName, query: leftTagNav.menuQuery });
           }
@@ -198,7 +198,7 @@ export const useUserStore = defineStore({
       }
       this.closeTagNav(route.name, false);
     },
-    // 加入缓存
+    // Add to cache
     pushKeepAliveIncludes(val) {
       if (!val) {
         return;
@@ -213,7 +213,7 @@ export const useUserStore = defineStore({
         }
       }
     },
-    // 删除缓存
+    // Delete from cache
     deleteKeepAliveIncludes(val) {
       if (!this.keepAliveIncludes || !val) {
         return;
@@ -223,7 +223,7 @@ export const useUserStore = defineStore({
         this.keepAliveIncludes.splice(number, 1);
       }
     },
-    // 清空缓存
+    // Clear cache
     clearKeepAliveIncludes(val) {
       if (!val || !this.keepAliveIncludes.includes(val)) {
         this.keepAliveIncludes = [];
@@ -235,7 +235,7 @@ export const useUserStore = defineStore({
 });
 
 /**
- * 构建菜单父级集合
+ * Build menu parent ID collection
  */
 function buildMenuParentIdListMap(menuTree) {
   let menuParentIdListMap = new Map();
@@ -245,14 +245,14 @@ function buildMenuParentIdListMap(menuTree) {
 
 function recursiveBuildMenuParentIdListMap(menuList, parentMenuList, menuParentIdListMap) {
   for (const e of menuList) {
-    // 顶级parentMenuList清空
+    // Clear top-level parentMenuList
     if (e.parentId == 0) {
       parentMenuList = [];
     }
     let menuIdStr = e.menuId.toString();
     let cloneParentMenuList = _.cloneDeep(parentMenuList);
     if (!_.isEmpty(e.children) && e.menuName) {
-      // 递归
+      // Recursion
       cloneParentMenuList.push({ name: menuIdStr, title: e.menuName });
       recursiveBuildMenuParentIdListMap(e.children, cloneParentMenuList, menuParentIdListMap);
     } else {
@@ -262,16 +262,16 @@ function recursiveBuildMenuParentIdListMap(menuList, parentMenuList, menuParentI
 }
 
 /**
- * 构建菜单树
+ * Build menu tree
  *
  * @param  menuList
  * @returns
  */
 function buildMenuTree(menuList) {
-  //1 获取所有 有效的 目录和菜单
+  // 1 Get all valid directories and menus
   let catalogAndMenuList = menuList.filter((menu) => menu.menuType !== MENU_TYPE_ENUM.POINTS.value && menu.visibleFlag && !menu.disabledFlag);
 
-  //2 获取顶级目录
+  // 2 Get top-level directories
   let topCatalogList = catalogAndMenuList.filter((menu) => menu.parentId === 0);
   for (const topCatalog of topCatalogList) {
     buildMenuChildren(topCatalog, catalogAndMenuList);
