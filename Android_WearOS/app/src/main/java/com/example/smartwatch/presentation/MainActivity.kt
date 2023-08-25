@@ -6,10 +6,14 @@
 
 package com.example.smartwatch.presentation
 
+
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
@@ -20,45 +24,20 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import android.Manifest
-import android.content.pm.PackageManager
-import android.os.Build
-
-import androidx.core.content.ContextCompat
-
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.material.SnackbarDefaults
-import androidx.compose.material.TextField
-import androidx.compose.material.rememberScaffoldState
-import androidx.compose.material.Scaffold
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.SnackbarHost
-import androidx.compose.material.SnackbarResult
-
-
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
@@ -67,9 +46,6 @@ import com.example.smartwatch.presentation.network.NetworkManager
 import com.example.smartwatch.presentation.theme.SmartWatchTheme
 import java.io.File
 
-
-//import kotlinx.coroutines.flow.internal.NoOpContinuation.context
-//import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
 class LoginActivity : Activity() {
 
@@ -84,29 +60,29 @@ class LoginActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login) // 假设你的布局文件名为 activity_login.xml
+        setContentView(R.layout.login)
 
-        // 初始化视图引用
+        // Initialize view reference
         usernameEditText = findViewById(R.id.AccountEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         loginButton = findViewById(R.id.loginButton)
 
-        // 设置点击监听器
+        // Set click listener
         loginButton.setOnClickListener {
-            // 执行登录操作
+            // perform login operation
             val username = usernameEditText.text.toString()
             val password = passwordEditText.text.toString()
 
             networkManager.login(username, password,
                 successCallback = { token ->
-                    // 跳转到 MainActivity
+                    // jump to MainActivity
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("TOKEN", token)
                     startActivity(intent)
-                    finish()  // 关闭 LoginActivity
+                    finish()  // close LoginActivity
                 },
                 errorCallback = { error ->
-                    // 显示错误信息
+                    // show error message
                     Toast.makeText(this, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
                 }
             )
@@ -151,8 +127,8 @@ fun requestFileAccessPermission(context: Context) {
 @Composable
 fun WearApp(networkManager: NetworkManager, token: String) {
     val context = LocalContext.current
-    val uploadState = remember { mutableStateOf<UploadState?>(null) } // 记录上传状态
-    val downloadState = remember { mutableStateOf<DownloadState?>(null) } // 记录下载状态
+    val uploadState = remember { mutableStateOf<UploadState?>(null) } // Record upload status
+    val downloadState = remember { mutableStateOf<DownloadState?>(null) } // Record download status
 
 //    val requestPermissionLauncher =
 //        rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -176,23 +152,23 @@ fun WearApp(networkManager: NetworkManager, token: String) {
             Button(
                 onClick = {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
-                        // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
+                        // For API 30 and higher, the app has "All file access"
                         uploadState.value = null
                         bindUploadFile(networkManager, token,context) { state ->
-                            uploadState.value = state // 更新上传状态
+                            uploadState.value = state // update upload status
                             Log.d("testUpload", "$state")
                         }
                     } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                        // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
+                        // For API 28 and 29, the app has the WRITE_EXTERNAL_STORAGE permission
                         uploadState.value = null
                         bindUploadFile(networkManager, token,context) { state ->
-                            uploadState.value = state // 更新上传状态
+                            uploadState.value = state // update upload status
                             Log.d("testUpload", "$state")
                         }
                     } else {
-                        // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
-                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
+                        // if the app doesn't have the required permission, request it
+                        requestFileAccessPermission(context)  // Call the function that requests permission
                     }
                 },
                 modifier = Modifier
@@ -206,23 +182,20 @@ fun WearApp(networkManager: NetworkManager, token: String) {
             Button(
                 onClick = {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
-                        // 对于 API 30 及更高版本，应用具有“所有文件访问权限”
                         downloadState.value = null
                         bindDownloadFile(networkManager, token,context) { state ->
-                            downloadState.value = state // 更新上传状态
+                            downloadState.value = state
                             Log.d("testDownload", "$state")
                         }
                     } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R &&
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                        // 对于 API 28 和 29，如果应用具有 WRITE_EXTERNAL_STORAGE 权限
                         downloadState.value = null
                         bindDownloadFile(networkManager, token, context) { state ->
-                            downloadState.value = state // 更新上传状态
+                            downloadState.value = state
                             Log.d("testDownload", "$state")
                         }
                     } else {
-                        // 无论是 API 30+ 还是 API 28/29，只要应用没有所需的权限，就请求它
-                        requestFileAccessPermission(context)  // 这里调用请求权限的函数
+                        requestFileAccessPermission(context)
                     }
                 },
                 modifier = Modifier
@@ -247,7 +220,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
         }
     }
 
-    // 监听上传和下载状态变化，并显示对应的 Snackbar
+    // Monitor upload and download status changes, and display the message
     LaunchedEffect(uploadState.value) {
         uploadState.value?.let { state ->
             when (state) {
@@ -281,13 +254,13 @@ fun WearApp(networkManager: NetworkManager, token: String) {
 
 
 
-// 定义上传状态
+// Define upload status
 sealed class UploadState {
     object Success : UploadState()
     data class Failure(val error: Throwable) : UploadState()
 }
 
-// 定义下载状态
+// Define download status
 sealed class DownloadState {
     object Success : DownloadState()
     data class Failure(val error: Throwable) : DownloadState()
@@ -358,18 +331,18 @@ private fun navigateToLogin(context: Context) {
 private fun logout(networkManager: NetworkManager, token: String,context:Context){
     networkManager.logOut(token,
         successCallback = { success ->
-            // 跳转到 MainActivity
+            // jump to MainActivity
             Toast.makeText(context, "Log out Successfully", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             context.startActivity(intent)
         },
         errorCallback = { error ->
-            // 显示错误信息
+            // show error message
             Toast.makeText(context, error.message ?: "Unknown error", Toast.LENGTH_SHORT).show()
             val intent = Intent(context, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             context.startActivity(intent)
         } )
-    // 结束当前Activity并启动LoginActivity
+    // End the current Activity and start LoginActivity
 }
