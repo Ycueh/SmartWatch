@@ -6,6 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
 import net.lab1024.sa.admin.module.system.login.domain.LoginUserDetail;
 import net.lab1024.sa.admin.module.system.login.domain.LoginForm;
+import net.lab1024.sa.admin.module.system.login.domain.LoginWatchDetail;
 import net.lab1024.sa.admin.module.system.login.service.LoginService;
 import net.lab1024.sa.common.common.annoation.NoNeedLogin;
 import net.lab1024.sa.common.common.code.UserErrorCode;
@@ -47,7 +48,7 @@ public class LoginController {
     @NoNeedLogin
     @PostMapping("/login/Watch")
     @ApiOperation("watchLogin")
-    public ResponseDTO<String> loginToken(@Valid @RequestBody LoginForm loginForm){
+    public ResponseDTO<LoginWatchDetail> loginToken(@Valid @RequestBody LoginForm loginForm){
         return loginService.watchLogin(loginForm);
     }
 

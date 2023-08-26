@@ -37,6 +37,8 @@
 
 <script>
 import { fileTransferApi } from "/@/api/smartWatch/file/fileTransfer-api";
+import { useUserStore } from '/@/store/modules/system/user';
+import { computed,ref } from 'vue';
 
 export default {
   data() {
@@ -57,8 +59,8 @@ export default {
 
           const formData = new FormData();
           formData.append("file", this.selectedFile);
-
-          fileTransferApi.upload(formData)
+          const userId=computed(() => useUserStore().userId);
+          fileTransferApi.upload(userId, formData)
               .then(response => {
                   alert(response.data);
               })

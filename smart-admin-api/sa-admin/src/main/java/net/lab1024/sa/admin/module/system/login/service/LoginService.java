@@ -3,6 +3,7 @@ package net.lab1024.sa.admin.module.system.login.service;
 import cn.hutool.extra.servlet.ServletUtil;
 import com.googlecode.concurrentlinkedhashmap.ConcurrentLinkedHashMap;
 import lombok.extern.slf4j.Slf4j;
+import net.lab1024.sa.admin.module.system.login.domain.LoginWatchDetail;
 import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.admin.module.system.user.domain.entity.UserEntity;
 import net.lab1024.sa.admin.module.system.user.service.UserPermissionService;
@@ -100,12 +101,11 @@ public class LoginService {
 
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
-        //TODO Load the sqlite database file
         multiUserService.choose(userEntity.getUserId());
         return ResponseDTO.ok(loginUserDetail);
     }
 
-    public ResponseDTO<String> watchLogin(LoginForm loginForm) {
+    public ResponseDTO<LoginWatchDetail> watchLogin(LoginForm loginForm) {
         /**
          * Check account
          */
@@ -127,10 +127,11 @@ public class LoginService {
         //Acquire user detail
         LoginUserDetail loginUserDetail = loadLoginInfo(userEntity);
         loginUserDetail.setToken(token);
+        LoginWatchDetail loginWatchDetail = SmartBeanUtil.copy(userEntity,LoginWatchDetail.class);
 
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
-        return ResponseDTO.ok(token);
+        return ResponseDTO.ok(loginWatchDetail);
     }
 
 

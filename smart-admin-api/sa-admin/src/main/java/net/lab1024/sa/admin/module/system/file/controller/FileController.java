@@ -1,6 +1,8 @@
 package net.lab1024.sa.admin.module.system.file.controller;
 
 import net.lab1024.sa.admin.module.system.file.service.FileService;
+import net.lab1024.sa.admin.module.system.login.service.LoginService;
+import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.common.common.code.ErrorCode;
 import net.lab1024.sa.common.common.code.SystemErrorCode;
 import net.lab1024.sa.common.common.code.UserErrorCode;
@@ -31,6 +33,8 @@ public class FileController {
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
     @Autowired
     FileService fileService;
+    @Autowired
+    MultiUserService multiUserService;
     @GetMapping("/file/watch/download")
     public ResponseEntity<ResponseDTO<String>> watchDownloadFile() {
         File file = new File(filePath);
@@ -75,8 +79,8 @@ public class FileController {
     }
 
 
-    @PostMapping("/file/upload")
-    public ResponseDTO<String> handleFileUpload(@RequestParam("file") MultipartFile file) {
+    @PostMapping("/file/upload/{userId}")
+    public ResponseDTO<String> handleFileUpload(@PathVariable Long userId,@RequestParam("file") MultipartFile file) {
 
         if (file.isEmpty()) {
             return ResponseDTO.error(UserErrorCode.PARAM_ERROR, "The uploaded file is empty");
@@ -93,6 +97,7 @@ public class FileController {
                 byte[] fileData = file.getBytes();
                 output.write(fileData);
             }
+            multiUserService.updateFile(userId);
             return ResponseDTO.ok("File uploaded successfully");
         } catch (IOException e) {
             e.printStackTrace();
