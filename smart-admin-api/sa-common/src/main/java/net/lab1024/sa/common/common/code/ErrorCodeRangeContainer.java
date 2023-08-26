@@ -11,31 +11,25 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * 错误码 注册容器
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021/09/27 22:09
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Error code registration container
  */
 class ErrorCodeRangeContainer {
 
     /**
-     * 所有的错误码均大于10000
+     * All error codes are greater than 10000
      */
     static final int MIN_START_CODE = 10000;
 
     static final Map<Class<? extends ErrorCode>, ImmutablePair<Integer, Integer>> CODE_RANGE_MAP = new ConcurrentHashMap<>();
 
     /**
-     * 用于统计数量
+     * Used for counting
      */
     static int errorCounter = 0;
 
     /**
-     * 注册状态码
-     * 校验是否重复 是否越界
+     * Register status code.
+     * Validate for duplicates and out-of-bound values.
      *
      * @param clazz
      * @param start
@@ -43,54 +37,61 @@ class ErrorCodeRangeContainer {
      */
     static void register(Class<? extends ErrorCode> clazz, int start, int end) {
         String simpleName = clazz.getSimpleName();
+
+// Check if the class is an Enum
         if (!clazz.isEnum()) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s not Enum class !", simpleName));
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s is not an Enum class!", simpleName));
         }
+
+// Check if the starting code is greater than the ending code
         if (start > end) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be less than the end !", simpleName));
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be less than the end!", simpleName));
         }
 
+// Check if the starting code is less than or equal to the minimum allowed code
         if (start <= MIN_START_CODE) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be more than %s !", simpleName, MIN_START_CODE));
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: %s start must be greater than %s!", simpleName, MIN_START_CODE));
         }
 
-        // 校验是否重复注册
+// Check if the error code range is already registered
         boolean containsKey = CODE_RANGE_MAP.containsKey(clazz);
         if (containsKey) {
-            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: Enum %s already exist !", simpleName));
+            throw new ExceptionInInitializerError(String.format("<<ErrorCodeRangeValidator>> error: Enum %s already exists!", simpleName));
         }
 
-        // 校验 开始结束值 是否越界
+// Validate if the provided code range overlaps with any existing code ranges
         CODE_RANGE_MAP.forEach((k, v) -> {
             if (isExistOtherRange(start, end, v)) {
-                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] has intersection with class:%s[%d,%d]", simpleName, start, end,
+                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] overlaps with class:%s[%d,%d]", simpleName, start, end,
                         k.getSimpleName(), v.getLeft(), v.getRight()));
             }
         });
 
-        // 循环校验code并存储
+// Validate and collect all the error codes from the Enum
         List<Integer> codeList = Stream.of(clazz.getEnumConstants()).map(codeEnum -> {
             Integer code = codeEnum.getCode();
             if (code < start || code > end) {
-                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] code %d out of range", simpleName, start, end, code));
+                throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s[%d,%d] code %d is out of range", simpleName, start, end, code));
             }
             return code;
         }).collect(Collectors.toList());
 
-        // 校验code是否重复
+// Check for duplicate error codes
         List<Integer> distinctCodeList = codeList.stream().distinct().collect(Collectors.toList());
         Collection<Integer> subtract = CollectionUtils.subtract(codeList, distinctCodeList);
         if (CollectionUtils.isNotEmpty(subtract)) {
-            throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s code %s is repeat!", simpleName, subtract));
+            throw new IllegalArgumentException(String.format("<<ErrorCodeRangeValidator>> error: %s code %s is duplicated!", simpleName, subtract));
         }
 
+// Register the error code range for the Enum
         CODE_RANGE_MAP.put(clazz, ImmutablePair.of(start, end));
-        // 统计
+
+// Update the error code counter
         errorCounter = errorCounter + distinctCodeList.size();
     }
 
     /**
-     * 是否存在于其他范围
+     * Check if it exists within another range.
      *
      * @param start
      * @param end
@@ -110,7 +111,7 @@ class ErrorCodeRangeContainer {
     }
 
     /**
-     * 进行初始化
+     * Initialization
      */
     static int initialize() {
         return errorCounter;

@@ -3,13 +3,8 @@ package net.lab1024.sa.common.common.exception;
 import net.lab1024.sa.common.common.code.ErrorCode;
 
 /**
- * 业务逻辑异常,全局异常拦截后统一返回ResponseCodeConst.SYSTEM_ERROR
+ * In case of business logic exception, after globally intercepting the exception, uniformly return ResponseCodeConst.SYSTEM_ERROR.
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2020/8/25 21:57
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class BusinessException extends RuntimeException {
 

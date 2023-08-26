@@ -10,27 +10,22 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * 角色 菜单 dao
+ * Role menu doa
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-07 18:54:42
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Mapper
 @Component
 public interface RoleMenuDao extends BaseMapper<RoleMenuEntity> {
 
     /**
-     * 根据角色ID删除菜单权限
+     * Delete menu authority by role id
      *
      * @param roleId
      */
     void deleteByRoleId(@Param("roleId") Long roleId);
 
     /**
-     * 根据角色ID查询选择的菜单权限
+     * Search menu by role id
      *
      * @param roleId
      * @return
@@ -38,17 +33,11 @@ public interface RoleMenuDao extends BaseMapper<RoleMenuEntity> {
     List<Long> queryMenuIdByRoleId(@Param("roleId") Long roleId);
 
     /**
-     * 根据角色ID集合查询选择的菜单权限
+     * Search menu by role id list
      *
      * @param roleIdList
      * @return
      */
     List<MenuEntity> selectMenuListByRoleIdList(@Param("roleIdList") List<Long> roleIdList, @Param("deletedFlag") Boolean deletedFlag);
 
-    /**
-     * 查询所有的菜单角色
-     *
-     * @return
-     */
-    List<RoleMenuEntity> queryAllRoleMenu();
 }

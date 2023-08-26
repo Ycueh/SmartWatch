@@ -10,32 +10,26 @@ import java.util.LinkedHashMap;
 import java.util.Objects;
 
 /**
- * 枚举类接口
- *
- * @Author 1024创新实验室: 胡克
- * @Date 2018-07-17 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Enum class interface
  */
 public interface BaseEnum {
 
     /**
-     * 获取枚举类的值
+     * Get the value of the enum class
      *
-     * @return
+     * @return Object
      */
     Object getValue();
 
     /**
-     * 获取枚举类的说明
+     * Get the description of the enum class
      *
      * @return String
      */
     String getDesc();
 
     /**
-     * 比较参数是否与枚举类的value相同
+     * Compare if the parameter is the same as the value of the enum class
      *
      * @param value
      * @return boolean
@@ -45,7 +39,7 @@ public interface BaseEnum {
     }
 
     /**
-     * 比较枚举类是否相同
+     * Compare if the enum classes are the same
      *
      * @param baseEnum
      * @return boolean
@@ -55,9 +49,9 @@ public interface BaseEnum {
     }
 
     /**
-     * 返回枚举类的说明
+     * Return the description of the enum class
      *
-     * @param clazz 枚举类类对象
+     * @param clazz Enum class class object
      * @return
      */
     static String getInfo(Class<? extends BaseEnum> clazz) {

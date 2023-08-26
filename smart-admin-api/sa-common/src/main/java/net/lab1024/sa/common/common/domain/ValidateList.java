@@ -5,18 +5,12 @@ import javax.validation.constraints.NotEmpty;
 import java.util.*;
 
 /**
- * 校验集合是否为空的包装类
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020-02-03 17:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Wrapper class for validating whether a collection is empty
  */
 public class ValidateList<E> implements List<E> {
 
     @Valid
-    @NotEmpty(message = "数据长度不能为空哦")
+    @NotEmpty(message = "Data length cannot be empty")
     private List<E> list;
 
     public ValidateList() {

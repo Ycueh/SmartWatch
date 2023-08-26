@@ -10,18 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.function.BiFunction;
 
 /**
- * 权限配置
+ * Security Config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class SecurityConfig extends AbstractSecurityConfig {
     /**
-     * 获取TOKEN 解析类
+     * Token Parsing Utility Class
      */
     @Autowired
     private LoginService loginService;

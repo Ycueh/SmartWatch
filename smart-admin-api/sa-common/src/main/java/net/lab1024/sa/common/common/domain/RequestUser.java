@@ -3,46 +3,41 @@ package net.lab1024.sa.common.common.domain;
 import net.lab1024.sa.common.common.enumeration.UserTypeEnum;
 
 /**
- * 请求用户
+ * Requested User
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-12-21 19:55:07
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public interface RequestUser {
 
     /**
-     * 请求用户id
+     * Get the user ID of the request user.
      *
-     * @return
+     * @return User ID
      */
     Long getUserId();
 
     /**
-     * 请求用户名称
+     * Get the username of the request user.
      *
-     * @return
+     * @return Username
      */
     String getUserName();
 
     /**
-     * 获取用户类型
+     * Get the user type.
      */
     UserTypeEnum getUserType();
 
     /**
-     * 获取请求的IP
+     * Get the requesting IP address.
      *
-     * @return
+     * @return IP address
      */
     String getIp();
 
     /**
-     * 获取请求 user-agent
+     * Get the user-agent of the request.
      *
-     * @return
+     * @return User-agent string
      */
     String getUserAgent();
 

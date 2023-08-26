@@ -8,13 +8,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * 数字序列化
+ * Number serializer
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2020/8/20 21:04
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class BigDecimalNullZeroSerializer extends JsonSerializer<BigDecimal> {
 

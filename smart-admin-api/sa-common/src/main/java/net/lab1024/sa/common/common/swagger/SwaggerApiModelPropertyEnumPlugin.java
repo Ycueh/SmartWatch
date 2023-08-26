@@ -17,14 +17,9 @@ import java.lang.reflect.AnnotatedElement;
 import static springfox.documentation.schema.Annotations.findPropertyAnnotation;
 
 /**
- * swagger 用于说明枚举类字段说明
- * * SWAGGER_PLUGIN_ORDER+1 是将此配置放在原来的后面执行
+ * Swagger plugin for providing descriptions of enum class fields.
+ * SWAGGER_PLUGIN_ORDER+1 is used to execute this configuration after the original ones.
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2019/8/11 15:36:56
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Component
 @Order(SwaggerPluginSupport.SWAGGER_PLUGIN_ORDER + 1)

@@ -8,20 +8,15 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 枚举类字段属性的 自定义 swagger 注解
+ * Custom Swagger annotation for attributes of enum class fields.
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2019/05/16 23:18
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ApiModelPropertyEnum {
 
     /**
-     * 枚举类对象
+     * Enum class object
      *
      * @return
      */

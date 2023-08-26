@@ -21,14 +21,14 @@ public class AdminStartupRunner implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        // 初始化状态码
+        // Initiate status code
         int codeCount = ErrorCodeRegister.initialize();
 
         String destroySchedules = "Spring  @Schedule running";
 //        destroySchedules = scheduleConfig.destroy();
 
-        log.info("\n ---------------【1024创新实验室 温馨提示：】 ErrorCode 共计完成初始化： {}个！---------------" +
-                 "\n ---------------【1024创新实验室 温馨提示：】 {}---------------\n", codeCount, destroySchedules);
+        log.info("\n --------------- ErrorCode initialization completed: {} in total!---------------" +
+                 "\n --------------- {}---------------\n", codeCount, destroySchedules);
 
     }
 }

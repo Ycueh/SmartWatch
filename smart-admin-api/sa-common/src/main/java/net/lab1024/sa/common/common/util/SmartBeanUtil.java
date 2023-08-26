@@ -11,45 +11,40 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * bean相关工具类
+ * Utility class for handling bean-related operations
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2018-01-15 10:48:23
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class SmartBeanUtil {
 
     /**
-     * 验证器
+     * Validator
      */
     private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
 
     /**
-     * 复制bean的属性
+     * Copy properties from source bean to target bean
      *
-     * @param source 源 要复制的对象
-     * @param target 目标 复制到此对象
+     * @param source Source object to copy from
+     * @param target Target object to copy to
      */
     public static void copyProperties(Object source, Object target) {
         BeanUtils.copyProperties(source, target);
     }
 
     /**
-     * 复制对象
+     * Copy an object
      *
-     * @param source 源 要复制的对象
-     * @param target 目标 复制到此对象
+     * @param source Source object to copy from
+     * @param targetClass Class of the target object
      * @param <T>
      * @return
      */
-    public static <T> T copy(Object source, Class<T> target) {
-        if (source == null || target == null) {
+    public static <T> T copy(Object source, Class<T> targetClass) {
+        if (source == null || targetClass == null) {
             return null;
         }
         try {
-            T newInstance = target.newInstance();
+            T newInstance = targetClass.newInstance();
             BeanUtils.copyProperties(source, newInstance);
             return newInstance;
         } catch (Exception e) {
@@ -58,36 +53,36 @@ public class SmartBeanUtil {
     }
 
     /**
-     * 复制list
+     * Copy a list of objects
      *
-     * @param source
-     * @param target
+     * @param source List of source objects to copy from
+     * @param targetClass Class of the target object
      * @param <T>
      * @param <K>
      * @return
      */
-    public static <T, K> List<K> copyList(List<T> source, Class<K> target) {
-        if (null == source || source.isEmpty()) {
+    public static <T, K> List<K> copyList(List<T> source, Class<K> targetClass) {
+        if (source == null || source.isEmpty()) {
             return Collections.emptyList();
         }
-        return source.stream().map(e -> copy(e, target)).collect(Collectors.toList());
+        return source.stream().map(e -> copy(e, targetClass)).collect(Collectors.toList());
     }
 
     /**
-     * 手动验证对象 Model的属性
-     * 需要配合 hibernate-validator 校验注解
+     * Manually validate the properties of a model object
+     * Requires the use of Hibernate Validator validation annotations
      *
-     * @param t
-     * @return String 返回null代表验证通过，否则返回错误的信息
+     * @param object
+     * @return String Returns null if validation passes, otherwise returns the error messages
      */
-    public static <T> String verify(T t) {
-        // 获取验证结果
-        Set<ConstraintViolation<T>> validate = VALIDATOR.validate(t);
+    public static <T> String verify(T object) {
+        // Get validation results
+        Set<ConstraintViolation<T>> validate = VALIDATOR.validate(object);
         if (validate.isEmpty()) {
-            // 验证通过
+            // Validation passed
             return null;
         }
-        // 返回错误信息
+        // Return error messages
         List<String> messageList = validate.stream().map(ConstraintViolation::getMessage).collect(Collectors.toList());
         return messageList.toString();
     }

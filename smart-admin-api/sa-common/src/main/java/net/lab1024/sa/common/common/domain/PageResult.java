@@ -12,36 +12,36 @@ import java.util.List;
 public class PageResult<T> {
 
     /**
-     * 当前页
+     * Current page
      */
-    @ApiModelProperty(value = "当前页")
+    @ApiModelProperty(value = "Current page")
     private Long pageNum;
 
     /**
-     * 每页的数量
+     * Number of records per page
      */
-    @ApiModelProperty(value = "每页的数量")
+    @ApiModelProperty(value = "Number of records per page")
     private Long pageSize;
 
     /**
-     * 总记录数
+     * Total records
      */
-    @ApiModelProperty(value = "总记录数")
+    @ApiModelProperty(value = "Total records")
     private Long total;
 
     /**
-     * 总页数
+     * Total number of pages
      */
-    @ApiModelProperty(value = "总页数")
+    @ApiModelProperty(value = "Total number of pages")
     private Long pages;
 
     /**
-     * 结果集
+     * Results list
      */
-    @ApiModelProperty(value = "结果集")
+    @ApiModelProperty(value = "Results list")
     private List<T> list;
 
-    @ApiModelProperty("是否为空")
+    @ApiModelProperty("Is it empty")
     private Boolean emptyFlag;
 
 }

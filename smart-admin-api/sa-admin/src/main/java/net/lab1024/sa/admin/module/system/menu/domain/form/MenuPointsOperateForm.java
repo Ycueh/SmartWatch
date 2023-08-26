@@ -9,35 +9,30 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * 菜单功能点操作Form
+ * Menu Function Point Operation Form
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class MenuPointsOperateForm {
 
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty("Menu ID")
     private Long menuId;
 
-    @ApiModelProperty("功能点名称")
-    @NotBlank(message = "功能点不能为空")
-    @Length(max = 30, message = "功能点最多30个字符")
+    @ApiModelProperty("Function point name")
+    @NotBlank(message = "Function point cannot be empty")
+    @Length(max = 30, message = "Function point name can have a maximum of 30 characters")
     private String menuName;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("Disabled status")
+    @NotNull(message = "Disabled status cannot be empty")
     private Boolean disabledFlag;
 
-    @ApiModelProperty("后端接口权限集合")
+    @ApiModelProperty("Backend interface permission list")
     private List<String> apiPermsList;
 
-    @ApiModelProperty("权限字符串")
+    @ApiModelProperty("Permission string")
     private String webPerms;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("Function point associated menu ID")
     private Long contextMenuId;
 }

@@ -8,19 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 操作日志切面 配置
+ * Operation log aspect configuration
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class JweAspectConfig {
 
     /**
-     * 配置信息
+     * Configuration
      */
     @Bean
     public JweAspect jweConfig() {

@@ -12,18 +12,13 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 import org.springframework.security.core.Authentication;
 
 /**
- * 1、以类名加方法名为权限字符串的校验模式 <br>
- * 2、重写MethodSecurityMetadataSource将优化security配置，只需在方法上加上@saAuth注解，方法上就会存在权限（权限字符串为类名加方法名），而无需另外手动设置，减轻后端开发成本<br>
- * 3、security将不再依据权限字符串进行权限控制，<br>
- * 4、security将依据对应权限字符串下的接口权限进行控制 <br>
- * 5、采用此配置原@PreAuthorize依然有效 <br>
- * 6、如若无需此配置，需将@EnableGlobalMethodSecurity注解添加至SecurityConfig类上
+ * 1. Use the class name plus method name as the permission string verification mode. <br>
+ * 2. Overriding MethodSecurityMetadataSource will optimize the security configuration. Just add the @saAuth annotation to the method, and the method will have permissions (with the permission string being the class name plus method name). This removes the need for manual setup, reducing backend development costs. <br>
+ *    Security will no longer use the permission string for access control. <br>
+ * 3. Security will control access based on the interface permissions under the corresponding permission string. <br>
+ * 4. Using this configuration, the original @PreAuthorize is still effective. <br>
+ * 5. If this configuration is not needed, the @EnableGlobalMethodSecurity annotation needs to be added to the SecurityConfig class.
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021-08-31 0:01
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityMethodConfig extends GlobalMethodSecurityConfiguration {

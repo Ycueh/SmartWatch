@@ -6,19 +6,14 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 /**
- * 菜单 更新Form
+ * Menu Update Form
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class MenuUpdateForm extends MenuBaseForm {
 
-    @ApiModelProperty("菜单ID")
-    @NotNull(message = "菜单ID不能为空")
+    @ApiModelProperty("Menu ID")
+    @NotNull(message = "Menu ID cannot be empty")
     private Long menuId;
 
     @ApiModelProperty(hidden = true)

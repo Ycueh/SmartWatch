@@ -14,13 +14,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
- * Spring Security
+ * Spring Security Configuration
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021/8/3 17:50
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public abstract class AbstractSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
@@ -33,21 +28,21 @@ public abstract class AbstractSecurityConfig extends WebSecurityConfigurerAdapte
     private List<String> ignoreUrlList;
 
     /**
-     * Token获取用户信息
+     * Function to retrieve user information from token
      *
      * @return
      */
     protected abstract BiFunction<String, HttpServletRequest, UserDetails> userFunction();
 
     /**
-     * 需要认证的url集合
+     * URLs requiring authentication
      *
      * @return
      */
     protected abstract String[] getAuthenticatedUrlPatterns();
 
     /**
-     * 不需要登录的url集合
+     * URLs that do not require login
      *
      * @return
      */
@@ -56,7 +51,7 @@ public abstract class AbstractSecurityConfig extends WebSecurityConfigurerAdapte
     }
 
     /**
-     * 忽略的url集合
+     * Ignored URLs
      *
      * @return
      */
@@ -67,27 +62,24 @@ public abstract class AbstractSecurityConfig extends WebSecurityConfigurerAdapte
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                // CSRF禁用，因为不使用session
+                // Disable CSRF as session is not used
                 .csrf().disable()
-                // 认证失败处理类
+                // Authentication failure handling
                 .exceptionHandling().authenticationEntryPoint(new SecurityAuthenticationFailHandler()).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // 过滤请求
+                // Request filtering
                 .authorizeRequests()
-                //忽略的url
+                // Ignored URLs
                 .antMatchers(this.getIgnoreUrlList()).permitAll()
-                // 不需要登陆的url
+                // URLs not requiring login
                 .antMatchers(this.getNoNeedLoginUrl()).permitAll()
-                //需要校验权限的url
+                // URLs requiring permission validation
                 .antMatchers(getAuthenticatedUrlPatterns()).authenticated();
 
-        // token filter 进行校验
+        // Token filter for validation
         httpSecurity.addFilterBefore(new SecurityTokenFilter(this.userFunction()), UsernamePasswordAuthenticationFilter.class);
         httpSecurity.addFilterBefore(corsFilter, SecurityTokenFilter.class);
-        // 禁用spring security 使用 X-Frame-Options防止网页被Frame
+        // Disable Spring Security's X-Frame-Options to prevent web pages from being framed
         httpSecurity.headers().frameOptions().disable();
-
     }
-
-
 }

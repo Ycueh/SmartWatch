@@ -6,32 +6,27 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 简易的菜单VO
+ * Simplified Menu VO (Value Object)
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class MenuSimpleTreeVO {
 
-    @ApiModelProperty("菜单ID")
+    @ApiModelProperty("Menu ID")
     private Long menuId;
 
-    @ApiModelProperty("菜单名称")
+    @ApiModelProperty("Menu Name")
     private String menuName;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("Function Point Associated Menu ID")
     private Long contextMenuId;
 
-    @ApiModelProperty("父级菜单ID")
+    @ApiModelProperty("Parent Menu ID")
     private Long parentId;
 
-    @ApiModelProperty("菜单类型")
+    @ApiModelProperty("Menu Type")
     private Integer menuType;
 
-    @ApiModelProperty("子菜单")
+    @ApiModelProperty("Submenus")
     private List<MenuSimpleTreeVO> children;
 }

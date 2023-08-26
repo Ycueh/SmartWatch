@@ -1,17 +1,11 @@
 package net.lab1024.sa.common.common.enumeration;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 系统环境枚举类
+ * System environment enumeration
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020-10-15 22:45:04
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @AllArgsConstructor
 @Getter
@@ -19,22 +13,22 @@ public enum SystemEnvironmentEnum implements BaseEnum {
     /**
      * dev
      */
-    DEV(SystemEnvironmentNameConst.DEV, "开发环境"),
+    DEV(SystemEnvironmentNameConst.DEV, "Development Environment"),
 
     /**
      * test
      */
-    TEST(SystemEnvironmentNameConst.TEST, "测试环境"),
+    TEST(SystemEnvironmentNameConst.TEST, "Testing Environment"),
 
     /**
      * pre
      */
-    PRE(SystemEnvironmentNameConst.PRE, "预发布环境"),
+    PRE(SystemEnvironmentNameConst.PRE, "Pre-release Environment"),
 
     /**
      * prod
      */
-    PROD(SystemEnvironmentNameConst.PROD, "生产环境");
+    PROD(SystemEnvironmentNameConst.PROD, "Production Environment");
 
     private final String value;
 

@@ -1,28 +1,28 @@
 server:
   servlet:
-    context-path: '/'
-  port: 1024
-  # tomcat 配置，主要用于 配置 访问日志（便于将来排查错误）
+    context-path: '/'          # The root context path for the servlet.
+  port: 1024                  # Port on which the server is running.
+  # Tomcat configuration, mainly for configuring access logs (useful for future error troubleshooting).
   tomcat:
-    basedir: $profile/logs/smart_admin_v2/dev/tomcat-logs
+    basedir: $profile/logs/smart_admin_v2/dev/tomcat-logs  # Base directory for Tomcat logs.
     accesslog:
-      enabled: true
-      pattern: '%t %{X-Forwarded-For}i %a "%r" %s %D (%D ms)'
+      enabled: true           # Enable access logging.
+      pattern: '%t %{X-Forwarded-For}i %a "%r" %s %D (%D ms)'  # Log pattern format.
 
 spring:
   profiles:
-    active: '@profiles.active@'
+    active: '@profiles.active@'  # The active profile for the application.
   jpa:
     hibernate:
       naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-# 项目配置
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  # Naming strategy for Hibernate.
+
+# Project configuration
 project:
-  name: sa-admin
-  module: net.lab1024.sa.admin.module
+  name: sa-admin   # Name of the project.
+  module: net.lab1024.sa.admin.module   # Module path for the project.
 
-# swagger文档
+# Swagger documentation
 swagger:
-  host: localhost:${server.port}
-  tag-class: net.lab1024.sa.admin.constant.AdminSwaggerTagConst
-
+  host: localhost:${server.port}   # Host for the Swagger UI.
+  tag-class: net.lab1024.sa.admin.constant.AdminSwaggerTagConst  # Class that contains tags for the Swagger documentation.

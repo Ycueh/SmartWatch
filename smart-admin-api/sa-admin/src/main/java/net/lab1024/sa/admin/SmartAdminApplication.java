@@ -13,13 +13,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * SmartAdmin 项目启动类
+ * SmartAdmin Application
  *
- * @Author 1024创新实验室-主任:卓大
- * @Date 2022-08-29 21:00:58
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ），2012-2022
  */
 @EnableCaching
 @EnableScheduling

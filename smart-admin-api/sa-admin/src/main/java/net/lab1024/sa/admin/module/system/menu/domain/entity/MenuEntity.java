@@ -12,128 +12,123 @@ import net.lab1024.sa.common.common.validator.enumeration.CheckEnum;
 
 
 /**
- * 菜单 表
+ * Menu entity
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 @TableName(value = "t_menu")
 public class MenuEntity {
 
     /**
-     * 菜单ID
+     * Menu id
      */
     @TableId(type = IdType.AUTO)
     private Long menuId;
 
     /**
-     * 菜单名称
+     * Menu name
      */
     private String menuName;
 
     /**
-     * 类型
+     * Type
      *
      * @see MenuTypeEnum
      */
     private Integer menuType;
 
     /**
-     * 父菜单ID
+     * Parent menu id
      */
     private Long parentId;
 
     /**
-     * 显示顺序
+     * Sort
      */
     private Integer sort;
 
     /**
-     * 路由地址
+     * Menu path
      */
     private String path;
 
     /**
-     * 组件路径
+     * Vue path
      */
     private String component;
 
     /**
-     * 是否为外链
+     * Frame flag
      */
     private Boolean frameFlag;
 
     /**
-     * 外链地址
+     * Frame Url
      */
     private String frameUrl;
 
     /**
-     * 是否缓存
+     * Cache flag: 1Y 0N
      */
     private Boolean cacheFlag;
 
     /**
-     * 显示状态
+     * Visible flag: 1Y 0N
      */
     private Boolean visibleFlag;
 
     /**
-     * 禁用状态
+     * Disabled flag
      */
     private Boolean disabledFlag;
 
     /**
-     * 后端权限字符串
+     * Back end permission
      */
     private String apiPerms;
 
     /**
-     * 权限类型
+     * Permission type
      */
     private Integer permsType;
 
     /**
-     * 前端权限字符串
+     * Front end permission
      */
     private String webPerms;
 
     /**
-     * 菜单图标
+     * Icon
      */
     private String icon;
 
     /**
-     * 功能点关联菜单ID
+     * Context menu id
      */
     private Long contextMenuId;
 
     /**
-     * 删除状态
+     * Deleted flag
      */
     private Boolean deletedFlag;
 
     /**
-     * 创建时间
+     * Create time
      */
     private String createTime;
 
     /**
-     * 创建人
+     * Create user
      */
     private Long createUserId;
 
     /**
-     * 更新时间
+     * Update time
      */
     private String updateTime;
 
     /**
-     * 更新人
+     * Update user
      */
     private Long updateUserId;
 }

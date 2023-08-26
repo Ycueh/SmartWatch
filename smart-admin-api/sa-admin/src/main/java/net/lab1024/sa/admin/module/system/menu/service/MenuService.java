@@ -43,22 +43,20 @@ public class MenuService {
     private List<RequestUrlVO> authUrl;
 
     /**
-     * 添加菜单
+     * Add menu
      *
-     * @param menuAddForm
-     * @return
      */
     public synchronized ResponseDTO<String> addMenu(MenuAddForm menuAddForm) {
-        // 校验菜单名称
+        // Check menu na,e
         if (this.validateMenuName(menuAddForm)) {
-            return ResponseDTO.userErrorParam("菜单名称已存在");
+            return ResponseDTO.userErrorParam("Menu name is existed");
         }
-        // 校验前端权限字符串
+        // Check front-end permission
         if (this.validateWebPerms(menuAddForm)) {
-            return ResponseDTO.userErrorParam("权限字符串已存在");
+            return ResponseDTO.userErrorParam("No permission parameter");
         }
         MenuEntity menuEntity = SmartBeanUtil.copy(menuAddForm, MenuEntity.class);
-        // 处理接口权限
+        // Api permission
         List<String> permsList = menuAddForm.getApiPermsList();
         if (!CollectionUtils.isEmpty(permsList)) {
             String perms = StringUtils.join(permsList, ",");
@@ -69,33 +67,33 @@ public class MenuService {
     }
 
     /**
-     * 更新菜单
+     * Update menu
      *
      * @param menuUpdateForm
      * @return
      */
     public synchronized ResponseDTO<String> updateMenu(MenuUpdateForm menuUpdateForm) {
-        //校验菜单是否存在
+        //Check if the menu exists
         MenuEntity selectMenu = menuDao.selectById(menuUpdateForm.getMenuId());
         if (selectMenu == null) {
-            return ResponseDTO.userErrorParam("菜单不存在");
+            return ResponseDTO.userErrorParam("Menu does not exist");
         }
         if (selectMenu.getDeletedFlag()) {
-            return ResponseDTO.userErrorParam("菜单已被删除");
+            return ResponseDTO.userErrorParam("Menu is deleted");
         }
-        //校验菜单名称
+        //Check menu name
         if (this.validateMenuName(menuUpdateForm)) {
-            return ResponseDTO.userErrorParam("菜单名称已存在");
+            return ResponseDTO.userErrorParam("Menu name exists");
         }
-        // 校验前端权限字符串
+        // Check front-end permission
         if (this.validateWebPerms(menuUpdateForm)) {
-            return ResponseDTO.userErrorParam("权限字符串已存在");
+            return ResponseDTO.userErrorParam("permission parameter exists");
         }
         if (menuUpdateForm.getMenuId().equals(menuUpdateForm.getParentId())) {
-            return ResponseDTO.userErrorParam("上级菜单不能为自己");
+            return ResponseDTO.userErrorParam("Parent menu can not by itself");
         }
         MenuEntity menuEntity = SmartBeanUtil.copy(menuUpdateForm, MenuEntity.class);
-        // 处理接口权限
+        // Api permission
         List<String> permsList = menuUpdateForm.getApiPermsList();
         if (!CollectionUtils.isEmpty(permsList)) {
             String perms = StringUtils.join(permsList, ",");
@@ -107,7 +105,7 @@ public class MenuService {
 
 
     /**
-     * 批量删除菜单
+     * Batch delete menu
      *
      * @param menuIdList
      * @param userId
@@ -115,10 +113,10 @@ public class MenuService {
      */
     public synchronized ResponseDTO<String> batchDeleteMenu(List<Long> menuIdList, Long userId) {
         if (CollectionUtils.isEmpty(menuIdList)) {
-            return ResponseDTO.userErrorParam("所选菜单不能为空");
+            return ResponseDTO.userErrorParam("Chosen menu can not be null");
         }
         menuDao.deleteByMenuIdList(menuIdList, userId, Boolean.TRUE);
-        //孩子节点也需要删除
+        //Need to delete child node
         this.recursiveDeleteChildren(menuIdList, userId);
         return ResponseDTO.ok();
     }
@@ -133,11 +131,11 @@ public class MenuService {
     }
 
     /**
-     * 校验菜单名称
+     * Check menu name
      *
      * @param menuDTO
      * @param <T>
-     * @return true 重复 false 未重复
+     * @return true Existed false Non-existed
      */
     public <T extends MenuBaseForm> Boolean validateMenuName(T menuDTO) {
         MenuEntity menu = menuDao.getByMenuName(menuDTO.getMenuName(), menuDTO.getParentId(), Boolean.FALSE);
@@ -152,11 +150,11 @@ public class MenuService {
     }
 
     /**
-     * 校验前端权限字符串
+     * Check front end permission
      *
      * @param menuDTO
      * @param <T>
-     * @return true 重复 false 未重复
+     * @return true Existed false Non-existed
      */
     public <T extends MenuBaseForm> Boolean validateWebPerms(T menuDTO) {
         MenuEntity menu = menuDao.getByWebPerms(menuDTO.getWebPerms(), Boolean.FALSE);
@@ -171,32 +169,32 @@ public class MenuService {
     }
 
     /**
-     * 查询菜单列表
+     * Search menu lsit
      *
      * @return
      */
     public List<MenuVO> queryMenuList(Boolean disabledFlag) {
         List<MenuVO> menuVOList = menuDao.queryMenuList(Boolean.FALSE, disabledFlag, null);
-        //根据ParentId进行分组
+        //Group by parent id
         Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
         List<MenuVO> filterMenuVOList = this.filterNoParentMenu(parentMap, NumberUtils.LONG_ZERO);
         return filterMenuVOList;
     }
 
     /**
-     * 过滤没有上级菜单的菜单列表
+     * Filter top level menu
      *
      * @param parentMap
      * @param parentId
      * @return
      */
     private List<MenuVO> filterNoParentMenu(Map<Long, List<MenuVO>> parentMap, Long parentId) {
-        // 获取本级菜单树List
+        // Acquire current level list
         List<MenuVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList());
         List<MenuVO> childMenu = Lists.newArrayList();
-        // 循环遍历下级菜单
+        // Acquire next level menu
         res.forEach(e -> {
-            //处理接口权限
+            //Permission
             String perms = e.getApiPerms();
             if (StringUtils.isBlank(perms)) {
                 e.setApiPermsList(Lists.newArrayList());
@@ -212,9 +210,9 @@ public class MenuService {
     }
 
     /**
-     * 查询菜单树
+     * Search menu tree
      *
-     * @param onlyMenu 不查询功能点
+     * @param onlyMenu
      * @return
      */
     public ResponseDTO<List<MenuTreeVO>> queryMenuTree(Boolean onlyMenu) {
@@ -223,24 +221,21 @@ public class MenuService {
             menuTypeList = Lists.newArrayList(MenuTypeEnum.CATALOG.getValue(), MenuTypeEnum.MENU.getValue());
         }
         List<MenuVO> menuVOList = menuDao.queryMenuList(Boolean.FALSE, null, menuTypeList);
-        //根据ParentId进行分组
         Map<Long, List<MenuVO>> parentMap = menuVOList.stream().collect(Collectors.groupingBy(MenuVO::getParentId, Collectors.toList()));
         List<MenuTreeVO> menuTreeVOList = this.buildMenuTree(parentMap, NumberUtils.LONG_ZERO);
         return ResponseDTO.ok(menuTreeVOList);
     }
 
     /**
-     * 构建菜单树
+     * Generate menu tree
      *
      * @return
      */
     List<MenuTreeVO> buildMenuTree(Map<Long, List<MenuVO>> parentMap, Long parentId) {
-        // 获取本级菜单树List
+        // Acquire curren level menu list
         List<MenuTreeVO> res = parentMap.getOrDefault(parentId, Lists.newArrayList()).stream()
                 .map(e -> SmartBeanUtil.copy(e, MenuTreeVO.class)).collect(Collectors.toList());
-        // 循环遍历下级菜单
         res.forEach(e -> {
-            //处理接口权限
             String perms = e.getApiPerms();
             if (StringUtils.isBlank(perms)) {
                 e.setApiPermsList(Lists.newArrayList());
@@ -254,22 +249,21 @@ public class MenuService {
     }
 
     /**
-     * 查询菜单详情
+     * Menu detail
      *
      * @param menuId
      * @return
      */
     public ResponseDTO<MenuVO> getMenuDetail(Long menuId) {
-        //校验菜单是否存在
+        //Check if the menu is existed
         MenuEntity selectMenu = menuDao.selectById(menuId);
         if (selectMenu == null) {
-            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "菜单不存在");
+            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "Menu does not exist");
         }
         if (selectMenu.getDeletedFlag()) {
-            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "菜单已被删除");
+            return ResponseDTO.error(SystemErrorCode.SYSTEM_ERROR, "Menu is deleted");
         }
         MenuVO menuVO = SmartBeanUtil.copy(selectMenu, MenuVO.class);
-        //处理接口权限
         String perms = menuVO.getApiPerms();
         if (!StringUtils.isBlank(perms)) {
             List<String> permsList = Lists.newArrayList(StringUtils.split(perms, ","));
@@ -279,7 +273,7 @@ public class MenuService {
     }
 
     /**
-     * 获取系统所有请求路径
+     * Acquire permission url
      *
      * @return
      */

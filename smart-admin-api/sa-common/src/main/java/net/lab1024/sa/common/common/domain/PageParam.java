@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -14,35 +13,35 @@ import java.util.List;
 @Data
 public class PageParam {
 
-    @ApiModelProperty(value = "页码(不能为空)", required = true, example = "1")
-    @NotNull(message = "分页参数不能为空")
+    @ApiModelProperty(value = "Page number (Cannot be empty)", required = true, example = "1")
+    @NotNull(message = "Pagination parameter cannot be empty")
     private Integer pageNum;
 
-    @ApiModelProperty(value = "每页数量(不能为空)", required = true, example = "10")
-    @NotNull(message = "每页数量不能为空")
-    @Max(value = 200, message = "每页最大为200")
+    @ApiModelProperty(value = "Number of items per page (Cannot be empty)", required = true, example = "10")
+    @NotNull(message = "Number of items per page cannot be empty")
+    @Max(value = 200, message = "Max per page is 200")
     private Integer pageSize;
 
-    @ApiModelProperty("是否查询总条数")
+    @ApiModelProperty("Whether to query the total number of items")
     protected Boolean searchCount;
 
-    @ApiModelProperty("排序字段集合")
-    @Size(max = 10, message = "排序字段最多10")
+    @ApiModelProperty("List of sorting fields")
+    @Size(max = 10, message = "Maximum of 10 sorting fields")
     @Valid
     private List<SortItem> sortItemList;
 
     /**
-     * 排序DTO类
+     * Sorting DTO class
      */
     @Data
     public static class SortItem {
 
-        @ApiModelProperty("true正序|false倒序")
-        @NotNull(message = "排序规则不能为空")
+        @ApiModelProperty("true for ascending | false for descending")
+        @NotNull(message = "Sorting rule cannot be empty")
         private Boolean isAsc;
 
-        @ApiModelProperty(value = "排序字段")
-        @Length(max = 30, message = "排序字段最多30")
+        @ApiModelProperty(value = "Sorting field")
+        @Length(max = 30, message = "Sorting field can be at most 30 characters long")
         private String column;
     }
 }

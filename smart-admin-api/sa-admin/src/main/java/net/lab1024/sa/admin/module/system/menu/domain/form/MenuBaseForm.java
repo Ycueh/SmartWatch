@@ -13,74 +13,69 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * 菜单基础
+ * Menu base form
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class MenuBaseForm {
 
-    @ApiModelProperty("菜单名称")
-    @NotBlank(message = "菜单名称不能为空")
-    @Length(max = 30, message = "菜单名称最多30个字符")
+    @ApiModelProperty("Menu name")
+    @NotBlank(message = "Menu name cannot be empty")
+    @Length(max = 30, message = "Maximum of 30 characters")
     private String menuName;
 
-    @ApiModelPropertyEnum(value = MenuTypeEnum.class, desc = "类型")
-    @CheckEnum(value = MenuTypeEnum.class, message = "类型错误")
+    @ApiModelPropertyEnum(value = MenuTypeEnum.class, desc = "Type")
+    @CheckEnum(value = MenuTypeEnum.class, message = "Type Error")
     private Integer menuType;
 
-    @ApiModelProperty("父菜单ID 无上级可传0")
-    @NotNull(message = "父菜单ID不能为空")
+    @ApiModelProperty("Parent menu ID, if there's no superior, pass 0")
+    @NotNull(message = "Parent menu ID cannot be empty")
     private Long parentId;
 
-    @ApiModelProperty("显示顺序")
+    @ApiModelProperty("Display order")
     private Integer sort;
 
-    @ApiModelProperty("路由地址")
+    @ApiModelProperty("Route address")
     private String path;
 
-    @ApiModelProperty("组件路径")
+    @ApiModelProperty("Component path")
     private String component;
 
-    @ApiModelProperty("是否为外链")
-    @NotNull(message = "是否为外链不能为空")
+    @ApiModelProperty("Is it an external link?")
+    @NotNull(message = "Whether it's an external link cannot be empty")
     private Boolean frameFlag;
 
-    @ApiModelProperty("外链地址")
+    @ApiModelProperty("External link address")
     private String frameUrl;
 
-    @ApiModelProperty("是否缓存")
-    @NotNull(message = "是否缓存不能为空")
+    @ApiModelProperty("Is caching?")
+    @NotNull(message = "Whether it's cached cannot be empty")
     private Boolean cacheFlag;
 
-    @ApiModelProperty("显示状态")
-    @NotNull(message = "显示状态不能为空")
+    @ApiModelProperty("Display status")
+    @NotNull(message = "Display status cannot be empty")
     private Boolean visibleFlag;
 
-    @ApiModelProperty("禁用状态")
-    @NotNull(message = "禁用状态不能为空")
+    @ApiModelProperty("Disabled status")
+    @NotNull(message = "Disabled status cannot be empty")
     private Boolean disabledFlag;
 
-    @ApiModelPropertyEnum(value = MenuPermsTypeEnum.class, desc = "权限类型 ")
-    @CheckEnum(value = MenuPermsTypeEnum.class, message = "权限类型")
+    @ApiModelPropertyEnum(value = MenuPermsTypeEnum.class, desc = "Permission type")
+    @CheckEnum(value = MenuPermsTypeEnum.class, message = "Permission type error")
     private Integer permsType;
 
-    @ApiModelProperty("前端权限字符串")
+    @ApiModelProperty("Frontend permission string")
     private String webPerms;
 
-    @ApiModelProperty("后端端权限字符串")
+    @ApiModelProperty("Backend permission string")
     private String apiPerms;
 
-    @ApiModelProperty("后端接口权限集合（拆分）")
+    @ApiModelProperty("Backend interface permission list (split)")
     private List<String> apiPermsList;
 
-    @ApiModelProperty("菜单图标")
+    @ApiModelProperty("Menu icon")
     private String icon;
 
-    @ApiModelProperty("功能点关联菜单ID")
+    @ApiModelProperty("Function point associated menu ID")
     private Long contextMenuId;
 }

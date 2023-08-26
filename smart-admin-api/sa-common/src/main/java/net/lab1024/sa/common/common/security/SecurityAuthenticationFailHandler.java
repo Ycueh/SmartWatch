@@ -19,7 +19,7 @@ public class SecurityAuthenticationFailHandler implements AuthenticationEntryPoi
     }
 
     /**
-     * 输出
+     * Output
      *
      * @param response
      * @param errorCode

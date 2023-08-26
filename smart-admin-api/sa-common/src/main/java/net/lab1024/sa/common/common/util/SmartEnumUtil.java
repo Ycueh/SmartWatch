@@ -14,23 +14,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * 枚举工具类
+ * Enumeration utility class
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2017/10/10 18:17
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class SmartEnumUtil {
 
     /**
-     * 校验参数与枚举类比较是否合法
+     * Check if the parameter is valid compared to the enumeration class
      *
-     * @param value     参数
-     * @param enumClass 枚举类必须实现BaseEnum接口
-     * @return boolean
-     * @Author 胡克
      */
     public static boolean checkEnum(Object value, Class<? extends BaseEnum> enumClass) {
         if (null == value) {
@@ -40,7 +31,7 @@ public class SmartEnumUtil {
     }
 
     /**
-     * 创建一个具有唯一array值的数组，每个值不包含在其他给定的数组中。
+     * Create an array with unique values, each value not included in the other given arrays.
      *
      * @param enumClass
      * @param exclude
@@ -60,27 +51,27 @@ public class SmartEnumUtil {
     }
 
     /**
-     * 获取枚举类的说明 value : info 的形式
+     * Get the description of the enumeration class in the format value : info
      *
      * @param enumClass
      * @return String
      */
     public static String getEnumDesc(Class<? extends BaseEnum> enumClass) {
         BaseEnum[] enums = enumClass.getEnumConstants();
-        // value : info 的形式
+        // value : info format
         StringBuilder sb = new StringBuilder();
         for (BaseEnum baseEnum : enums) {
-            sb.append(baseEnum.getValue()).append("：").append(baseEnum.getDesc()).append("，");
+            sb.append(baseEnum.getValue()).append(": ").append(baseEnum.getDesc()).append(", ");
         }
         return sb.toString();
     }
 
     /**
-     * 获取与参数相匹配的枚举类实例的 说明
+     * Get the description of the enumeration class instance that matches the parameter
      *
-     * @param value     参数
-     * @param enumClass 枚举类必须实现BaseEnum接口
-     * @return String 如无匹配枚举则返回null
+     * @param value     Parameter
+     * @param enumClass Enumeration class must implement the BaseEnum interface
+     * @return String Returns null if no matching enumeration is found
      */
     public static String getEnumDescByValue(Object value, Class<? extends BaseEnum> enumClass) {
         if (null == value) {
@@ -101,12 +92,8 @@ public class SmartEnumUtil {
     }
 
     /**
-     * 根据参数获取枚举类的实例
+     * Get an instance of the enumeration class based on the parameter
      *
-     * @param value     参数
-     * @param enumClass 枚举类必须实现BaseEnum接口
-     * @return BaseEnum 无匹配值返回null
-     * @Author 胡克
      */
     public static <T extends BaseEnum> T getEnumByValue(Object value, Class<T> enumClass) {
         if (null == value) {
@@ -119,12 +106,11 @@ public class SmartEnumUtil {
     }
 
     /**
-     * 根据实例描述与获取枚举类的实例
+     * Get an instance of the enumeration class based on the instance description
      *
-     * @param desc      参数描述
-     * @param enumClass 枚举类必须实现BaseEnum接口
-     * @return BaseEnum 无匹配值返回null
-     * @Author 胡克
+     * @param desc      Parameter description
+     * @param enumClass Enumeration class must implement the BaseEnum interface
+     * @return BaseEnum Returns null if no matching value is found
      */
     public static <T extends BaseEnum> T getEnumByDesc(String desc, Class<T> enumClass) {
         return Stream.of(enumClass.getEnumConstants())
@@ -133,7 +119,6 @@ public class SmartEnumUtil {
                 .orElse(null);
     }
 
-
     public static <T extends BaseEnum> T getEnumByName(String name, Class<T> enumClass) {
         return Stream.of(enumClass.getEnumConstants())
                 .filter(e -> StringUtils.equalsIgnoreCase(e.toString(), name))
@@ -141,9 +126,8 @@ public class SmartEnumUtil {
                 .orElse(null);
     }
 
-
     /**
-     * 根据lambda getter/setter 注入
+     * Inject based on lambda getter/setter
      *
      * @param list
      * @param getter

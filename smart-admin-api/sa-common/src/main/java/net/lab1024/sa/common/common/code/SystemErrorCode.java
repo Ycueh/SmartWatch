@@ -4,19 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 /**
- * 系统错误状态码（此类返回码应该高度重视）
+ * System error status codes (Return codes of this type should be highly regarded)
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021/10/24 20:09
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Getter
 @AllArgsConstructor
 public enum SystemErrorCode implements ErrorCode {
 
-    SYSTEM_ERROR(10001, "系统似乎出现了点小问题"),
+    SYSTEM_ERROR(10001, "The system seems to have a minor issue"),
 
     ;
 
@@ -33,4 +28,3 @@ public enum SystemErrorCode implements ErrorCode {
     }
 
 }
-

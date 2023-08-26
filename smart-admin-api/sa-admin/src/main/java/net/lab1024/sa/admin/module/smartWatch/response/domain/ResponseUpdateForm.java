@@ -4,6 +4,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+/**
+ * Response Query form
+ *
+ */
 @Data
 public class ResponseUpdateForm extends ResponseAddForm {
 

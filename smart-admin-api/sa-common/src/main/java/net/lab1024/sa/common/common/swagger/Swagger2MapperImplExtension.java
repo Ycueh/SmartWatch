@@ -19,13 +19,8 @@ import java.util.*;
 import static springfox.documentation.builders.BuilderDefaults.nullToEmptyList;
 
 /**
- * 修改 api 顺序
+ * Modify API order
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2021/8/11 22:05
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @ConditionalOnBean(ModelMapper.class)
 @Component
@@ -50,7 +45,7 @@ public class Swagger2MapperImplExtension extends ServiceModelToSwagger2MapperImp
                 return Integer.compare(position1, position2);
             });
             try {
-                // 因ApiListing的属性都是final故需要通过反射来修改值
+                // Use reflection to modify the final field in ApiListing
                 modify(apis, "apis", apiList);
             } catch (Exception e) {
                 e.printStackTrace();

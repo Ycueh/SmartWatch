@@ -19,38 +19,37 @@ import java.io.IOException;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-
 @Slf4j
 public class SecurityTokenFilter extends OncePerRequestFilter {
 
-    private BiFunction<String,HttpServletRequest, UserDetails> userFunction;
+    private BiFunction<String, HttpServletRequest, UserDetails> userFunction;
 
-    public SecurityTokenFilter(BiFunction<String,HttpServletRequest, UserDetails> userFunction) {
+    public SecurityTokenFilter(BiFunction<String, HttpServletRequest, UserDetails> userFunction) {
         this.userFunction = userFunction;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
-        //需要做token校验, 消息头的token优先于请求query参数的token
+        // Token validation is required, header token takes precedence over token from request query parameter
         String xHeaderToken = request.getHeader(RequestHeaderConst.TOKEN);
         String xRequestToken = request.getParameter(RequestHeaderConst.TOKEN);
-        String xAccessToken = null != xHeaderToken ? xHeaderToken : xRequestToken;
+        String xAccessToken = xHeaderToken != null ? xHeaderToken : xRequestToken;
         if (StringUtils.isBlank(xAccessToken)) {
             chain.doFilter(request, response);
             return;
         }
-        //清理spring security
+        // Clear Spring Security context
         SecurityContextHolder.clearContext();
 
-        UserDetails loginUserDetail = userFunction.apply(xAccessToken,request);
-        if (null != loginUserDetail) {
+        UserDetails loginUserDetail = userFunction.apply(xAccessToken, request);
+        if (loginUserDetail != null) {
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(loginUserDetail, null, loginUserDetail.getAuthorities());
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             SmartRequestUtil.setRequestUser((RequestUser) loginUserDetail);
         }
-        // 若未给予spring security上下文用户授权 则会授权失败 进入AuthenticationEntryPointImpl
+        // If the user is not authorized in the Spring Security context, authorization will fail and enter AuthenticationEntryPointImpl
         chain.doFilter(request, response);
     }
 }

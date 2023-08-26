@@ -8,13 +8,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
 
 /**
- * Long类型序列化
+ * Long serializer
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020-06-02 22:55:07
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class LongJsonDeserializer extends JsonDeserializer<Long> {
 

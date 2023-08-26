@@ -1,43 +1,38 @@
 package net.lab1024.sa.common.common.constant;
 
 /**
- * 字符串常量
+ * String constants
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-10-14 23:16:47
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class StringConst {
 
     /**
-     * 全局通用分隔符
+     * Global universal separator
      */
     public static final String SEPARATOR = ",";
 
     /**
-     * 全局通用分隔符 下划线
+     * Global universal separator underscore
      */
     public static final String UNDERLINE = "_";
 
     /**
-     * 全局通用 横杠
+     * Global universal hyphen
      */
     public static final String HORIZONTAL = "-";
 
     /**
-     * 全局通用分隔符
+     * Global universal separator
      */
     public static final Character SEPARATOR_CHAR = ',';
 
     /**
-     * 全局通用分隔符 斜杠
+     * Global universal separator slash
      */
     public static final String SEPARATOR_SLASH = "/";
 
     /**
-     * 空字符串
+     * Empty string
      */
     public static final String EMPTY = "";
 

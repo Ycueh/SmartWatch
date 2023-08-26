@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    status : 这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,会看到log4j2内部各种详细输出
-    monitorInterval : Log4j能够自动检测修改配置文件和重新配置本身, 设置间隔秒数。
--->
 <Configuration status="INFO" monitorInterval="30">
     <Properties>
 <!--        <Property name="log-path">$${env:localPath:-/home}/logs/smart_admin_v2/pre</Property>-->

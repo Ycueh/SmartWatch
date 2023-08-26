@@ -13,19 +13,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * 校验权限
+ * Permission validation
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022/5/12 21:50
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public abstract class SecurityPermissionCheckService {
 
-
     /**
-     * 校验是否有权限
+     * Check for permission
      *
      * @param permission
      * @return
@@ -39,7 +33,7 @@ public abstract class SecurityPermissionCheckService {
     }
 
     /**
-     * 校验是否有权限
+     * Check for permission
      *
      * @param authentication
      * @param permission
@@ -48,7 +42,7 @@ public abstract class SecurityPermissionCheckService {
     public abstract boolean checkPermission(Authentication authentication, String permission);
 
     /**
-     * 判断
+     * Judge permission
      *
      * @param userDetails
      * @param permissionStr
@@ -65,7 +59,7 @@ public abstract class SecurityPermissionCheckService {
 
         String[] permissionArray = permissionStr.split(",");
         for (String permission : permissionArray) {
-            if(userDetails.getAuthorities().contains(new SimpleGrantedAuthority(permission))){
+            if (userDetails.getAuthorities().contains(new SimpleGrantedAuthority(permission))) {
                 return true;
             }
         }

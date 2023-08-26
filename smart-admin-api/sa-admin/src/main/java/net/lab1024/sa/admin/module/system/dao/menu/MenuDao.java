@@ -10,52 +10,47 @@ import net.lab1024.sa.admin.module.system.menu.domain.vo.MenuVO;
 import java.util.List;
 
 /**
- * 菜单 dao
+ * Menu dao
  *
- * @Author 1024创新实验室: 善逸
- * @Date 2022-03-06 22:04:37
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Mapper
 @Component
 public interface MenuDao extends BaseMapper<MenuEntity> {
 
     /**
-     * 根据名称查询同一级下的菜单
+     * Search for menus at the same level based on the name.
      *
-     * @param menuName    菜单名
-     * @param parentId    父级id
-     * @param deletedFlag 是否删除
+     * @param menuName    menu Name
+     * @param parentId    parent Id
+     * @param deletedFlag Deleted or not
      * @return
      */
     MenuEntity getByMenuName(@Param("menuName") String menuName, @Param("parentId") Long parentId, @Param("deletedFlag") Boolean deletedFlag);
 
     /**
-     * 根据前端权限字符串查询菜单
+     * Search for the menu based on the frontend permission string.
      *
-     * @param webPerms    前端权限字符串
-     * @param deletedFlag 是否删除
+     * @param webPerms    Front end String
+     * @param deletedFlag Deleted or not
      * @return
      */
     MenuEntity getByWebPerms(@Param("webPerms") String webPerms, @Param("deletedFlag") Boolean deletedFlag);
 
     /**
-     * 根据菜单ID删除菜单（逻辑删除）
+     * Delete menu by menu id
      *
-     * @param menuIdList   菜单id集合
-     * @param updateUserId 操作人id
-     * @param deletedFlag  是否删除
+     * @param menuIdList   menu id list
+     * @param updateUserId update user id
+     * @param deletedFlag  deleted or not
      */
     void deleteByMenuIdList(@Param("menuIdList") List<Long> menuIdList, @Param("updateUserId") Long updateUserId, @Param("deletedFlag") Boolean deletedFlag);
 
     /**
-     * 查询菜单列表
+     * query menu list
      *
-     * @param deletedFlag  是否删除
-     * @param disabledFlag 是否禁用
-     * @param menuTypeList 菜单类型集合
+     * @param deletedFlag  Deleted or not
+     * @param disabledFlag Disabled or not
+     * @param menuTypeList Menu type list
      * @return
      */
     List<MenuVO> queryMenuList(@Param("deletedFlag") Boolean deletedFlag, @Param("disabledFlag") Boolean disabledFlag, @Param("menuTypeList") List<Integer> menuTypeList);

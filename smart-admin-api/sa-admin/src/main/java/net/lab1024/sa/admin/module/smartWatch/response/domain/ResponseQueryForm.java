@@ -4,7 +4,10 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import net.lab1024.sa.common.common.domain.PageParam;
 
-
+/**
+ * Response Query form
+ *
+ */
 @Data
 public class ResponseQueryForm extends PageParam {
 
