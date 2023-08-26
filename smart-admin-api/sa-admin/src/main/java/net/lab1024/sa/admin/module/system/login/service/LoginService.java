@@ -106,12 +106,6 @@ public class LoginService {
     }
 
     public ResponseDTO<String> watchLogin(LoginForm loginForm) {
-        // 校验 图形验证码
-//        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
-//        if (!checkCaptcha.getOk()) {
-//            return ResponseDTO.error(checkCaptcha);
-//        }
-
         /**
          * Check account
          */

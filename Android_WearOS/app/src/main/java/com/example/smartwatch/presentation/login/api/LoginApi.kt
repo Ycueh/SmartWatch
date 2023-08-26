@@ -16,11 +16,7 @@ interface LoginApi {
     @POST("/login/Watch")
     fun loginUser(@Body loginForm: LoginForm?): Call<ResponseDTO<String>>
 
-    @GET("/login/getCaptcha")
-    fun getCaptcha(): Call<ResponseDTO<CaptchaVO>>
-
-//    @GET("/smart-admin-api/login/logout")
-@GET("/login/logout")
+    @GET("/login/logout")
     fun logOut(
         @Header("x-access-token") token: String
     ):  Call<ResponseDTO<String>>

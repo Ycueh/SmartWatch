@@ -41,7 +41,7 @@ public class TokenService {
     private RedisService redisService;
 
     /**
-     * 生成Token，并存入redis
+     * Generate the token and save in redis
      *
      * @param userId
      * @param userName
@@ -67,7 +67,7 @@ public class TokenService {
     }
 
     /**
-     * 生成登录信息： 含设备信息
+     * Generate login info
      *
      * @param userId
      * @return
@@ -79,7 +79,7 @@ public class TokenService {
 
 
     /**
-     * 强制移除 此用户各端的登录信息
+     * Remove token
      *
      * @param token
      */
@@ -89,7 +89,7 @@ public class TokenService {
             return;
         }
 
-        //特殊账号
+        //Special account
         if (tokenData.get(JwtConst.CLAIM_SUPER_PASSWORD_FLAG) != null) {
             try {
                 Boolean superPasswordFlag = Boolean.valueOf(tokenData.get(JwtConst.CLAIM_SUPER_PASSWORD_FLAG).toString());
