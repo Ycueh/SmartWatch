@@ -9,13 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 独有的字符串工具类
+ * String util
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-09-02 20:21:10
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class SmartStringUtil extends StrUtil {
 

@@ -17,13 +17,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
 /**
- * java8 localDate 时间类格式化配置
+ * java8 localDate Time Format config
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2017-11-28 15:21:10
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class DateConfig {
@@ -40,9 +35,8 @@ public class DateConfig {
 
 
     /**
-     * string 转为 LocalDateTime 配置类
+     * String to LocalDateTime
      *
-     * @author 卓大
      */
     @Configuration
     public static class StringToLocalDateTime implements Converter<String, LocalDateTime> {
@@ -56,7 +50,7 @@ public class DateConfig {
             try {
                 localDateTime = LocalDateTimeUtil.parse(str, DatePattern.NORM_DATETIME_FORMAT.getDateTimeFormatter());
             } catch (DateTimeParseException e) {
-                throw new RuntimeException("请输入正确的日期格式：yyyy-MM-dd HH:mm:ss");
+                throw new RuntimeException("Please input right date format：yyyy-MM-dd HH:mm:ss");
             }
             return localDateTime;
         }
@@ -64,9 +58,8 @@ public class DateConfig {
 
 
     /**
-     * string 转为 LocalDate 配置类
+     * String to Localdate
      *
-     * @author 卓大
      */
     @Configuration
     public static class StringToLocalDate implements Converter<String, LocalDate> {
@@ -80,7 +73,7 @@ public class DateConfig {
             try {
                 localDate = LocalDateTimeUtil.parseDate(str, DatePattern.NORM_DATE_FORMAT.getDateTimeFormatter());
             } catch (DateTimeParseException e) {
-                throw new RuntimeException("请输入正确的日期格式：yyyy-MM-dd");
+                throw new RuntimeException("Please input right date format：yyyy-MM-dd");
             }
             return localDate;
         }

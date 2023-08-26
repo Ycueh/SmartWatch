@@ -23,20 +23,15 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * 图形验证码 服务
+ * Captcha service
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2021/8/31 20:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Service
 public class CaptchaService {
 
     /**
-     * 过期时间：65秒
+     * expiration: 65 seconds
      */
     private static final long EXPIRE_SECOND = 65L;
 
@@ -48,10 +43,10 @@ public class CaptchaService {
     private RedisService redisService;
 
     /**
-     * 生成图形验证码
-     * 默认 1 分钟有效期
+     * Generate graphical captcha.
+     * By default, it has a 1-minute validity period.
      *
-     * @return
+     * @return CaptchaVO object containing captcha information.
      */
     public CaptchaVO generateCaptcha() {
         String captchaText = defaultKaptcha.createText();
@@ -63,12 +58,12 @@ public class CaptchaService {
             base64Code = Base64Utils.encodeToString(os.toByteArray());
         } catch (Exception e) {
             log.error("generateCaptcha error:", e);
-            throw new BusinessException("生成验证码错误");
+            throw new BusinessException("Generate Captcha error");
         }
 
         /**
-         * 返回验证码对象
-         * 图片 base64格式
+         * Return captcha
+         *
          */
         // uuid 唯一标识
         String uuid = UUID.randomUUID().toString().replace("-", StringConst.EMPTY);
@@ -86,7 +81,7 @@ public class CaptchaService {
     }
 
     /**
-     * 校验图形验证码
+     * checkCaptcha
      *
      * @param captchaForm
      * @return

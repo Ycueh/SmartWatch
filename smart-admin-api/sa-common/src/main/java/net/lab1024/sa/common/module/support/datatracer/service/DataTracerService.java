@@ -27,13 +27,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 数据变动记录 Service
+ * Datatracer Service
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Service

@@ -24,13 +24,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 全局异常拦截
+ * Global Exception Handling
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020/8/25 21:57
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @ControllerAdvice

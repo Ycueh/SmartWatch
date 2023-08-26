@@ -46,13 +46,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 根据SwaggerTagConst内部类动态生成Swagger group
+ * Swagger config
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2020-03-25 22:54:46
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @EnableSwagger2
@@ -61,17 +56,17 @@ import java.util.Map;
 public class SwaggerConfig implements EnvironmentAware, BeanDefinitionRegistryPostProcessor {
 
     /**
-     * 文档标题
+     * File title
      */
     private String title;
 
     /**
-     * 文档描述
+     * File description
      */
     private String description;
 
     /**
-     * api版本
+     * api version
      */
     private String version;
 
@@ -135,15 +130,13 @@ public class SwaggerConfig implements EnvironmentAware, BeanDefinitionRegistryPo
     }
 
     private Docket baseDocket(String groupName, List<String> apiTagList) {
-        // 配置全局参数
+        // Global parameter
         List<Parameter> parameterList = this.generateParameter();
 
         Docket docket = new Docket(DocumentationType.SWAGGER_2).groupName(groupName)
                 .forCodeGeneration(true)
                 .select()
-                // 过滤规则
                 .apis(this.getControllerPredicate(apiTagList))
-                // 与 过滤规则 controller 包路径 二选一
                 // .apis(RequestHandlerSelectors.basePackage(packAge))
                 .paths(PathSelectors.any())
                 .build().apiInfo(this.apiInfo())
@@ -194,7 +187,6 @@ public class SwaggerConfig implements EnvironmentAware, BeanDefinitionRegistryPo
      * @return
      */
     private List<Parameter> generateParameter() {
-        // 配置全局参数 token
         Parameter token = new ParameterBuilder().name(RequestHeaderConst.TOKEN)
                 .description("token")
                 .modelRef(new ModelRef("string"))

@@ -1,13 +1,8 @@
 package net.lab1024.sa.common.module.support.datatracer.constant;
 
 /**
- * 常量
+ * Constant
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class DataTracerConst {
 
@@ -19,9 +14,9 @@ public class DataTracerConst {
     public static final String SPLIT = ": ";
     public static final String HTML_BR = "<br/>";
 
-    public static final String INSERT = "新增";
+    public static final String INSERT = "Add";
 
-    public static final String DELETE = "删除";
+    public static final String DELETE = "Delete";
 
-    public static final String UPDATE = "修改";
+    public static final String UPDATE = "Update";
 }

@@ -32,13 +32,8 @@ import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * 数据变更内容
+ * Content of Data Change
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Service
@@ -47,17 +42,17 @@ public class DataTracerChangeContentService {
     @Autowired
     private ApplicationContext applicationContext;
     /**
-     * 字段描述缓存
+     * Field description cache
      */
     private ConcurrentHashMap<String, String> fieldDescCacheMap = new ConcurrentHashMap<>();
 
     /**
-     * 类 加注解字段缓存
+     * Class annotated field cache
      */
     private ConcurrentHashMap<Class, List<Field>> fieldMap = new ConcurrentHashMap<>();
 
     /**
-     * 数据批量对比
+     * Batch comparison of data
      *
      * @param oldObjectList
      * @param newObjectList
@@ -86,10 +81,10 @@ public class DataTracerChangeContentService {
 
 
     /**
-     * 解析多个对象的变更，删除，新增
-     * oldObject 为空 ，newObject 不为空 为新增
-     * oldObject 不为空 ，newObject 不空 为删除
-     * 都不为空为编辑
+     * Parse changes of multiple objects: addition, deletion, editing
+     * If oldObject is null and newObject is not null, then it's an addition
+     * If oldObject is not null and newObject is null, then it's a deletion
+     * If both are not null, then it's an edit
      *
      * @param oldObject
      * @param newObject
@@ -115,7 +110,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 解析单个bean的内容
+     * Parse the content of a single bean
      *
      * @param object
      * @return
@@ -124,12 +119,12 @@ public class DataTracerChangeContentService {
         return this.getAddDeleteContent(object);
     }
 
-    // ---------------------------- 以下 是 私有private 方法 ----------------------------
+    // ---------------------------- Below are private methods ----------------------------
 
     /**
-     * 获取新增或删除操作内容
+     * Get the content of add or delete operation
      *
-     * @param object 新增或删除的对象
+     * @param object Object being added or deleted
      * @return
      */
     private String getAddDeleteContent(Object object) {
@@ -139,7 +134,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 单个对象变动内容
+     * Change content of a single object
      *
      * @param oldObjectList
      * @param newObjectList
@@ -155,11 +150,11 @@ public class DataTracerChangeContentService {
         if (StringUtils.isEmpty(oldContent) && StringUtils.isEmpty(newContent)) {
             return "";
         }
-        return "【原数据】:<br/>" + oldContent + "<br/>" + "【新数据】:<br/>" + newContent;
+        return "【Original Data】:<br/>" + oldContent + "<br/>" + "【New Data】:<br/>" + newContent;
     }
 
     /**
-     * 获取一个对象的内容信息
+     * Get the content information of an object
      *
      * @param objectList
      * @param <T>
@@ -177,6 +172,8 @@ public class DataTracerChangeContentService {
         }
         return StringUtils.join(contentList, "<br/>");
     }
+
+
 
     private String getAddDeleteContent(Map<String, DataTracerContentBO> beanParseMap) {
         List<String> contentList = new ArrayList<>();
@@ -199,7 +196,7 @@ public class DataTracerChangeContentService {
 
 
     /**
-     * 获取更新操作内容
+     * Acquire update contents
      *
      * @param oldObject
      * @param newObject
@@ -210,10 +207,9 @@ public class DataTracerChangeContentService {
         List<String> contentList = new ArrayList<>();
         Map<String, DataTracerContentBO> oldBeanParseMap = this.fieldParse(oldObject, fields);
         Map<String, DataTracerContentBO> newBeanParseMap = this.fieldParse(newObject, fields);
-        //oldBeanParseMap与newBeanParseMap size一定相同
         for (Entry<String, DataTracerContentBO> entry : oldBeanParseMap.entrySet()) {
             String fieldName = entry.getKey();
-            // 新旧对象内容
+            // Old and new are the same
             DataTracerContentBO oldContentBO = entry.getValue();
             DataTracerContentBO newContentBO = newBeanParseMap.get(fieldName);
             // fieldContent
@@ -226,11 +222,11 @@ public class DataTracerChangeContentService {
             String fieldDesc = oldContentBO.getFieldDesc();
             Boolean jsonFlag = JSONUtil.isTypeJSON(oldContent) || JSONUtil.isTypeJSON(newContent);
             if (jsonFlag) {
-                String content = fieldDesc + "【进入详情查看】";
+                String content = fieldDesc + "【Check details】";
                 contentList.add(content);
                 continue;
             }
-            String content = fieldDesc + ":" + "由【" + oldContent + "】变更为【" + newContent + "】";
+            String content = fieldDesc + ":" + "Change from【" + oldContent + "】to【" + newContent + "】";
             contentList.add(content);
         }
         if (CollectionUtils.isEmpty(contentList)) {
@@ -245,7 +241,7 @@ public class DataTracerChangeContentService {
 
 
     /**
-     * 接bean对象
+     * bean
      *
      * @param object
      * @param fields
@@ -255,7 +251,6 @@ public class DataTracerChangeContentService {
         if (fields == null || fields.size() == 0) {
             return new HashMap<>();
         }
-        //对象解析结果
         Map<String, DataTracerContentBO> objectParse = new HashMap<>(16);
         for (Field field : fields) {
             field.setAccessible(true);
@@ -273,7 +268,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 获取字段值
+     * Acquire field value
      *
      * @param field
      * @param object
@@ -329,7 +324,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 获取关联字段的显示值
+     * Get the display value of the associated field
      *
      * @param fieldValue
      * @return
@@ -352,13 +347,13 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 获取字段描述信息 优先 OperateField 没得话swagger判断
+     * Get field description information. Prioritize OperateField, otherwise use swagger judgment
      *
      * @param field
      * @return
      */
     private String getFieldDesc(Field field) {
-        // 根据字段名称 从缓存中查询
+        // Query based on field name from cache
         String fieldName = field.toGenericString();
         String desc = fieldDescCacheMap.get(fieldName);
         if (null != desc) {
@@ -373,7 +368,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 获取操作类型
+     * Get operation type
      *
      * @param oldObject
      * @param newObject
@@ -390,7 +385,7 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 校验是否进行比对
+     * Check whether to perform comparison
      *
      * @param oldObject
      * @param newObject
@@ -414,9 +409,8 @@ public class DataTracerChangeContentService {
         return true;
     }
 
-
     /**
-     * 校验
+     * Check
      *
      * @param oldObjectList
      * @param newObjectList
@@ -444,27 +438,27 @@ public class DataTracerChangeContentService {
     }
 
     /**
-     * 查询 包含 file key 注解的字段
-     * 使用缓存
+     * Query for fields with file key annotations
+     * Use cache
      *
      * @param obj
      * @return
      */
     private List<Field> getField(Object obj) {
-        // 从缓存中查询
+        // Query from cache
         Class tClass = obj.getClass();
         List<Field> fieldList = fieldMap.get(tClass);
         if (null != fieldList) {
             return fieldList;
         }
 
-        // 这一段递归代码 是为了 从父类中获取属性
+        // This recursive code is to get properties from the superclass
         Class tempClass = tClass;
         fieldList = new ArrayList<>();
         while (tempClass != null) {
             Field[] declaredFields = tempClass.getDeclaredFields();
             for (Field field : declaredFields) {
-                // 过虑出有注解字段
+                // Filter fields with annotations
                 if (!field.isAnnotationPresent(DataTracerFieldLabel.class)) {
                     continue;
                 }
@@ -476,6 +470,7 @@ public class DataTracerChangeContentService {
         fieldMap.put(tClass, fieldList);
         return fieldList;
     }
+
 
 
 }

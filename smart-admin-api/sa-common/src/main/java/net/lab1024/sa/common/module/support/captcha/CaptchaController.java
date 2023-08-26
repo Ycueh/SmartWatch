@@ -12,13 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 图形验证码业务
+ * Captcha controller
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2021-09-02 20:21:10
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Api(tags = SwaggerTagConst.Support.CAPTCHA)
 @RestController
@@ -27,7 +22,7 @@ public class CaptchaController extends SupportBaseController {
     @Autowired
     private CaptchaService captchaService;
 
-    @ApiOperation("获取图形验证码 @author 胡克")
+    @ApiOperation("Acquire image captcha")
     @GetMapping("/captcha")
     public ResponseDTO<CaptchaVO> generateCaptcha() {
         return ResponseDTO.ok(captchaService.generateCaptcha());

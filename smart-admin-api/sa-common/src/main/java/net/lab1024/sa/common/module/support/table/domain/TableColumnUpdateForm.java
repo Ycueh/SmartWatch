@@ -7,21 +7,16 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
- * 自定义表格列
+ * Update form
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 22:52:21
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class TableColumnUpdateForm {
 
-    @NotNull(message = "表id不能为空")
+    @NotNull(message = "Table id can not be null")
     private Integer tableId;
 
-    @NotEmpty(message = "请上传列")
+    @NotEmpty(message = "Column list")
     private List<TableColumnItemForm> columnList;
 
 }

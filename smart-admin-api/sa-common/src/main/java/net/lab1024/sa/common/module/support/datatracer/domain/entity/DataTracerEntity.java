@@ -9,13 +9,7 @@ import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEn
 import java.time.LocalDateTime;
 
 /**
- * 数据记录 实体
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Data record entity.
  */
 @Data
 @TableName("t_data_tracer")
@@ -23,68 +17,70 @@ public class DataTracerEntity {
 
     @TableId(type = IdType.AUTO)
     private Long dataTracerId;
+
     /**
-     * 数据id
+     * Data ID.
      */
     private Long dataId;
+
     /**
-     * 业务类型
+     * Business type.
      * {@link DataTracerTypeEnum}
      */
     private Integer type;
 
     /**
-     * 内容
+     * Content.
      */
     private String content;
 
     /**
-     * diff 差异：旧的数据
+     * Differences: old data.
      */
     private String diffOld;
 
     /**
-     * 差异：新的数据
+     * Differences: new data.
      */
     private String diffNew;
 
     /**
-     * 扩展字段
+     * Extended field.
      */
     private String extraData;
 
     /**
-     * 用户
+     * User.
      */
     private Long userId;
 
     /**
-     * 用户类型
+     * User type.
      */
     private Integer userType;
 
     /**
-     * 用户名
+     * Username.
      */
     private String userName;
 
     /**
-     * 请求ip
+     * Request IP.
      */
     private String ip;
 
     /**
-     * 请求头
+     * User agent (request header).
      */
     private String userAgent;
 
     /**
-     * 创建时间
+     * Creation time.
      */
     private String createTime;
 
     /**
-     * 更新时间
+     * Update time.
      */
     private String updateTime;
 }

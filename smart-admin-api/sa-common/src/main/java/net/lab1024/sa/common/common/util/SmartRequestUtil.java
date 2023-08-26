@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.lab1024.sa.common.common.domain.RequestUser;
 
 /**
- * 请求用户  工具类
+ * Request user utility
  *
  */
 @Slf4j

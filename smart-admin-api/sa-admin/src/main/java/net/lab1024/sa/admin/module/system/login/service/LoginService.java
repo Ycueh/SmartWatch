@@ -72,10 +72,10 @@ public class LoginService {
      */
     public ResponseDTO<LoginUserDetail> login(LoginForm loginForm) {
         // Check Captcha
-//        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
-//        if (!checkCaptcha.getOk()) {
-//            return ResponseDTO.error(checkCaptcha);
-//        }
+        ResponseDTO<String> checkCaptcha = captchaService.checkCaptcha(loginForm);
+        if (!checkCaptcha.getOk()) {
+            return ResponseDTO.error(checkCaptcha);
+        }
 
         /**
          * Check account

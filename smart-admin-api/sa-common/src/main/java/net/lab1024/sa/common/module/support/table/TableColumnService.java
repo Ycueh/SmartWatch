@@ -11,13 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 表格自定义列（前端用户自定义表格列，并保存到数据库里）
+ * Table column
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 22:52:21
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Service
 public class TableColumnService {
@@ -26,7 +21,7 @@ public class TableColumnService {
     private TableColumnDao tableColumnDao;
 
     /**
-     * 获取 - 表格列
+     * Acquire table column
      *
      * @return
      */
@@ -36,7 +31,7 @@ public class TableColumnService {
     }
 
     /**
-     * 更新表格列
+     * Update
      *
      * @return
      */
@@ -62,7 +57,7 @@ public class TableColumnService {
     }
 
     /**
-     * 删除表格列
+     * Delete
      *
      * @return
      */

@@ -9,11 +9,6 @@ import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEn
 /**
  * 数据变动表单
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 @Builder
@@ -22,32 +17,32 @@ import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEn
 public class DataTracerForm {
 
     /**
-     * 业务id
+     * data id
      */
     private Long dataId;
 
     /**
-     * 业务类型
+     * data type
      */
     private DataTracerTypeEnum type;
 
     /**
-     * 操作内容
+     * data content
      */
     private String content;
 
     /**
-     * diff 差异：旧的数据
+     * diff
      */
     private String diffOld;
 
     /**
-     * 差异：新的数据
+     * diff new
      */
     private String diffNew;
 
     /**
-     * 扩展字段
+     * extra data
      */
     private String extraData;
 

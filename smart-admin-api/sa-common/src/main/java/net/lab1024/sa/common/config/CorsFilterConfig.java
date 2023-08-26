@@ -8,13 +8,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 /**
- * 跨域配置
+ * Cross origin config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021/11/15 20:38
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class CorsFilterConfig {
@@ -23,7 +18,7 @@ public class CorsFilterConfig {
     private String accessControlAllowOrigin;
     
     /**
-     * 跨域配置
+     * Cross origin config
      *
      * @return
      */
@@ -32,13 +27,12 @@ public class CorsFilterConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        // 设置访问源地址
+        // Set source url
         config.addAllowedOriginPattern(accessControlAllowOrigin);
-        // 设置访问源请求头
+        // Set source header
         config.addAllowedHeader("*");
-        // 设置访问源请求方法
+        // Set source method
         config.addAllowedMethod("*");
-        // 对接口配置跨域设置
         source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }

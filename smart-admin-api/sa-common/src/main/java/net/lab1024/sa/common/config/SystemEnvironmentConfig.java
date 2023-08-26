@@ -12,13 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- * 系统环境
+ * System environment
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021/08/13 18:56
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class SystemEnvironmentConfig implements Condition {
@@ -39,10 +34,10 @@ public class SystemEnvironmentConfig implements Condition {
     public SystemEnvironment initEnvironment() {
         SystemEnvironmentEnum currentEnvironment = SmartEnumUtil.getEnumByValue(systemEnvironment, SystemEnvironmentEnum.class);
         if (currentEnvironment == null) {
-            throw new ExceptionInInitializerError("无法获取当前环境！请在 application.yaml 配置参数：spring.profiles.active");
+            throw new ExceptionInInitializerError("Cannot fetch the current environment! Please configure the parameter in application.yaml: spring.profiles.active");
         }
         if (StringUtils.isBlank(projectName)) {
-            throw new ExceptionInInitializerError("无法获取当前项目名称！请在 application.yaml 配置参数：project.name");
+            throw new ExceptionInInitializerError("Cannot fetch the current environment! Please configure the parameter in application.yaml: project.name");
         }
         return new SystemEnvironment(currentEnvironment == SystemEnvironmentEnum.PROD, projectName, currentEnvironment);
     }

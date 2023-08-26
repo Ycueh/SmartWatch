@@ -12,13 +12,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 定时任务调度 配置
+ * Schedule config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Configuration
@@ -41,7 +36,7 @@ public class ScheduleConfig implements SchedulingConfigurer {
         taskRegistrar.destroy();
 
         List<String> taskNameList = taskList.stream().map(Task::toString).collect(Collectors.toList());
-        return "已关闭 @Scheduled定时任务：" + taskNameList.size() + "个！";
+        return "Closed @Scheduled tasks：" + taskNameList.size() + "in total！";
     }
 
 }

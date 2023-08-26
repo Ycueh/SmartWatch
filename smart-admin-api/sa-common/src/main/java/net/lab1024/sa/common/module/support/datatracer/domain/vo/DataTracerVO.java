@@ -6,56 +6,49 @@ import net.lab1024.sa.common.common.enumeration.UserTypeEnum;
 import net.lab1024.sa.common.common.swagger.ApiModelPropertyEnum;
 import net.lab1024.sa.common.module.support.datatracer.constant.DataTracerTypeEnum;
 
-
 /**
- * 变动记录
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Change record.
  */
 @Data
 public class DataTracerVO {
 
-    @ApiModelProperty("日志id")
+    @ApiModelProperty("Log ID")
     private Long dataTracerId;
 
-    @ApiModelProperty("单据id")
+    @ApiModelProperty("Document ID")
     private Long dataId;
 
-    @ApiModelPropertyEnum(value = DataTracerTypeEnum.class, desc = "业务类型")
+    @ApiModelPropertyEnum(value = DataTracerTypeEnum.class, desc = "Business type")
     private Integer type;
 
-    @ApiModelProperty("操作内容")
+    @ApiModelProperty("Operation content")
     private String content;
 
-    @ApiModelProperty("diff 差异：旧的数据")
+    @ApiModelProperty("Differences: old data")
     private String diffOld;
 
-    @ApiModelProperty("差异：新的数据")
+    @ApiModelProperty("Differences: new data")
     private String diffNew;
 
-    @ApiModelProperty("扩展字段")
+    @ApiModelProperty("Extended field")
     private String extraData;
 
-    @ApiModelProperty("操作人")
+    @ApiModelProperty("Operator")
     private Long userId;
 
-    @ApiModelPropertyEnum(value = UserTypeEnum.class, desc = "用户类型")
+    @ApiModelPropertyEnum(value = UserTypeEnum.class, desc = "User type")
     private Integer userType;
 
-    @ApiModelProperty("操作人名称")
+    @ApiModelProperty("Operator name")
     private String userName;
 
-    @ApiModelProperty("userAgent")
+    @ApiModelProperty("User agent")
     private String userAgent;
 
-    @ApiModelProperty("ip")
+    @ApiModelProperty("IP address")
     private String ip;
 
-    @ApiModelProperty("操作时间")
+    @ApiModelProperty("Operation time")
     private String createTime;
 
 }

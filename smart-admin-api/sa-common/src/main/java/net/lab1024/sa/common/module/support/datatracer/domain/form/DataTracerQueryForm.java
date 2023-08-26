@@ -11,11 +11,6 @@ import javax.validation.constraints.NotNull;
 /**
  * 查询表单
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class DataTracerQueryForm extends PageParam {
@@ -23,10 +18,10 @@ public class DataTracerQueryForm extends PageParam {
     @ApiModelPropertyEnum(DataTracerTypeEnum.class)
     private Integer type;
 
-    @ApiModelProperty("业务id")
-    @NotNull(message = "业务id不能为空")
+    @ApiModelProperty("data id")
+    @NotNull(message = "data id can not be null")
     private Long dataId;
 
-    @ApiModelProperty("关键字")
+    @ApiModelProperty("keywords")
     private String keywords;
 }

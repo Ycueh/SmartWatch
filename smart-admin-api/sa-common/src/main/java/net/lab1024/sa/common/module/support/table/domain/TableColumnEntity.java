@@ -8,13 +8,8 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 自定义表格列
+ * Table column
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 22:52:21
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 @TableName("t_table_column")
@@ -24,22 +19,22 @@ public class TableColumnEntity {
     private Long tableColumnId;
 
     /**
-     * 用户id
+     * User id
      */
     private Long userId;
 
     /**
-     * 用户类型
+     * User type
      */
     private Integer userType;
 
     /**
-     * 表id
+     * Table id
      */
     private Integer tableId;
 
     /**
-     * 表列
+     * Table column
      */
     private String columns;
 

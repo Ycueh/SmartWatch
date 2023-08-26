@@ -6,13 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * 表格自定义列（前端用户自定义表格列，并保存到数据库里）
+ * Customizable table columns (end-users customize table columns on the front-end and save them to the database)
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-08-12 22:52:21
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Mapper
 public interface TableColumnDao extends BaseMapper<TableColumnEntity> {

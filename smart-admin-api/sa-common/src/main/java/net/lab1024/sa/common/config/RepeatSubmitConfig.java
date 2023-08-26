@@ -8,13 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 重复提交配置
+ * Repeat submit config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021/10/9 18:47
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class RepeatSubmitConfig {
@@ -26,7 +21,7 @@ public class RepeatSubmitConfig {
     }
 
     /**
-     * 获取指明某个用户的凭证
+     * Acquire specific certification
      *
      * @return
      */

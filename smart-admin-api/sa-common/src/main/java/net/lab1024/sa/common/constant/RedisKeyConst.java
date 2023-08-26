@@ -1,13 +1,8 @@
 package net.lab1024.sa.common.constant;
 
 /**
- * redis key 常量类
+ * redis key constants
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 public class RedisKeyConst {
 

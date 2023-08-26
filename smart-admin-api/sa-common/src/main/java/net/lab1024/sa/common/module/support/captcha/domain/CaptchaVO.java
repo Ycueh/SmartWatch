@@ -4,26 +4,21 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- * 图形验证码 VO
+ * Captcha vo
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021/8/31 20:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Data
 public class CaptchaVO {
 
-    @ApiModelProperty("验证码唯一标识")
+    @ApiModelProperty("Verification code unique identifier")
     private String captchaUuid;
 
-    @ApiModelProperty("验证码图片内容-生产环境无效")
+    @ApiModelProperty("Verification code image content - invalid in the production environment")
     private String captchaText;
 
-    @ApiModelProperty("验证码Base64图片")
+    @ApiModelProperty("Verification code image in Base64 format")
     private String captchaBase64Image;
 
-    @ApiModelProperty("过期时间（秒）")
+    @ApiModelProperty("Expiration time (seconds)")
     private Long expireSeconds;
 }

@@ -14,25 +14,13 @@ import java.util.List;
 /**
  * dao： t_data_tracker
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Mapper
 @Component
 public interface DataTracerDao extends BaseMapper<DataTracerEntity> {
 
     /**
-     * 操作记录查询
-     *
-     * @return
-     */
-    List<DataTracerVO> selectRecord(@Param("dataId") Long dataId, @Param("dataType") Integer dataType);
-
-    /**
-     * 分页查询
+     * Page query
      *
      * @param page
      * @param queryForm

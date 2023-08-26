@@ -12,36 +12,30 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
 /**
- * 异步调用线程配置
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-09-02 20:21:10
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Configuration for asynchronous task execution threads.
  */
 @Slf4j
 @Configuration
 public class AsyncConfig {
 
     /**
-     * 线程池 配置bean名称
+     * Bean name for the thread pool configuration.
      */
     public static final String ASYNC_EXECUTOR_THREAD_NAME = "smart-admin-async-executor";
 
     /**
-     * 配置线程池
+     * Configure the thread pool.
      *
-     * @return
+     * @return AsyncTaskExecutor
      */
     @Bean(name = ASYNC_EXECUTOR_THREAD_NAME)
     public AsyncTaskExecutor executor() {
         int processors = Runtime.getRuntime().availableProcessors();
         int threadCount = Math.max(1, processors - 1);
         ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
-        // 核心线程数量
+        // Number of core threads
         taskExecutor.setCorePoolSize(threadCount);
-        // 最大线程数量
+        // Maximum number of threads
         taskExecutor.setMaxPoolSize(threadCount);
         taskExecutor.setThreadNamePrefix(ASYNC_EXECUTOR_THREAD_NAME);
         taskExecutor.initialize();
@@ -49,7 +43,7 @@ public class AsyncConfig {
     }
 
     /**
-     * spring 异步任务 异常配置
+     * Configuration for exceptions in Spring's asynchronous tasks.
      */
     @Configuration
     public static class AsyncExceptionConfig implements AsyncConfigurer {
@@ -60,12 +54,12 @@ public class AsyncConfig {
     }
 
     /**
-     * 自定义异常处理
+     * Custom exception handling.
      */
     public static class AsyncExceptionHandler implements AsyncUncaughtExceptionHandler {
         @Override
         public void handleUncaughtException(Throwable throwable, Method method, Object... objects) {
-            log.error("异步任务发生异常:{}, 参数:{}, ", method.getDeclaringClass().getSimpleName() + "." + method.getName(), Arrays.toString(objects), throwable);
+            log.error("Asynchronous task encountered an exception: {}, Parameters: {}, ", method.getDeclaringClass().getSimpleName() + "." + method.getName(), Arrays.toString(objects), throwable);
         }
     }
 }

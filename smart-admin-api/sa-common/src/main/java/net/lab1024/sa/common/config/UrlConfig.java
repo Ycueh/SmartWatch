@@ -23,13 +23,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * url配置
+ * url config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 @Slf4j
@@ -39,14 +34,13 @@ public class UrlConfig {
 
 
     /**
-     * 获取每个方法的请求路径
+     * Acquire url map
      *
      * @return
      */
     @Bean
     public Map<Method, Set<String>> methodUrlMap() {
         Map<Method, Set<String>> methodUrlMap = Maps.newHashMap();
-        //获取url与类和方法的对应信息
         Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();
         for (Map.Entry<RequestMappingInfo, HandlerMethod> entry : map.entrySet()) {
             RequestMappingInfo requestMappingInfo = entry.getKey();
@@ -62,7 +56,7 @@ public class UrlConfig {
     }
 
     /**
-     * 需要进行url权限校验的方法
+     * Method that needs authentication
      *
      * @param methodUrlMap
      * @return
@@ -79,7 +73,7 @@ public class UrlConfig {
             List<RequestUrlVO> requestUrlList = this.buildRequestUrl(method, entry.getValue());
             authUrlList.addAll(requestUrlList);
         }
-        log.info("需要权限校验的URL：{}", authUrlList.stream().map(e -> e.getUrl()).collect(Collectors.toList()));
+        log.info("URL that needs authentication：{}", authUrlList.stream().map(e -> e.getUrl()).collect(Collectors.toList()));
         return authUrlList;
     }
 
@@ -88,13 +82,11 @@ public class UrlConfig {
         if (CollectionUtils.isEmpty(urlSet)) {
             return requestUrlList;
         }
-        //url对应的方法名称
         String className = method.getDeclaringClass().getName();
         String methodName = method.getName();
         List<String> list = StrUtil.split(className, ".");
         String controllerName = list.get(list.size() - 1);
         String name = controllerName + "." + methodName;
-        //swagger 说明信息
         String methodComment = null;
         ApiOperation apiOperation = method.getAnnotation(ApiOperation.class);
         if (apiOperation != null) {
@@ -112,7 +104,7 @@ public class UrlConfig {
 
 
     /**
-     * 获取无需登录可以匿名访问的url信息
+     * No need login url
      *
      * @return
      */
@@ -127,12 +119,12 @@ public class UrlConfig {
             }
             noNeedLoginUrlList.addAll(entry.getValue());
         }
-        log.info("不需要登录的URL：{}", noNeedLoginUrlList);
+        log.info("No need login url：{}", noNeedLoginUrlList);
         return noNeedLoginUrlList;
     }
 
     /**
-     * 获取忽略的url信息
+     * Acquire ignored url
      *
      * @return
      */

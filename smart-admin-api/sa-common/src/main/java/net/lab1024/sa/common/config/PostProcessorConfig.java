@@ -15,13 +15,8 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * yaml 读取配置
+ * yaml processor config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 @Slf4j
@@ -43,7 +38,7 @@ public class PostProcessorConfig implements EnvironmentPostProcessor {
                 return;
             }
             for (Resource resource : resources) {
-                log.info("初始化系统配置：{}", resource.getFilename());
+                log.info("Initial system config：{}", resource.getFilename());
                 List<PropertySource<?>> load = loader.load(resource.getFilename(), resource);
                 load.forEach(propertySources::addLast);
             }

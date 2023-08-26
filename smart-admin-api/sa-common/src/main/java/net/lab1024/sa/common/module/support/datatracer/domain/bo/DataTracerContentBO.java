@@ -5,34 +5,28 @@ import lombok.Data;
 import java.lang.reflect.Field;
 
 /**
- * 变动内容
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
+ * Change content.
  */
 @Data
 public class DataTracerContentBO {
 
     /**
-     * 变动字段
+     * Changed field.
      */
     private Field field;
 
     /**
-     * 变动字段的值
+     * Value of the changed field.
      */
     private Object fieldValue;
 
     /**
-     * 变动字段描述
+     * Description of the changed field.
      */
     private String fieldDesc;
 
     /**
-     * 变动内容
+     * Content of the change.
      */
     private String fieldContent;
 

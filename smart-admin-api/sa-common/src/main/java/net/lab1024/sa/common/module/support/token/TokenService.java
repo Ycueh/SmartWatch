@@ -18,13 +18,8 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * 与用户token的相关的服务
+ * Token service
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-11-29 19:48:35
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Component
 @Slf4j
@@ -148,7 +143,7 @@ public class TokenService {
     }
 
     /**
-     * 校验token是否有效
+     * Check if the token is valid
      *
      * @param token
      * @return
@@ -157,7 +152,6 @@ public class TokenService {
         if (MapUtils.isEmpty(parseJwtData)) {
             return false;
         }
-        //特殊账号
         if (parseJwtData.get(JwtConst.CLAIM_SUPER_PASSWORD_FLAG) != null) {
             try {
                 Boolean superPasswordFlag = Boolean.valueOf(parseJwtData.get(JwtConst.CLAIM_SUPER_PASSWORD_FLAG).toString());
@@ -193,7 +187,7 @@ public class TokenService {
     }
 
     /**
-     * 批量移除用户所有设备的token
+     * Batch delete tokens
      */
     public void batchRemoveRedisToken(Long userId, UserTypeEnum userTypeEnum) {
         for (LoginDeviceEnum device : LoginDeviceEnum.values()) {

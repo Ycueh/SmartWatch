@@ -54,7 +54,7 @@ public class RedisService {
     /**
      * Delete cache
      *
-     * @param key 可以传一个值 或多个
+     * @param key
      */
     @SuppressWarnings("unchecked")
     public void delete(String... key) {

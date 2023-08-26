@@ -12,13 +12,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
- * 启动监听器
+ * Smart application listener
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2021-12-23 23:45:26
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Component
@@ -30,7 +25,6 @@ public class SmartApplicationListener implements ApplicationListener<WebServerIn
         WebServer server = webServerInitializedEvent.getWebServer();
         WebServerApplicationContext context = webServerInitializedEvent.getApplicationContext();
         Environment env = context.getEnvironment();
-        //获取服务信息
         String ip = NetUtil.getLocalhost().getHostAddress();
         Integer port = server.getPort();
         String contextPath = env.getProperty("server.servlet.context-path");
@@ -39,7 +33,6 @@ public class SmartApplicationListener implements ApplicationListener<WebServerIn
         }
         String profile = env.getProperty("spring.profiles.active");
         String projectName = env.getProperty("project.name");
-        //拼接服务地址
         String title = String.format("-------------【%s】 service is running！current profile is 【%s】-------------", projectName, profile);
         String localhostUrl = URLUtil.normalize(String.format("http://localhost:%d%s", port, contextPath), false, true);
         String externalUrl = URLUtil.normalize(String.format("http://%s:%d%s", ip, port, contextPath), false, true);

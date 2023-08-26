@@ -27,13 +27,8 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
- * http请求配置
+ * Http request config
  *
- * @Author 1024创新实验室: 罗伊
- * @Date 2022-05-30 21:22:12
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Configuration
 public class RestTemplateConfig {
@@ -117,7 +112,6 @@ public class RestTemplateConfig {
     @Bean
     public SSLSocketFactory sslSocketFactory() {
         try {
-            //信任任何链接
             SSLContext sslContext = SSLContext.getInstance("TLS");
             sslContext.init(null, new TrustManager[]{x509TrustManager()}, new SecureRandom());
             return sslContext.getSocketFactory();

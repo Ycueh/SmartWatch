@@ -1,40 +1,34 @@
-package net.lab1024.sa.common.module.support.datatracer.annoation;
+    package net.lab1024.sa.common.module.support.datatracer.annoation;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+    import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-/**
- * 支持查询sql
- *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2022-07-23 19:38:52
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface DataTracerFieldSql {
+    import java.lang.annotation.ElementType;
+    import java.lang.annotation.Retention;
+    import java.lang.annotation.RetentionPolicy;
+    import java.lang.annotation.Target;
 
     /**
-     * 关联字段名称
-     * @return
+     * Supports SQL query.
      */
-    String relateColumn() default "id";
+    @Retention(RetentionPolicy.RUNTIME)
+    @Target(ElementType.FIELD)
+    public @interface DataTracerFieldSql {
 
-    /**
-     * 关联显示的字段
-     * @return
-     */
-    String relateDisplayColumn() default "";
-    /**
-     * 是否关联字段查询Mapper
-     * @return
-     */
-    Class<? extends BaseMapper> relateMapper() default BaseMapper.class;
+        /**
+         * Related column name.
+         * @return
+         */
+        String relateColumn() default "id";
 
-}
+        /**
+         * Displayed column related to the main column.
+         * @return
+         */
+        String relateDisplayColumn() default "";
+        /**
+         * Whether to associate the field with a query Mapper.
+         * @return
+         */
+        Class<? extends BaseMapper> relateMapper() default BaseMapper.class;
+
+    }

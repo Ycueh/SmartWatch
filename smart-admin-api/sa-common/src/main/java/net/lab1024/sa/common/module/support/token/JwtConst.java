@@ -1,13 +1,8 @@
 package net.lab1024.sa.common.module.support.token;
 
 /**
- * jwt相关常量
+ * jwt Constant
  *
- * @Author 1024创新实验室-主任: 卓大
- * @Date 2021-11-29 19:48:35
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 class JwtConst {
     /**

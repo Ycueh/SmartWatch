@@ -25,11 +25,6 @@ import java.util.function.Function;
 /**
  * 加密数据切口
  *
- * @Author 1024创新实验室: 胡克
- * @Date 2020/11/25 10:46
- * @Wechat zhuoda1024
- * @Email lab1024@163.com
- * @Copyright 1024创新实验室 （ https://1024lab.net ）
  */
 @Slf4j
 @Aspect
