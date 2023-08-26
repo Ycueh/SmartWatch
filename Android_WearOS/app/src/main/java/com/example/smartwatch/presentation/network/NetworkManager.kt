@@ -36,45 +36,18 @@ class NetworkManager(private val baseUrl: String) {
         successCallback: (String) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
-        fetchCaptcha(loginName, password, successCallback, errorCallback)
+        sendLoginRequest(loginName, password, successCallback, errorCallback)
     }
 
-    private fun fetchCaptcha(
-        loginName: String,
-        password: String,
-        successCallback: (String) -> Unit,
-        errorCallback: (Throwable) -> Unit
-    ) {
-        //Send restful request to back end
-        loginApi.getCaptcha().enqueue(object : Callback<ResponseDTO<CaptchaVO>> {
-            override fun onResponse(call: Call<ResponseDTO<CaptchaVO>>, response: Response<ResponseDTO<CaptchaVO>>) {
-                //Get the response from back end
-                if (response.isSuccessful) {
-                    Log.d("Success Log",response.message())
-                    response.body()?.data?.let {
-                        //Login function
-                        sendLoginRequest(loginName, password, it, successCallback, errorCallback)
-                    } ?: errorCallback(Throwable("No captcha data received"))
-                } else {
-                    errorCallback(Throwable("Server response error: ${response.code()}:${response.message()} "))
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseDTO<CaptchaVO>>, t: Throwable) {
-                errorCallback(t)
-            }
-        })
-    }
 
     private fun sendLoginRequest(
         loginName: String,
         password: String,
-        captchaVO: CaptchaVO,
         successCallback: (String) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
         //Generate the form
-        val loginForm = LoginForm(loginName, password, captchaVO.captchaUuid, captchaVO.captchaText)
+        val loginForm = LoginForm(loginName, password, "captchaVO.captchaUuid", "captchaVO.captchaText")
         loginApi.loginUser(loginForm).enqueue(object : Callback<ResponseDTO<String>> {
             override fun onResponse(call: Call<ResponseDTO<String>>, loginResponse: Response<ResponseDTO<String>>) {
                 if (loginResponse.isSuccessful) {
