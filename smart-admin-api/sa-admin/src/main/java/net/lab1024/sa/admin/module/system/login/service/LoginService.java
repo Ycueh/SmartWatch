@@ -215,7 +215,7 @@ public class LoginService {
         loginUserDetailCache.remove(requestUser.getUserId());
         //TODO logout update
         multiUserService.updateFile(requestUser.getUserId());
-        multiUserService.deleteCurrentFile();
+        //multiUserService.deleteCurrentFile();
         tokenService.removeToken(token);
         return ResponseDTO.ok();
     }
