@@ -3,17 +3,14 @@
 -->
 <template>
   <a-space :size="10">
-<!--    <div class="download">-->
-<!--      &lt;!&ndash;-download&ndash;&gt;-->
-<!--      <a-button type="text" @click="download" >-->
-<!--        Download-->
-<!--      </a-button>-->
-<!--    </div>-->
 
     <div class="setting">
       <!---setting-->
       <a-button type="text" @click="updateDatabase" class="operate-icon">
-        update database
+        Update Database
+      </a-button>
+      <a-button type="text" @click="resetDatabase" class="operate-icon">
+        Reset Database
       </a-button>
       <a-button type="text" @click="showSetting" class="operate-icon">
         <template #icon><setting-outlined /></template>
@@ -34,6 +31,7 @@ import HeaderAvatar from './header-avatar.vue';
   import { userApi } from "/@/api/system/user/user-api";
   import { computed,ref } from 'vue';
   import { useUserStore } from '/@/store/modules/system/user';
+  import { fileTransferApi } from '/@/api/smartWatch/file/fileTransfer-api';
 
   
   async function updateDatabase(){
@@ -43,23 +41,25 @@ import HeaderAvatar from './header-avatar.vue';
       await userApi.updateDatabase(userId.value);
       message.success("Update database successfully");
     }catch(e){
-      console.log(e);
+      alert(e);
     }
-    
-    
+  }
+
+  async function resetDatabase(){
+    try{
+      await fileTransferApi.resetDatabase();
+      message.success("Reset database successfully");
+    }catch(e){
+      alert(e);
+    }
+
+
   }
 
   // setting
   const headerSetting = ref();
   function showSetting() {
     headerSetting.value.show();
-  }
-  async function download() {
-    try {
-      await fileApi.downloadFile();
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   //message

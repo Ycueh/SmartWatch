@@ -39,7 +39,7 @@ public class FileController {
             byte[] fileContent;
             try {
                 fileContent = Files.readAllBytes(file.toPath());
-                fileService.resetDatabase();  // Not sure what this does, so just keeping it
+//                fileService.resetDatabase();
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ResponseDTO.error(UserErrorCode.DATA_NOT_EXIST));

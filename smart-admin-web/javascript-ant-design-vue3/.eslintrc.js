@@ -6,16 +6,16 @@
  * @LastEditors: zhuoda
  */
 module.exports = {
-  root: true, //此项是用来告诉eslint找当前配置文件不能往父级查找
+  root: true, // This option is used to indicate that ESLint should stop looking for configuration files in parent directories
   env: {
     browser: true,
     es2021: true,
     node: true,
   },
-  parser: 'vue-eslint-parser', //使用vue-eslint-parser 来解析vue文件中的 template和script
+  parser: 'vue-eslint-parser', // Use vue-eslint-parser to parse template and script in Vue files
   parserOptions: {
-    ecmaVersion: 12, // 默认情况下，ESLint使用的是ECMAScript5语法，此处我们设置的选项是 es12
-    sourceType: 'module', // 指定js导入的方式
+    ecmaVersion: 12, // By default, ESLint uses ECMAScript 5 syntax. Here we set it to es12.
+    sourceType: 'module', // Specify how JS files should be interpreted as modules
   },
   extends: ['plugin:vue/vue3-essential', 'eslint:recommended', 'plugin:vue/base'],
   globals: {
@@ -28,7 +28,7 @@ module.exports = {
   rules: {
     'no-unused-vars': [
       'error',
-      // we are only using this rule to check for unused arguments since TS
+      // We are using this rule only to check for unused arguments since TypeScript
       // catches unused variables but not args.
       { varsIgnorePattern: '.*', args: 'none' },
     ],
@@ -45,7 +45,7 @@ module.exports = {
     'vue/multi-word-component-names': [
       'error',
       {
-        ignores: ['index'], //需要忽略的组件名
+        ignores: ['index'], // Component names to be ignored
       },
     ],
     'vue/html-self-closing': [

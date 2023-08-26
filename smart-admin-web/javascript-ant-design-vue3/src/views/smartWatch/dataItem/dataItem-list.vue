@@ -1,9 +1,9 @@
 <template>
-  <!---------- 查询表单form begin ----------->
+  <!---------- Query Form Begin ----------->
   <a-form class="smart-query-form">
     <a-row class="smart-query-form-row">
 <!--      <a-form-item label="datestamp" class="smart-query-form-item">-->
-<!--        <SmartEnumSelect width="200px" v-model:value="queryForm.datestamp"  placeholder="date" />-->
+<!--        <SmartEnumSelect width="200px" v-model:value="queryForm.datestamp" placeholder="date" />-->
 <!--      </a-form-item>-->
       <a-form-item label="Keyword" class="smart-query-form-item">
         <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="dataitem" />
@@ -36,10 +36,10 @@
       </a-form-item>
     </a-row>
   </a-form>
-  <!---------- 查询表单form end ----------->
+  <!---------- Query Form End ----------->
 
   <a-card size="small" :bordered="false" :hoverable="true">
-    <!---------- 表格操作行 begin ----------->
+    <!---------- Table Operation Row Begin ----------->
     <a-row class="smart-table-btn-block">
       <div class="smart-table-operate-block">
         <a-button @click="confirmBatchDelete" type="danger" size="small" :disabled="selectedRowKeyList.length == 0" v-privilege="'smartWatch:dataItem:batchDelete'">
@@ -50,9 +50,9 @@
         </a-button>
       </div>
     </a-row>
-    <!---------- 表格操作行 end ----------->
+    <!---------- Table Operation Row End ----------->
 
-    <!---------- 表格 begin ----------->
+    <!---------- Table Begin ----------->
     <a-table
       size="small"
       :dataSource="tableData"
@@ -70,7 +70,7 @@
         </template>
       </template>
     </a-table>
-    <!---------- 表格 end ----------->
+    <!---------- Table End ----------->
 
     <div class="smart-query-table-page">
       <a-pagination
@@ -102,7 +102,7 @@
   import { smartSentry } from '/@/lib/smart-sentry';
   import SmartEnumSelect from '/@/components/framework/smart-enum-select/index.vue';
   import dataItemForm from './dataItem-form-modal.vue';
-  // ---------------------------- 表格列 ----------------------------
+  // ---------------------------- Table Columns ----------------------------
 
   const columns = ref([
 
@@ -140,28 +140,28 @@
   ]);
     
 
-  // ---------------------------- 查询数据表单和方法 ----------------------------
+  // ---------------------------- Query Data Form and Methods ----------------------------
 
   const queryFormState = {
-    datestamp:undefined,
-    timestamp:undefined,
-    dataItem1:undefined,
-    dataItem2:undefined,
-    dataItem3:undefined,
-    keyword: undefined, //关键字
+    datestamp: undefined,
+    timestamp: undefined,
+    dataItem1: undefined,
+    dataItem2: undefined,
+    dataItem3: undefined,
+    keyword: undefined,
     pageNum: 1,
     pageSize: 10,
   };
-  // 查询表单form
+  // Query Form
   const queryForm = reactive({ ...queryFormState });
-  // 表格加载loading
+  // Table Loading
   const tableLoading = ref(false);
-  // 表格数据
+  // Table Data
   const tableData = ref([]);
-  // 总数
+  // Total Count
   const total = ref(0);
 
-  // 重置查询条件
+  // Reset Query Conditions
   function resetQuery() {
     let pageSize = queryForm.pageSize;
     Object.assign(queryForm, queryFormState);
@@ -169,7 +169,7 @@
     queryData();
   }
 
-  // 查询数据
+  // Query Data
   async function queryData() {
     tableLoading.value = true;
     try {
@@ -191,22 +191,22 @@
 
   onMounted(queryData);
 
-  // ---------------------------- 查看 ----------------------------
+  // ---------------------------- View ----------------------------
   const modalRef = ref();
 
   function showModal(data) {
     modalRef.value.show(data);
   }
 
-  // ---------------------------- 添加/修改 ----------------------------
+  // ---------------------------- Add/Edit ----------------------------
   const formRef = ref();
 
   function showForm(data) {
     formRef.value.show(data);
   }
 
-  // ---------------------------- 单个删除 ----------------------------
-  //确认删除
+  // ---------------------------- Single Delete ----------------------------
+  // Confirm Delete
   function onDelete(data) {
     Modal.confirm({
       title: 'Hint',
@@ -221,7 +221,7 @@
     });
   }
 
-  //请求删除
+  // Request Delete
   async function requestDelete(data) {
     SmartLoading.show();
     try {
@@ -238,16 +238,16 @@
     }
   }
 
-  // ---------------------------- 批量删除 ----------------------------
+  // ---------------------------- Batch Delete ----------------------------
 
-  // 选择表格行
+  // Select Table Rows
   const selectedRowKeyList = ref([]);
 
   function onSelectChange(selectedRowKeys) {
     selectedRowKeyList.value = selectedRowKeys;
   }
 
-  // 批量删除
+  // Confirm Batch Delete
   function confirmBatchDelete() {
     Modal.confirm({
       title: 'Hint',
@@ -262,7 +262,7 @@
     });
   }
 
-  //请求批量删除
+  // Request Batch Delete
   async function requestBatchDelete() {
     try {
       SmartLoading.show();
@@ -276,3 +276,4 @@
     }
   }
 </script>
+

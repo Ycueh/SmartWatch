@@ -92,6 +92,7 @@ public class MultiUserService {
     }
 
     //TODO Update the database file
+    @Transactional(rollbackFor = Exception.class)
     public ResponseDTO<String> updateFile(Long user_id) {
         try{
             String filePath = "." + File.separator + "database" + File.separator + "smart_admin_v2.db";
@@ -104,5 +105,19 @@ public class MultiUserService {
         }
         return ResponseDTO.ok();
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public ResponseDTO<String> deleteCurrentFile() {
+        File targetFile = new File(DBPATH);
+        if(targetFile.exists()){
+            targetFile.delete();
+        }
+        return ResponseDTO.ok();
+
+    }
+
+
+
+
 
 }
