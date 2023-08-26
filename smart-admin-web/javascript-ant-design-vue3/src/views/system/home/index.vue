@@ -59,7 +59,9 @@ export default {
 
           const formData = new FormData();
           formData.append("file", this.selectedFile);
-          const userId=computed(() => useUserStore().userId);
+          const userStore = useUserStore();
+          const userId = userStore.userId; 
+          console.log(userId);
           fileTransferApi.upload(userId, formData)
               .then(response => {
                   alert(response.data);

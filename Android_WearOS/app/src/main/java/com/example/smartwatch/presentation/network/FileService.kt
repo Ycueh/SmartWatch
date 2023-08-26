@@ -9,12 +9,14 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface FileService {
     @Multipart
-    @POST("/file/upload")
+    @POST("/file/upload/{userId}")
     fun uploadFile(
         @Header("x-access-token") token: String,
+        @Path("userId") userId: Long,
         @Part filePart: MultipartBody.Part
     ): Call<ResponseDTO<String>>
 

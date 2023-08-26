@@ -6,6 +6,7 @@ import com.example.smartwatch.presentation.common.domain.ResponseDTO
 import com.example.smartwatch.presentation.login.api.LoginApi
 import com.example.smartwatch.presentation.login.domain.CaptchaVO
 import com.example.smartwatch.presentation.login.domain.LoginForm
+import com.example.smartwatch.presentation.login.domain.LoginWatchDetail
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
@@ -33,7 +34,7 @@ class NetworkManager(private val baseUrl: String) {
     fun login(
         loginName: String,
         password: String,
-        successCallback: (String) -> Unit,
+        successCallback: (LoginWatchDetail) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
         sendLoginRequest(loginName, password, successCallback, errorCallback)
@@ -43,13 +44,13 @@ class NetworkManager(private val baseUrl: String) {
     private fun sendLoginRequest(
         loginName: String,
         password: String,
-        successCallback: (String) -> Unit,
+        successCallback: (LoginWatchDetail) -> Unit,
         errorCallback: (Throwable) -> Unit
     ) {
         //Generate the form
         val loginForm = LoginForm(loginName, password, "captchaVO.captchaUuid", "captchaVO.captchaText")
-        loginApi.loginUser(loginForm).enqueue(object : Callback<ResponseDTO<String>> {
-            override fun onResponse(call: Call<ResponseDTO<String>>, loginResponse: Response<ResponseDTO<String>>) {
+        loginApi.loginUser(loginForm).enqueue(object : Callback<ResponseDTO<LoginWatchDetail>> {
+            override fun onResponse(call: Call<ResponseDTO<LoginWatchDetail>>, loginResponse: Response<ResponseDTO<LoginWatchDetail>>) {
                 if (loginResponse.isSuccessful) {
                     when (loginResponse.body()?.ok) {
                         true -> {
@@ -66,11 +67,11 @@ class NetworkManager(private val baseUrl: String) {
                         }
                     }
                 } else {
-                    errorCallback(Throwable("Login failed: ${loginResponse.code()}"))
+                    errorCallback(Throwable("Login failed"))
                 }
             }
 
-            override fun onFailure(call: Call<ResponseDTO<String>>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseDTO<LoginWatchDetail>>, t: Throwable) {
                 errorCallback(t)
             }
         })
@@ -104,7 +105,7 @@ class NetworkManager(private val baseUrl: String) {
                         }
                     }
                 } else {
-                    errorCallback(Throwable("Login failed: ${logoutResponse.code()}"))
+                    errorCallback(Throwable("Login failed"))
                 }
             }
 
@@ -116,13 +117,14 @@ class NetworkManager(private val baseUrl: String) {
 
     fun uploadDbFile(filePath: String,
                      token: String,
+                     userId:Long,
                      successCallback: (String) -> Unit,
                      errorCallback: (Throwable,Int?) -> Unit) {
         val file = File(filePath)
         val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
         val body = MultipartBody.Part.createFormData("file", file.name, requestFile)
 
-        fileService.uploadFile(token, body).enqueue(object : Callback<ResponseDTO<String>> {
+        fileService.uploadFile(token,userId, body).enqueue(object : Callback<ResponseDTO<String>> {
             override fun onResponse(call: Call<ResponseDTO<String>>, response: Response<ResponseDTO<String>>) {
                 if (response.isSuccessful) {
                     val code = response.body()?.code

@@ -74,10 +74,11 @@ class LoginActivity : Activity() {
             val password = passwordEditText.text.toString()
 
             networkManager.login(username, password,
-                successCallback = { token ->
+                successCallback = { loginUserDetail ->
                     // jump to MainActivity
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.putExtra("TOKEN", token)
+                    intent.putExtra("TOKEN", loginUserDetail.token)
+                    intent.putExtra("USERID",loginUserDetail.userId)
                     startActivity(intent)
                     finish()  // close LoginActivity
                 },
@@ -103,14 +104,15 @@ class MainActivity : ComponentActivity() {
             val baseUrl = "http://$ip:1024/"
             val networkManager = NetworkManager(baseUrl)
             val token = intent.getStringExtra("TOKEN")
-            if (token != null) {
-                //Upload Download function
-                WearApp(networkManager, token)
-            }else{
-                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+            val userId = intent.getLongExtra("USERID", -1L)
+            if (token == null||userId == -1L) {
+                Toast.makeText(this, "No token or userId", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
+                //Upload Download function
+            }else{
+                WearApp(networkManager, token, userId)
             }
         }
     }
@@ -125,7 +127,7 @@ fun requestFileAccessPermission(context: Context) {
 }
 //
 @Composable
-fun WearApp(networkManager: NetworkManager, token: String) {
+fun WearApp(networkManager: NetworkManager, token: String, userId:Long) {
     val context = LocalContext.current
     val uploadState = remember { mutableStateOf<UploadState?>(null) } // Record upload status
     val downloadState = remember { mutableStateOf<DownloadState?>(null) } // Record download status
@@ -154,7 +156,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Environment.isExternalStorageManager()) {
                         // For API 30 and higher, the app has "All file access"
                         uploadState.value = null
-                        bindUploadFile(networkManager, token,context) { state ->
+                        bindUploadFile(networkManager, token, context, userId) { state ->
                             uploadState.value = state // update upload status
                             Log.d("testUpload", "$state")
                         }
@@ -162,7 +164,7 @@ fun WearApp(networkManager: NetworkManager, token: String) {
                         ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                         // For API 28 and 29, the app has the WRITE_EXTERNAL_STORAGE permission
                         uploadState.value = null
-                        bindUploadFile(networkManager, token,context) { state ->
+                        bindUploadFile(networkManager, token, context, userId) { state ->
                             uploadState.value = state // update upload status
                             Log.d("testUpload", "$state")
                         }
@@ -266,12 +268,12 @@ sealed class DownloadState {
     data class Failure(val error: Throwable) : DownloadState()
 }
 
-private fun bindUploadFile(networkManager: NetworkManager, token: String, context: Context, onUploadStateChange: (UploadState) -> Unit) {
+private fun bindUploadFile(networkManager: NetworkManager, token: String, context: Context, userId:Long, onUploadStateChange: (UploadState) -> Unit) {
 //    val dbFilePath = "android.resource://${context.packageName}/raw/your_db_file_name"
 
     val sdCardPath = Environment.getExternalStorageDirectory().absolutePath
     val dbFilePath = "$sdCardPath/EMADATA.db"
-    networkManager.uploadDbFile(dbFilePath, token,
+    networkManager.uploadDbFile(dbFilePath, token, userId,
         successCallback = {
             onUploadStateChange(UploadState.Success)
         },

@@ -128,6 +128,7 @@ public class LoginService {
         LoginUserDetail loginUserDetail = loadLoginInfo(userEntity);
         loginUserDetail.setToken(token);
         LoginWatchDetail loginWatchDetail = SmartBeanUtil.copy(userEntity,LoginWatchDetail.class);
+        loginWatchDetail.setToken(token);
 
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
