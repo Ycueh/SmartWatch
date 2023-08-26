@@ -1,11 +1,5 @@
 /*
- * vite配置
- *
- * @Author:    1024创新实验室-主任：卓大
- * @Date:      2022-05-02 23:44:56
- * @Wechat:    zhuda1024
- * @Email:     lab1024@163.com
- * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012
+ * vite settings
  */
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
@@ -18,12 +12,12 @@ export default {
   root: process.cwd(),
   resolve: {
     alias: [
-      // 国际化替换
+      // internationalization replacement
       {
         find: 'vue-i18n',
         replacement: 'vue-i18n/dist/vue-i18n.cjs.js',
       },
-      // 绝对路径重命名：/@/xxxx => src/xxxx
+      // absolute path renaming：/@/xxxx => src/xxxx
       {
         find: /\/@\//,
         replacement: pathResolve('src') + '/',
@@ -34,7 +28,7 @@ export default {
       },
     ],
   },
-  // 服务端渲染
+  // server-side rendering
   server: {
     host: '0.0.0.0',
     port: 8081,
@@ -45,7 +39,7 @@ export default {
     exclude: ['vue-demi'],
   },
   build: {
-    // 清除console和debugger
+    // Clear console and debugger
     terserOptions: {
       compress: {
         drop_console: true,
@@ -54,12 +48,11 @@ export default {
     },
     rollupOptions: {
       output: {
-        //配置这个是让不同类型文件放在不同文件夹，不会显得太乱
         chunkFileNames: 'js/[name]-[hash].js',
         entryFileNames: 'js/[name]-[hash].js',
         assetFileNames: '[ext]/[name]-[hash].[ext]',
         manualChunks(id) {
-          //静态资源分拆打包
+          //Static resource splitting and packaging
           if (id.includes('node_modules')) {
             return id.toString().split('node_modules/')[1].split('/')[0].toString();
           }
@@ -67,12 +60,12 @@ export default {
       },
     },
     target: 'modules',
-    outDir: 'dist', // 指定输出路径
-    assetsDir: 'assets', // 指定生成静态文件目录
-    assetsInlineLimit: '4096', // 小于此阈值的导入或引用资源将内联为 base64 编码
-    chunkSizeWarningLimit: 500, // chunk 大小警告的限制
-    minify: 'terser', // 混淆器，terser构建后文件体积更小
-    emptyOutDir: true, //打包前先清空原有打包文件
+    outDir: 'dist', // Specify the output path
+    assetsDir: 'assets', // Specify the directory to generate static files
+    assetsInlineLimit: '4096', // Imported or referenced resources smaller than this threshold will be inlined as base64 encoded
+    chunkSizeWarningLimit: 500, // Limits on chunk size warnings
+    minify: 'terser', // Obfuscator, the file size is smaller after terser construction
+    emptyOutDir: true, //Clear the original package file before packaging
   },
   css: {
     preprocessorOptions: {
