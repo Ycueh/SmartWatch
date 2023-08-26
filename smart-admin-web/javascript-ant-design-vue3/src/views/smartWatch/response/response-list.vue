@@ -73,9 +73,8 @@
       />
     </div>
 
-    <responseForm ref="formRef" @reloadList="queryData" />
+    
 
-    <responseModal ref="modalRef" />
   </a-card>
 </template>
 <script setup>
@@ -85,8 +84,7 @@
   import { responseApi } from '/@/api/smartWatch/response/response-api';
   import { PAGE_SIZE_OPTIONS } from '/@/constants/common-const';
   import { smartSentry } from '/@/lib/smart-sentry';
-  import SmartEnumSelect from '/@/components/framework/smart-enum-select/index.vue';
-  import responseForm from './response-form.vue';
+  
   // ---------------------------- Table Columns ----------------------------
 
   const columns = ref([

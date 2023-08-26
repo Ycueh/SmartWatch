@@ -173,7 +173,7 @@
   async function queryData() {
     tableLoading.value = true;
     try {
-      let queryResult = await dataItemApi.queryPage(queryForm);
+      let queryResult = await dataItemApi.pageQuery(queryForm);
       console.log(queryResult);
       tableData.value = queryResult.data.list;
       total.value = queryResult.data.total;
