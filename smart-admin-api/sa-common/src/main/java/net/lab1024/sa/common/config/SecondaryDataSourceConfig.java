@@ -85,7 +85,7 @@ public class SecondaryDataSourceConfig {
     public DataSource secondaryDataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
 
-        druidDataSource.setDbType(DbType.MYSQL.getDb());
+        druidDataSource.setDbType(DbType.SQLITE.getDb());
         druidDataSource.setDriverClassName(driver);
         druidDataSource.setUrl(url);
         druidDataSource.setInitialSize(initialSize);
@@ -95,7 +95,7 @@ public class SecondaryDataSourceConfig {
         druidDataSource.setTimeBetweenEvictionRunsMillis(timeBetweenEvictionRunsMillis);
         druidDataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
         druidDataSource.setValidationQuery("SELECT 1");
-        initialize(druidDataSource);
+        druidDataSource.setConnectionInitSqls(Arrays.asList("PRAGMA journal_mode=DELETE;"));
         try {
             druidDataSource.setFilters(filters);
             ArrayList<Filter> arrayList = new ArrayList<>();
@@ -109,17 +109,11 @@ public class SecondaryDataSourceConfig {
         } catch (SQLException e) {
 
         }
-
         return druidDataSource;
     }
 
     public void initialize(DruidDataSource druidDataSource) {
-        try (Connection connection = druidDataSource.getConnection();
-             Statement statement = connection.createStatement()) {
-            statement.execute("PRAGMA journal_mode=DELETE");
-        } catch (SQLException e) {
-            throw new RuntimeException("Failed to set SQLite PRAGMA journal_mode", e);
-        }
+
     }
 
     @Bean(name = "secondarySqlSessionFactory")

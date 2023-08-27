@@ -79,19 +79,9 @@ public class MultiUserService {
         File targetFile = new File(DBPATH);
         // Cleanup SQLite WAL files after successful login
 
-        // Manual deletion if needed
-        File walFile = new File(DBWALPATH);
-        File shmFile = new File(DBSHMPATH);
+
         try {
-            if (targetFile.exists()){
-                targetFile.delete();
-            }
-            if (walFile.exists()) {
-                walFile.delete();
-            }
-            if (shmFile.exists()) {
-                shmFile.delete();
-            }
+            deleteCurrentFile();
             try(FileOutputStream output = new FileOutputStream(DBPATH)){
                 byte[] fileData = multiUserVO.getFile_data();
                 if(fileData == null){
@@ -126,6 +116,16 @@ public class MultiUserService {
         File targetFile = new File(DBPATH);
         if(targetFile.exists()){
             targetFile.delete();
+        }
+        // Manual deletion if needed
+        String testPath = "."+ File.separator +"database" + File.separator +"test";
+
+        try {
+            Files.deleteIfExists(Paths.get(DBWALPATH));
+            Files.deleteIfExists(Paths.get(DBSHMPATH));
+            Files.deleteIfExists(Paths.get(testPath));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return ResponseDTO.ok();
 
