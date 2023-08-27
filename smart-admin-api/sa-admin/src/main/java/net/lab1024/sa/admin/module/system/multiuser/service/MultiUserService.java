@@ -16,6 +16,8 @@ import net.lab1024.sa.common.module.support.datatracer.service.DataTracerService
 import org.apache.catalina.User;
 import org.apache.poi.hssf.record.FilePassRecord;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,6 +39,9 @@ public class MultiUserService {
     @Autowired
     private UserDao userDao;
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
+    private static final String DBWALPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-wal";
+    private static final String DBSHMPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-shm";
+
     /**
      * Add new user
      *
@@ -72,9 +77,20 @@ public class MultiUserService {
         }
         MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
         File targetFile = new File(DBPATH);
+        // Cleanup SQLite WAL files after successful login
+
+        // Manual deletion if needed
+        File walFile = new File(DBWALPATH);
+        File shmFile = new File(DBSHMPATH);
         try {
             if (targetFile.exists()){
-                targetFile.createNewFile();
+                targetFile.delete();
+            }
+            if (walFile.exists()) {
+                walFile.delete();
+            }
+            if (shmFile.exists()) {
+                shmFile.delete();
             }
             try(FileOutputStream output = new FileOutputStream(DBPATH)){
                 byte[] fileData = multiUserVO.getFile_data();

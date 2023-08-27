@@ -129,7 +129,7 @@ public class LoginService {
         loginUserDetail.setToken(token);
         LoginWatchDetail loginWatchDetail = SmartBeanUtil.copy(userEntity,LoginWatchDetail.class);
         loginWatchDetail.setToken(token);
-
+        multiUserService.choose(userEntity.getUserId());
         // Save into cache
         loginUserDetailCache.put(userEntity.getUserId(), loginUserDetail);
         return ResponseDTO.ok(loginWatchDetail);
