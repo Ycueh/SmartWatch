@@ -167,45 +167,5 @@ public class SecondaryDataSourceConfig {
                 e.printStackTrace();
             }
         }
-//    @Bean
-//    @Scope("prototype")
-//    public DatabaseConnectionManager databaseConnectionManager(@Qualifier("secondaryDataSource") DataSource dataSource) {
-//        return new DatabaseConnectionManager(dataSource);
-//    }
-//
-//    public static class DatabaseConnectionManager {
-//
-//        private final DataSource dataSource;
-//
-//        private Connection connection;
-//        private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
-//        private static final String DBWALPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-wal";
-//        private static final String DBSHMPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-shm";
-//
-//        public DatabaseConnectionManager(DataSource dataSource) {
-//            this.dataSource = dataSource;
-//        }
-//
-//        public synchronized void resetConnection() throws SQLException {
-//            if (this.connection != null && !this.connection.isClosed()) {
-//                this.connection.close();
-//                deleteCurrentFile();
-//            }
-//            this.connection = dataSource.getConnection();
-//        }
-//
-//        public Connection getConnection() {
-//            return connection;
-//        }
-//
-//        private void deleteCurrentFile() {
-//            try {
-//                Files.deleteIfExists(Paths.get(DBWALPATH));
-//                Files.deleteIfExists(Paths.get(DBSHMPATH));
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
 }

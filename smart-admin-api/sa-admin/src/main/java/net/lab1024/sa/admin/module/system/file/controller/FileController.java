@@ -114,6 +114,7 @@ public class FileController {
     @PostMapping("/file/reset")
     public ResponseDTO<String> resetDatabase() {
         try {
+            dataSourceConfig.resetConnection();
             fileService.resetDatabase();
             return ResponseDTO.ok();
         } catch (IOException e) {
