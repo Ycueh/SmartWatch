@@ -37,7 +37,6 @@ public class MultiUserService {
     @Autowired
     private UserDao userDao;
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
-
     /**
      * Add new user
      *
@@ -74,7 +73,7 @@ public class MultiUserService {
         MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
         File targetFile = new File(DBPATH);
         try {
-            if (!targetFile.exists()){
+            if (targetFile.exists()){
                 targetFile.createNewFile();
             }
             try(FileOutputStream output = new FileOutputStream(DBPATH)){

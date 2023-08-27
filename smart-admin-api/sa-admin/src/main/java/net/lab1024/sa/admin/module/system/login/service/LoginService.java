@@ -209,8 +209,6 @@ public class LoginService {
      */
     public ResponseDTO<String> logout(String token, RequestUser requestUser) {
         loginUserDetailCache.remove(requestUser.getUserId());
-        //TODO logout update
-        multiUserService.updateFile(requestUser.getUserId());
         //multiUserService.deleteCurrentFile();
         tokenService.removeToken(token);
         return ResponseDTO.ok();

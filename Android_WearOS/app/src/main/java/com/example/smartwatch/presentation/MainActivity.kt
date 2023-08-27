@@ -52,8 +52,8 @@ class LoginActivity : Activity() {
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
     private lateinit var loginButton: Button
-    //   var ip = "172.31.27.128"
-    var ip = "10.0.2.2"
+       var ip = "10.76.6.187"
+//    var ip = "10.0.2.2"
     //var ip = "47.110.226.70"
     private val baseUrl = "http://$ip:1024/"
     private val networkManager = NetworkManager(baseUrl)
@@ -97,8 +97,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //     var ip = "47.110.226.70"
-            var ip = "10.0.2.2"
+                 var ip = "10.76.6.187"
+//            var ip = "10.0.2.2"
             //ipv4 address
 //            var ip = "172.31.27.128"
             val baseUrl = "http://$ip:1024/"
