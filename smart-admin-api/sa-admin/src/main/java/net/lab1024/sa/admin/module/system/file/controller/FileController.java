@@ -3,10 +3,12 @@ package net.lab1024.sa.admin.module.system.file.controller;
 import net.lab1024.sa.admin.module.system.file.service.FileService;
 import net.lab1024.sa.admin.module.system.login.service.LoginService;
 import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
-import net.lab1024.sa.common.common.code.ErrorCode;
-import net.lab1024.sa.common.common.code.SystemErrorCode;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.SQLException;
 import net.lab1024.sa.common.common.code.UserErrorCode;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.config.SecondaryDataSourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import io.swagger.annotations.Api;
@@ -31,10 +33,14 @@ public class FileController {
     String filePath ="."+File.separator+ "database"+File.separator+"smart_admin_v2.db";
     private static final String UPLOAD_FOLDER = "../../../../../../../../../database";
     private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
+
+    @Autowired
+    private SecondaryDataSourceConfig dataSourceConfig;
     @Autowired
     FileService fileService;
     @Autowired
     MultiUserService multiUserService;
+
     @GetMapping("/file/watch/download")
     public ResponseEntity<ResponseDTO<String>> watchDownloadFile() {
         File file = new File(filePath);
@@ -113,5 +119,10 @@ public class FileController {
         } catch (IOException e) {
             return ResponseDTO.error(UserErrorCode.UNKNOWN_ERROR,e.getMessage());
         }
+    }
+    @GetMapping("/connection/refresh")
+    public ResponseEntity<String> resetDBConnection() {
+        dataSourceConfig.resetConnection();
+        return ResponseEntity.ok("Connection reset successfully!");
     }
 }

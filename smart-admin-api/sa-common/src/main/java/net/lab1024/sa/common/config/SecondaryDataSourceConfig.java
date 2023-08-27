@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import net.lab1024.sa.common.common.domain.DataScopePlugin;
+import net.lab1024.sa.common.common.domain.ResponseDTO;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -19,18 +20,23 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import org.springframework.context.annotation.Scope;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Configuration
@@ -79,12 +85,17 @@ public class SecondaryDataSourceConfig {
     @Autowired(required = false)
     private DataScopePlugin dataScopePlugin;
 
+    private DruidDataSource druidDataSource;
+
+    private static final String DBWALPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-wal";
+    private static final String DBSHMPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-shm";
 
     @Bean(name = "secondaryDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.ema")
     public DataSource secondaryDataSource() {
-        DruidDataSource druidDataSource = new DruidDataSource();
-
+        if (druidDataSource == null) {
+            druidDataSource = new DruidDataSource();
+        }
         druidDataSource.setDbType(DbType.SQLITE.getDb());
         druidDataSource.setDriverClassName(driver);
         druidDataSource.setUrl(url);
@@ -96,6 +107,7 @@ public class SecondaryDataSourceConfig {
         druidDataSource.setMinEvictableIdleTimeMillis(minEvictableIdleTimeMillis);
         druidDataSource.setValidationQuery("SELECT 1");
         druidDataSource.setConnectionInitSqls(Arrays.asList("PRAGMA journal_mode=DELETE;"));
+        druidDataSource.setConnectionInitSqls(Arrays.asList("PRAGMA locking_mode=NORMAL;"));
         try {
             druidDataSource.setFilters(filters);
             ArrayList<Filter> arrayList = new ArrayList<>();
@@ -112,12 +124,8 @@ public class SecondaryDataSourceConfig {
         return druidDataSource;
     }
 
-    public void initialize(DruidDataSource druidDataSource) {
-
-    }
-
     @Bean(name = "secondarySqlSessionFactory")
-    public SqlSessionFactory secondarySqlSessionFactory(@Qualifier("secondaryDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory secondarySqlSessionFactory() throws Exception {
         MybatisSqlSessionFactoryBean factoryBean = new MybatisSqlSessionFactoryBean();
         factoryBean.setDataSource(secondaryDataSource());
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
@@ -138,5 +146,66 @@ public class SecondaryDataSourceConfig {
     public SqlSessionTemplate secondarySqlSessionTemplate(@Qualifier("secondarySqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
+
+    public void resetConnection() {
+        if (secondaryDataSource() != null) {
+            druidDataSource.close();  // Close all current connections
+            deleteCurrentFile();
+            try {
+                druidDataSource.restart();  // Reinitialize the datasource
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private void deleteCurrentFile() {
+            try {
+                Files.deleteIfExists(Paths.get(DBWALPATH));
+                Files.deleteIfExists(Paths.get(DBSHMPATH));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+//    @Bean
+//    @Scope("prototype")
+//    public DatabaseConnectionManager databaseConnectionManager(@Qualifier("secondaryDataSource") DataSource dataSource) {
+//        return new DatabaseConnectionManager(dataSource);
+//    }
+//
+//    public static class DatabaseConnectionManager {
+//
+//        private final DataSource dataSource;
+//
+//        private Connection connection;
+//        private static final String DBPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db";
+//        private static final String DBWALPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-wal";
+//        private static final String DBSHMPATH = "."+ File.separator +"database" + File.separator +"smart_admin_v2.db-shm";
+//
+//        public DatabaseConnectionManager(DataSource dataSource) {
+//            this.dataSource = dataSource;
+//        }
+//
+//        public synchronized void resetConnection() throws SQLException {
+//            if (this.connection != null && !this.connection.isClosed()) {
+//                this.connection.close();
+//                deleteCurrentFile();
+//            }
+//            this.connection = dataSource.getConnection();
+//        }
+//
+//        public Connection getConnection() {
+//            return connection;
+//        }
+//
+//        private void deleteCurrentFile() {
+//            try {
+//                Files.deleteIfExists(Paths.get(DBWALPATH));
+//                Files.deleteIfExists(Paths.get(DBSHMPATH));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 }

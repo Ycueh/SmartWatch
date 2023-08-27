@@ -16,6 +16,9 @@
         <a-menu-item @click="onRefresh">
           <span>Refresh authorities</span>
         </a-menu-item>
+        <a-menu-item @click="onRefreshConnection">
+          <span>Refresh Database Connection</span>
+        </a-menu-item>
         <a-menu-item @click="showUpdatePwdModal">
           <span>Update password</span>
         </a-menu-item>
@@ -35,7 +38,9 @@
   import { clearAllCoolies } from '/@/utils/cookie-util';
   import { localClear } from '/@/utils/local-util';
   import { smartSentry } from '/@/lib/smart-sentry';
+  import {fileTransferApi} from'/@/api/smartWatch/file/fileTransfer-api';
   import HeaderResetPassword from './header-reset-password-modal/index.vue';
+  import { message } from 'ant-design-vue';
 
   // Avatar background color
   const AVATAR_BACKGROUND_COLOR_ARRAY = ['#87d068', '#00B853', '#f56a00', '#1890ff'];
@@ -62,6 +67,15 @@
     await loginApi.refresh();
     location.reload();
   }
+  // ------------------------ refresh database ------------------------
+  async function onRefreshConnection() {
+    try{
+      await fileTransferApi.refreshDatabase();
+      message.success("Refresh connection successfully");
+    }catch(e){
+      alert(e);
+    }
+  }
 
   // ------------------------ reset password ------------------------
   const resetPasswordRef = ref();
@@ -69,6 +83,7 @@
   function showUpdatePwdModal() {
     resetPasswordRef.value.showModal();
   }
+
 
   // ------------------------ avatar, name ------------------------
 

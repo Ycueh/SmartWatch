@@ -78,10 +78,10 @@ public class MultiUserService {
         MultiUserVO multiUserVO = multiUserMapper.getFileByUserId(userid);
         File targetFile = new File(DBPATH);
         // Cleanup SQLite WAL files after successful login
-
-
         try {
-            deleteCurrentFile();
+            if(!targetFile.exists()){
+                targetFile.createNewFile();
+            }
             try(FileOutputStream output = new FileOutputStream(DBPATH)){
                 byte[] fileData = multiUserVO.getFile_data();
                 if(fileData == null){
@@ -110,29 +110,4 @@ public class MultiUserService {
         }
         return ResponseDTO.ok();
     }
-
-    @Transactional(rollbackFor = Exception.class)
-    public ResponseDTO<String> deleteCurrentFile() {
-        File targetFile = new File(DBPATH);
-        if(targetFile.exists()){
-            targetFile.delete();
-        }
-        // Manual deletion if needed
-        String testPath = "."+ File.separator +"database" + File.separator +"test";
-
-        try {
-            Files.deleteIfExists(Paths.get(DBWALPATH));
-            Files.deleteIfExists(Paths.get(DBSHMPATH));
-            Files.deleteIfExists(Paths.get(testPath));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return ResponseDTO.ok();
-
-    }
-
-
-
-
-
 }

@@ -12,6 +12,8 @@ export const fileTransferApi = {
     resetDatabase: () => {
         return postRequest('/file/reset');
     },
-
+    refreshDatabase: () => {
+        return getRequest('/connection/refresh');
+    }
 
 }
