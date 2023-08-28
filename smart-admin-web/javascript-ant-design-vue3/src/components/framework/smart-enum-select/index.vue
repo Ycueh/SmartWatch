@@ -32,7 +32,7 @@
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: 'Please select',
     },
     size: {
       type: String,
