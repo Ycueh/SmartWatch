@@ -3,6 +3,7 @@ package net.lab1024.sa.admin.module.system.login.controller;
 import cn.hutool.extra.servlet.ServletUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
 import net.lab1024.sa.admin.module.system.login.domain.LoginUserDetail;
 import net.lab1024.sa.admin.module.system.login.domain.LoginForm;
@@ -13,6 +14,7 @@ import net.lab1024.sa.common.common.code.UserErrorCode;
 import net.lab1024.sa.common.common.constant.RequestHeaderConst;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
 import net.lab1024.sa.common.common.util.SmartRequestUtil;
+import net.lab1024.sa.common.config.SecondaryDataSourceConfig;
 import net.lab1024.sa.common.module.support.captcha.domain.CaptchaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,12 +30,15 @@ import javax.validation.Valid;
  * User login
  *
  */
+@Slf4j
 @RestController
 @Api(tags = {AdminSwaggerTagConst.System.SYSTEM_LOGIN})
 public class LoginController {
 
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private SecondaryDataSourceConfig dataSourceConfig;
 
     @NoNeedLogin
     @PostMapping("/login")
@@ -42,6 +47,7 @@ public class LoginController {
          HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
+        dataSourceConfig.resetConnection();
         return loginService.login(loginForm);
     }
 
@@ -49,6 +55,7 @@ public class LoginController {
     @PostMapping("/login/Watch")
     @ApiOperation("watchLogin")
     public ResponseDTO<LoginWatchDetail> loginToken(@Valid @RequestBody LoginForm loginForm){
+        dataSourceConfig.resetConnection();
         return loginService.watchLogin(loginForm);
     }
 

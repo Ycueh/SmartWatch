@@ -64,19 +64,17 @@ public class JweAspect {
         }
         DecryptData decryptData = (DecryptData) params[0];
         String data = decryptData.getData();
-        log.info("解密前数据：{}", data);
+        log.info("Unencrypted data：{}", data);
 
         String key = SecureUtil.md5(String.format(MD5_SALT_FORMAT, user.getUserId()));
-        log.info("解密KEY数据：{}", key);
-        //初始化向量是16位长度
+        log.info("Decrypt key：{}", key);
         String iv = key.substring(0, 16);
-        //解密
         AES aes = new AES(Mode.CTS, Padding.PKCS5Padding, key.getBytes(), iv.getBytes());
         data = aes.decryptStr(data);
-        log.info("解密后数据：{}", data);
+        log.info("Decrypt data：{}", data);
         //base64解码
         data = new String(Base64Utils.decodeFromString(data));
-        log.info("base64解码后数据：{}", data);
+        log.info("base64 decrypt data：{}", data);
         decryptData.setData(data);
     }
 
