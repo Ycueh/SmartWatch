@@ -6,10 +6,10 @@
 
     <div class="setting">
       <!---setting-->
-      <a-button type="text" @click="updateDatabase" class="operate-icon">
+      <a-button type="primary" @click="updateDatabase" class="operate-icon">
         Update Database
       </a-button>
-      <a-button type="text" @click="resetDatabase" class="operate-icon">
+      <a-button type="danger" @click="resetNotice" class="operate-icon">
         Reset Database
       </a-button>
       <a-button type="text" @click="showSetting" class="operate-icon">
@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-  import { message } from 'ant-design-vue';
+import {message, Modal} from 'ant-design-vue';
 import HeaderAvatar from './header-avatar.vue';
   import HeaderSetting from './header-setting.vue';
   import { userApi } from "/@/api/system/user/user-api";
@@ -45,6 +45,19 @@ import HeaderAvatar from './header-avatar.vue';
     }
   }
 
+  function resetNotice() {
+    Modal.confirm({
+      title: 'Notice',
+      content: 'Are you sure you want to reset database? (this cannot be undone!) You can see the reset database after refreshing the page.',
+      okText: 'Reset',
+      okType: 'danger',
+      onOk() {
+        resetDatabase();
+      },
+      cancelText: 'Cancel',
+      onCancel() {},
+    });
+  }
   async function resetDatabase(){
     try{
       await fileTransferApi.resetDatabase();
