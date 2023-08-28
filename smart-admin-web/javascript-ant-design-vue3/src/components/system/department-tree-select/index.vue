@@ -1,13 +1,4 @@
-<!-- 
-  * 部门 树形选择框
 
-  * @Author:    1024创新实验室-主任：卓大 
-  * @Date:      2022-09-12 23:05:43 
-  * @Wechat:    zhuda1024 
-  * @Email:     lab1024@163.com 
-  * @Copyright  1024创新实验室 （ https://1024lab.net ），Since 2012 
-  *
--->
 <template>
   <a-tree-select
     :value="props.value"
@@ -16,7 +7,7 @@
     show-search
     style="width: 100%"
     :dropdown-style="{ maxHeight: '400px', overflow: 'auto' }"
-    placeholder="请选择部门"
+    placeholder="Please select department"
     allow-clear
     tree-default-expand-all
     :multiple="props.multiple"
@@ -29,9 +20,7 @@
   import { departmentApi } from '/@/api/system/department/department-api';
 
   const props = defineProps({
-    // 绑定值
     value: Number,
-    // 单选多选
     multiple: {
       type: Boolean,
       default: false,

@@ -47,25 +47,20 @@
 </div>
 </template>
 <script setup>
-import { message } from 'ant-design-vue';
-import { onMounted, onUnmounted, reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { loginApi } from '/@/api/system/login/login-api';
-import { SmartLoading } from '/@/components/framework/smart-loading';
-import { LOGIN_DEVICE_ENUM } from '/@/constants/system/login-device-const';
-import { useUserStore } from '/@/store/modules/system/user';
-import { saveTokenToCookie } from '/@/utils/cookie-util';
+import {message} from 'ant-design-vue';
+import {onMounted, onUnmounted, reactive, ref} from 'vue';
+import {useRouter} from 'vue-router';
+import {loginApi} from '/@/api/system/login/login-api';
+import {SmartLoading} from '/@/components/framework/smart-loading';
+import {LOGIN_DEVICE_ENUM} from '/@/constants/system/login-device-const';
+import {useUserStore} from '/@/store/modules/system/user';
+import {saveTokenToCookie} from '/@/utils/cookie-util';
 import loginQR from '/@/assets/images/login/login-qr.png';
 
-import aliLogin from '/@/assets/images/login/ali-icon.png';
-import googleLogin from '/@/assets/images/login/google-icon.png';
-import qqLogin from '/@/assets/images/login/qq-icon.png';
-import weiboLogin from '/@/assets/images/login/weibo-icon.png';
+import {buildRoutes} from '/@/router/index';
+import {smartSentry} from '/@/lib/smart-sentry';
 
-import { buildRoutes } from '/@/router/index';
-import { smartSentry } from '/@/lib/smart-sentry';
-
-//--------------------- 登录表单 ---------------------------------
+//--------------------- login form ---------------------------------
 
 const loginForm = reactive({
   loginName: 'admin',
