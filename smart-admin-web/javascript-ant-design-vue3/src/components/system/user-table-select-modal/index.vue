@@ -64,7 +64,7 @@
         :total="total"
         @change="queryUser"
         @showSizeChange="queryUser"
-        :show-total="(total) => `共${total}条`"
+        :show-total="(total) => `${total} items in total`"
       />
     </div>
   </a-modal>
@@ -82,7 +82,7 @@
     showModal,
   });
 
-  // ----------------------- modal  显示与隐藏 ---------------------
+  // ----------------------- modal  show and hide ---------------------
 
   const visible = ref(false);
   async function showModal(selectUserId) {
@@ -95,7 +95,7 @@
     selectedRowKeyList.value = [];
     visible.value = false;
   }
-  // ----------------------- 员工查询表单与查询 ---------------------
+  // ----------------------- users query and form ---------------------
   const tableLoading = ref(false);
   const total = ref();
 

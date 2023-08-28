@@ -52,7 +52,7 @@
 
   const emit = defineEmits(['update:value', 'change']);
 
-  // =========== Quert data =============
+  // =========== Query data =============
 
   //Role menu data
   const userList = ref([]);
