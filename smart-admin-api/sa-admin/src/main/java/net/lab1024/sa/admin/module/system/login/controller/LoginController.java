@@ -48,6 +48,7 @@ public class LoginController {
         String ip = ServletUtil.getClientIP(request);
         String userAgent = ServletUtil.getHeaderIgnoreCase(request, RequestHeaderConst.USER_AGENT);
         dataSourceConfig.resetConnection();
+        log.info("Reset Connection");
         return loginService.login(loginForm);
     }
 
@@ -87,6 +88,7 @@ public class LoginController {
     @ApiOperation("Log out")
     @GetMapping("/login/logout")
     public ResponseDTO<String> logout(@RequestHeader(value = RequestHeaderConst.TOKEN, required = false) String token) {
+        dataSourceConfig.resetConnection();
         ResponseDTO<String> abc = loginService.logout(token, SmartRequestUtil.getRequestUser());
         return abc;
     }

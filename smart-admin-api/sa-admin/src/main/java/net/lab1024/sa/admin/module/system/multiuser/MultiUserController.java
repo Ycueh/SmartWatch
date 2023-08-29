@@ -6,6 +6,7 @@ import net.lab1024.sa.admin.constant.AdminSwaggerTagConst;
 import net.lab1024.sa.admin.module.system.multiuser.domain.MultiUserAddForm;
 import net.lab1024.sa.admin.module.system.multiuser.service.MultiUserService;
 import net.lab1024.sa.common.common.domain.ResponseDTO;
+import net.lab1024.sa.common.config.SecondaryDataSourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,8 @@ public class MultiUserController {
 
     @Autowired
     private MultiUserService multiUserService;
+    @Autowired
+    private SecondaryDataSourceConfig dataSourceConfig;
 
     @ApiOperation("Add new user")
     @PostMapping("/multiUser/add")
@@ -40,6 +43,7 @@ public class MultiUserController {
     @ApiOperation("Update databaseFile")
     @PostMapping("/multiUser/updateFile/{userId}")
     public ResponseDTO<String> updateFile(@PathVariable("userId") Long userId) {
+        dataSourceConfig.resetConnection();
         return multiUserService.updateFile(userId);
     }
 

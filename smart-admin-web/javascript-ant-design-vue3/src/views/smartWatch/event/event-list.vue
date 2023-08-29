@@ -6,7 +6,7 @@
 <!--        <SmartEnumSelect width="200px" v-model:value="queryForm.eventdate" placeholder="eventdate" />-->
 <!--      </a-form-item>-->
       <a-form-item label="Keyword" class="smart-query-form-item">
-        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="event" />
+        <a-input style="width: 200px" v-model:value="queryForm.keyword" placeholder="eventdate,eventtime,eventdesc" />
       </a-form-item>
 <!--      <a-form-item label="eventtime" class="smart-query-form-item">-->
 <!--        <a-input style="width: 200px" v-model:value="queryForm.eventtime" placeholder="eventtime" />-->
