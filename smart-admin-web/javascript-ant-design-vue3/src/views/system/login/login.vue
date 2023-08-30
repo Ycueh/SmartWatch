@@ -101,9 +101,9 @@ async function onLogin() {
       stopRefrestCaptchaInterval();
       saveTokenToCookie(res.data.token ? res.data.token : '');
       message.success('Login successfully');
-      //更新用户信息到pinia
+      //Update user information in pinia
       useUserStore().setUserLoginInfo(res.data);
-      //构建系统的路由
+      //Build system routes
       buildRoutes();
       router.push('/home');
     } catch (e) {
