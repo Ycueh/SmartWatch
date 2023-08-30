@@ -117,7 +117,6 @@
     {
       title: 'Question',
       dataIndex: 'question',
-      ellipsis: true,
     },
     {
       title: 'Response',
