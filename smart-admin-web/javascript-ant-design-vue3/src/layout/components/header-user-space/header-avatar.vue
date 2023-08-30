@@ -40,13 +40,41 @@
   import { smartSentry } from '/@/lib/smart-sentry';
   import {fileTransferApi} from'/@/api/smartWatch/file/fileTransfer-api';
   import HeaderResetPassword from './header-reset-password-modal/index.vue';
-  import { message } from 'ant-design-vue';
+  import {message, Modal} from 'ant-design-vue';
+  import {userApi} from "/@/api/system/user/user-api";
 
   // Avatar background color
   const AVATAR_BACKGROUND_COLOR_ARRAY = ['#87d068', '#00B853', '#f56a00', '#1890ff'];
 
+  function onLogout() {
+    Modal.confirm({
+      title: 'Notice',
+      content: 'Do you want to update the database to save data changes?',
+      okText: 'Yes',
+      // okType: 'danger',
+      onOk() {
+        updateDatabase();
+        logout();
+      },
+      cancelText: 'No',
+      onCancel() {
+        logout();
+      },
+    });
+  }
+
+  async function updateDatabase(){
+    const userId=computed(() => useUserStore().userId);
+    try{
+      console.log(userId.value);
+      await userApi.updateDatabase(userId.value);
+      message.success("Update database successfully");
+    }catch(e){
+      alert(e);
+    }
+  }
   //Monitor logout method
-  async function onLogout() {
+  async function logout() {
     try {
       await loginApi.logout();
     } catch (e) {
