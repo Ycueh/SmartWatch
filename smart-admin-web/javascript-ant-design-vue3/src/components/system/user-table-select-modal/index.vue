@@ -32,7 +32,7 @@
       </a-row>
     </a-form>
     <a-table
-      :row-selection="{ selectedRowKeys: selectedRowKeyList, onChange: onSelectChange }"
+      :row-selection="{ selectedRowKeys: selectedRowKeys, onChange: onSelectChange }"
       :loading="tableLoading"
       size="small"
       :columns="columns"
@@ -75,7 +75,9 @@
   import { userApi } from '/@/api/system/user/user-api';
   import { PAGE_SIZE, PAGE_SIZE_OPTIONS } from '/@/constants/common-const';
   import { smartSentry } from '/@/lib/smart-sentry';
+  import { watch } from 'vue';
 
+  
   // -----------------------  emits props ---------------------
   const emits = defineEmits('selectData');
   defineExpose({
@@ -86,13 +88,13 @@
 
   const visible = ref(false);
   async function showModal(selectUserId) {
-    selectedRowKeyList.value = selectUserId || [];
+    selectedRowKeys.value = selectUserId || [];
     visible.value = true;
     queryUser();
   }
   function closeModal() {
     Object.assign(params, defaultParams);
-    selectedRowKeyList.value = [];
+    selectedRowKeys.value = [];
     visible.value = false;
   }
   // ----------------------- users query and form ---------------------
@@ -120,6 +122,7 @@
       let res = await userApi.queryUser(params);
       tableData.value = res.data.list;
       total.value = res.data.total;
+      selectedRowKeys.value = [];
     } catch (error) {
       smartSentry.captureError(error);
     } finally {
@@ -128,19 +131,18 @@
   }
 
   // ----------------------- User form ---------------------
-  let selectedRowKeyList = ref([]);
-  const hasSelected = computed(() => selectedRowKeyList.value.length > 0);
-
-  function onSelectChange(selectedRowKeys) {
-    selectedRowKeyList.value = selectedRowKeys;
+  let selectedRowKeys = ref([]);
+  // Selected rows
+  const hasSelected = computed(() => selectedRowKeys.value.length > 0);
+  function onSelectChange(keyArray) {
+    selectedRowKeys.value = keyArray;
   }
-
   function onSelectUser() {
     if (!hasSelected.value) {
       message.warning('Please choose user');
       return;
     }
-    emits('selectData', selectedRowKeyList.value);
+    emits('selectData', selectedRowKeys.value);
     closeModal();
   }
 
@@ -155,10 +157,6 @@
     {
       title: 'Phone number',
       dataIndex: 'phone',
-    },
-    {
-      title: 'Gender',
-      dataIndex: 'gender',
     },
     {
       title: 'Account',

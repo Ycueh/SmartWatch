@@ -90,13 +90,10 @@
     roleId: undefined,
     keywords: undefined,
   };
-  // 查询表单
+  // query form
   const queryForm = reactive({ ...defaultQueryForm });
-  // 总数
   const total = ref(0);
-  // 表格数据
   const tableData = ref([]);
-  // 表格loading效果
   const tableLoading = ref(false);
 
   function resetQueryRoleUser() {
