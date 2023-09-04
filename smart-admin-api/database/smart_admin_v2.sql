@@ -25,22 +25,23 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `t_data_tracer`;
 CREATE TABLE `t_data_tracer`  (
   `data_tracer_id` bigint NOT NULL AUTO_INCREMENT,
-  `data_id` bigint NOT NULL COMMENT '各种单据的id',
-  `type` int NOT NULL COMMENT '单据类型',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '操作内容',
-  `diff_old` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '差异：旧的数据',
-  `diff_new` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '差异：新的数据',
-  `extra_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT '额外信息',
-  `user_id` bigint NOT NULL COMMENT '用户id',
-  `user_type` int NOT NULL COMMENT '用户类型：1 后管用户 ',
-  `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户名称',
+  `data_id` bigint NOT NULL COMMENT 'ID of various documents',
+  `type` int NOT NULL COMMENT 'Document type',
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'Operation content',
+  `diff_old` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'Difference: old data',
+  `diff_new` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'Difference: new data',
+  `extra_data` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL COMMENT 'Extra information',
+  `user_id` bigint NOT NULL COMMENT 'User ID',
+  `user_type` int NOT NULL COMMENT 'User type: 1 for backend user',
+  `user_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User name',
   `ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
   `user_agent` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL,
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update time',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Create time',
   PRIMARY KEY (`data_tracer_id`) USING BTREE,
   INDEX `order_id_order_type`(`data_id`, `type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 277 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '各种单据操作记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 277 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Record of various document operations' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_data_tracer
@@ -328,30 +329,31 @@ INSERT INTO `t_data_tracer` VALUES (277, 1, 1, 'Add', NULL, NULL, NULL, 1, 1, '�
 -- ----------------------------
 DROP TABLE IF EXISTS `t_menu`;
 CREATE TABLE `t_menu`  (
-  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
-  `menu_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
-  `menu_type` int NOT NULL COMMENT '类型',
-  `parent_id` bigint NOT NULL COMMENT '父菜单ID',
-  `sort` int NULL DEFAULT NULL COMMENT '显示顺序',
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '路由地址',
-  `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '组件路径',
-  `perms_type` int NULL DEFAULT NULL COMMENT '权限类型',
-  `api_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '后端权限字符串',
-  `web_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '前端权限字符串',
-  `icon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '菜单图标',
-  `context_menu_id` bigint NULL DEFAULT NULL COMMENT '功能点关联菜单ID',
-  `frame_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否为外链',
-  `frame_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '外链地址',
-  `cache_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '是否缓存',
-  `visible_flag` tinyint(1) NOT NULL DEFAULT 1 COMMENT '显示状态',
-  `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态',
-  `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT '删除状态',
-  `create_user_id` bigint NOT NULL COMMENT '创建人',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_user_id` bigint NULL DEFAULT NULL COMMENT '更新人',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'Menu ID',
+  `menu_name` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Menu Name',
+  `menu_type` int NOT NULL COMMENT 'Type',
+  `parent_id` bigint NOT NULL COMMENT 'Parent Menu ID',
+  `sort` int NULL DEFAULT NULL COMMENT 'Display Order',
+  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Route Address',
+  `component` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Component Path',
+  `perms_type` int NULL DEFAULT NULL COMMENT 'Permission Type',
+  `api_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'Backend Permission String',
+  `web_perms` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'Frontend Permission String',
+  `icon` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'Menu Icon',
+  `context_menu_id` bigint NULL DEFAULT NULL COMMENT 'Associated Menu ID for Function Point',
+  `frame_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Is External Link',
+  `frame_url` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'External Link Address',
+  `cache_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Cache Status',
+  `visible_flag` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'Display Status',
+  `disabled_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Disabled Status',
+  `deleted_flag` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Delete Status',
+  `create_user_id` bigint NOT NULL COMMENT 'Creator',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation Time',
+  `update_user_id` bigint NULL DEFAULT NULL COMMENT 'Updater',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 235 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '菜单表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 235 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'Menu Table' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_menu
@@ -392,13 +394,14 @@ INSERT INTO `t_menu` VALUES (234, 'Delete question', 3, 209, NULL, NULL, NULL, 1
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role`  (
-  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `role_name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '角色名称',
-  `remark` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '角色描述',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `role_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
+  `role_name` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT 'Role Name',
+  `remark` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT 'Role Description',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation Time',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = '角色表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci COMMENT = 'Role Table' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_role
@@ -411,15 +414,16 @@ INSERT INTO `t_role` VALUES (35, 'Normal User', '', '2023-08-19 00:11:45', '2019
 -- ----------------------------
 DROP TABLE IF EXISTS `t_role_menu`;
 CREATE TABLE `t_role_menu`  (
-  `role_menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `role_id` bigint NOT NULL COMMENT '角色id',
-  `menu_id` bigint NOT NULL COMMENT '菜单id',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `role_menu_id` bigint NOT NULL AUTO_INCREMENT COMMENT 'Primary Key ID',
+  `role_id` bigint NOT NULL COMMENT 'Role ID',
+  `menu_id` bigint NOT NULL COMMENT 'Menu ID',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation Time',
   PRIMARY KEY (`role_menu_id`) USING BTREE,
   INDEX `idx_role_id`(`role_id`) USING BTREE,
   INDEX `idx_menu_id`(`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 412 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色-菜单\n' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 412 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Role-Menu Relationship' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_role_menu
@@ -474,13 +478,13 @@ INSERT INTO `t_role_menu` VALUES (411, 35, 234, '2023-08-21 15:48:30', '2023-08-
 DROP TABLE IF EXISTS `t_role_user`;
 CREATE TABLE `t_role_user`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `role_id` bigint NOT NULL COMMENT '角色id',
-  `user_id` bigint NOT NULL COMMENT '员工id',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `role_id` bigint NOT NULL COMMENT 'Role ID',
+  `user_id` bigint NOT NULL COMMENT 'Employee ID',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update Time',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Creation Time',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `uk_role_employee`(`role_id`, `user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 371 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色员工功能表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 371 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Role-Employee Function Table' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_role_user
@@ -515,15 +519,16 @@ INSERT INTO `t_role_user` VALUES (370, 34, 80, '2023-09-01 22:31:42', '2023-09-0
 DROP TABLE IF EXISTS `t_table_column`;
 CREATE TABLE `t_table_column`  (
   `table_column_id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` bigint NOT NULL COMMENT '用户id',
-  `user_type` int NOT NULL COMMENT '用户类型',
-  `table_id` int NOT NULL COMMENT '表格id',
-  `columns` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '具体的表格列，存入的json',
+  `user_id` bigint NOT NULL COMMENT 'User ID',
+  `user_type` int NOT NULL COMMENT 'User Type',
+  `table_id` int NOT NULL COMMENT 'Table ID',
+  `columns` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT 'Specific table columns, stored as JSON',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`table_column_id`) USING BTREE,
   UNIQUE INDEX `uni_employee_table`(`user_id`, `table_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '表格的自定义列存储' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'Storage of Custom Table Columns' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_table_column
@@ -547,7 +552,7 @@ CREATE TABLE `t_user`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Update time',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Create time',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '员工表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 83 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'employee table' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_user
@@ -579,12 +584,13 @@ INSERT INTO `t_user` VALUES (82, 'test3', '40cc20b8891cd3fd1f008ea7f4ac17c3', 't
 DROP TABLE IF EXISTS `t_user_db`;
 CREATE TABLE `t_user_db`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
-  `user_id` bigint NOT NULL COMMENT '用户id',
-  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '用户文件名',
-  `file_data` longblob NOT NULL COMMENT '用户数据库数据',
+  `user_id` bigint NOT NULL COMMENT 'User ID',
+  `file` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User File Name',
+  `file_data` longblob NOT NULL COMMENT 'User Database Data',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '多用户数据库' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = 'Multi-User Databases' ROW_FORMAT = DYNAMIC;
+
 
 -- ----------------------------
 -- Records of t_user_db
