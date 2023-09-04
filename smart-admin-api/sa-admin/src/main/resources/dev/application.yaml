@@ -26,3 +26,4 @@ project:
 swagger:
   host: localhost:${server.port}   # Host for the Swagger UI.
   tag-class: net.lab1024.sa.admin.constant.AdminSwaggerTagConst  # Class that contains tags for the Swagger documentation.
+
