@@ -9,7 +9,7 @@
     <p>Users can refer to the <a href="https://github.com/Ycueh/SmartWatch/blob/master/User%20Guide" target="_blank" title="operation instructions">user guide</a>
       for more detailed operational instructions.
       If technicians need to view or edit the code, you can access <a href="https://github.com/Ycueh/SmartWatch" target="_blank" title="project repository">our project</a>
-      and <a href="https://github.com/Ycueh/SmartWatch/blob/master/Technical%20Documentation" target="_blank" title="documentation">technical documentation</a>.
+      and <a href="https://github.com/Ycueh/SmartWatch/blob/master/Technical%20Instruction.pdf" target="_blank" title="documentation">technical documentation</a>.
       If you want to upload and download the database, you can click the buttons below. (Note: The uploaded database format needs to be consistent with EMADATA.db)</p>
     <div>
       <input type="file" ref="fileInput" @change="handleFileChange" />

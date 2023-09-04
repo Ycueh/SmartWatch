@@ -1,0 +1,2 @@
+[04/Sep/2023:19:47:22 +0100] - 127.0.0.1 "OPTIONS /login/getLoginInfo HTTP/1.1" 200 79 (79 ms)
+[04/Sep/2023:19:47:23 +0100] - 127.0.0.1 "GET /login/getLoginInfo HTTP/1.1" 200 1071 (1071 ms)
