@@ -1,1 +1,47 @@
 operation instruction
+
+
+1. Login:
+   - Users need to enter a correct username, password, and verification code.
+   - After successful login, they are automatically redirected to the homepage.
+
+2. Homepage:
+   - Users can access database tables through the side navigation bar.
+   - Users have the capability to upload their own database files simply by clicking the "Upload Database" button.
+   - Users can easily obtain the corresponding .db file by clicking the "Download Database" button.
+
+3. Database Table Operations:
+   - Edit: Clicking the Edit button in the Action column opens a floating window to edit data.
+   - Delete: Clicking the Delete button in the Action column deletes a data row.
+   - Add: Clicking the Add button adds a new row of data.
+   - Search: Users can enter keywords and click the Search button to query data.
+   - Reset: Clicking the Reset button restores default data rows.
+   - Batch Delete: Users can select multiple data rows and delete them in batches.
+
+4. User Management:
+   - Access via the side navigation bar.
+   - Similar operations to database tables (Add, Delete, Edit, Query).
+   - Reset Password: Generates a new random password for a user.
+   - Disable: Prohibits a user from logging into the website.
+
+5. Permission Setting:
+   - Access via the side navigation bar, under "Role."
+   - Allows setting permissions for Super users and Normal users.
+   - Requires saving after making changes.
+
+6. Database Updates:
+   - Clicking the "Update Database" button updates the database in real-time.
+
+7. Database Reset:
+   - Clicking the "Reset Database" button resets the database.
+
+8. Settings:
+   - Access settings by clicking an icon in the upper right corner.
+   - Allows users to configure language and other information.
+
+9. Update Current User Password:
+   - Hovering over the user logo in the upper right corner and clicking "Update password" lets users change their password.
+
+10. Logout:
+    - Hovering over the user logo in the upper right corner and clicking "Log out" logs the user out of the application.
+
